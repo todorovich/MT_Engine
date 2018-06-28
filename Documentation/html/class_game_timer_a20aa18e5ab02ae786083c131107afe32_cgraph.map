@@ -1,5 +1,0 @@
-<map id="GameTimer::tick" name="GameTimer::tick">
-<area shape="rect" id="node2" href="$classengine.html#a240cde5717390f5f154bc9e4af2c36eb" title="engine::get_engine" alt="" coords="391,5,521,32"/>
-<area shape="rect" id="node3" href="$classengine.html#a8afc7b29034df66b7dd991dff06c0118" title="engine::get_is_resizing" alt="" coords="172,56,327,83"/>
-<area shape="rect" id="node4" href="$classengine.html#a2b29abf6edeaf9f4b95e121bbe1dae47" title="engine::_get_is_resizing" alt="" coords="375,56,537,83"/>
-</map>

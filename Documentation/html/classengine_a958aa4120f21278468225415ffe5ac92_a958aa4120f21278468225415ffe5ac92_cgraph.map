@@ -1,6 +1,0 @@
-<map id="engine::_init_main_window" name="engine::_init_main_window">
-<area shape="rect" id="node2" href="$engine_8cpp_a6430a76bf18e17d995aa340aaf8c30a9.html#a6430a76bf18e17d995aa340aaf8c30a9" title="MainWndProc" alt="" coords="180,46,284,73"/>
-<area shape="rect" id="node3" href="$classengine_a1c22e1de5498965992bc25cfba715c99.html#a1c22e1de5498965992bc25cfba715c99" title="engine::get_windows\l_message_handler" alt="" coords="371,5,513,47"/>
-<area shape="rect" id="node5" href="$class_windows_message_handling_service_a9c7224471322c4e364c440b35321d253.html#a9c7224471322c4e364c440b35321d253" title="WindowsMessageHandlingService\l::handle_message" alt="" coords="332,71,552,112"/>
-<area shape="rect" id="node4" href="$classengine_a240cde5717390f5f154bc9e4af2c36eb.html#a240cde5717390f5f154bc9e4af2c36eb" title="engine::get_engine" alt="" coords="600,13,731,39"/>
-</map>

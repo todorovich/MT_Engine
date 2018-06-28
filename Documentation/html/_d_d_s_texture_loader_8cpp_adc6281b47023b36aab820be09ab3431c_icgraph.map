@@ -1,8 +1,0 @@
-<map id="BitsPerPixel" name="BitsPerPixel">
-<area shape="rect" id="node2" href="$_d_d_s_texture_loader_8cpp.html#af572c1b170d5c8945533758c4607ce23" title="GetSurfaceInfo" alt="" coords="148,73,255,100"/>
-<area shape="rect" id="node4" href="$_d_d_s_texture_loader_8cpp.html#ac97ddcbab1e9ce61667a0862b58f9c56" title="CreateTextureFromDDS" alt="" coords="455,48,615,75"/>
-<area shape="rect" id="node7" href="$_d_d_s_texture_loader_8cpp.html#aa0c87b1491a829d1a28da9bb89b2d2a6" title="CreateTextureFromDDS12" alt="" coords="448,124,623,151"/>
-<area shape="rect" id="node3" href="$_d_d_s_texture_loader_8cpp.html#af01b3b33c47f4e9d8e30d00d5b586522" title="FillInitData" alt="" coords="310,23,393,49"/>
-<area shape="rect" id="node6" href="$_d_d_s_texture_loader_8cpp.html#a51511e9ea8b201e1f254b21b36da0f69" title="FillInitData12" alt="" coords="303,124,400,151"/>
-<area shape="rect" id="node5" href="$_d_d_s_texture_loader_8cpp.html#a8c2c61f7f7e3bd20619e3746b8e20286" title="GetAlphaMode" alt="" coords="671,87,779,113"/>
-</map>

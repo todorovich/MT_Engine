@@ -1,8 +1,0 @@
-<map id="GeometryGenerator::MeshData::GetIndices16" name="GeometryGenerator::MeshData::GetIndices16">
-<area shape="rect" id="node2" href="$class_geometry_generator.html#a9ebf88d1bee287c6e211bff43fbdd3a0" title="GeometryGenerator::\lCreateBox" alt="" coords="219,5,363,47"/>
-<area shape="rect" id="node3" href="$class_geometry_generator.html#a61677b3472294c52b544670722d22f0b" title="GeometryGenerator::\lCreateSphere" alt="" coords="219,71,363,112"/>
-<area shape="rect" id="node4" href="$class_geometry_generator.html#ac29d9710556efda67adf2969b3d59efe" title="GeometryGenerator::\lCreateGeosphere" alt="" coords="219,136,363,177"/>
-<area shape="rect" id="node5" href="$class_geometry_generator.html#a6d2867280024eaf02c0643c765dfdd2b" title="GeometryGenerator::\lCreateCylinder" alt="" coords="219,201,363,243"/>
-<area shape="rect" id="node6" href="$class_geometry_generator.html#a594d746f5a6a3a645ea2c85a9feabafe" title="GeometryGenerator::\lCreateGrid" alt="" coords="219,267,363,308"/>
-<area shape="rect" id="node7" href="$class_geometry_generator.html#af9ce9e29c19dc145d8a964f44359ae90" title="GeometryGenerator::\lCreateQuad" alt="" coords="219,332,363,373"/>
-</map>

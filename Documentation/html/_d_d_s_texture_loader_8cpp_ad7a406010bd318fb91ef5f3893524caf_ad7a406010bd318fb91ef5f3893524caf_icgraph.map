@@ -1,7 +1,0 @@
-<map id="MakeSRGB" name="MakeSRGB">
-<area shape="rect" id="node2" href="$_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9.html#a636dc39cbed3b2c612ea8a7f8c951ff9" title="CreateD3DResources" alt="" coords="151,5,298,32"/>
-<area shape="rect" id="node5" href="$_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6.html#ac3528432c6f08aa64ef16420c10f5de6" title="CreateD3DResources12" alt="" coords="144,56,305,83"/>
-<area shape="rect" id="node3" href="$_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56.html#ac97ddcbab1e9ce61667a0862b58f9c56" title="CreateTextureFromDDS" alt="" coords="361,5,521,32"/>
-<area shape="rect" id="node4" href="$_d_d_s_texture_loader_8cpp_a8c2c61f7f7e3bd20619e3746b8e20286.html#a8c2c61f7f7e3bd20619e3746b8e20286" title="GetAlphaMode" alt="" coords="576,31,684,57"/>
-<area shape="rect" id="node6" href="$_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6.html#aa0c87b1491a829d1a28da9bb89b2d2a6" title="CreateTextureFromDDS12" alt="" coords="353,56,528,83"/>
-</map>

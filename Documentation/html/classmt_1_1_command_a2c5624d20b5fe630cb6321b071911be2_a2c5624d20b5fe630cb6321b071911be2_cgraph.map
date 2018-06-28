@@ -1,6 +1,0 @@
-<map id="mt::Command::add_to_command_queue" name="mt::Command::add_to_command_queue">
-<area shape="rect" id="node2" href="$classengine_a3351563741589b6f8f05a53bbbe544a7.html#a3351563741589b6f8f05a53bbbe544a7" title="engine::get_command\l_manager" alt="" coords="214,5,365,47"/>
-<area shape="rect" id="node4" href="$classmt_1_1_command_queue_a1e236f8d899abf2bc6b0e52e0b2bf691.html#a1e236f8d899abf2bc6b0e52e0b2bf691" title="mt::CommandQueue::add\l_command" alt="" coords="204,71,375,112"/>
-<area shape="rect" id="node3" href="$classengine_a240cde5717390f5f154bc9e4af2c36eb.html#a240cde5717390f5f154bc9e4af2c36eb" title="engine::get_engine" alt="" coords="455,13,586,39"/>
-<area shape="rect" id="node5" href="$classmt_1_1_command_queue_a17f0a42a4f078a938b3ac80c67055879.html#a17f0a42a4f078a938b3ac80c67055879" title="mt::CommandQueue::execute\l_commands" alt="" coords="423,71,619,112"/>
-</map>

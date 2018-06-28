@@ -1,5 +1,0 @@
-<map id="DirectXRenderer::Update" name="DirectXRenderer::Update">
-<area shape="rect" id="node2" href="$class_camera.html#a69369efae2a33da50510cc8c43c58bc5" title="Camera::UpdateViewMatrix" alt="" coords="217,5,397,32"/>
-<area shape="rect" id="node3" href="$class_camera.html#a5a1a8ddceb04c093f440d4c9dcadbc77" title="Camera::GetView" alt="" coords="245,56,369,83"/>
-<area shape="rect" id="node4" href="$class_camera.html#ab49825897594ec2da5a4875ccb1620f2" title="Camera::GetProj" alt="" coords="248,107,367,133"/>
-</map>

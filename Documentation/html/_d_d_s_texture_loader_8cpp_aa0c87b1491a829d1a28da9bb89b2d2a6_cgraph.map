@@ -1,8 +1,0 @@
-<map id="CreateTextureFromDDS12" name="CreateTextureFromDDS12">
-<area shape="rect" id="node2" href="$_d_d_s_texture_loader_8cpp.html#adc6281b47023b36aab820be09ab3431c" title="BitsPerPixel" alt="" coords="592,17,687,44"/>
-<area shape="rect" id="node3" href="$_d_d_s_texture_loader_8cpp.html#aa86329d2121392cc1d7a3dbbc52d3b0a" title="GetDXGIFormat" alt="" coords="252,29,365,56"/>
-<area shape="rect" id="node4" href="$_d_d_s_texture_loader_8cpp.html#a51511e9ea8b201e1f254b21b36da0f69" title="FillInitData12" alt="" coords="260,80,357,107"/>
-<area shape="rect" id="node6" href="$_d_d_s_texture_loader_8cpp.html#ac3528432c6f08aa64ef16420c10f5de6" title="CreateD3DResources12" alt="" coords="228,131,389,157"/>
-<area shape="rect" id="node5" href="$_d_d_s_texture_loader_8cpp.html#af572c1b170d5c8945533758c4607ce23" title="GetSurfaceInfo" alt="" coords="437,55,544,81"/>
-<area shape="rect" id="node7" href="$_d_d_s_texture_loader_8cpp.html#ad7a406010bd318fb91ef5f3893524caf" title="MakeSRGB" alt="" coords="445,131,536,157"/>
-</map>
