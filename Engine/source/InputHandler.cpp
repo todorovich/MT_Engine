@@ -11,7 +11,7 @@
 
 using namespace mt;
 
-void InputHandler::on_mouse_down(WPARAM btnState, int x, int y)
+void InputHandler::MouseDown(WPARAM btnState, int x, int y)
 {
 	_mouse_position.x = x;
 	_mouse_position.y = y;
@@ -19,12 +19,12 @@ void InputHandler::on_mouse_down(WPARAM btnState, int x, int y)
 	SetCapture(engine::get_main_window_handle());
 }
 
-void InputHandler::on_mouse_up(WPARAM btnState, int x, int y)
+void InputHandler::MouseUp(WPARAM btnState, int x, int y)
 {
 	ReleaseCapture();
 }
 
-void InputHandler::on_mouse_move(WPARAM btnState, int x, int y)
+void InputHandler::MouseMove(WPARAM btnState, int x, int y)
 {
 	if ((btnState & MK_LBUTTON) != 0)
 	{
@@ -62,13 +62,13 @@ void InputHandler::on_mouse_move(WPARAM btnState, int x, int y)
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646280(v=vs.85).aspx
-void InputHandler::on_key_down(WPARAM vk_key, LPARAM flags)
+void InputHandler::KeyDown(WPARAM vk_key, LPARAM flags)
 {
 
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646281(v=vs.85).aspx
-void InputHandler::on_key_up(WPARAM vk_key, LPARAM flags)
+void InputHandler::KeyUp(WPARAM vk_key, LPARAM flags)
 {
 	if (vk_key == VK_ESCAPE)
 	{

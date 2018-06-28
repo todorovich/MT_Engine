@@ -13,7 +13,7 @@ namespace mt
 	{
 		//OutputDebugStringW(L"WM_KEY_UP_Handler\n");
 	
-		engine::get_input_handler().on_key_up(wParam, lParam);
+		engine::get_input_handler().KeyUp(wParam, lParam);
 	
 		// An application should return zero if it processes this message.
 		return 0;

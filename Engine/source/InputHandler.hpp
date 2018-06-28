@@ -8,16 +8,20 @@ class InputHandler
 {
 	public:
 	InputHandler() = default;
+	InputHandler(const InputHandler& other) = delete;
+	InputHandler& operator=(const InputHandler& other) = delete;
+	~InputHandler() = default;
 
-	void on_mouse_down(WPARAM btnState, int x, int y);
 
-	void on_mouse_up(WPARAM btnState, int x, int y);
+	void MouseDown(WPARAM btnState, int x, int y);
 
-	void on_mouse_move(WPARAM btnState, int x, int y);
+	void MouseUp(WPARAM btnState, int x, int y);
+
+	void MouseMove(WPARAM btnState, int x, int y);
 	
-	void on_key_down(WPARAM vk_key, LPARAM flags);
+	void KeyDown(WPARAM vk_key, LPARAM flags);
 
-	void on_key_up(WPARAM vk_key, LPARAM flags);
+	void KeyUp(WPARAM vk_key, LPARAM flags);
 
 protected:
 	POINT	_mouse_position;
