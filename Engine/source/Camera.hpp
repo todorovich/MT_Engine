@@ -11,6 +11,8 @@
 
 #pragma once
 
+#include <atomic>
+
 #include "precompiled.hpp"
 
 #include "d3dUtil.h"
@@ -20,6 +22,7 @@ class Camera
 public:
 
 	Camera();
+	Camera(const Camera& other) = delete;
 	~Camera();
 
 	// Get/Set world camera position.
@@ -74,6 +77,11 @@ public:
 	// After modifying camera position/orientation, call to rebuild the view matrix.
 	void UpdateViewMatrix();
 
+	void SetDirty()
+	{
+		mViewDirty = true;
+	}
+
 private:
 
 // 64 bytes
@@ -82,20 +90,22 @@ private:
 
 // 12 bytes
 	// Camera coordinate system with coordinates relative to world space.
-	DirectX::XMFLOAT3 mPosition = { 0.0f, 0.0f, 0.0f };
-	DirectX::XMFLOAT3 mRight = { 1.0f, 0.0f, 0.0f };
-	DirectX::XMFLOAT3 mUp = { 0.0f, 1.0f, 0.0f };
-	DirectX::XMFLOAT3 mLook = { 0.0f, 0.0f, 1.0f };
+	DirectX::XMFLOAT3 mPosition	= { 0.0f, 0.0f, 10.0f };
+	DirectX::XMFLOAT3 mRight	= { 1.0f, 0.0f, 0.0f };
+	DirectX::XMFLOAT3 mUp		= { 0.0f, 1.0f, 0.0f };
+	DirectX::XMFLOAT3 mLook		= { 0.0f, 0.0f, 1.0f };
 
 // 4 bytes
 	// Cache frustum properties.
-	float mNearZ = 0.0f;
-	float mFarZ = 0.0f;
-	float mAspect = 0.0f;
-	float mFovY = 0.0f;
+	float mNearZ			= 0.0f;
+	float mFarZ				= 0.0f;
+	float mAspect			= 0.0f;
+	float mFovY				= 0.0f;
 	float mNearWindowHeight = 0.0f;
-	float mFarWindowHeight = 0.0f;
+	float mFarWindowHeight	= 0.0f;
 
 // 1 byte
-	bool mViewDirty = true;
+	std::atomic_bool mViewDirty;
+	std::atomic_bool _currently_updating;
+	//bool mViewDirty = true;
 };

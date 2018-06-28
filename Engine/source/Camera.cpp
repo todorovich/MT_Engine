@@ -13,9 +13,11 @@
 using namespace DirectX;
 
 Camera::Camera()
+	: mViewDirty(true)
+	, _currently_updating(false)
 {
 	SetLens(0.25f*MathHelper::Pi, 1.0f, 1.0f, 1000.0f);
-	LookAt(XMFLOAT3( 0.0f, 0.0f, 10.0f ), XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT3(0.0f, 1.0f, 0.0f));
+	LookAt(mPosition, XMFLOAT3(0.0f, 0.0f, 0.0f), mUp);
 }
 
 Camera::~Camera()
@@ -209,6 +211,8 @@ void Camera::Walk(float d)
 void Camera::Pitch(float angle)
 {
 	// Rotate up and look vector about the right vector.
+
+	angle *= 10.0f;
 
 	XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mRight), angle);
 
