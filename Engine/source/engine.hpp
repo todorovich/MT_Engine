@@ -189,8 +189,10 @@ namespace mt
 	
 		void _resize(int width, int height)
 		{
+			// This flag should prevent futher rendering after the current frame finishes
 			_is_resizing = true;
 	
+			// wait until rendering is finished.
 			while (dxr.get_is_rendering()) {};
 	
 			_client_width = width;
@@ -199,7 +201,9 @@ namespace mt
 	
 			dxr.resize(width, height);
 			
+			// Trigger callback
 			OnResize();
+			// Continue rendering.
 			_is_resizing = false;
 		}
 	

@@ -8,6 +8,35 @@
 #define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 #endif
 
+
+#include <windows.h>  
+const DWORD MS_VC_EXCEPTION = 0x406D1388;
+#pragma pack(push,8)  
+typedef struct tagTHREADNAME_INFO
+{
+	DWORD dwType; // Must be 0x1000.  
+	LPCSTR szName; // Pointer to name (in user addr space).  
+	DWORD dwThreadID; // Thread ID (-1=caller thread).  
+	DWORD dwFlags; // Reserved for future use, must be zero.  
+} THREADNAME_INFO;
+#pragma pack(pop)  
+void SetThreadName(DWORD dwThreadID, const char* threadName) {
+	THREADNAME_INFO info;
+	info.dwType = 0x1000;
+	info.szName = threadName;
+	info.dwThreadID = dwThreadID;
+	info.dwFlags = 0;
+#pragma warning(push)  
+#pragma warning(disable: 6320 6322)  
+	__try {
+		RaiseException(MS_VC_EXCEPTION, 0, sizeof(info) / sizeof(ULONG_PTR), (ULONG_PTR*)&info);
+	}
+	__except (EXCEPTION_EXECUTE_HANDLER) {
+	}
+#pragma warning(pop)  
+}
+
+
 using namespace mt;
 
 std::unique_ptr<engine> mt::engine::_instance = std::make_unique<engine>();
@@ -17,13 +46,14 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	// Forward hwnd on because we can get messages (e.g., WM_CREATE)
 	// before CreateWindow returns, and thus before mhMainWnd is valid.
 	return engine::get_windows_message_handler().handle_message(hwnd, msg, wParam, lParam);
+	
 }
 
 Status engine::_run()
 { 
 	time.initialize();
 
-	_engine_tick_thread = std::thread(engine::tick);
+	_engine_tick_thread = std::thread(std::ref(engine::get_engine().tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
@@ -35,6 +65,8 @@ Status engine::_run()
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+
+			engine::get_current_camera().SetDirty();
 		}
 	}
 
@@ -78,6 +110,8 @@ void engine::_tick()
 void engine::tick()
 {
 	auto& engine = get_engine();
+
+	SetThreadName(GetCurrentThreadId(), "Tick Thread");
 
 	while (!engine._is_shutdown)
 	{
