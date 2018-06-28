@@ -161,8 +161,8 @@ protected:
 	UINT										cbv_srv_uav_descriptor_size = 0;
 	UINT										_4x_msaa_quality			= 0;      // quality level of 4X MSAA
 
-	D3D_DRIVER_TYPE								md3dDriverType = D3D_DRIVER_TYPE_HARDWARE;
-	DXGI_FORMAT									mBackBufferFormat = DXGI_FORMAT_R8G8B8A8_UNORM;
+	D3D_DRIVER_TYPE								md3dDriverType		= D3D_DRIVER_TYPE_HARDWARE;
+	DXGI_FORMAT									mBackBufferFormat	= DXGI_FORMAT_R8G8B8A8_UNORM;
 	DXGI_FORMAT									mDepthStencilFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
 	int		current_back_buffer		= 0; 
