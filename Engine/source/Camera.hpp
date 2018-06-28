@@ -11,9 +11,9 @@
 
 #pragma once
 
-#include <atomic>
-
 #include "precompiled.hpp"
+
+#include <atomic>
 
 #include "d3dUtil.h"
 
@@ -28,8 +28,8 @@ public:
 	// Get/Set world camera position.
 	DirectX::XMVECTOR GetPosition()const;
 	DirectX::XMFLOAT3 GetPosition3f()const;
-	void SetPosition(float x, float y, float z);
-	void SetPosition(const DirectX::XMFLOAT3& v);
+	mt::Status SetPosition(float x, float y, float z);
+	mt::Status SetPosition(const DirectX::XMFLOAT3& v);
 	
 	// Get camera basis vectors.
 	DirectX::XMVECTOR GetRight()const;
@@ -53,11 +53,11 @@ public:
 	float GetFarWindowHeight()const;
 	
 	// Set frustum.
-	void SetLens(float fovY, float aspect, float zn, float zf);
+	mt::Status SetLens(float fovY, float aspect, float zn, float zf);
 
 	// Define camera space via LookAt parameters.
-	void LookAt(DirectX::FXMVECTOR pos, DirectX::FXMVECTOR target, DirectX::FXMVECTOR worldUp);
-	void LookAt(const DirectX::XMFLOAT3& pos, const DirectX::XMFLOAT3& target, const DirectX::XMFLOAT3& up);
+	mt::Status LookAt(DirectX::FXMVECTOR pos, DirectX::FXMVECTOR target, DirectX::FXMVECTOR worldUp);
+	mt::Status LookAt(const DirectX::XMFLOAT3& pos, const DirectX::XMFLOAT3& target, const DirectX::XMFLOAT3& up);
 
 	// Get View/Proj matrices.
 	DirectX::XMMATRIX GetView()const;
@@ -67,12 +67,12 @@ public:
 	DirectX::XMFLOAT4X4 GetProj4x4f()const;
 
 	// Strafe/Walk the camera a distance d.
-	void Strafe(float d);
-	void Walk(float d);
+	mt::Status Strafe(float d);
+	mt::Status Walk(float d);
 
 	// Rotate the camera.
-	void Pitch(float angle);
-	void RotateY(float angle);
+	mt::Status Pitch(float angle);
+	mt::Status RotateY(float angle);
 
 	// After modifying camera position/orientation, call to rebuild the view matrix.
 	void UpdateViewMatrix();
@@ -80,6 +80,16 @@ public:
 	void SetDirty()
 	{
 		mViewDirty = true;
+	}
+
+	void Lock()
+	{
+		_is_locked = true;
+	}
+
+	void Unlock()
+	{
+		_is_locked = false;
 	}
 
 private:
@@ -105,7 +115,6 @@ private:
 	float mFarWindowHeight	= 0.0f;
 
 // 1 byte
-	std::atomic_bool mViewDirty;
-	std::atomic_bool _currently_updating;
-	//bool mViewDirty = true;
+	bool mViewDirty;
+	std::atomic_bool _is_locked;
 };

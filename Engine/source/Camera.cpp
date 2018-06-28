@@ -11,10 +11,11 @@
 #endif
 
 using namespace DirectX;
+using namespace mt;
 
 Camera::Camera()
-	: mViewDirty(true)
-	, _currently_updating(false)
+	: mViewDirty(false)
+	, _is_locked(false)
 {
 	SetLens(0.25f*MathHelper::Pi, 1.0f, 1.0f, 1000.0f);
 	LookAt(mPosition, XMFLOAT3(0.0f, 0.0f, 0.0f), mUp);
@@ -35,16 +36,45 @@ XMFLOAT3 Camera::GetPosition3f()const
 	return mPosition;
 }
 
-void Camera::SetPosition(float x, float y, float z)
+Status Camera::SetPosition(float x, float y, float z)
 {
-	mPosition = XMFLOAT3(x, y, z);
-	mViewDirty = true;
+	if (!_is_locked)
+	{
+		_is_locked = true;
+
+		mPosition = XMFLOAT3(x, y, z);
+		mViewDirty = true;
+
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
+
+
 }
 
-void Camera::SetPosition(const XMFLOAT3& v)
+Status Camera::SetPosition(const XMFLOAT3& v)
 {
-	mPosition = v;
-	mViewDirty = true;
+	if (!_is_locked)
+	{
+		_is_locked = true;
+
+		mPosition = v;
+		mViewDirty = true;
+		
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
+
 }
 
 XMVECTOR Camera::GetRight()const
@@ -123,50 +153,90 @@ float Camera::GetFarWindowHeight()const
 	return mFarWindowHeight;
 }
 
-void Camera::SetLens(float fovY, float aspect, float zn, float zf)
+Status Camera::SetLens(float fovY, float aspect, float zn, float zf)
 {
-	// cache properties
-	mFovY = fovY;
-	mAspect = aspect;
-	mNearZ = zn;
-	mFarZ = zf;
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	mNearWindowHeight = 2.0f * mNearZ * tanf( 0.5f*mFovY );
-	mFarWindowHeight  = 2.0f * mFarZ * tanf( 0.5f*mFovY );
+		// cache properties
+		mFovY = fovY;
+		mAspect = aspect;
+		mNearZ = zn;
+		mFarZ = zf;
 
-	XMMATRIX P = XMMatrixPerspectiveFovLH(mFovY, mAspect, mNearZ, mFarZ);
-	XMStoreFloat4x4(&mProj, P);
+		mNearWindowHeight = 2.0f * mNearZ * tanf(0.5f*mFovY);
+		mFarWindowHeight = 2.0f * mFarZ * tanf(0.5f*mFovY);
+
+		XMMATRIX P = XMMatrixPerspectiveFovLH(mFovY, mAspect, mNearZ, mFarZ);
+		XMStoreFloat4x4(&mProj, P);
+
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
-void Camera::LookAt(FXMVECTOR pos, FXMVECTOR target, FXMVECTOR worldUp)
+Status Camera::LookAt(FXMVECTOR pos, FXMVECTOR target, FXMVECTOR worldUp)
 {
-	XMVECTOR L = XMVector3Normalize(XMVectorSubtract(target, pos));
-	XMVECTOR R = XMVector3Normalize(XMVector3Cross(worldUp, L));
-	XMVECTOR U = XMVector3Cross(L, R);
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	XMStoreFloat3(&mPosition, pos);
-	XMStoreFloat3(&mLook, L);
-	XMStoreFloat3(&mRight, R);
-	XMStoreFloat3(&mUp, U);
+		XMVECTOR L = XMVector3Normalize(XMVectorSubtract(target, pos));
+		XMVECTOR R = XMVector3Normalize(XMVector3Cross(worldUp, L));
+		XMVECTOR U = XMVector3Cross(L, R);
 
-	mViewDirty = true;
+		XMStoreFloat3(&mPosition, pos);
+		XMStoreFloat3(&mLook, L);
+		XMStoreFloat3(&mRight, R);
+		XMStoreFloat3(&mUp, U);
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
+
 }
 
-void Camera::LookAt(const XMFLOAT3& pos, const XMFLOAT3& target, const XMFLOAT3& up)
+Status Camera::LookAt(const XMFLOAT3& pos, const XMFLOAT3& target, const XMFLOAT3& up)
 {
-	XMVECTOR P = XMLoadFloat3(&pos);
-	XMVECTOR T = XMLoadFloat3(&target);
-	XMVECTOR U = XMLoadFloat3(&up);
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	LookAt(P, T, U);
+		XMVECTOR P = XMLoadFloat3(&pos);
+		XMVECTOR T = XMLoadFloat3(&target);
+		XMVECTOR U = XMLoadFloat3(&up);
 
-	mViewDirty = true;
+		LookAt(P, T, U);
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
 XMMATRIX Camera::GetView()const
 {
 	assert(!mViewDirty);
-	return XMLoadFloat4x4(&mView);
+	auto returnValue = XMLoadFloat4x4(&mView);
+
+	return returnValue;
 }
 
 XMMATRIX Camera::GetProj()const
@@ -186,53 +256,101 @@ XMFLOAT4X4 Camera::GetProj4x4f()const
 	return mProj;
 }
 
-void Camera::Strafe(float d)
+Status Camera::Strafe(float d)
 {
-	// mPosition += d*mRight
-	XMVECTOR s = XMVectorReplicate(d);
-	XMVECTOR r = XMLoadFloat3(&mRight);
-	XMVECTOR p = XMLoadFloat3(&mPosition);
-	XMStoreFloat3(&mPosition, XMVectorMultiplyAdd(s, r, p));
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	mViewDirty = true;
+		// mPosition += d*mRight
+		XMVECTOR s = XMVectorReplicate(d);
+		XMVECTOR r = XMLoadFloat3(&mRight);
+		XMVECTOR p = XMLoadFloat3(&mPosition);
+		XMStoreFloat3(&mPosition, XMVectorMultiplyAdd(s, r, p));
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
-void Camera::Walk(float d)
+Status Camera::Walk(float d)
 {
-	// mPosition += d*mLook
-	XMVECTOR s = XMVectorReplicate(d);
-	XMVECTOR l = XMLoadFloat3(&mLook);
-	XMVECTOR p = XMLoadFloat3(&mPosition);
-	XMStoreFloat3(&mPosition, XMVectorMultiplyAdd(s, l, p));
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	mViewDirty = true;
+		// mPosition += d*mLook
+		XMVECTOR s = XMVectorReplicate(d);
+		XMVECTOR l = XMLoadFloat3(&mLook);
+		XMVECTOR p = XMLoadFloat3(&mPosition);
+		XMStoreFloat3(&mPosition, XMVectorMultiplyAdd(s, l, p));
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
-void Camera::Pitch(float angle)
+Status Camera::Pitch(float angle)
 {
 	// Rotate up and look vector about the right vector.
 
-	angle *= 10.0f;
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mRight), angle);
+		angle *= 10.0f;
 
-	XMStoreFloat3(&mUp,   XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
-	XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
+		XMMATRIX R = XMMatrixRotationAxis(XMLoadFloat3(&mRight), angle);
 
-	mViewDirty = true;
+		XMStoreFloat3(&mUp, XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
+		XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
-void Camera::RotateY(float angle)
+Status Camera::RotateY(float angle)
 {
-	// Rotate the basis vectors about the world y-axis.
+	if (!_is_locked)
+	{
+		_is_locked = true;
 
-	XMMATRIX R = XMMatrixRotationY(angle);
+		// Rotate the basis vectors about the world y-axis.
 
-	XMStoreFloat3(&mRight,   XMVector3TransformNormal(XMLoadFloat3(&mRight), R));
-	XMStoreFloat3(&mUp, XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
-	XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
+		XMMATRIX R = XMMatrixRotationY(angle);
 
-	mViewDirty = true;
+		XMStoreFloat3(&mRight, XMVector3TransformNormal(XMLoadFloat3(&mRight), R));
+		XMStoreFloat3(&mUp, XMVector3TransformNormal(XMLoadFloat3(&mUp), R));
+		XMStoreFloat3(&mLook, XMVector3TransformNormal(XMLoadFloat3(&mLook), R));
+
+		mViewDirty = true;
+		_is_locked = false;
+
+		return Status::success;
+	}
+	else
+	{
+		return Status::failure;
+	}
 }
 
 void Camera::UpdateViewMatrix()
