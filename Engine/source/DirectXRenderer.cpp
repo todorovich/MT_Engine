@@ -676,12 +676,17 @@ void DirectXRenderer::Set4xMsaaState(bool value)
 
 void DirectXRenderer::Update()
 {
+	camera.Lock();
+
 	camera.UpdateViewMatrix();
 
 	XMMATRIX worldViewProj = camera.GetView() * camera.GetProj();
+
+	camera.Unlock();
 
 	// Update the constant buffer with the latest worldViewProj matrix.
 	ObjectConstants objConstants;
 	XMStoreFloat4x4(&objConstants.WorldViewProj, XMMatrixTranspose(worldViewProj));
 	object_constants_upload_buffer->CopyData(0, objConstants);
+
 }
