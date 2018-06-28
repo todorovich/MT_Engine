@@ -1,0 +1,145 @@
+\hypertarget{classd3d_util}{}\section{d3d\+Util Class Reference}
+\label{classd3d_util}\index{d3d\+Util@{d3d\+Util}}
+
+
+{\ttfamily \#include $<$d3d\+Util.\+h$>$}
+
+
+
+Collaboration diagram for d3d\+Util\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{classd3d_util__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classd3d_util_a2e43ccad934a5f8de92c10de835e7d14_a2e43ccad934a5f8de92c10de835e7d14}{Is\+Key\+Down} (int vkey\+Code)
+\item 
+static std\+::string \hyperlink{classd3d_util_ae0b7d841076df11833db2564c86faefe_ae0b7d841076df11833db2564c86faefe}{To\+String} (H\+R\+E\+S\+U\+LT hr)
+\item 
+static U\+I\+NT \hyperlink{classd3d_util_a0883e0848cae813b2bc71570f3303e92_a0883e0848cae813b2bc71570f3303e92}{Calc\+Constant\+Buffer\+Byte\+Size} (U\+I\+NT byte\+Size)
+\item 
+static Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D\+Blob $>$ \hyperlink{classd3d_util_a374c360bb2668c34223e74fbf0f1402b_a374c360bb2668c34223e74fbf0f1402b}{Load\+Binary} (const std\+::wstring \&filename)
+\item 
+static Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \hyperlink{classd3d_util_ae4a68e5b73f032619ee5c2db64f57899_ae4a68e5b73f032619ee5c2db64f57899}{Create\+Default\+Buffer} (I\+D3\+D12\+Device $\ast$device, I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, const void $\ast$init\+Data, U\+I\+N\+T64 byte\+Size, Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&upload\+Buffer)
+\item 
+static Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D\+Blob $>$ \hyperlink{classd3d_util_acac6acd838913d63466e4f0159bfe8b0_acac6acd838913d63466e4f0159bfe8b0}{Compile\+Shader} (const std\+::wstring \&filename, const D3\+D\+\_\+\+S\+H\+A\+D\+E\+R\+\_\+\+M\+A\+C\+RO $\ast$defines, const std\+::string \&entrypoint, const std\+::string \&target)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 94 of file d3d\+Util.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\index{d3d\+Util@{d3d\+Util}!Calc\+Constant\+Buffer\+Byte\+Size@{Calc\+Constant\+Buffer\+Byte\+Size}}
+\index{Calc\+Constant\+Buffer\+Byte\+Size@{Calc\+Constant\+Buffer\+Byte\+Size}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{Calc\+Constant\+Buffer\+Byte\+Size(\+U\+I\+N\+T byte\+Size)}{CalcConstantBufferByteSize(UINT byteSize)}}]{\setlength{\rightskip}{0pt plus 5cm}static U\+I\+NT d3d\+Util\+::\+Calc\+Constant\+Buffer\+Byte\+Size (
+\begin{DoxyParamCaption}
+\item[{U\+I\+NT}]{byte\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classd3d_util_a0883e0848cae813b2bc71570f3303e92_a0883e0848cae813b2bc71570f3303e92}{}\label{classd3d_util_a0883e0848cae813b2bc71570f3303e92_a0883e0848cae813b2bc71570f3303e92}
+
+
+Definition at line 102 of file d3d\+Util.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\index{d3d\+Util@{d3d\+Util}!Compile\+Shader@{Compile\+Shader}}
+\index{Compile\+Shader@{Compile\+Shader}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{Compile\+Shader(const std\+::wstring \&filename, const D3\+D\+\_\+\+S\+H\+A\+D\+E\+R\+\_\+\+M\+A\+C\+R\+O $\ast$defines, const std\+::string \&entrypoint, const std\+::string \&target)}{CompileShader(const std::wstring &filename, const D3D_SHADER_MACRO *defines, const std::string &entrypoint, const std::string &target)}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$ I\+D3\+D\+Blob $>$ d3d\+Util\+::\+Compile\+Shader (
+\begin{DoxyParamCaption}
+\item[{const std\+::wstring \&}]{filename, }
+\item[{const D3\+D\+\_\+\+S\+H\+A\+D\+E\+R\+\_\+\+M\+A\+C\+RO $\ast$}]{defines, }
+\item[{const std\+::string \&}]{entrypoint, }
+\item[{const std\+::string \&}]{target}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classd3d_util_acac6acd838913d63466e4f0159bfe8b0_acac6acd838913d63466e4f0159bfe8b0}{}\label{classd3d_util_acac6acd838913d63466e4f0159bfe8b0_acac6acd838913d63466e4f0159bfe8b0}
+
+
+Definition at line 94 of file d3d\+Util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\index{d3d\+Util@{d3d\+Util}!Create\+Default\+Buffer@{Create\+Default\+Buffer}}
+\index{Create\+Default\+Buffer@{Create\+Default\+Buffer}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{Create\+Default\+Buffer(\+I\+D3\+D12\+Device $\ast$device, I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, const void $\ast$init\+Data, U\+I\+N\+T64 byte\+Size, Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&upload\+Buffer)}{CreateDefaultBuffer(ID3D12Device *device, ID3D12GraphicsCommandList *cmdList, const void *initData, UINT64 byteSize, Microsoft::WRL::ComPtr< ID3D12Resource > &uploadBuffer)}}]{\setlength{\rightskip}{0pt plus 5cm}Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ d3d\+Util\+::\+Create\+Default\+Buffer (
+\begin{DoxyParamCaption}
+\item[{I\+D3\+D12\+Device $\ast$}]{device, }
+\item[{I\+D3\+D12\+Graphics\+Command\+List $\ast$}]{cmd\+List, }
+\item[{const void $\ast$}]{init\+Data, }
+\item[{U\+I\+N\+T64}]{byte\+Size, }
+\item[{Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{upload\+Buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classd3d_util_ae4a68e5b73f032619ee5c2db64f57899_ae4a68e5b73f032619ee5c2db64f57899}{}\label{classd3d_util_ae4a68e5b73f032619ee5c2db64f57899_ae4a68e5b73f032619ee5c2db64f57899}
+
+
+Definition at line 42 of file d3d\+Util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\index{d3d\+Util@{d3d\+Util}!Is\+Key\+Down@{Is\+Key\+Down}}
+\index{Is\+Key\+Down@{Is\+Key\+Down}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{Is\+Key\+Down(int vkey\+Code)}{IsKeyDown(int vkeyCode)}}]{\setlength{\rightskip}{0pt plus 5cm}bool d3d\+Util\+::\+Is\+Key\+Down (
+\begin{DoxyParamCaption}
+\item[{int}]{vkey\+Code}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classd3d_util_a2e43ccad934a5f8de92c10de835e7d14_a2e43ccad934a5f8de92c10de835e7d14}{}\label{classd3d_util_a2e43ccad934a5f8de92c10de835e7d14_a2e43ccad934a5f8de92c10de835e7d14}
+
+
+Definition at line 20 of file d3d\+Util.\+cpp.
+
+\index{d3d\+Util@{d3d\+Util}!Load\+Binary@{Load\+Binary}}
+\index{Load\+Binary@{Load\+Binary}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{Load\+Binary(const std\+::wstring \&filename)}{LoadBinary(const std::wstring &filename)}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$ I\+D3\+D\+Blob $>$ d3d\+Util\+::\+Load\+Binary (
+\begin{DoxyParamCaption}
+\item[{const std\+::wstring \&}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classd3d_util_a374c360bb2668c34223e74fbf0f1402b_a374c360bb2668c34223e74fbf0f1402b}{}\label{classd3d_util_a374c360bb2668c34223e74fbf0f1402b_a374c360bb2668c34223e74fbf0f1402b}
+
+
+Definition at line 25 of file d3d\+Util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\index{d3d\+Util@{d3d\+Util}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!d3d\+Util@{d3d\+Util}}
+\subsubsection[{\texorpdfstring{To\+String(\+H\+R\+E\+S\+U\+L\+T hr)}{ToString(HRESULT hr)}}]{\setlength{\rightskip}{0pt plus 5cm}static std\+::string d3d\+Util\+::\+To\+String (
+\begin{DoxyParamCaption}
+\item[{H\+R\+E\+S\+U\+LT}]{hr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classd3d_util_ae0b7d841076df11833db2564c86faefe_ae0b7d841076df11833db2564c86faefe}{}\label{classd3d_util_ae0b7d841076df11833db2564c86faefe_ae0b7d841076df11833db2564c86faefe}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{d3d_util_8h}{d3d\+Util.\+h}\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{d3d_util_8cpp}{d3d\+Util.\+cpp}\end{DoxyCompactItemize}

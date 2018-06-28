@@ -1,0 +1,9 @@
+<map id="engine::_update_frame_stats" name="engine::_update_frame_stats">
+<area shape="rect" id="node2" href="$class_game_timer.html#a70ab8ec146f451278051054131ccbb00" title="GameTimer::delta_time" alt="" coords="224,5,381,32"/>
+<area shape="rect" id="node3" href="$class_game_timer.html#a60968291db34364580f524b553b85bd1" title="GameTimer::avg_ns_between\l_render" alt="" coords="207,57,399,98"/>
+<area shape="rect" id="node4" href="$class_game_timer.html#a0bb71bebfcf4eecd9cff54e566d07bee" title="GameTimer::avg_ns_between\l_update" alt="" coords="207,122,399,163"/>
+<area shape="rect" id="node5" href="$class_game_timer.html#a1ec9b2368e11e63c48fdfa2965b9e88c" title="GameTimer::avg_ns_per\l_render" alt="" coords="221,187,384,229"/>
+<area shape="rect" id="node6" href="$class_game_timer.html#a488f57ea227be64ccc03b9c70b1d6a43" title="GameTimer::avg_ns_per\l_update" alt="" coords="221,253,384,294"/>
+<area shape="rect" id="node7" href="$class_game_timer.html#a46db6a1cc03e89eac25db2296767f067" title="GameTimer::avg_ns_idle\l_per_interval" alt="" coords="221,318,385,359"/>
+<area shape="rect" id="node8" href="$class_game_timer.html#a46c0437f60c22411b55f31c8637e4827" title="GameTimer::ns_idle\l_this_interval" alt="" coords="233,383,372,425"/>
+</map>

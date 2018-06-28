@@ -1,0 +1,6 @@
+<map id="DirectXRenderer::render" name="DirectXRenderer::render">
+<area shape="rect" id="node2" href="$class_direct_x_renderer.html#a94f4585e3451924820e261e01d8cfc89" title="DirectXRenderer::get\l_current_back_buffer" alt="" coords="227,5,370,47"/>
+<area shape="rect" id="node3" href="$class_direct_x_renderer.html#a7bfc3b725a9ecb5e47889f0e9627f0c8" title="DirectXRenderer::get\l_current_back_buffer_view" alt="" coords="212,71,385,112"/>
+<area shape="rect" id="node4" href="$class_direct_x_renderer.html#a3fd16381af742f128d5a7138d65be695" title="DirectXRenderer::get\l_depth_stencil_view" alt="" coords="228,136,369,177"/>
+<area shape="rect" id="node5" href="$class_direct_x_renderer.html#ab1ac2acccb63781ec8ccce58fe351c63" title="DirectXRenderer::flush\l_command_queue" alt="" coords="223,201,374,243"/>
+</map>

@@ -1,0 +1,157 @@
+\hypertarget{classmt_1_1_command_queue}{}\section{mt\+:\+:Command\+Queue Class Reference}
+\label{classmt_1_1_command_queue}\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+
+
+{\ttfamily \#include $<$Command\+Queue.\+hpp$>$}
+
+
+
+Collaboration diagram for mt\+:\+:Command\+Queue\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classmt_1_1_command_queue__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmt_1_1_command_queue_a2e7c4eb3af78a2660ab4087baa265b26_a2e7c4eb3af78a2660ab4087baa265b26}{Command\+Queue} ()
+\item 
+\hyperlink{classmt_1_1_command_queue_aa193a8792c8fa9705945dcdec70f4c59_aa193a8792c8fa9705945dcdec70f4c59}{$\sim$\+Command\+Queue} ()=default
+\item 
+\hyperlink{classmt_1_1_command_queue_a9f6710ef30b97b5042fa331bce1d51a0_a9f6710ef30b97b5042fa331bce1d51a0}{Command\+Queue} (const \hyperlink{classmt_1_1_command_queue}{Command\+Queue} \&other)=default
+\item 
+\hyperlink{classmt_1_1_command_queue_ae44068dfc0d9a729fc4e45edf887ddd7_ae44068dfc0d9a729fc4e45edf887ddd7}{Command\+Queue} (\hyperlink{classmt_1_1_command_queue}{Command\+Queue} \&\&other)=default
+\item 
+\hyperlink{classmt_1_1_command_queue}{Command\+Queue} \& \hyperlink{classmt_1_1_command_queue_a2b65fc85016dac2dec92fab725d70e39_a2b65fc85016dac2dec92fab725d70e39}{operator=} (const \hyperlink{classmt_1_1_command_queue}{Command\+Queue} \&other)=default
+\item 
+\hyperlink{classmt_1_1_command_queue}{Command\+Queue} \& \hyperlink{classmt_1_1_command_queue_a777a1ad90b9e965d09c73f6dc63cc9c3_a777a1ad90b9e965d09c73f6dc63cc9c3}{operator=} (\hyperlink{classmt_1_1_command_queue}{Command\+Queue} \&\&other)=default
+\item 
+\hyperlink{namespacemt_a37bcfa13fedca18b19425e07bb66e177_a37bcfa13fedca18b19425e07bb66e177}{Status} \hyperlink{classmt_1_1_command_queue_a1e236f8d899abf2bc6b0e52e0b2bf691_a1e236f8d899abf2bc6b0e52e0b2bf691}{add\+\_\+command} (\hyperlink{classmt_1_1_command}{Command} $\ast$const command\+\_\+to\+\_\+connect)
+\item 
+\hyperlink{namespacemt_a37bcfa13fedca18b19425e07bb66e177_a37bcfa13fedca18b19425e07bb66e177}{Status} \hyperlink{classmt_1_1_command_queue_a17f0a42a4f078a938b3ac80c67055879_a17f0a42a4f078a938b3ac80c67055879}{execute\+\_\+commands} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 7 of file Command\+Queue.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!Command\+Queue@{Command\+Queue}}
+\index{Command\+Queue@{Command\+Queue}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{Command\+Queue()}{CommandQueue()}}]{\setlength{\rightskip}{0pt plus 5cm}mt\+::\+Command\+Queue\+::\+Command\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmt_1_1_command_queue_a2e7c4eb3af78a2660ab4087baa265b26_a2e7c4eb3af78a2660ab4087baa265b26}{}\label{classmt_1_1_command_queue_a2e7c4eb3af78a2660ab4087baa265b26_a2e7c4eb3af78a2660ab4087baa265b26}
+
+
+Definition at line 10 of file Command\+Queue.\+hpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!````~Command\+Queue@{$\sim$\+Command\+Queue}}
+\index{````~Command\+Queue@{$\sim$\+Command\+Queue}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{$\sim$\+Command\+Queue()=default}{~CommandQueue()=default}}]{\setlength{\rightskip}{0pt plus 5cm}mt\+::\+Command\+Queue\+::$\sim$\+Command\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classmt_1_1_command_queue_aa193a8792c8fa9705945dcdec70f4c59_aa193a8792c8fa9705945dcdec70f4c59}{}\label{classmt_1_1_command_queue_aa193a8792c8fa9705945dcdec70f4c59_aa193a8792c8fa9705945dcdec70f4c59}
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!Command\+Queue@{Command\+Queue}}
+\index{Command\+Queue@{Command\+Queue}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{Command\+Queue(const Command\+Queue \&other)=default}{CommandQueue(const CommandQueue &other)=default}}]{\setlength{\rightskip}{0pt plus 5cm}mt\+::\+Command\+Queue\+::\+Command\+Queue (
+\begin{DoxyParamCaption}
+\item[{const {\bf Command\+Queue} \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classmt_1_1_command_queue_a9f6710ef30b97b5042fa331bce1d51a0_a9f6710ef30b97b5042fa331bce1d51a0}{}\label{classmt_1_1_command_queue_a9f6710ef30b97b5042fa331bce1d51a0_a9f6710ef30b97b5042fa331bce1d51a0}
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!Command\+Queue@{Command\+Queue}}
+\index{Command\+Queue@{Command\+Queue}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{Command\+Queue(\+Command\+Queue \&\&other)=default}{CommandQueue(CommandQueue &&other)=default}}]{\setlength{\rightskip}{0pt plus 5cm}mt\+::\+Command\+Queue\+::\+Command\+Queue (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\+Queue} \&\&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classmt_1_1_command_queue_ae44068dfc0d9a729fc4e45edf887ddd7_ae44068dfc0d9a729fc4e45edf887ddd7}{}\label{classmt_1_1_command_queue_ae44068dfc0d9a729fc4e45edf887ddd7_ae44068dfc0d9a729fc4e45edf887ddd7}
+
+
+\subsection{Member Function Documentation}
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!add\+\_\+command@{add\+\_\+command}}
+\index{add\+\_\+command@{add\+\_\+command}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{add\+\_\+command(\+Command $\ast$const command\+\_\+to\+\_\+connect)}{add_command(Command *const command_to_connect)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Status} mt\+::\+Command\+Queue\+::add\+\_\+command (
+\begin{DoxyParamCaption}
+\item[{{\bf Command} $\ast$const}]{command\+\_\+to\+\_\+connect}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classmt_1_1_command_queue_a1e236f8d899abf2bc6b0e52e0b2bf691_a1e236f8d899abf2bc6b0e52e0b2bf691}{}\label{classmt_1_1_command_queue_a1e236f8d899abf2bc6b0e52e0b2bf691_a1e236f8d899abf2bc6b0e52e0b2bf691}
+
+
+Definition at line 25 of file Command\+Queue.\+hpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!execute\+\_\+commands@{execute\+\_\+commands}}
+\index{execute\+\_\+commands@{execute\+\_\+commands}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{execute\+\_\+commands()}{execute_commands()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Status} Command\+Queue\+::execute\+\_\+commands (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classmt_1_1_command_queue_a17f0a42a4f078a938b3ac80c67055879_a17f0a42a4f078a938b3ac80c67055879}{}\label{classmt_1_1_command_queue_a17f0a42a4f078a938b3ac80c67055879_a17f0a42a4f078a938b3ac80c67055879}
+
+
+Definition at line 11 of file Command\+Queue.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!operator=@{operator=}}
+\index{operator=@{operator=}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{operator=(const Command\+Queue \&other)=default}{operator=(const CommandQueue &other)=default}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command\+Queue}\& mt\+::\+Command\+Queue\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Command\+Queue} \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classmt_1_1_command_queue_a2b65fc85016dac2dec92fab725d70e39_a2b65fc85016dac2dec92fab725d70e39}{}\label{classmt_1_1_command_queue_a2b65fc85016dac2dec92fab725d70e39_a2b65fc85016dac2dec92fab725d70e39}
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\index{mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}!operator=@{operator=}}
+\index{operator=@{operator=}!mt\+::\+Command\+Queue@{mt\+::\+Command\+Queue}}
+\subsubsection[{\texorpdfstring{operator=(\+Command\+Queue \&\&other)=default}{operator=(CommandQueue &&other)=default}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Command\+Queue}\& mt\+::\+Command\+Queue\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf Command\+Queue} \&\&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classmt_1_1_command_queue_a777a1ad90b9e965d09c73f6dc63cc9c3_a777a1ad90b9e965d09c73f6dc63cc9c3}{}\label{classmt_1_1_command_queue_a777a1ad90b9e965d09c73f6dc63cc9c3_a777a1ad90b9e965d09c73f6dc63cc9c3}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_command_queue_8hpp}{Command\+Queue.\+hpp}\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_command_queue_8cpp}{Command\+Queue.\+cpp}\end{DoxyCompactItemize}

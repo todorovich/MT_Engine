@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['_5fget_5fapp_5finst',['_get_app_inst',['../classengine.html#a38a51558fe3e6a0edf5f762c921aa141',1,'engine']]],
+  ['_5fget_5faspect_5fratio',['_get_aspect_ratio',['../classengine.html#ad86c3cbf7b32238e3220bf099d9f3f07',1,'engine']]],
+  ['_5fget_5fheight',['_get_height',['../classengine.html#a4770b82e9574d43f2e34cecefbca4aa0',1,'engine']]],
+  ['_5fget_5fis_5ffullscreen',['_get_is_fullscreen',['../classengine.html#a2e3effd2671f53d5d995dca113bc7d23',1,'engine']]],
+  ['_5fget_5fis_5fmaximized',['_get_is_maximized',['../classengine.html#a3ee568cf7654c18533892a1c0c3eac5d',1,'engine']]],
+  ['_5fget_5fis_5fminimized',['_get_is_minimized',['../classengine.html#afb9d4d7b12c1325bdc3d5893b611b37d',1,'engine']]],
+  ['_5fget_5fis_5fresizing',['_get_is_resizing',['../classengine.html#a2b29abf6edeaf9f4b95e121bbe1dae47',1,'engine']]],
+  ['_5fget_5fmain_5fwindow_5fhandle',['_get_main_window_handle',['../classengine.html#a12affafcff495e379ff19992c83ba15b',1,'engine']]],
+  ['_5fget_5fwidth',['_get_width',['../classengine.html#afd82949214a76015760ee848b13d2538',1,'engine']]],
+  ['_5finit_5fmain_5fwindow',['_init_main_window',['../classengine.html#a958aa4120f21278468225415ffe5ac92',1,'engine']]],
+  ['_5finitialize',['_initialize',['../classengine.html#a8b8dd82e72fd73e0601c30041529c4c0',1,'engine']]],
+  ['_5fresize',['_resize',['../classengine.html#a097517979864142f35d1969b5cf3d437',1,'engine']]],
+  ['_5frun',['_run',['../classengine.html#a1d9b806d03be0255a8ac3c119e181cc5',1,'engine']]],
+  ['_5fset_5fis_5fmaximized',['_set_is_maximized',['../classengine.html#a7a11837ff93305b2401dc9556bb4fb46',1,'engine']]],
+  ['_5fset_5fis_5fminimized',['_set_is_minimized',['../classengine.html#a2d4770d27419ae2da2c4cd1b1d4bdfae',1,'engine']]],
+  ['_5fset_5fis_5fresizing',['_set_is_resizing',['../classengine.html#aaf4ce7238cb93e84238be506d454e2e2',1,'engine']]],
+  ['_5fshutdown',['_shutdown',['../classengine.html#acd777bc3c114987c48721b4aa96a477b',1,'engine']]],
+  ['_5ftick',['_tick',['../classengine.html#a90418b124cd07d7d2f057e7d401ed641',1,'engine']]],
+  ['_5fupdate_5fframe_5fstats',['_update_frame_stats',['../classengine.html#aef40b48edcc51792bb523f80c4eebbd3',1,'engine']]]
+];

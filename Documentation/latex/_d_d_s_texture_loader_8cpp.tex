@@ -1,0 +1,719 @@
+\hypertarget{_d_d_s_texture_loader_8cpp}{}\section{C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\+D\+D\+S\+Texture\+Loader.cpp File Reference}
+\label{_d_d_s_texture_loader_8cpp}\index{C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\+D\+D\+S\+Texture\+Loader.\+cpp@{C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\+D\+D\+S\+Texture\+Loader.\+cpp}}
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$memory$>$}\\*
+{\ttfamily \#include $<$wrl.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}D\+D\+S\+Texture\+Loader.\+h\char`\"{}}\\*
+Include dependency graph for D\+D\+S\+Texture\+Loader.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_d_d_s___p_i_x_e_l_f_o_r_m_a_t}{D\+D\+S\+\_\+\+P\+I\+X\+E\+L\+F\+O\+R\+M\+AT}
+\item 
+struct \hyperlink{struct_d_d_s___h_e_a_d_e_r}{D\+D\+S\+\_\+\+H\+E\+A\+D\+ER}
+\item 
+struct \hyperlink{struct_d_d_s___h_e_a_d_e_r___d_x_t10}{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+D\+X\+T10}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a63742a4de111cf349ebc8c4e9df9896d_a63742a4de111cf349ebc8c4e9df9896d}{M\+A\+K\+E\+F\+O\+U\+R\+CC}(ch0,  ch1,  ch2,  ch3)                                                        
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a2c73ce18aa59e9c09bad644d3cd38f7e_a2c73ce18aa59e9c09bad644d3cd38f7e}{D\+D\+S\+\_\+\+F\+O\+U\+R\+CC}~0x00000004
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_aafd89dda1de1811a688e12f7a072ec7e_aafd89dda1de1811a688e12f7a072ec7e}{D\+D\+S\+\_\+\+R\+GB}~0x00000040
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_ae0df87c2d6347a447db359608609c0a3_ae0df87c2d6347a447db359608609c0a3}{D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE}~0x00020000
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a75e12df564981d3c86486a6c7cad19a0_a75e12df564981d3c86486a6c7cad19a0}{D\+D\+S\+\_\+\+A\+L\+P\+HA}~0x00000002
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a0c021e5677bab064ae37ee539c4a9b4e_a0c021e5677bab064ae37ee539c4a9b4e}{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME}~0x00800000
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a1dbab38792e5046fad186caff7acc125_a1dbab38792e5046fad186caff7acc125}{D\+D\+S\+\_\+\+H\+E\+I\+G\+HT}~0x00000002
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_ac8593d411747ce06a8bbbd19ec6315eb_ac8593d411747ce06a8bbbd19ec6315eb}{D\+D\+S\+\_\+\+W\+I\+D\+TH}~0x00000004
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a216c8712237c7b41faf310b35c65b52e_a216c8712237c7b41faf310b35c65b52e}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX}~0x00000600
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a3dfbca9e03f9955987bc7b887dc55c0c_a3dfbca9e03f9955987bc7b887dc55c0c}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX}~0x00000a00
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a0b12b4e1d02a7581bd0f726238acca08_a0b12b4e1d02a7581bd0f726238acca08}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY}~0x00001200
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY}~0x00002200
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_aa729efae8a7dff9c01b7b6c4d92aad3e_aa729efae8a7dff9c01b7b6c4d92aad3e}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ}~0x00004200
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_ab71a7eedeb0594c5388a8e52c8616d3d_ab71a7eedeb0594c5388a8e52c8616d3d}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ}~0x00008200
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_ac52c764f13e42597d987a5a9214a1b4c_ac52c764f13e42597d987a5a9214a1b4c}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES}
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a525b838e7170cac17efbab6e867ebd79_a525b838e7170cac17efbab6e867ebd79}{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP}~0x00000200
+\item 
+\#define \hyperlink{_d_d_s_texture_loader_8cpp_a5f3918f64c6ea8f31c0cd931b0578017_a5f3918f64c6ea8f31c0cd931b0578017}{I\+S\+B\+I\+T\+M\+A\+SK}(r,  g,  b,  a)~( ddpf.\+R\+Bit\+Mask == r \&\& ddpf.\+G\+Bit\+Mask == g \&\& ddpf.\+B\+Bit\+Mask == b \&\& ddpf.\+A\+Bit\+Mask == a )
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9b}{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2} \{ \hyperlink{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9ba71bd814696c66086b68666bc85c63d04}{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK} = 0x7L
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_a3596a4048d14adf7ed925b2644f33483_a3596a4048d14adf7ed925b2644f33483}{Load\+Texture\+Data\+From\+File} (\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$file\+Name, std\+::unique\+\_\+ptr$<$ uint8\+\_\+t\mbox{[}$\,$\mbox{]}$>$ \&dds\+Data, \hyperlink{struct_d_d_s___h_e_a_d_e_r}{D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$$\ast$header, uint8\+\_\+t $\ast$$\ast$bit\+Data, size\+\_\+t $\ast$bit\+Size)
+\item 
+static size\+\_\+t \hyperlink{_d_d_s_texture_loader_8cpp_adc6281b47023b36aab820be09ab3431c_adc6281b47023b36aab820be09ab3431c}{Bits\+Per\+Pixel} (\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT fmt)
+\item 
+static void \hyperlink{_d_d_s_texture_loader_8cpp_af572c1b170d5c8945533758c4607ce23_af572c1b170d5c8945533758c4607ce23}{Get\+Surface\+Info} (\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT fmt, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Num\+Bytes, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Row\+Bytes, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Num\+Rows)
+\item 
+static D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT \hyperlink{_d_d_s_texture_loader_8cpp_aa86329d2121392cc1d7a3dbbc52d3b0a_aa86329d2121392cc1d7a3dbbc52d3b0a}{Get\+D\+X\+G\+I\+Format} (const \hyperlink{struct_d_d_s___p_i_x_e_l_f_o_r_m_a_t}{D\+D\+S\+\_\+\+P\+I\+X\+E\+L\+F\+O\+R\+M\+AT} \&ddpf)
+\item 
+static D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT \hyperlink{_d_d_s_texture_loader_8cpp_ad7a406010bd318fb91ef5f3893524caf_ad7a406010bd318fb91ef5f3893524caf}{Make\+S\+R\+GB} (\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_af01b3b33c47f4e9d8e30d00d5b586522_af01b3b33c47f4e9d8e30d00d5b586522}{Fill\+Init\+Data} (\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+Out\+\_\+ size\+\_\+t \&twidth, \+\_\+\+Out\+\_\+ size\+\_\+t \&theight, \+\_\+\+Out\+\_\+ size\+\_\+t \&tdepth, \+\_\+\+Out\+\_\+ size\+\_\+t \&skip\+Mip, \+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$init\+Data)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_a51511e9ea8b201e1f254b21b36da0f69_a51511e9ea8b201e1f254b21b36da0f69}{Fill\+Init\+Data12} (\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+Out\+\_\+ size\+\_\+t \&twidth, \+\_\+\+Out\+\_\+ size\+\_\+t \&theight, \+\_\+\+Out\+\_\+ size\+\_\+t \&tdepth, \+\_\+\+Out\+\_\+ size\+\_\+t \&skip\+Mip, \+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$init\+Data)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9_a636dc39cbed3b2c612ea8a7f8c951ff9}{Create\+D3\+D\+Resources} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+ uint32\+\_\+t res\+Dim, \+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+In\+\_\+ bool is\+Cube\+Map, \+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$init\+Data, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6_ac3528432c6f08aa64ef16420c10f5de6}{Create\+D3\+D\+Resources12} (I\+D3\+D12\+Device $\ast$device, I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+ uint32\+\_\+t res\+Dim, \+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+In\+\_\+ bool is\+Cube\+Map, \+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$init\+Data, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56_ac97ddcbab1e9ce61667a0862b58f9c56}{Create\+Texture\+From\+D\+DS} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+ const \hyperlink{struct_d_d_s___h_e_a_d_e_r}{D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$header, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View)
+\item 
+static H\+R\+E\+S\+U\+LT \hyperlink{_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6_aa0c87b1491a829d1a28da9bb89b2d2a6}{Create\+Texture\+From\+D\+D\+S12} (\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+ const \hyperlink{struct_d_d_s___h_e_a_d_e_r}{D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$header, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap)
+\item 
+static \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} \hyperlink{_d_d_s_texture_loader_8cpp_a8c2c61f7f7e3bd20619e3746b8e20286_a8c2c61f7f7e3bd20619e3746b8e20286}{Get\+Alpha\+Mode} (\+\_\+\+In\+\_\+ const \hyperlink{struct_d_d_s___h_e_a_d_e_r}{D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$header)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\+\_\+t \hyperlink{_d_d_s_texture_loader_8cpp_a0b37de835f7ff26eca52db17170cb24a_a0b37de835f7ff26eca52db17170cb24a}{D\+D\+S\+\_\+\+M\+A\+G\+IC} = 0x20534444
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+A\+L\+P\+HA@{D\+D\+S\+\_\+\+A\+L\+P\+HA}}
+\index{D\+D\+S\+\_\+\+A\+L\+P\+HA@{D\+D\+S\+\_\+\+A\+L\+P\+HA}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+A\+L\+P\+HA}{DDS_ALPHA}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+A\+L\+P\+HA~0x00000002}\hypertarget{_d_d_s_texture_loader_8cpp_a75e12df564981d3c86486a6c7cad19a0_a75e12df564981d3c86486a6c7cad19a0}{}\label{_d_d_s_texture_loader_8cpp_a75e12df564981d3c86486a6c7cad19a0_a75e12df564981d3c86486a6c7cad19a0}
+
+
+Definition at line 69 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP}{DDS_CUBEMAP}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+AP~0x00000200}\hypertarget{_d_d_s_texture_loader_8cpp_a525b838e7170cac17efbab6e867ebd79_a525b838e7170cac17efbab6e867ebd79}{}\label{_d_d_s_texture_loader_8cpp_a525b838e7170cac17efbab6e867ebd79_a525b838e7170cac17efbab6e867ebd79}
+
+
+Definition at line 87 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES}{DDS_CUBEMAP_ALLFACES}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+A\+L\+L\+F\+A\+C\+ES}\hypertarget{_d_d_s_texture_loader_8cpp_ac52c764f13e42597d987a5a9214a1b4c_ac52c764f13e42597d987a5a9214a1b4c}{}\label{_d_d_s_texture_loader_8cpp_ac52c764f13e42597d987a5a9214a1b4c_ac52c764f13e42597d987a5a9214a1b4c}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+( \hyperlink{_d_d_s_texture_loader_8cpp_a216c8712237c7b41faf310b35c65b52e_a216c8712237c7b41faf310b35c65b52e}{DDS\_CUBEMAP\_POSITIVEX} | \hyperlink{_d_d_s_texture_loader_8cpp_a3dfbca9e03f9955987bc7b887dc55c0c_a3dfbca9e03f9955987bc7b887dc55c0c}{DDS\_CUBEMAP\_NEGATIVEX} |\(\backslash\)
+                               DDS\_CUBEMAP\_POSITIVEY | \hyperlink{_d_d_s_texture_loader_8cpp_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5}{DDS\_CUBEMAP\_NEGATIVEY} |\(\backslash\)
+                               DDS\_CUBEMAP\_POSITIVEZ | \hyperlink{_d_d_s_texture_loader_8cpp_ab71a7eedeb0594c5388a8e52c8616d3d_ab71a7eedeb0594c5388a8e52c8616d3d}{DDS\_CUBEMAP\_NEGATIVEZ} )
+\end{DoxyCode}
+
+
+Definition at line 83 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX}{DDS_CUBEMAP_NEGATIVEX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EX~0x00000a00}\hypertarget{_d_d_s_texture_loader_8cpp_a3dfbca9e03f9955987bc7b887dc55c0c_a3dfbca9e03f9955987bc7b887dc55c0c}{}\label{_d_d_s_texture_loader_8cpp_a3dfbca9e03f9955987bc7b887dc55c0c_a3dfbca9e03f9955987bc7b887dc55c0c}
+
+
+Definition at line 77 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY}{DDS_CUBEMAP_NEGATIVEY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EY~0x00002200}\hypertarget{_d_d_s_texture_loader_8cpp_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5}{}\label{_d_d_s_texture_loader_8cpp_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5_a03a6ab9fbec5ea4b9d015dbfa8b5c8f5}
+
+
+Definition at line 79 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ}{DDS_CUBEMAP_NEGATIVEZ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+N\+E\+G\+A\+T\+I\+V\+EZ~0x00008200}\hypertarget{_d_d_s_texture_loader_8cpp_ab71a7eedeb0594c5388a8e52c8616d3d_ab71a7eedeb0594c5388a8e52c8616d3d}{}\label{_d_d_s_texture_loader_8cpp_ab71a7eedeb0594c5388a8e52c8616d3d_ab71a7eedeb0594c5388a8e52c8616d3d}
+
+
+Definition at line 81 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX}{DDS_CUBEMAP_POSITIVEX}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EX~0x00000600}\hypertarget{_d_d_s_texture_loader_8cpp_a216c8712237c7b41faf310b35c65b52e_a216c8712237c7b41faf310b35c65b52e}{}\label{_d_d_s_texture_loader_8cpp_a216c8712237c7b41faf310b35c65b52e_a216c8712237c7b41faf310b35c65b52e}
+
+
+Definition at line 76 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY}{DDS_CUBEMAP_POSITIVEY}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EY~0x00001200}\hypertarget{_d_d_s_texture_loader_8cpp_a0b12b4e1d02a7581bd0f726238acca08_a0b12b4e1d02a7581bd0f726238acca08}{}\label{_d_d_s_texture_loader_8cpp_a0b12b4e1d02a7581bd0f726238acca08_a0b12b4e1d02a7581bd0f726238acca08}
+
+
+Definition at line 78 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ}}
+\index{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ@{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ}{DDS_CUBEMAP_POSITIVEZ}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+C\+U\+B\+E\+M\+A\+P\+\_\+\+P\+O\+S\+I\+T\+I\+V\+EZ~0x00004200}\hypertarget{_d_d_s_texture_loader_8cpp_aa729efae8a7dff9c01b7b6c4d92aad3e_aa729efae8a7dff9c01b7b6c4d92aad3e}{}\label{_d_d_s_texture_loader_8cpp_aa729efae8a7dff9c01b7b6c4d92aad3e_aa729efae8a7dff9c01b7b6c4d92aad3e}
+
+
+Definition at line 80 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+F\+O\+U\+R\+CC@{D\+D\+S\+\_\+\+F\+O\+U\+R\+CC}}
+\index{D\+D\+S\+\_\+\+F\+O\+U\+R\+CC@{D\+D\+S\+\_\+\+F\+O\+U\+R\+CC}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+F\+O\+U\+R\+CC}{DDS_FOURCC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+F\+O\+U\+R\+CC~0x00000004}\hypertarget{_d_d_s_texture_loader_8cpp_a2c73ce18aa59e9c09bad644d3cd38f7e_a2c73ce18aa59e9c09bad644d3cd38f7e}{}\label{_d_d_s_texture_loader_8cpp_a2c73ce18aa59e9c09bad644d3cd38f7e_a2c73ce18aa59e9c09bad644d3cd38f7e}
+
+
+Definition at line 66 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME@{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME}}
+\index{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME@{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME}{DDS_HEADER_FLAGS_VOLUME}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R\+\_\+\+F\+L\+A\+G\+S\+\_\+\+V\+O\+L\+U\+ME~0x00800000}\hypertarget{_d_d_s_texture_loader_8cpp_a0c021e5677bab064ae37ee539c4a9b4e_a0c021e5677bab064ae37ee539c4a9b4e}{}\label{_d_d_s_texture_loader_8cpp_a0c021e5677bab064ae37ee539c4a9b4e_a0c021e5677bab064ae37ee539c4a9b4e}
+
+
+Definition at line 71 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+H\+E\+I\+G\+HT@{D\+D\+S\+\_\+\+H\+E\+I\+G\+HT}}
+\index{D\+D\+S\+\_\+\+H\+E\+I\+G\+HT@{D\+D\+S\+\_\+\+H\+E\+I\+G\+HT}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+H\+E\+I\+G\+HT}{DDS_HEIGHT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+H\+E\+I\+G\+HT~0x00000002}\hypertarget{_d_d_s_texture_loader_8cpp_a1dbab38792e5046fad186caff7acc125_a1dbab38792e5046fad186caff7acc125}{}\label{_d_d_s_texture_loader_8cpp_a1dbab38792e5046fad186caff7acc125_a1dbab38792e5046fad186caff7acc125}
+
+
+Definition at line 73 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE@{D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE}}
+\index{D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE@{D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE}{DDS_LUMINANCE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+L\+U\+M\+I\+N\+A\+N\+CE~0x00020000}\hypertarget{_d_d_s_texture_loader_8cpp_ae0df87c2d6347a447db359608609c0a3_ae0df87c2d6347a447db359608609c0a3}{}\label{_d_d_s_texture_loader_8cpp_ae0df87c2d6347a447db359608609c0a3_ae0df87c2d6347a447db359608609c0a3}
+
+
+Definition at line 68 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+R\+GB@{D\+D\+S\+\_\+\+R\+GB}}
+\index{D\+D\+S\+\_\+\+R\+GB@{D\+D\+S\+\_\+\+R\+GB}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+R\+GB}{DDS_RGB}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+R\+GB~0x00000040}\hypertarget{_d_d_s_texture_loader_8cpp_aafd89dda1de1811a688e12f7a072ec7e_aafd89dda1de1811a688e12f7a072ec7e}{}\label{_d_d_s_texture_loader_8cpp_aafd89dda1de1811a688e12f7a072ec7e_aafd89dda1de1811a688e12f7a072ec7e}
+
+
+Definition at line 67 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+W\+I\+D\+TH@{D\+D\+S\+\_\+\+W\+I\+D\+TH}}
+\index{D\+D\+S\+\_\+\+W\+I\+D\+TH@{D\+D\+S\+\_\+\+W\+I\+D\+TH}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+W\+I\+D\+TH}{DDS_WIDTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+D\+S\+\_\+\+W\+I\+D\+TH~0x00000004}\hypertarget{_d_d_s_texture_loader_8cpp_ac8593d411747ce06a8bbbd19ec6315eb_ac8593d411747ce06a8bbbd19ec6315eb}{}\label{_d_d_s_texture_loader_8cpp_ac8593d411747ce06a8bbbd19ec6315eb_ac8593d411747ce06a8bbbd19ec6315eb}
+
+
+Definition at line 74 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!I\+S\+B\+I\+T\+M\+A\+SK@{I\+S\+B\+I\+T\+M\+A\+SK}}
+\index{I\+S\+B\+I\+T\+M\+A\+SK@{I\+S\+B\+I\+T\+M\+A\+SK}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{I\+S\+B\+I\+T\+M\+A\+SK}{ISBITMASK}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+S\+B\+I\+T\+M\+A\+SK(
+\begin{DoxyParamCaption}
+\item[{}]{r, }
+\item[{}]{g, }
+\item[{}]{b, }
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~( ddpf.\+R\+Bit\+Mask == r \&\& ddpf.\+G\+Bit\+Mask == g \&\& ddpf.\+B\+Bit\+Mask == b \&\& ddpf.\+A\+Bit\+Mask == a )}\hypertarget{_d_d_s_texture_loader_8cpp_a5f3918f64c6ea8f31c0cd931b0578017_a5f3918f64c6ea8f31c0cd931b0578017}{}\label{_d_d_s_texture_loader_8cpp_a5f3918f64c6ea8f31c0cd931b0578017_a5f3918f64c6ea8f31c0cd931b0578017}
+
+
+Definition at line 555 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!M\+A\+K\+E\+F\+O\+U\+R\+CC@{M\+A\+K\+E\+F\+O\+U\+R\+CC}}
+\index{M\+A\+K\+E\+F\+O\+U\+R\+CC@{M\+A\+K\+E\+F\+O\+U\+R\+CC}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{M\+A\+K\+E\+F\+O\+U\+R\+CC}{MAKEFOURCC}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+K\+E\+F\+O\+U\+R\+CC(
+\begin{DoxyParamCaption}
+\item[{}]{ch0, }
+\item[{}]{ch1, }
+\item[{}]{ch2, }
+\item[{}]{ch3}
+\end{DoxyParamCaption}
+)}\hypertarget{_d_d_s_texture_loader_8cpp_a63742a4de111cf349ebc8c4e9df9896d_a63742a4de111cf349ebc8c4e9df9896d}{}\label{_d_d_s_texture_loader_8cpp_a63742a4de111cf349ebc8c4e9df9896d_a63742a4de111cf349ebc8c4e9df9896d}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+((uint32\_t)(uint8\_t)(ch0) | ((uint32\_t)(uint8\_t)(ch1) << 8) |       \(\backslash\)
+                ((uint32\_t)(uint8\_t)(ch2) << 16) | ((uint32\_t)(uint8\_t)(ch3) << 24 ))
+\end{DoxyCode}
+
+
+Definition at line 40 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+\subsection{Enumeration Type Documentation}
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2@{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2}}
+\index{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2@{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2}{DDS_MISC_FLAGS2}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2}}\hypertarget{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9b}{}\label{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9b}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK@{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK@{D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK}}\item[{\em 
+D\+D\+S\+\_\+\+M\+I\+S\+C\+\_\+\+F\+L\+A\+G\+S2\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+M\+A\+SK\hypertarget{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9ba71bd814696c66086b68666bc85c63d04}{}\label{_d_d_s_texture_loader_8cpp_acc0dacc4184dc0896d673ced30262f9b_acc0dacc4184dc0896d673ced30262f9ba71bd814696c66086b68666bc85c63d04}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 89 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Bits\+Per\+Pixel@{Bits\+Per\+Pixel}}
+\index{Bits\+Per\+Pixel@{Bits\+Per\+Pixel}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Bits\+Per\+Pixel(\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T fmt)}{BitsPerPixel(_In_ DXGI_FORMAT fmt)}}]{\setlength{\rightskip}{0pt plus 5cm}static size\+\_\+t Bits\+Per\+Pixel (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{fmt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_adc6281b47023b36aab820be09ab3431c_adc6281b47023b36aab820be09ab3431c}{}\label{_d_d_s_texture_loader_8cpp_adc6281b47023b36aab820be09ab3431c_adc6281b47023b36aab820be09ab3431c}
+
+
+Definition at line 275 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_adc6281b47023b36aab820be09ab3431c_adc6281b47023b36aab820be09ab3431c_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Create\+D3\+D\+Resources@{Create\+D3\+D\+Resources}}
+\index{Create\+D3\+D\+Resources@{Create\+D3\+D\+Resources}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Create\+D3\+D\+Resources(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+ uint32\+\_\+t res\+Dim, \+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+In\+\_\+ bool is\+Cube\+Map, \+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+T\+A $\ast$init\+Data, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View)}{CreateD3DResources(_In_ ID3D11Device *d3dDevice, _In_ uint32_t resDim, _In_ size_t width, _In_ size_t height, _In_ size_t depth, _In_ size_t mipCount, _In_ size_t arraySize, _In_ DXGI_FORMAT format, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _In_ bool isCubeMap, _In_reads_opt_(mipCount *arraySize) D3D11_SUBRESOURCE_DATA *initData, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Create\+D3\+D\+Resources (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+ uint32\+\_\+t}]{res\+Dim, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{width, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{height, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{depth, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{mip\+Count, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{array\+Size, }
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+In\+\_\+ bool}]{is\+Cube\+Map, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$}]{init\+Data, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9_a636dc39cbed3b2c612ea8a7f8c951ff9}{}\label{_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9_a636dc39cbed3b2c612ea8a7f8c951ff9}
+
+
+Definition at line 995 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9_a636dc39cbed3b2c612ea8a7f8c951ff9_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_a636dc39cbed3b2c612ea8a7f8c951ff9_a636dc39cbed3b2c612ea8a7f8c951ff9_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Create\+D3\+D\+Resources12@{Create\+D3\+D\+Resources12}}
+\index{Create\+D3\+D\+Resources12@{Create\+D3\+D\+Resources12}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Create\+D3\+D\+Resources12(\+I\+D3\+D12\+Device $\ast$device, I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+ uint32\+\_\+t res\+Dim, \+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+In\+\_\+ bool is\+Cube\+Map, \+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+T\+A $\ast$init\+Data, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap)}{CreateD3DResources12(ID3D12Device *device, ID3D12GraphicsCommandList *cmdList, _In_ uint32_t resDim, _In_ size_t width, _In_ size_t height, _In_ size_t depth, _In_ size_t mipCount, _In_ size_t arraySize, _In_ DXGI_FORMAT format, _In_ bool forceSRGB, _In_ bool isCubeMap, _In_reads_opt_(mipCount *arraySize) D3D12_SUBRESOURCE_DATA *initData, ComPtr< ID3D12Resource > &texture, ComPtr< ID3D12Resource > &textureUploadHeap)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Create\+D3\+D\+Resources12 (
+\begin{DoxyParamCaption}
+\item[{I\+D3\+D12\+Device $\ast$}]{device, }
+\item[{I\+D3\+D12\+Graphics\+Command\+List $\ast$}]{cmd\+List, }
+\item[{\+\_\+\+In\+\_\+ uint32\+\_\+t}]{res\+Dim, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{width, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{height, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{depth, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{mip\+Count, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{array\+Size, }
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+In\+\_\+ bool}]{is\+Cube\+Map, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+opt\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$}]{init\+Data, }
+\item[{Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture, }
+\item[{Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture\+Upload\+Heap}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6_ac3528432c6f08aa64ef16420c10f5de6}{}\label{_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6_ac3528432c6f08aa64ef16420c10f5de6}
+
+
+Definition at line 1230 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6_ac3528432c6f08aa64ef16420c10f5de6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_ac3528432c6f08aa64ef16420c10f5de6_ac3528432c6f08aa64ef16420c10f5de6_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Create\+Texture\+From\+D\+DS@{Create\+Texture\+From\+D\+DS}}
+\index{Create\+Texture\+From\+D\+DS@{Create\+Texture\+From\+D\+DS}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Create\+Texture\+From\+D\+D\+S(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+ const D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R $\ast$header, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View)}{CreateTextureFromDDS(_In_ ID3D11Device *d3dDevice, _In_opt_ ID3D11DeviceContext *d3dContext, _In_ const DDS_HEADER *header, _In_reads_bytes_(bitSize) const uint8_t *bitData, _In_ size_t bitSize, _In_ size_t maxsize, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Create\+Texture\+From\+D\+DS (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$}]{d3d\+Context, }
+\item[{\+\_\+\+In\+\_\+ const {\bf D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$}]{header, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$}]{bit\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{bit\+Size, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56_ac97ddcbab1e9ce61667a0862b58f9c56}{}\label{_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56_ac97ddcbab1e9ce61667a0862b58f9c56}
+
+
+Definition at line 1323 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56_ac97ddcbab1e9ce61667a0862b58f9c56_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=317pt]{_d_d_s_texture_loader_8cpp_ac97ddcbab1e9ce61667a0862b58f9c56_ac97ddcbab1e9ce61667a0862b58f9c56_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Create\+Texture\+From\+D\+D\+S12@{Create\+Texture\+From\+D\+D\+S12}}
+\index{Create\+Texture\+From\+D\+D\+S12@{Create\+Texture\+From\+D\+D\+S12}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Create\+Texture\+From\+D\+D\+S12(\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+ const D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R $\ast$header, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap)}{CreateTextureFromDDS12(_In_ ID3D12Device *device, _In_opt_ ID3D12GraphicsCommandList *cmdList, _In_ const DDS_HEADER *header, _In_reads_bytes_(bitSize) const uint8_t *bitData, _In_ size_t bitSize, _In_ size_t maxsize, _In_ bool forceSRGB, ComPtr< ID3D12Resource > &texture, ComPtr< ID3D12Resource > &textureUploadHeap)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Create\+Texture\+From\+D\+D\+S12 (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$}]{device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$}]{cmd\+List, }
+\item[{\+\_\+\+In\+\_\+ const {\bf D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$}]{header, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$}]{bit\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{bit\+Size, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture, }
+\item[{Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture\+Upload\+Heap}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6_aa0c87b1491a829d1a28da9bb89b2d2a6}{}\label{_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6_aa0c87b1491a829d1a28da9bb89b2d2a6}
+
+
+Definition at line 1672 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6_aa0c87b1491a829d1a28da9bb89b2d2a6_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{_d_d_s_texture_loader_8cpp_aa0c87b1491a829d1a28da9bb89b2d2a6_aa0c87b1491a829d1a28da9bb89b2d2a6_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Fill\+Init\+Data@{Fill\+Init\+Data}}
+\index{Fill\+Init\+Data@{Fill\+Init\+Data}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Fill\+Init\+Data(\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+Out\+\_\+ size\+\_\+t \&twidth, \+\_\+\+Out\+\_\+ size\+\_\+t \&theight, \+\_\+\+Out\+\_\+ size\+\_\+t \&tdepth, \+\_\+\+Out\+\_\+ size\+\_\+t \&skip\+Mip, \+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+T\+A $\ast$init\+Data)}{FillInitData(_In_ size_t width, _In_ size_t height, _In_ size_t depth, _In_ size_t mipCount, _In_ size_t arraySize, _In_ DXGI_FORMAT format, _In_ size_t maxsize, _In_ size_t bitSize, _In_reads_bytes_(bitSize) const uint8_t *bitData, _Out_ size_t &twidth, _Out_ size_t &theight, _Out_ size_t &tdepth, _Out_ size_t &skipMip, _Out_writes_(mipCount *arraySize) D3D11_SUBRESOURCE_DATA *initData)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Fill\+Init\+Data (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{width, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{height, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{depth, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{mip\+Count, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{array\+Size, }
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{bit\+Size, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$}]{bit\+Data, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{twidth, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{theight, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{tdepth, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{skip\+Mip, }
+\item[{\+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D11\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$}]{init\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_af01b3b33c47f4e9d8e30d00d5b586522_af01b3b33c47f4e9d8e30d00d5b586522}{}\label{_d_d_s_texture_loader_8cpp_af01b3b33c47f4e9d8e30d00d5b586522_af01b3b33c47f4e9d8e30d00d5b586522}
+
+
+Definition at line 801 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_af01b3b33c47f4e9d8e30d00d5b586522_af01b3b33c47f4e9d8e30d00d5b586522_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_af01b3b33c47f4e9d8e30d00d5b586522_af01b3b33c47f4e9d8e30d00d5b586522_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Fill\+Init\+Data12@{Fill\+Init\+Data12}}
+\index{Fill\+Init\+Data12@{Fill\+Init\+Data12}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Fill\+Init\+Data12(\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ size\+\_\+t depth, \+\_\+\+In\+\_\+ size\+\_\+t mip\+Count, \+\_\+\+In\+\_\+ size\+\_\+t array\+Size, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ size\+\_\+t bit\+Size, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$bit\+Data, \+\_\+\+Out\+\_\+ size\+\_\+t \&twidth, \+\_\+\+Out\+\_\+ size\+\_\+t \&theight, \+\_\+\+Out\+\_\+ size\+\_\+t \&tdepth, \+\_\+\+Out\+\_\+ size\+\_\+t \&skip\+Mip, \+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+T\+A $\ast$init\+Data)}{FillInitData12(_In_ size_t width, _In_ size_t height, _In_ size_t depth, _In_ size_t mipCount, _In_ size_t arraySize, _In_ DXGI_FORMAT format, _In_ size_t maxsize, _In_ size_t bitSize, _In_reads_bytes_(bitSize) const uint8_t *bitData, _Out_ size_t &twidth, _Out_ size_t &theight, _Out_ size_t &tdepth, _Out_ size_t &skipMip, _Out_writes_(mipCount *arraySize) D3D12_SUBRESOURCE_DATA *initData)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Fill\+Init\+Data12 (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{width, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{height, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{depth, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{mip\+Count, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{array\+Size, }
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{bit\+Size, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(bit\+Size) const uint8\+\_\+t $\ast$}]{bit\+Data, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{twidth, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{theight, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{tdepth, }
+\item[{\+\_\+\+Out\+\_\+ size\+\_\+t \&}]{skip\+Mip, }
+\item[{\+\_\+\+Out\+\_\+writes\+\_\+(mip\+Count $\ast$array\+Size) D3\+D12\+\_\+\+S\+U\+B\+R\+E\+S\+O\+U\+R\+C\+E\+\_\+\+D\+A\+TA $\ast$}]{init\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_a51511e9ea8b201e1f254b21b36da0f69_a51511e9ea8b201e1f254b21b36da0f69}{}\label{_d_d_s_texture_loader_8cpp_a51511e9ea8b201e1f254b21b36da0f69_a51511e9ea8b201e1f254b21b36da0f69}
+
+
+Definition at line 897 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_a51511e9ea8b201e1f254b21b36da0f69_a51511e9ea8b201e1f254b21b36da0f69_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_a51511e9ea8b201e1f254b21b36da0f69_a51511e9ea8b201e1f254b21b36da0f69_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Get\+Alpha\+Mode@{Get\+Alpha\+Mode}}
+\index{Get\+Alpha\+Mode@{Get\+Alpha\+Mode}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Get\+Alpha\+Mode(\+\_\+\+In\+\_\+ const D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R $\ast$header)}{GetAlphaMode(_In_ const DDS_HEADER *header)}}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} Get\+Alpha\+Mode (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ const {\bf D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$}]{header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_a8c2c61f7f7e3bd20619e3746b8e20286_a8c2c61f7f7e3bd20619e3746b8e20286}{}\label{_d_d_s_texture_loader_8cpp_a8c2c61f7f7e3bd20619e3746b8e20286_a8c2c61f7f7e3bd20619e3746b8e20286}
+
+
+Definition at line 1877 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_a8c2c61f7f7e3bd20619e3746b8e20286_a8c2c61f7f7e3bd20619e3746b8e20286_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Get\+D\+X\+G\+I\+Format@{Get\+D\+X\+G\+I\+Format}}
+\index{Get\+D\+X\+G\+I\+Format@{Get\+D\+X\+G\+I\+Format}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Get\+D\+X\+G\+I\+Format(const D\+D\+S\+\_\+\+P\+I\+X\+E\+L\+F\+O\+R\+M\+A\+T \&ddpf)}{GetDXGIFormat(const DDS_PIXELFORMAT &ddpf)}}]{\setlength{\rightskip}{0pt plus 5cm}static D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT Get\+D\+X\+G\+I\+Format (
+\begin{DoxyParamCaption}
+\item[{const {\bf D\+D\+S\+\_\+\+P\+I\+X\+E\+L\+F\+O\+R\+M\+AT} \&}]{ddpf}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_aa86329d2121392cc1d7a3dbbc52d3b0a_aa86329d2121392cc1d7a3dbbc52d3b0a}{}\label{_d_d_s_texture_loader_8cpp_aa86329d2121392cc1d7a3dbbc52d3b0a_aa86329d2121392cc1d7a3dbbc52d3b0a}
+
+
+Definition at line 557 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_aa86329d2121392cc1d7a3dbbc52d3b0a_aa86329d2121392cc1d7a3dbbc52d3b0a_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Get\+Surface\+Info@{Get\+Surface\+Info}}
+\index{Get\+Surface\+Info@{Get\+Surface\+Info}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Get\+Surface\+Info(\+\_\+\+In\+\_\+ size\+\_\+t width, \+\_\+\+In\+\_\+ size\+\_\+t height, \+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T fmt, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Num\+Bytes, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Row\+Bytes, \+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$out\+Num\+Rows)}{GetSurfaceInfo(_In_ size_t width, _In_ size_t height, _In_ DXGI_FORMAT fmt, _Out_opt_ size_t *outNumBytes, _Out_opt_ size_t *outRowBytes, _Out_opt_ size_t *outNumRows)}}]{\setlength{\rightskip}{0pt plus 5cm}static void Get\+Surface\+Info (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{width, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{height, }
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{fmt, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$}]{out\+Num\+Bytes, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$}]{out\+Row\+Bytes, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ size\+\_\+t $\ast$}]{out\+Num\+Rows}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_af572c1b170d5c8945533758c4607ce23_af572c1b170d5c8945533758c4607ce23}{}\label{_d_d_s_texture_loader_8cpp_af572c1b170d5c8945533758c4607ce23_af572c1b170d5c8945533758c4607ce23}
+
+
+Definition at line 425 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{_d_d_s_texture_loader_8cpp_af572c1b170d5c8945533758c4607ce23_af572c1b170d5c8945533758c4607ce23_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_af572c1b170d5c8945533758c4607ce23_af572c1b170d5c8945533758c4607ce23_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Load\+Texture\+Data\+From\+File@{Load\+Texture\+Data\+From\+File}}
+\index{Load\+Texture\+Data\+From\+File@{Load\+Texture\+Data\+From\+File}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Load\+Texture\+Data\+From\+File(\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$file\+Name, std\+::unique\+\_\+ptr$<$ uint8\+\_\+t[]$>$ \&dds\+Data, D\+D\+S\+\_\+\+H\+E\+A\+D\+E\+R $\ast$$\ast$header, uint8\+\_\+t $\ast$$\ast$bit\+Data, size\+\_\+t $\ast$bit\+Size)}{LoadTextureDataFromFile(_In_z_ const wchar_t *fileName, std::unique_ptr< uint8_t[]> &ddsData, DDS_HEADER **header, uint8_t **bitData, size_t *bitSize)}}]{\setlength{\rightskip}{0pt plus 5cm}static H\+R\+E\+S\+U\+LT Load\+Texture\+Data\+From\+File (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{file\+Name, }
+\item[{std\+::unique\+\_\+ptr$<$ uint8\+\_\+t\mbox{[}$\,$\mbox{]}$>$ \&}]{dds\+Data, }
+\item[{{\bf D\+D\+S\+\_\+\+H\+E\+A\+D\+ER} $\ast$$\ast$}]{header, }
+\item[{uint8\+\_\+t $\ast$$\ast$}]{bit\+Data, }
+\item[{size\+\_\+t $\ast$}]{bit\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_a3596a4048d14adf7ed925b2644f33483_a3596a4048d14adf7ed925b2644f33483}{}\label{_d_d_s_texture_loader_8cpp_a3596a4048d14adf7ed925b2644f33483_a3596a4048d14adf7ed925b2644f33483}
+
+
+Definition at line 147 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{_d_d_s_texture_loader_8cpp_a3596a4048d14adf7ed925b2644f33483_a3596a4048d14adf7ed925b2644f33483_icgraph}
+\end{center}
+\end{figure}
+
+
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!Make\+S\+R\+GB@{Make\+S\+R\+GB}}
+\index{Make\+S\+R\+GB@{Make\+S\+R\+GB}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{Make\+S\+R\+G\+B(\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format)}{MakeSRGB(_In_ DXGI_FORMAT format)}}]{\setlength{\rightskip}{0pt plus 5cm}static D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT Make\+S\+R\+GB (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{_d_d_s_texture_loader_8cpp_ad7a406010bd318fb91ef5f3893524caf_ad7a406010bd318fb91ef5f3893524caf}{}\label{_d_d_s_texture_loader_8cpp_ad7a406010bd318fb91ef5f3893524caf_ad7a406010bd318fb91ef5f3893524caf}
+
+
+Definition at line 769 of file D\+D\+S\+Texture\+Loader.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_d_d_s_texture_loader_8cpp_ad7a406010bd318fb91ef5f3893524caf_ad7a406010bd318fb91ef5f3893524caf_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Variable Documentation}
+\index{D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}!D\+D\+S\+\_\+\+M\+A\+G\+IC@{D\+D\+S\+\_\+\+M\+A\+G\+IC}}
+\index{D\+D\+S\+\_\+\+M\+A\+G\+IC@{D\+D\+S\+\_\+\+M\+A\+G\+IC}!D\+D\+S\+Texture\+Loader.\+cpp@{D\+D\+S\+Texture\+Loader.\+cpp}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+M\+A\+G\+IC}{DDS_MAGIC}}]{\setlength{\rightskip}{0pt plus 5cm}const uint32\+\_\+t D\+D\+S\+\_\+\+M\+A\+G\+IC = 0x20534444}\hypertarget{_d_d_s_texture_loader_8cpp_a0b37de835f7ff26eca52db17170cb24a_a0b37de835f7ff26eca52db17170cb24a}{}\label{_d_d_s_texture_loader_8cpp_a0b37de835f7ff26eca52db17170cb24a_a0b37de835f7ff26eca52db17170cb24a}
+
+
+Definition at line 52 of file D\+D\+S\+Texture\+Loader.\+cpp.
+

@@ -1,0 +1,1003 @@
+\hypertarget{class_direct_x_renderer}{}\section{Direct\+X\+Renderer Class Reference}
+\label{class_direct_x_renderer}\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+
+
+{\ttfamily \#include $<$Direct\+X\+Renderer.\+hpp$>$}
+
+
+
+Collaboration diagram for Direct\+X\+Renderer\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_direct_x_renderer_aa97de1a7bf6c0ddb50da1c2cfc6f7e79_aa97de1a7bf6c0ddb50da1c2cfc6f7e79}{Direct\+X\+Renderer} ()
+\item 
+\hyperlink{class_direct_x_renderer_a1e88177699a82174ff2ba8e5b2a7570b_a1e88177699a82174ff2ba8e5b2a7570b}{Direct\+X\+Renderer} (const \hyperlink{class_direct_x_renderer}{Direct\+X\+Renderer} \&)=default
+\item 
+\hyperlink{class_direct_x_renderer_a1a4b9b622e6a78883da21db9ef4a121e_a1a4b9b622e6a78883da21db9ef4a121e}{$\sim$\+Direct\+X\+Renderer} ()
+\item 
+\hyperlink{class_camera}{Camera} \& \hyperlink{class_direct_x_renderer_a8232561ca218d26c0f70d9f9b3dbcea6_a8232561ca218d26c0f70d9f9b3dbcea6}{get\+\_\+current\+\_\+camera} ()
+\item 
+bool \hyperlink{class_direct_x_renderer_a99c49dd436c922c8f21b1839b0fb6bd1_a99c49dd436c922c8f21b1839b0fb6bd1}{get\+\_\+4x\+\_\+msaa\+\_\+state} () const 
+\item 
+bool \hyperlink{class_direct_x_renderer_a58d1ad36aeb981fd9ca698fc2215dc10_a58d1ad36aeb981fd9ca698fc2215dc10}{get\+\_\+is\+\_\+initialized} () const 
+\item 
+int \hyperlink{class_direct_x_renderer_a6d696829e35fe480381db6b759fe8ca2_a6d696829e35fe480381db6b759fe8ca2}{get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count} () const 
+\item 
+void \hyperlink{class_direct_x_renderer_a252d9ba8d713ba462c54a3dadfda2f59_a252d9ba8d713ba462c54a3dadfda2f59}{Set4x\+Msaa\+State} (bool value)
+\item 
+bool \hyperlink{class_direct_x_renderer_aceda888b20469930d5a99edc842d21a6_aceda888b20469930d5a99edc842d21a6}{get\+\_\+is\+\_\+rendering} () const 
+\item 
+bool \hyperlink{class_direct_x_renderer_a0d6aef4c838ac765f726391ee65c346c_a0d6aef4c838ac765f726391ee65c346c}{initialize\+\_\+direct3d} (H\+W\+ND main\+\_\+window\+\_\+handle)
+\item 
+void \hyperlink{class_direct_x_renderer_a2f3ecabf3d5e9d76b7754d66a6a346d3_a2f3ecabf3d5e9d76b7754d66a6a346d3}{render} ()
+\item 
+void \hyperlink{class_direct_x_renderer_ae823daf9d77db0f506320f7171cb117d_ae823daf9d77db0f506320f7171cb117d}{resize} (int client\+\_\+width, int client\+\_\+height)
+\item 
+void \hyperlink{class_direct_x_renderer_af1bd5f83975a5f0fb1735b3a6e933656_af1bd5f83975a5f0fb1735b3a6e933656}{Update} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+I\+D3\+D12\+Resource $\ast$ \hyperlink{class_direct_x_renderer_a94f4585e3451924820e261e01d8cfc89_a94f4585e3451924820e261e01d8cfc89}{get\+\_\+current\+\_\+back\+\_\+buffer} () const 
+\item 
+D3\+D12\+\_\+\+C\+P\+U\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \hyperlink{class_direct_x_renderer_a7bfc3b725a9ecb5e47889f0e9627f0c8_a7bfc3b725a9ecb5e47889f0e9627f0c8}{get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view} () const 
+\item 
+D3\+D12\+\_\+\+C\+P\+U\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE \hyperlink{class_direct_x_renderer_a3fd16381af742f128d5a7138d65be695_a3fd16381af742f128d5a7138d65be695}{get\+\_\+depth\+\_\+stencil\+\_\+view} () const 
+\item 
+void \hyperlink{class_direct_x_renderer_aef2318aa9f9757fde25c94c9857143e8_aef2318aa9f9757fde25c94c9857143e8}{create\+\_\+dx\+\_\+command\+\_\+objects} ()
+\item 
+void \hyperlink{class_direct_x_renderer_ab76ef034cbf3cfafc7a8aae1b50f6e6b_ab76ef034cbf3cfafc7a8aae1b50f6e6b}{create\+\_\+swap\+\_\+chain} ()
+\item 
+virtual void \hyperlink{class_direct_x_renderer_a0f9a3dabe2f03739ba06155572eef957_a0f9a3dabe2f03739ba06155572eef957}{create\+\_\+descriptor\+\_\+heaps} ()
+\item 
+void \hyperlink{class_direct_x_renderer_a09278f83b0f7f134871bb21c72e07587_a09278f83b0f7f134871bb21c72e07587}{create\+\_\+constant\+\_\+buffers} ()
+\item 
+void \hyperlink{class_direct_x_renderer_acaec9787ee504297135360aaf1bf45fa_acaec9787ee504297135360aaf1bf45fa}{create\+\_\+root\+\_\+signature} ()
+\item 
+void \hyperlink{class_direct_x_renderer_a83af308560d21041e34b96f35ba0b9d9_a83af308560d21041e34b96f35ba0b9d9}{create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout} ()
+\item 
+void \hyperlink{class_direct_x_renderer_ab236cfa51aff8ae36741f94ae4abf167_ab236cfa51aff8ae36741f94ae4abf167}{create\+\_\+box\+\_\+geometry} ()
+\item 
+void \hyperlink{class_direct_x_renderer_a7626b1775267e151905115055e0bbc7f_a7626b1775267e151905115055e0bbc7f}{create\+\_\+pipeline\+\_\+state\+\_\+object} ()
+\item 
+void \hyperlink{class_direct_x_renderer_ab1ac2acccb63781ec8ccce58fe351c63_ab1ac2acccb63781ec8ccce58fe351c63}{flush\+\_\+command\+\_\+queue} ()
+\item 
+void \hyperlink{class_direct_x_renderer_a8bf63477a5f9f210b627c2d07d54caa5_a8bf63477a5f9f210b627c2d07d54caa5}{log\+\_\+adapters} ()
+\item 
+void \hyperlink{class_direct_x_renderer_a13dbd659f5d0a72be90b0a4be1121ef8_a13dbd659f5d0a72be90b0a4be1121ef8}{log\+\_\+adapter\+\_\+outputs} (I\+D\+X\+G\+I\+Adapter $\ast$adapter)
+\item 
+void \hyperlink{class_direct_x_renderer_ac2a94e66b56fa26905f19f6952f9dc28_ac2a94e66b56fa26905f19f6952f9dc28}{log\+\_\+output\+\_\+display\+\_\+modes} (I\+D\+X\+G\+I\+Output $\ast$output, D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT format)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_camera}{Camera} \hyperlink{class_direct_x_renderer_aa951dfb1fd582826829d938eaffef28d_aa951dfb1fd582826829d938eaffef28d}{camera}
+\item 
+X\+M\+F\+L\+O\+A\+T4\+X4 \hyperlink{class_direct_x_renderer_a3a4030d42352ab1e62f5e89f094a0152_a3a4030d42352ab1e62f5e89f094a0152}{m\+World} = \hyperlink{class_math_helper_a68b4e9af95b1a36aad30ea80839f6b19_a68b4e9af95b1a36aad30ea80839f6b19}{Math\+Helper\+::\+Identity4x4}()
+\item 
+X\+M\+F\+L\+O\+A\+T4\+X4 \hyperlink{class_direct_x_renderer_a0fb814f0d43d2ce2c6bacfd93471e4f6_a0fb814f0d43d2ce2c6bacfd93471e4f6}{m\+View} = \hyperlink{class_math_helper_a68b4e9af95b1a36aad30ea80839f6b19_a68b4e9af95b1a36aad30ea80839f6b19}{Math\+Helper\+::\+Identity4x4}()
+\item 
+X\+M\+F\+L\+O\+A\+T4\+X4 \hyperlink{class_direct_x_renderer_abebffe15f62df95af83a3d10b1fb4ee8_abebffe15f62df95af83a3d10b1fb4ee8}{m\+Proj} = \hyperlink{class_math_helper_a68b4e9af95b1a36aad30ea80839f6b19_a68b4e9af95b1a36aad30ea80839f6b19}{Math\+Helper\+::\+Identity4x4}()
+\item 
+vector$<$ D3\+D12\+\_\+\+I\+N\+P\+U\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+D\+E\+SC $>$ \hyperlink{class_direct_x_renderer_a9e2123f281f20c29d3d4c40bdf3246b1_a9e2123f281f20c29d3d4c40bdf3246b1}{m\+Input\+Layout}
+\item 
+D3\+D12\+\_\+\+V\+I\+E\+W\+P\+O\+RT \hyperlink{class_direct_x_renderer_a09101a474a851ed120e597221f35f0e5_a09101a474a851ed120e597221f35f0e5}{m\+Screen\+Viewport}
+\item 
+D3\+D12\+\_\+\+R\+E\+CT \hyperlink{class_direct_x_renderer_a67085369c1a3832355849292321bf246_a67085369c1a3832355849292321bf246}{m\+Scissor\+Rect}
+\item 
+H\+W\+ND \hyperlink{class_direct_x_renderer_a85dde4c45dcb539e89d83edec7382c56_a85dde4c45dcb539e89d83edec7382c56}{\+\_\+main\+\_\+window\+\_\+handle}
+\item 
+unique\+\_\+ptr$<$ \hyperlink{class_upload_buffer}{Upload\+Buffer}$<$ \hyperlink{struct_object_constants}{Object\+Constants} $>$ $>$ \hyperlink{class_direct_x_renderer_ae69d39730c18ec7f8ef2bea3b30cb560_ae69d39730c18ec7f8ef2bea3b30cb560}{object\+\_\+constants\+\_\+upload\+\_\+buffer} = nullptr
+\item 
+unique\+\_\+ptr$<$ \hyperlink{struct_mesh_geometry}{Mesh\+Geometry} $>$ \hyperlink{class_direct_x_renderer_a834f2538756929aa9744cee706dae4e9_a834f2538756929aa9744cee706dae4e9}{box\+\_\+mesh\+\_\+geometry} = nullptr
+\item 
+Com\+Ptr$<$ I\+D\+X\+G\+I\+Factory4 $>$ \hyperlink{class_direct_x_renderer_a514dd6a49f675b0b1f05eeb5df61e688_a514dd6a49f675b0b1f05eeb5df61e688}{dx\+\_\+dxgi\+\_\+factory}
+\item 
+Com\+Ptr$<$ I\+D\+X\+G\+I\+Swap\+Chain $>$ \hyperlink{class_direct_x_renderer_adb032dd1c2a1add393fe9f6e73770e68_adb032dd1c2a1add393fe9f6e73770e68}{dx\+\_\+swap\+\_\+chain}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Device $>$ \hyperlink{class_direct_x_renderer_a665ce2d16dd1e15e4e3f7ecef3c5b11a_a665ce2d16dd1e15e4e3f7ecef3c5b11a}{dx\+\_\+device}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Fence $>$ \hyperlink{class_direct_x_renderer_a9f2cdba34c8670e6ec1f686b362ab700_a9f2cdba34c8670e6ec1f686b362ab700}{fence}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Command\+Queue $>$ \hyperlink{class_direct_x_renderer_a8b99048329168c87d7ef207698caeddc_a8b99048329168c87d7ef207698caeddc}{dx\+\_\+command\+\_\+queue}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Command\+Allocator $>$ \hyperlink{class_direct_x_renderer_a885e10b057d3e1d3f2c76045e567887e_a885e10b057d3e1d3f2c76045e567887e}{dx\+\_\+command\+\_\+list\+\_\+allocator}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Graphics\+Command\+List $>$ \hyperlink{class_direct_x_renderer_a5bdea06c9f3fa2af49413a70f39bc0fb_a5bdea06c9f3fa2af49413a70f39bc0fb}{dx\+\_\+command\+\_\+list}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \hyperlink{class_direct_x_renderer_ad8a4b2130a07748ce0c503fe9c9c7d14_ad8a4b2130a07748ce0c503fe9c9c7d14}{swap\+\_\+chain\+\_\+buffer} \mbox{[}\hyperlink{class_direct_x_renderer_aaf675ecf10cb34d5247f78920f8851da_aaf675ecf10cb34d5247f78920f8851da}{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}\mbox{]}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \hyperlink{class_direct_x_renderer_a624b17abc05948ba9fed5571bb91187a_a624b17abc05948ba9fed5571bb91187a}{depth\+\_\+stencil\+\_\+buffer}
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Descriptor\+Heap $>$ \hyperlink{class_direct_x_renderer_a082c69eafb2449e5f19efb156fa0c0e8_a082c69eafb2449e5f19efb156fa0c0e8}{dx\+\_\+rtv\+\_\+heap} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Descriptor\+Heap $>$ \hyperlink{class_direct_x_renderer_ae865e29f2c2084f98b095b8b60fbeef2_ae865e29f2c2084f98b095b8b60fbeef2}{dx\+\_\+dsv\+\_\+heap} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Root\+Signature $>$ \hyperlink{class_direct_x_renderer_a36476b689f10a35b756e083320a13634_a36476b689f10a35b756e083320a13634}{dx\+\_\+root\+\_\+signature} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Descriptor\+Heap $>$ \hyperlink{class_direct_x_renderer_a2aaa7a57aea5c65a3381e54513ed7ff2_a2aaa7a57aea5c65a3381e54513ed7ff2}{dx\+\_\+cbv\+\_\+heap} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D\+Blob $>$ \hyperlink{class_direct_x_renderer_a795777c3f460bc862af3d8be68db0826_a795777c3f460bc862af3d8be68db0826}{mvs\+Byte\+Code} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D\+Blob $>$ \hyperlink{class_direct_x_renderer_ae01efa1365005bd544950fcbccfe6b47_ae01efa1365005bd544950fcbccfe6b47}{mps\+Byte\+Code} = nullptr
+\item 
+Com\+Ptr$<$ I\+D3\+D12\+Pipeline\+State $>$ \hyperlink{class_direct_x_renderer_a99d57c8ad110aeee5347e4a0baf28ae5_a99d57c8ad110aeee5347e4a0baf28ae5}{m\+P\+SO} = nullptr
+\item 
+U\+I\+N\+T64 \hyperlink{class_direct_x_renderer_a373ab38c7d919ae26c2d3148ab126538_a373ab38c7d919ae26c2d3148ab126538}{current\+\_\+fence\+\_\+index} = 0
+\item 
+P\+O\+I\+NT \hyperlink{class_direct_x_renderer_a11a4b47ed4a944b8671ccbda8698780a_a11a4b47ed4a944b8671ccbda8698780a}{m\+Last\+Mouse\+Pos}
+\item 
+U\+I\+NT \hyperlink{class_direct_x_renderer_a192899db0ebd9b8632fe9300f02b226a_a192899db0ebd9b8632fe9300f02b226a}{rtv\+\_\+descriptor\+\_\+size} = 0
+\item 
+U\+I\+NT \hyperlink{class_direct_x_renderer_a0b16f02604e3f5cf4e55321d01e4bd9d_a0b16f02604e3f5cf4e55321d01e4bd9d}{dsv\+\_\+descriptor\+\_\+size} = 0
+\item 
+U\+I\+NT \hyperlink{class_direct_x_renderer_ad2737cb5c487cbec53f3cd4ce74ff386_ad2737cb5c487cbec53f3cd4ce74ff386}{cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size} = 0
+\item 
+U\+I\+NT \hyperlink{class_direct_x_renderer_acb6551e975a75635b5b3b652fb5c0837_acb6551e975a75635b5b3b652fb5c0837}{\+\_\+4x\+\_\+msaa\+\_\+quality} = 0
+\item 
+D3\+D\+\_\+\+D\+R\+I\+V\+E\+R\+\_\+\+T\+Y\+PE \hyperlink{class_direct_x_renderer_a34c803e7e620ca5b73fe994fd278611c_a34c803e7e620ca5b73fe994fd278611c}{md3d\+Driver\+Type} = D3\+D\+\_\+\+D\+R\+I\+V\+E\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+H\+A\+R\+D\+W\+A\+RE
+\item 
+D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT \hyperlink{class_direct_x_renderer_a10f81ee4e50481b1d5589f72fb5698f4_a10f81ee4e50481b1d5589f72fb5698f4}{m\+Back\+Buffer\+Format} = D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+R8\+G8\+B8\+A8\+\_\+\+U\+N\+O\+RM
+\item 
+D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT \hyperlink{class_direct_x_renderer_a1f7901ccfc61d85b80f94d7de0fef163_a1f7901ccfc61d85b80f94d7de0fef163}{m\+Depth\+Stencil\+Format} = D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D24\+\_\+\+U\+N\+O\+R\+M\+\_\+\+S8\+\_\+\+U\+I\+NT
+\item 
+int \hyperlink{class_direct_x_renderer_a54e1d05a31bf58261c4264d37a1cd901_a54e1d05a31bf58261c4264d37a1cd901}{current\+\_\+back\+\_\+buffer} = 0
+\item 
+int \hyperlink{class_direct_x_renderer_a4a4d32ddd237330da18828e7ba812ab6_a4a4d32ddd237330da18828e7ba812ab6}{\+\_\+client\+\_\+width} = 0
+\item 
+int \hyperlink{class_direct_x_renderer_a864235b89a260f249463e0892d8def67_a864235b89a260f249463e0892d8def67}{\+\_\+client\+\_\+height} = 0
+\item 
+float \hyperlink{class_direct_x_renderer_aee71c028a66feadb85a8df3a48fee6d3_aee71c028a66feadb85a8df3a48fee6d3}{\+\_\+client\+\_\+aspect\+\_\+ratio} = 0.\+0f
+\item 
+bool \hyperlink{class_direct_x_renderer_a6f8fb7149965da8c2812d30873f3eadc_a6f8fb7149965da8c2812d30873f3eadc}{\+\_\+4x\+\_\+msaa\+\_\+state} = false
+\item 
+bool \hyperlink{class_direct_x_renderer_a31ae4c3ff3837f963cda60bf19f765e3_a31ae4c3ff3837f963cda60bf19f765e3}{\+\_\+is\+\_\+initialized} = false
+\item 
+bool \hyperlink{class_direct_x_renderer_aeb385222af964c11d944f758ae9fb4fc_aeb385222af964c11d944f758ae9fb4fc}{\+\_\+is\+\_\+rendering} = false
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_direct_x_renderer_aaf675ecf10cb34d5247f78920f8851da_aaf675ecf10cb34d5247f78920f8851da}{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count} = 2
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 30 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{Direct\+X\+Renderer()}{DirectXRenderer()}}]{\setlength{\rightskip}{0pt plus 5cm}Direct\+X\+Renderer\+::\+Direct\+X\+Renderer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_aa97de1a7bf6c0ddb50da1c2cfc6f7e79_aa97de1a7bf6c0ddb50da1c2cfc6f7e79}{}\label{class_direct_x_renderer_aa97de1a7bf6c0ddb50da1c2cfc6f7e79_aa97de1a7bf6c0ddb50da1c2cfc6f7e79}
+
+
+Definition at line 33 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{Direct\+X\+Renderer(const Direct\+X\+Renderer \&)=default}{DirectXRenderer(const DirectXRenderer &)=default}}]{\setlength{\rightskip}{0pt plus 5cm}Direct\+X\+Renderer\+::\+Direct\+X\+Renderer (
+\begin{DoxyParamCaption}
+\item[{const {\bf Direct\+X\+Renderer} \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{class_direct_x_renderer_a1e88177699a82174ff2ba8e5b2a7570b_a1e88177699a82174ff2ba8e5b2a7570b}{}\label{class_direct_x_renderer_a1e88177699a82174ff2ba8e5b2a7570b_a1e88177699a82174ff2ba8e5b2a7570b}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!````~Direct\+X\+Renderer@{$\sim$\+Direct\+X\+Renderer}}
+\index{````~Direct\+X\+Renderer@{$\sim$\+Direct\+X\+Renderer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{$\sim$\+Direct\+X\+Renderer()}{~DirectXRenderer()}}]{\setlength{\rightskip}{0pt plus 5cm}Direct\+X\+Renderer\+::$\sim$\+Direct\+X\+Renderer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_a1a4b9b622e6a78883da21db9ef4a121e_a1a4b9b622e6a78883da21db9ef4a121e}{}\label{class_direct_x_renderer_a1a4b9b622e6a78883da21db9ef4a121e_a1a4b9b622e6a78883da21db9ef4a121e}
+
+
+Definition at line 42 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+box\+\_\+geometry@{create\+\_\+box\+\_\+geometry}}
+\index{create\+\_\+box\+\_\+geometry@{create\+\_\+box\+\_\+geometry}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+box\+\_\+geometry()}{create_box_geometry()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+box\+\_\+geometry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ab236cfa51aff8ae36741f94ae4abf167_ab236cfa51aff8ae36741f94ae4abf167}{}\label{class_direct_x_renderer_ab236cfa51aff8ae36741f94ae4abf167_ab236cfa51aff8ae36741f94ae4abf167}
+
+
+Definition at line 339 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+constant\+\_\+buffers@{create\+\_\+constant\+\_\+buffers}}
+\index{create\+\_\+constant\+\_\+buffers@{create\+\_\+constant\+\_\+buffers}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+constant\+\_\+buffers()}{create_constant_buffers()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+constant\+\_\+buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a09278f83b0f7f134871bb21c72e07587_a09278f83b0f7f134871bb21c72e07587}{}\label{class_direct_x_renderer_a09278f83b0f7f134871bb21c72e07587_a09278f83b0f7f134871bb21c72e07587}
+
+
+Definition at line 265 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+descriptor\+\_\+heaps@{create\+\_\+descriptor\+\_\+heaps}}
+\index{create\+\_\+descriptor\+\_\+heaps@{create\+\_\+descriptor\+\_\+heaps}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+descriptor\+\_\+heaps()}{create_descriptor_heaps()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+descriptor\+\_\+heaps (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}\hypertarget{class_direct_x_renderer_a0f9a3dabe2f03739ba06155572eef957_a0f9a3dabe2f03739ba06155572eef957}{}\label{class_direct_x_renderer_a0f9a3dabe2f03739ba06155572eef957_a0f9a3dabe2f03739ba06155572eef957}
+
+
+Definition at line 228 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+dx\+\_\+command\+\_\+objects@{create\+\_\+dx\+\_\+command\+\_\+objects}}
+\index{create\+\_\+dx\+\_\+command\+\_\+objects@{create\+\_\+dx\+\_\+command\+\_\+objects}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+dx\+\_\+command\+\_\+objects()}{create_dx_command_objects()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+dx\+\_\+command\+\_\+objects (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_aef2318aa9f9757fde25c94c9857143e8_aef2318aa9f9757fde25c94c9857143e8}{}\label{class_direct_x_renderer_aef2318aa9f9757fde25c94c9857143e8_aef2318aa9f9757fde25c94c9857143e8}
+
+
+Definition at line 170 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+pipeline\+\_\+state\+\_\+object@{create\+\_\+pipeline\+\_\+state\+\_\+object}}
+\index{create\+\_\+pipeline\+\_\+state\+\_\+object@{create\+\_\+pipeline\+\_\+state\+\_\+object}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+pipeline\+\_\+state\+\_\+object()}{create_pipeline_state_object()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+pipeline\+\_\+state\+\_\+object (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a7626b1775267e151905115055e0bbc7f_a7626b1775267e151905115055e0bbc7f}{}\label{class_direct_x_renderer_a7626b1775267e151905115055e0bbc7f_a7626b1775267e151905115055e0bbc7f}
+
+
+Definition at line 411 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+root\+\_\+signature@{create\+\_\+root\+\_\+signature}}
+\index{create\+\_\+root\+\_\+signature@{create\+\_\+root\+\_\+signature}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+root\+\_\+signature()}{create_root_signature()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+root\+\_\+signature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_acaec9787ee504297135360aaf1bf45fa_acaec9787ee504297135360aaf1bf45fa}{}\label{class_direct_x_renderer_acaec9787ee504297135360aaf1bf45fa_acaec9787ee504297135360aaf1bf45fa}
+
+
+Definition at line 285 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout@{create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout}}
+\index{create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout@{create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout()}{create_shaders_and_input_layout()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+shaders\+\_\+and\+\_\+input\+\_\+layout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a83af308560d21041e34b96f35ba0b9d9_a83af308560d21041e34b96f35ba0b9d9}{}\label{class_direct_x_renderer_a83af308560d21041e34b96f35ba0b9d9_a83af308560d21041e34b96f35ba0b9d9}
+
+
+Definition at line 325 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!create\+\_\+swap\+\_\+chain@{create\+\_\+swap\+\_\+chain}}
+\index{create\+\_\+swap\+\_\+chain@{create\+\_\+swap\+\_\+chain}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{create\+\_\+swap\+\_\+chain()}{create_swap_chain()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::create\+\_\+swap\+\_\+chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ab76ef034cbf3cfafc7a8aae1b50f6e6b_ab76ef034cbf3cfafc7a8aae1b50f6e6b}{}\label{class_direct_x_renderer_ab76ef034cbf3cfafc7a8aae1b50f6e6b_ab76ef034cbf3cfafc7a8aae1b50f6e6b}
+
+
+Definition at line 198 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!flush\+\_\+command\+\_\+queue@{flush\+\_\+command\+\_\+queue}}
+\index{flush\+\_\+command\+\_\+queue@{flush\+\_\+command\+\_\+queue}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{flush\+\_\+command\+\_\+queue()}{flush_command_queue()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::flush\+\_\+command\+\_\+queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ab1ac2acccb63781ec8ccce58fe351c63_ab1ac2acccb63781ec8ccce58fe351c63}{}\label{class_direct_x_renderer_ab1ac2acccb63781ec8ccce58fe351c63_ab1ac2acccb63781ec8ccce58fe351c63}
+
+
+Definition at line 440 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+4x\+\_\+msaa\+\_\+state@{get\+\_\+4x\+\_\+msaa\+\_\+state}}
+\index{get\+\_\+4x\+\_\+msaa\+\_\+state@{get\+\_\+4x\+\_\+msaa\+\_\+state}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+4x\+\_\+msaa\+\_\+state() const }{get_4x_msaa_state() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::get\+\_\+4x\+\_\+msaa\+\_\+state (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_a99c49dd436c922c8f21b1839b0fb6bd1_a99c49dd436c922c8f21b1839b0fb6bd1}{}\label{class_direct_x_renderer_a99c49dd436c922c8f21b1839b0fb6bd1_a99c49dd436c922c8f21b1839b0fb6bd1}
+
+
+Definition at line 51 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+current\+\_\+back\+\_\+buffer@{get\+\_\+current\+\_\+back\+\_\+buffer}}
+\index{get\+\_\+current\+\_\+back\+\_\+buffer@{get\+\_\+current\+\_\+back\+\_\+buffer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+current\+\_\+back\+\_\+buffer() const }{get_current_back_buffer() const }}]{\setlength{\rightskip}{0pt plus 5cm}I\+D3\+D12\+Resource $\ast$ Direct\+X\+Renderer\+::get\+\_\+current\+\_\+back\+\_\+buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a94f4585e3451924820e261e01d8cfc89_a94f4585e3451924820e261e01d8cfc89}{}\label{class_direct_x_renderer_a94f4585e3451924820e261e01d8cfc89_a94f4585e3451924820e261e01d8cfc89}
+
+
+Definition at line 465 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view@{get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view}}
+\index{get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view@{get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view() const }{get_current_back_buffer_view() const }}]{\setlength{\rightskip}{0pt plus 5cm}D3\+D12\+\_\+\+C\+P\+U\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE Direct\+X\+Renderer\+::get\+\_\+current\+\_\+back\+\_\+buffer\+\_\+view (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a7bfc3b725a9ecb5e47889f0e9627f0c8_a7bfc3b725a9ecb5e47889f0e9627f0c8}{}\label{class_direct_x_renderer_a7bfc3b725a9ecb5e47889f0e9627f0c8_a7bfc3b725a9ecb5e47889f0e9627f0c8}
+
+
+Definition at line 470 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+current\+\_\+camera@{get\+\_\+current\+\_\+camera}}
+\index{get\+\_\+current\+\_\+camera@{get\+\_\+current\+\_\+camera}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+current\+\_\+camera()}{get_current_camera()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Camera}\& Direct\+X\+Renderer\+::get\+\_\+current\+\_\+camera (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_a8232561ca218d26c0f70d9f9b3dbcea6_a8232561ca218d26c0f70d9f9b3dbcea6}{}\label{class_direct_x_renderer_a8232561ca218d26c0f70d9f9b3dbcea6_a8232561ca218d26c0f70d9f9b3dbcea6}
+
+
+Definition at line 49 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+depth\+\_\+stencil\+\_\+view@{get\+\_\+depth\+\_\+stencil\+\_\+view}}
+\index{get\+\_\+depth\+\_\+stencil\+\_\+view@{get\+\_\+depth\+\_\+stencil\+\_\+view}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+depth\+\_\+stencil\+\_\+view() const }{get_depth_stencil_view() const }}]{\setlength{\rightskip}{0pt plus 5cm}D3\+D12\+\_\+\+C\+P\+U\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+O\+R\+\_\+\+H\+A\+N\+D\+LE Direct\+X\+Renderer\+::get\+\_\+depth\+\_\+stencil\+\_\+view (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a3fd16381af742f128d5a7138d65be695_a3fd16381af742f128d5a7138d65be695}{}\label{class_direct_x_renderer_a3fd16381af742f128d5a7138d65be695_a3fd16381af742f128d5a7138d65be695}
+
+
+Definition at line 478 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+is\+\_\+initialized@{get\+\_\+is\+\_\+initialized}}
+\index{get\+\_\+is\+\_\+initialized@{get\+\_\+is\+\_\+initialized}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+is\+\_\+initialized() const }{get_is_initialized() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::get\+\_\+is\+\_\+initialized (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_a58d1ad36aeb981fd9ca698fc2215dc10_a58d1ad36aeb981fd9ca698fc2215dc10}{}\label{class_direct_x_renderer_a58d1ad36aeb981fd9ca698fc2215dc10_a58d1ad36aeb981fd9ca698fc2215dc10}
+
+
+Definition at line 53 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+is\+\_\+rendering@{get\+\_\+is\+\_\+rendering}}
+\index{get\+\_\+is\+\_\+rendering@{get\+\_\+is\+\_\+rendering}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+is\+\_\+rendering() const }{get_is_rendering() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::get\+\_\+is\+\_\+rendering (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_aceda888b20469930d5a99edc842d21a6_aceda888b20469930d5a99edc842d21a6}{}\label{class_direct_x_renderer_aceda888b20469930d5a99edc842d21a6_aceda888b20469930d5a99edc842d21a6}
+
+
+Definition at line 59 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count@{get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}}
+\index{get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count@{get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count() const }{get_swap_chain_buffer_count() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Direct\+X\+Renderer\+::get\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_direct_x_renderer_a6d696829e35fe480381db6b759fe8ca2_a6d696829e35fe480381db6b759fe8ca2}{}\label{class_direct_x_renderer_a6d696829e35fe480381db6b759fe8ca2_a6d696829e35fe480381db6b759fe8ca2}
+
+
+Definition at line 55 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!initialize\+\_\+direct3d@{initialize\+\_\+direct3d}}
+\index{initialize\+\_\+direct3d@{initialize\+\_\+direct3d}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{initialize\+\_\+direct3d(\+H\+W\+N\+D main\+\_\+window\+\_\+handle)}{initialize_direct3d(HWND main_window_handle)}}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::initialize\+\_\+direct3d (
+\begin{DoxyParamCaption}
+\item[{H\+W\+ND}]{main\+\_\+window\+\_\+handle}
+\end{DoxyParamCaption}
+)}\hypertarget{class_direct_x_renderer_a0d6aef4c838ac765f726391ee65c346c_a0d6aef4c838ac765f726391ee65c346c}{}\label{class_direct_x_renderer_a0d6aef4c838ac765f726391ee65c346c_a0d6aef4c838ac765f726391ee65c346c}
+
+
+Definition at line 76 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!log\+\_\+adapter\+\_\+outputs@{log\+\_\+adapter\+\_\+outputs}}
+\index{log\+\_\+adapter\+\_\+outputs@{log\+\_\+adapter\+\_\+outputs}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{log\+\_\+adapter\+\_\+outputs(\+I\+D\+X\+G\+I\+Adapter $\ast$adapter)}{log_adapter_outputs(IDXGIAdapter *adapter)}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::log\+\_\+adapter\+\_\+outputs (
+\begin{DoxyParamCaption}
+\item[{I\+D\+X\+G\+I\+Adapter $\ast$}]{adapter}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a13dbd659f5d0a72be90b0a4be1121ef8_a13dbd659f5d0a72be90b0a4be1121ef8}{}\label{class_direct_x_renderer_a13dbd659f5d0a72be90b0a4be1121ef8_a13dbd659f5d0a72be90b0a4be1121ef8}
+
+
+Definition at line 511 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 24
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!log\+\_\+adapters@{log\+\_\+adapters}}
+\index{log\+\_\+adapters@{log\+\_\+adapters}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{log\+\_\+adapters()}{log_adapters()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::log\+\_\+adapters (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a8bf63477a5f9f210b627c2d07d54caa5_a8bf63477a5f9f210b627c2d07d54caa5}{}\label{class_direct_x_renderer_a8bf63477a5f9f210b627c2d07d54caa5_a8bf63477a5f9f210b627c2d07d54caa5}
+
+
+Definition at line 483 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 26
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 27
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!log\+\_\+output\+\_\+display\+\_\+modes@{log\+\_\+output\+\_\+display\+\_\+modes}}
+\index{log\+\_\+output\+\_\+display\+\_\+modes@{log\+\_\+output\+\_\+display\+\_\+modes}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{log\+\_\+output\+\_\+display\+\_\+modes(\+I\+D\+X\+G\+I\+Output $\ast$output, D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T format)}{log_output_display_modes(IDXGIOutput *output, DXGI_FORMAT format)}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::log\+\_\+output\+\_\+display\+\_\+modes (
+\begin{DoxyParamCaption}
+\item[{I\+D\+X\+G\+I\+Output $\ast$}]{output, }
+\item[{D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT}]{format}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ac2a94e66b56fa26905f19f6952f9dc28_ac2a94e66b56fa26905f19f6952f9dc28}{}\label{class_direct_x_renderer_ac2a94e66b56fa26905f19f6952f9dc28_ac2a94e66b56fa26905f19f6952f9dc28}
+
+
+Definition at line 533 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!render@{render}}
+\index{render@{render}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{render()}{render()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_direct_x_renderer_a2f3ecabf3d5e9d76b7754d66a6a346d3_a2f3ecabf3d5e9d76b7754d66a6a346d3}{}\label{class_direct_x_renderer_a2f3ecabf3d5e9d76b7754d66a6a346d3_a2f3ecabf3d5e9d76b7754d66a6a346d3}
+
+
+Definition at line 12 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 30
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!resize@{resize}}
+\index{resize@{resize}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{resize(int client\+\_\+width, int client\+\_\+height)}{resize(int client_width, int client_height)}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::resize (
+\begin{DoxyParamCaption}
+\item[{int}]{client\+\_\+width, }
+\item[{int}]{client\+\_\+height}
+\end{DoxyParamCaption}
+)}\hypertarget{class_direct_x_renderer_ae823daf9d77db0f506320f7171cb117d_ae823daf9d77db0f506320f7171cb117d}{}\label{class_direct_x_renderer_ae823daf9d77db0f506320f7171cb117d_ae823daf9d77db0f506320f7171cb117d}
+
+
+Definition at line 558 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 31
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 32
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Set4x\+Msaa\+State@{Set4x\+Msaa\+State}}
+\index{Set4x\+Msaa\+State@{Set4x\+Msaa\+State}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{Set4x\+Msaa\+State(bool value)}{Set4xMsaaState(bool value)}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::\+Set4x\+Msaa\+State (
+\begin{DoxyParamCaption}
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)}\hypertarget{class_direct_x_renderer_a252d9ba8d713ba462c54a3dadfda2f59_a252d9ba8d713ba462c54a3dadfda2f59}{}\label{class_direct_x_renderer_a252d9ba8d713ba462c54a3dadfda2f59_a252d9ba8d713ba462c54a3dadfda2f59}
+
+
+Definition at line 655 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 33
+
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!Update@{Update}}
+\index{Update@{Update}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{Update()}{Update()}}]{\setlength{\rightskip}{0pt plus 5cm}void Direct\+X\+Renderer\+::\+Update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_direct_x_renderer_af1bd5f83975a5f0fb1735b3a6e933656_af1bd5f83975a5f0fb1735b3a6e933656}{}\label{class_direct_x_renderer_af1bd5f83975a5f0fb1735b3a6e933656_af1bd5f83975a5f0fb1735b3a6e933656}
+
+
+Definition at line 667 of file Direct\+X\+Renderer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 34
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 35
+
+
+
+
+\subsection{Member Data Documentation}
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+4x\+\_\+msaa\+\_\+quality@{\+\_\+4x\+\_\+msaa\+\_\+quality}}
+\index{\+\_\+4x\+\_\+msaa\+\_\+quality@{\+\_\+4x\+\_\+msaa\+\_\+quality}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+4x\+\_\+msaa\+\_\+quality}{_4x_msaa_quality}}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+NT Direct\+X\+Renderer\+::\+\_\+4x\+\_\+msaa\+\_\+quality = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_acb6551e975a75635b5b3b652fb5c0837_acb6551e975a75635b5b3b652fb5c0837}{}\label{class_direct_x_renderer_acb6551e975a75635b5b3b652fb5c0837_acb6551e975a75635b5b3b652fb5c0837}
+
+
+Definition at line 163 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+4x\+\_\+msaa\+\_\+state@{\+\_\+4x\+\_\+msaa\+\_\+state}}
+\index{\+\_\+4x\+\_\+msaa\+\_\+state@{\+\_\+4x\+\_\+msaa\+\_\+state}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+4x\+\_\+msaa\+\_\+state}{_4x_msaa_state}}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::\+\_\+4x\+\_\+msaa\+\_\+state = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a6f8fb7149965da8c2812d30873f3eadc_a6f8fb7149965da8c2812d30873f3eadc}{}\label{class_direct_x_renderer_a6f8fb7149965da8c2812d30873f3eadc_a6f8fb7149965da8c2812d30873f3eadc}
+
+
+Definition at line 176 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+client\+\_\+aspect\+\_\+ratio@{\+\_\+client\+\_\+aspect\+\_\+ratio}}
+\index{\+\_\+client\+\_\+aspect\+\_\+ratio@{\+\_\+client\+\_\+aspect\+\_\+ratio}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+client\+\_\+aspect\+\_\+ratio}{_client_aspect_ratio}}]{\setlength{\rightskip}{0pt plus 5cm}float Direct\+X\+Renderer\+::\+\_\+client\+\_\+aspect\+\_\+ratio = 0.\+0f\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_aee71c028a66feadb85a8df3a48fee6d3_aee71c028a66feadb85a8df3a48fee6d3}{}\label{class_direct_x_renderer_aee71c028a66feadb85a8df3a48fee6d3_aee71c028a66feadb85a8df3a48fee6d3}
+
+
+Definition at line 173 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+client\+\_\+height@{\+\_\+client\+\_\+height}}
+\index{\+\_\+client\+\_\+height@{\+\_\+client\+\_\+height}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+client\+\_\+height}{_client_height}}]{\setlength{\rightskip}{0pt plus 5cm}int Direct\+X\+Renderer\+::\+\_\+client\+\_\+height = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a864235b89a260f249463e0892d8def67_a864235b89a260f249463e0892d8def67}{}\label{class_direct_x_renderer_a864235b89a260f249463e0892d8def67_a864235b89a260f249463e0892d8def67}
+
+
+Definition at line 171 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+client\+\_\+width@{\+\_\+client\+\_\+width}}
+\index{\+\_\+client\+\_\+width@{\+\_\+client\+\_\+width}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+client\+\_\+width}{_client_width}}]{\setlength{\rightskip}{0pt plus 5cm}int Direct\+X\+Renderer\+::\+\_\+client\+\_\+width = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a4a4d32ddd237330da18828e7ba812ab6_a4a4d32ddd237330da18828e7ba812ab6}{}\label{class_direct_x_renderer_a4a4d32ddd237330da18828e7ba812ab6_a4a4d32ddd237330da18828e7ba812ab6}
+
+
+Definition at line 170 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+is\+\_\+initialized@{\+\_\+is\+\_\+initialized}}
+\index{\+\_\+is\+\_\+initialized@{\+\_\+is\+\_\+initialized}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+is\+\_\+initialized}{_is_initialized}}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::\+\_\+is\+\_\+initialized = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a31ae4c3ff3837f963cda60bf19f765e3_a31ae4c3ff3837f963cda60bf19f765e3}{}\label{class_direct_x_renderer_a31ae4c3ff3837f963cda60bf19f765e3_a31ae4c3ff3837f963cda60bf19f765e3}
+
+
+Definition at line 177 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+is\+\_\+rendering@{\+\_\+is\+\_\+rendering}}
+\index{\+\_\+is\+\_\+rendering@{\+\_\+is\+\_\+rendering}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+is\+\_\+rendering}{_is_rendering}}]{\setlength{\rightskip}{0pt plus 5cm}bool Direct\+X\+Renderer\+::\+\_\+is\+\_\+rendering = false\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_aeb385222af964c11d944f758ae9fb4fc_aeb385222af964c11d944f758ae9fb4fc}{}\label{class_direct_x_renderer_aeb385222af964c11d944f758ae9fb4fc_aeb385222af964c11d944f758ae9fb4fc}
+
+
+Definition at line 178 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+main\+\_\+window\+\_\+handle@{\+\_\+main\+\_\+window\+\_\+handle}}
+\index{\+\_\+main\+\_\+window\+\_\+handle@{\+\_\+main\+\_\+window\+\_\+handle}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+main\+\_\+window\+\_\+handle}{_main_window_handle}}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+ND Direct\+X\+Renderer\+::\+\_\+main\+\_\+window\+\_\+handle\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a85dde4c45dcb539e89d83edec7382c56_a85dde4c45dcb539e89d83edec7382c56}{}\label{class_direct_x_renderer_a85dde4c45dcb539e89d83edec7382c56_a85dde4c45dcb539e89d83edec7382c56}
+
+
+Definition at line 126 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count@{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}}
+\index{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count@{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}{_swap_chain_buffer_count}}]{\setlength{\rightskip}{0pt plus 5cm}const int Direct\+X\+Renderer\+::\+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count = 2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_aaf675ecf10cb34d5247f78920f8851da_aaf675ecf10cb34d5247f78920f8851da}{}\label{class_direct_x_renderer_aaf675ecf10cb34d5247f78920f8851da_aaf675ecf10cb34d5247f78920f8851da}
+
+
+Definition at line 106 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!box\+\_\+mesh\+\_\+geometry@{box\+\_\+mesh\+\_\+geometry}}
+\index{box\+\_\+mesh\+\_\+geometry@{box\+\_\+mesh\+\_\+geometry}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{box\+\_\+mesh\+\_\+geometry}{box_mesh_geometry}}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<${\bf Mesh\+Geometry}$>$ Direct\+X\+Renderer\+::box\+\_\+mesh\+\_\+geometry = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a834f2538756929aa9744cee706dae4e9_a834f2538756929aa9744cee706dae4e9}{}\label{class_direct_x_renderer_a834f2538756929aa9744cee706dae4e9_a834f2538756929aa9744cee706dae4e9}
+
+
+Definition at line 129 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!camera@{camera}}
+\index{camera@{camera}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{camera}{camera}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Camera} Direct\+X\+Renderer\+::camera\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_aa951dfb1fd582826829d938eaffef28d_aa951dfb1fd582826829d938eaffef28d}{}\label{class_direct_x_renderer_aa951dfb1fd582826829d938eaffef28d_aa951dfb1fd582826829d938eaffef28d}
+
+
+Definition at line 108 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size@{cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size}}
+\index{cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size@{cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size}{cbv_srv_uav_descriptor_size}}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+NT Direct\+X\+Renderer\+::cbv\+\_\+srv\+\_\+uav\+\_\+descriptor\+\_\+size = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ad2737cb5c487cbec53f3cd4ce74ff386_ad2737cb5c487cbec53f3cd4ce74ff386}{}\label{class_direct_x_renderer_ad2737cb5c487cbec53f3cd4ce74ff386_ad2737cb5c487cbec53f3cd4ce74ff386}
+
+
+Definition at line 162 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!current\+\_\+back\+\_\+buffer@{current\+\_\+back\+\_\+buffer}}
+\index{current\+\_\+back\+\_\+buffer@{current\+\_\+back\+\_\+buffer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{current\+\_\+back\+\_\+buffer}{current_back_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}int Direct\+X\+Renderer\+::current\+\_\+back\+\_\+buffer = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a54e1d05a31bf58261c4264d37a1cd901_a54e1d05a31bf58261c4264d37a1cd901}{}\label{class_direct_x_renderer_a54e1d05a31bf58261c4264d37a1cd901_a54e1d05a31bf58261c4264d37a1cd901}
+
+
+Definition at line 169 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!current\+\_\+fence\+\_\+index@{current\+\_\+fence\+\_\+index}}
+\index{current\+\_\+fence\+\_\+index@{current\+\_\+fence\+\_\+index}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{current\+\_\+fence\+\_\+index}{current_fence_index}}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T64 Direct\+X\+Renderer\+::current\+\_\+fence\+\_\+index = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a373ab38c7d919ae26c2d3148ab126538_a373ab38c7d919ae26c2d3148ab126538}{}\label{class_direct_x_renderer_a373ab38c7d919ae26c2d3148ab126538_a373ab38c7d919ae26c2d3148ab126538}
+
+
+Definition at line 155 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!depth\+\_\+stencil\+\_\+buffer@{depth\+\_\+stencil\+\_\+buffer}}
+\index{depth\+\_\+stencil\+\_\+buffer@{depth\+\_\+stencil\+\_\+buffer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{depth\+\_\+stencil\+\_\+buffer}{depth_stencil_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Resource$>$ Direct\+X\+Renderer\+::depth\+\_\+stencil\+\_\+buffer\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a624b17abc05948ba9fed5571bb91187a_a624b17abc05948ba9fed5571bb91187a}{}\label{class_direct_x_renderer_a624b17abc05948ba9fed5571bb91187a_a624b17abc05948ba9fed5571bb91187a}
+
+
+Definition at line 142 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dsv\+\_\+descriptor\+\_\+size@{dsv\+\_\+descriptor\+\_\+size}}
+\index{dsv\+\_\+descriptor\+\_\+size@{dsv\+\_\+descriptor\+\_\+size}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dsv\+\_\+descriptor\+\_\+size}{dsv_descriptor_size}}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+NT Direct\+X\+Renderer\+::dsv\+\_\+descriptor\+\_\+size = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a0b16f02604e3f5cf4e55321d01e4bd9d_a0b16f02604e3f5cf4e55321d01e4bd9d}{}\label{class_direct_x_renderer_a0b16f02604e3f5cf4e55321d01e4bd9d_a0b16f02604e3f5cf4e55321d01e4bd9d}
+
+
+Definition at line 161 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+cbv\+\_\+heap@{dx\+\_\+cbv\+\_\+heap}}
+\index{dx\+\_\+cbv\+\_\+heap@{dx\+\_\+cbv\+\_\+heap}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+cbv\+\_\+heap}{dx_cbv_heap}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Descriptor\+Heap$>$ Direct\+X\+Renderer\+::dx\+\_\+cbv\+\_\+heap = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a2aaa7a57aea5c65a3381e54513ed7ff2_a2aaa7a57aea5c65a3381e54513ed7ff2}{}\label{class_direct_x_renderer_a2aaa7a57aea5c65a3381e54513ed7ff2_a2aaa7a57aea5c65a3381e54513ed7ff2}
+
+
+Definition at line 148 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+command\+\_\+list@{dx\+\_\+command\+\_\+list}}
+\index{dx\+\_\+command\+\_\+list@{dx\+\_\+command\+\_\+list}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+command\+\_\+list}{dx_command_list}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Graphics\+Command\+List$>$ Direct\+X\+Renderer\+::dx\+\_\+command\+\_\+list\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a5bdea06c9f3fa2af49413a70f39bc0fb_a5bdea06c9f3fa2af49413a70f39bc0fb}{}\label{class_direct_x_renderer_a5bdea06c9f3fa2af49413a70f39bc0fb_a5bdea06c9f3fa2af49413a70f39bc0fb}
+
+
+Definition at line 139 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+command\+\_\+list\+\_\+allocator@{dx\+\_\+command\+\_\+list\+\_\+allocator}}
+\index{dx\+\_\+command\+\_\+list\+\_\+allocator@{dx\+\_\+command\+\_\+list\+\_\+allocator}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+command\+\_\+list\+\_\+allocator}{dx_command_list_allocator}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Command\+Allocator$>$ Direct\+X\+Renderer\+::dx\+\_\+command\+\_\+list\+\_\+allocator\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a885e10b057d3e1d3f2c76045e567887e_a885e10b057d3e1d3f2c76045e567887e}{}\label{class_direct_x_renderer_a885e10b057d3e1d3f2c76045e567887e_a885e10b057d3e1d3f2c76045e567887e}
+
+
+Definition at line 138 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+command\+\_\+queue@{dx\+\_\+command\+\_\+queue}}
+\index{dx\+\_\+command\+\_\+queue@{dx\+\_\+command\+\_\+queue}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+command\+\_\+queue}{dx_command_queue}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Command\+Queue$>$ Direct\+X\+Renderer\+::dx\+\_\+command\+\_\+queue\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a8b99048329168c87d7ef207698caeddc_a8b99048329168c87d7ef207698caeddc}{}\label{class_direct_x_renderer_a8b99048329168c87d7ef207698caeddc_a8b99048329168c87d7ef207698caeddc}
+
+
+Definition at line 137 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+device@{dx\+\_\+device}}
+\index{dx\+\_\+device@{dx\+\_\+device}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+device}{dx_device}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Device$>$ Direct\+X\+Renderer\+::dx\+\_\+device\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a665ce2d16dd1e15e4e3f7ecef3c5b11a_a665ce2d16dd1e15e4e3f7ecef3c5b11a}{}\label{class_direct_x_renderer_a665ce2d16dd1e15e4e3f7ecef3c5b11a_a665ce2d16dd1e15e4e3f7ecef3c5b11a}
+
+
+Definition at line 133 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+dsv\+\_\+heap@{dx\+\_\+dsv\+\_\+heap}}
+\index{dx\+\_\+dsv\+\_\+heap@{dx\+\_\+dsv\+\_\+heap}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+dsv\+\_\+heap}{dx_dsv_heap}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Descriptor\+Heap$>$ Direct\+X\+Renderer\+::dx\+\_\+dsv\+\_\+heap = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ae865e29f2c2084f98b095b8b60fbeef2_ae865e29f2c2084f98b095b8b60fbeef2}{}\label{class_direct_x_renderer_ae865e29f2c2084f98b095b8b60fbeef2_ae865e29f2c2084f98b095b8b60fbeef2}
+
+
+Definition at line 145 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+dxgi\+\_\+factory@{dx\+\_\+dxgi\+\_\+factory}}
+\index{dx\+\_\+dxgi\+\_\+factory@{dx\+\_\+dxgi\+\_\+factory}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+dxgi\+\_\+factory}{dx_dxgi_factory}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D\+X\+G\+I\+Factory4$>$ Direct\+X\+Renderer\+::dx\+\_\+dxgi\+\_\+factory\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a514dd6a49f675b0b1f05eeb5df61e688_a514dd6a49f675b0b1f05eeb5df61e688}{}\label{class_direct_x_renderer_a514dd6a49f675b0b1f05eeb5df61e688_a514dd6a49f675b0b1f05eeb5df61e688}
+
+
+Definition at line 131 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+root\+\_\+signature@{dx\+\_\+root\+\_\+signature}}
+\index{dx\+\_\+root\+\_\+signature@{dx\+\_\+root\+\_\+signature}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+root\+\_\+signature}{dx_root_signature}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Root\+Signature$>$ Direct\+X\+Renderer\+::dx\+\_\+root\+\_\+signature = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a36476b689f10a35b756e083320a13634_a36476b689f10a35b756e083320a13634}{}\label{class_direct_x_renderer_a36476b689f10a35b756e083320a13634_a36476b689f10a35b756e083320a13634}
+
+
+Definition at line 147 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+rtv\+\_\+heap@{dx\+\_\+rtv\+\_\+heap}}
+\index{dx\+\_\+rtv\+\_\+heap@{dx\+\_\+rtv\+\_\+heap}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+rtv\+\_\+heap}{dx_rtv_heap}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Descriptor\+Heap$>$ Direct\+X\+Renderer\+::dx\+\_\+rtv\+\_\+heap = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a082c69eafb2449e5f19efb156fa0c0e8_a082c69eafb2449e5f19efb156fa0c0e8}{}\label{class_direct_x_renderer_a082c69eafb2449e5f19efb156fa0c0e8_a082c69eafb2449e5f19efb156fa0c0e8}
+
+
+Definition at line 144 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!dx\+\_\+swap\+\_\+chain@{dx\+\_\+swap\+\_\+chain}}
+\index{dx\+\_\+swap\+\_\+chain@{dx\+\_\+swap\+\_\+chain}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{dx\+\_\+swap\+\_\+chain}{dx_swap_chain}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D\+X\+G\+I\+Swap\+Chain$>$ Direct\+X\+Renderer\+::dx\+\_\+swap\+\_\+chain\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_adb032dd1c2a1add393fe9f6e73770e68_adb032dd1c2a1add393fe9f6e73770e68}{}\label{class_direct_x_renderer_adb032dd1c2a1add393fe9f6e73770e68_adb032dd1c2a1add393fe9f6e73770e68}
+
+
+Definition at line 132 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!fence@{fence}}
+\index{fence@{fence}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{fence}{fence}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Fence$>$ Direct\+X\+Renderer\+::fence\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a9f2cdba34c8670e6ec1f686b362ab700_a9f2cdba34c8670e6ec1f686b362ab700}{}\label{class_direct_x_renderer_a9f2cdba34c8670e6ec1f686b362ab700_a9f2cdba34c8670e6ec1f686b362ab700}
+
+
+Definition at line 135 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Back\+Buffer\+Format@{m\+Back\+Buffer\+Format}}
+\index{m\+Back\+Buffer\+Format@{m\+Back\+Buffer\+Format}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Back\+Buffer\+Format}{mBackBufferFormat}}]{\setlength{\rightskip}{0pt plus 5cm}D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT Direct\+X\+Renderer\+::m\+Back\+Buffer\+Format = D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+R8\+G8\+B8\+A8\+\_\+\+U\+N\+O\+RM\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a10f81ee4e50481b1d5589f72fb5698f4_a10f81ee4e50481b1d5589f72fb5698f4}{}\label{class_direct_x_renderer_a10f81ee4e50481b1d5589f72fb5698f4_a10f81ee4e50481b1d5589f72fb5698f4}
+
+
+Definition at line 166 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!md3d\+Driver\+Type@{md3d\+Driver\+Type}}
+\index{md3d\+Driver\+Type@{md3d\+Driver\+Type}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{md3d\+Driver\+Type}{md3dDriverType}}]{\setlength{\rightskip}{0pt plus 5cm}D3\+D\+\_\+\+D\+R\+I\+V\+E\+R\+\_\+\+T\+Y\+PE Direct\+X\+Renderer\+::md3d\+Driver\+Type = D3\+D\+\_\+\+D\+R\+I\+V\+E\+R\+\_\+\+T\+Y\+P\+E\+\_\+\+H\+A\+R\+D\+W\+A\+RE\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a34c803e7e620ca5b73fe994fd278611c_a34c803e7e620ca5b73fe994fd278611c}{}\label{class_direct_x_renderer_a34c803e7e620ca5b73fe994fd278611c_a34c803e7e620ca5b73fe994fd278611c}
+
+
+Definition at line 165 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Depth\+Stencil\+Format@{m\+Depth\+Stencil\+Format}}
+\index{m\+Depth\+Stencil\+Format@{m\+Depth\+Stencil\+Format}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Depth\+Stencil\+Format}{mDepthStencilFormat}}]{\setlength{\rightskip}{0pt plus 5cm}D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+AT Direct\+X\+Renderer\+::m\+Depth\+Stencil\+Format = D\+X\+G\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D24\+\_\+\+U\+N\+O\+R\+M\+\_\+\+S8\+\_\+\+U\+I\+NT\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a1f7901ccfc61d85b80f94d7de0fef163_a1f7901ccfc61d85b80f94d7de0fef163}{}\label{class_direct_x_renderer_a1f7901ccfc61d85b80f94d7de0fef163_a1f7901ccfc61d85b80f94d7de0fef163}
+
+
+Definition at line 167 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Input\+Layout@{m\+Input\+Layout}}
+\index{m\+Input\+Layout@{m\+Input\+Layout}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Input\+Layout}{mInputLayout}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$D3\+D12\+\_\+\+I\+N\+P\+U\+T\+\_\+\+E\+L\+E\+M\+E\+N\+T\+\_\+\+D\+E\+SC$>$ Direct\+X\+Renderer\+::m\+Input\+Layout\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a9e2123f281f20c29d3d4c40bdf3246b1_a9e2123f281f20c29d3d4c40bdf3246b1}{}\label{class_direct_x_renderer_a9e2123f281f20c29d3d4c40bdf3246b1_a9e2123f281f20c29d3d4c40bdf3246b1}
+
+
+Definition at line 117 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Last\+Mouse\+Pos@{m\+Last\+Mouse\+Pos}}
+\index{m\+Last\+Mouse\+Pos@{m\+Last\+Mouse\+Pos}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Last\+Mouse\+Pos}{mLastMousePos}}]{\setlength{\rightskip}{0pt plus 5cm}P\+O\+I\+NT Direct\+X\+Renderer\+::m\+Last\+Mouse\+Pos\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a11a4b47ed4a944b8671ccbda8698780a_a11a4b47ed4a944b8671ccbda8698780a}{}\label{class_direct_x_renderer_a11a4b47ed4a944b8671ccbda8698780a_a11a4b47ed4a944b8671ccbda8698780a}
+
+
+Definition at line 157 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Proj@{m\+Proj}}
+\index{m\+Proj@{m\+Proj}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Proj}{mProj}}]{\setlength{\rightskip}{0pt plus 5cm}X\+M\+F\+L\+O\+A\+T4\+X4 Direct\+X\+Renderer\+::m\+Proj = {\bf Math\+Helper\+::\+Identity4x4}()\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_abebffe15f62df95af83a3d10b1fb4ee8_abebffe15f62df95af83a3d10b1fb4ee8}{}\label{class_direct_x_renderer_abebffe15f62df95af83a3d10b1fb4ee8_abebffe15f62df95af83a3d10b1fb4ee8}
+
+
+Definition at line 113 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!mps\+Byte\+Code@{mps\+Byte\+Code}}
+\index{mps\+Byte\+Code@{mps\+Byte\+Code}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{mps\+Byte\+Code}{mpsByteCode}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D\+Blob$>$ Direct\+X\+Renderer\+::mps\+Byte\+Code = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ae01efa1365005bd544950fcbccfe6b47_ae01efa1365005bd544950fcbccfe6b47}{}\label{class_direct_x_renderer_ae01efa1365005bd544950fcbccfe6b47_ae01efa1365005bd544950fcbccfe6b47}
+
+
+Definition at line 151 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+P\+SO@{m\+P\+SO}}
+\index{m\+P\+SO@{m\+P\+SO}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+P\+SO}{mPSO}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Pipeline\+State$>$ Direct\+X\+Renderer\+::m\+P\+SO = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a99d57c8ad110aeee5347e4a0baf28ae5_a99d57c8ad110aeee5347e4a0baf28ae5}{}\label{class_direct_x_renderer_a99d57c8ad110aeee5347e4a0baf28ae5_a99d57c8ad110aeee5347e4a0baf28ae5}
+
+
+Definition at line 152 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Scissor\+Rect@{m\+Scissor\+Rect}}
+\index{m\+Scissor\+Rect@{m\+Scissor\+Rect}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Scissor\+Rect}{mScissorRect}}]{\setlength{\rightskip}{0pt plus 5cm}D3\+D12\+\_\+\+R\+E\+CT Direct\+X\+Renderer\+::m\+Scissor\+Rect\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a67085369c1a3832355849292321bf246_a67085369c1a3832355849292321bf246}{}\label{class_direct_x_renderer_a67085369c1a3832355849292321bf246_a67085369c1a3832355849292321bf246}
+
+
+Definition at line 123 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+Screen\+Viewport@{m\+Screen\+Viewport}}
+\index{m\+Screen\+Viewport@{m\+Screen\+Viewport}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+Screen\+Viewport}{mScreenViewport}}]{\setlength{\rightskip}{0pt plus 5cm}D3\+D12\+\_\+\+V\+I\+E\+W\+P\+O\+RT Direct\+X\+Renderer\+::m\+Screen\+Viewport\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a09101a474a851ed120e597221f35f0e5_a09101a474a851ed120e597221f35f0e5}{}\label{class_direct_x_renderer_a09101a474a851ed120e597221f35f0e5_a09101a474a851ed120e597221f35f0e5}
+
+
+Definition at line 120 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+View@{m\+View}}
+\index{m\+View@{m\+View}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+View}{mView}}]{\setlength{\rightskip}{0pt plus 5cm}X\+M\+F\+L\+O\+A\+T4\+X4 Direct\+X\+Renderer\+::m\+View = {\bf Math\+Helper\+::\+Identity4x4}()\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a0fb814f0d43d2ce2c6bacfd93471e4f6_a0fb814f0d43d2ce2c6bacfd93471e4f6}{}\label{class_direct_x_renderer_a0fb814f0d43d2ce2c6bacfd93471e4f6_a0fb814f0d43d2ce2c6bacfd93471e4f6}
+
+
+Definition at line 112 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!mvs\+Byte\+Code@{mvs\+Byte\+Code}}
+\index{mvs\+Byte\+Code@{mvs\+Byte\+Code}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{mvs\+Byte\+Code}{mvsByteCode}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D\+Blob$>$ Direct\+X\+Renderer\+::mvs\+Byte\+Code = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a795777c3f460bc862af3d8be68db0826_a795777c3f460bc862af3d8be68db0826}{}\label{class_direct_x_renderer_a795777c3f460bc862af3d8be68db0826_a795777c3f460bc862af3d8be68db0826}
+
+
+Definition at line 150 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!m\+World@{m\+World}}
+\index{m\+World@{m\+World}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{m\+World}{mWorld}}]{\setlength{\rightskip}{0pt plus 5cm}X\+M\+F\+L\+O\+A\+T4\+X4 Direct\+X\+Renderer\+::m\+World = {\bf Math\+Helper\+::\+Identity4x4}()\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a3a4030d42352ab1e62f5e89f094a0152_a3a4030d42352ab1e62f5e89f094a0152}{}\label{class_direct_x_renderer_a3a4030d42352ab1e62f5e89f094a0152_a3a4030d42352ab1e62f5e89f094a0152}
+
+
+Definition at line 111 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!object\+\_\+constants\+\_\+upload\+\_\+buffer@{object\+\_\+constants\+\_\+upload\+\_\+buffer}}
+\index{object\+\_\+constants\+\_\+upload\+\_\+buffer@{object\+\_\+constants\+\_\+upload\+\_\+buffer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{object\+\_\+constants\+\_\+upload\+\_\+buffer}{object_constants_upload_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}unique\+\_\+ptr$<${\bf Upload\+Buffer}$<${\bf Object\+Constants}$>$ $>$ Direct\+X\+Renderer\+::object\+\_\+constants\+\_\+upload\+\_\+buffer = nullptr\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ae69d39730c18ec7f8ef2bea3b30cb560_ae69d39730c18ec7f8ef2bea3b30cb560}{}\label{class_direct_x_renderer_ae69d39730c18ec7f8ef2bea3b30cb560_ae69d39730c18ec7f8ef2bea3b30cb560}
+
+
+Definition at line 128 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!rtv\+\_\+descriptor\+\_\+size@{rtv\+\_\+descriptor\+\_\+size}}
+\index{rtv\+\_\+descriptor\+\_\+size@{rtv\+\_\+descriptor\+\_\+size}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{rtv\+\_\+descriptor\+\_\+size}{rtv_descriptor_size}}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+NT Direct\+X\+Renderer\+::rtv\+\_\+descriptor\+\_\+size = 0\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_a192899db0ebd9b8632fe9300f02b226a_a192899db0ebd9b8632fe9300f02b226a}{}\label{class_direct_x_renderer_a192899db0ebd9b8632fe9300f02b226a_a192899db0ebd9b8632fe9300f02b226a}
+
+
+Definition at line 160 of file Direct\+X\+Renderer.\+hpp.
+
+\index{Direct\+X\+Renderer@{Direct\+X\+Renderer}!swap\+\_\+chain\+\_\+buffer@{swap\+\_\+chain\+\_\+buffer}}
+\index{swap\+\_\+chain\+\_\+buffer@{swap\+\_\+chain\+\_\+buffer}!Direct\+X\+Renderer@{Direct\+X\+Renderer}}
+\subsubsection[{\texorpdfstring{swap\+\_\+chain\+\_\+buffer}{swap_chain_buffer}}]{\setlength{\rightskip}{0pt plus 5cm}Com\+Ptr$<$I\+D3\+D12\+Resource$>$ Direct\+X\+Renderer\+::swap\+\_\+chain\+\_\+buffer\mbox{[}{\bf \+\_\+swap\+\_\+chain\+\_\+buffer\+\_\+count}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}\hypertarget{class_direct_x_renderer_ad8a4b2130a07748ce0c503fe9c9c7d14_ad8a4b2130a07748ce0c503fe9c9c7d14}{}\label{class_direct_x_renderer_ad8a4b2130a07748ce0c503fe9c9c7d14_ad8a4b2130a07748ce0c503fe9c9c7d14}
+
+
+Definition at line 141 of file Direct\+X\+Renderer.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_direct_x_renderer_8hpp}{Direct\+X\+Renderer.\+hpp}\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_direct_x_renderer_8cpp}{Direct\+X\+Renderer.\+cpp}\end{DoxyCompactItemize}

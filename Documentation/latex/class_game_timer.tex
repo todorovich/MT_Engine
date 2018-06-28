@@ -1,0 +1,459 @@
+\hypertarget{class_game_timer}{}\section{Game\+Timer Class Reference}
+\label{class_game_timer}\index{Game\+Timer@{Game\+Timer}}
+
+
+{\ttfamily \#include $<$Game\+Timer.\+hpp$>$}
+
+
+
+Collaboration diagram for Game\+Timer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{class_game_timer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_game_timer_a8fadf802cd6f60fd3466fed3a890c64d_a8fadf802cd6f60fd3466fed3a890c64d}{Game\+Timer} ()=default
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a1fe9ed75535944c51ce2deeee90fa9e9_a1fe9ed75535944c51ce2deeee90fa9e9}{total\+\_\+time} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a92fc929a7aef200fe39ebc31edfaa24e_a92fc929a7aef200fe39ebc31edfaa24e}{run\+\_\+time} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a0f6e16d44a9fd01b5b63a36c4df3f04b_a0f6e16d44a9fd01b5b63a36c4df3f04b}{paused\+\_\+time} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a70ab8ec146f451278051054131ccbb00_a70ab8ec146f451278051054131ccbb00}{delta\+\_\+time} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a111d910c595648c28cf6fe6cb6151301_a111d910c595648c28cf6fe6cb6151301}{ns\+\_\+until\+\_\+next\+\_\+update} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a7fd18be5e0dd4f5fa8da0b78755e4353_a7fd18be5e0dd4f5fa8da0b78755e4353}{ns\+\_\+until\+\_\+next\+\_\+render} () const 
+\item 
+std\+::chrono\+::nanoseconds \hyperlink{class_game_timer_a8bfc43723bdfd30d2c6bd780c8976a68_a8bfc43723bdfd30d2c6bd780c8976a68}{ns\+\_\+until\+\_\+next\+\_\+idle} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a0bb71bebfcf4eecd9cff54e566d07bee_a0bb71bebfcf4eecd9cff54e566d07bee}{avg\+\_\+ns\+\_\+between\+\_\+update} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a60968291db34364580f524b553b85bd1_a60968291db34364580f524b553b85bd1}{avg\+\_\+ns\+\_\+between\+\_\+render} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a488f57ea227be64ccc03b9c70b1d6a43_a488f57ea227be64ccc03b9c70b1d6a43}{avg\+\_\+ns\+\_\+per\+\_\+update} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a1ec9b2368e11e63c48fdfa2965b9e88c_a1ec9b2368e11e63c48fdfa2965b9e88c}{avg\+\_\+ns\+\_\+per\+\_\+render} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a46db6a1cc03e89eac25db2296767f067_a46db6a1cc03e89eac25db2296767f067}{avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval} () const 
+\item 
+\hyperlink{_game_timer_8hpp_ab009df19aad3a6ab5be3c7e2f740f737_ab009df19aad3a6ab5be3c7e2f740f737}{std\+::chrono\+::duration}$<$ float, std\+::nano $>$ \hyperlink{class_game_timer_a46c0437f60c22411b55f31c8637e4827_a46c0437f60c22411b55f31c8637e4827}{ns\+\_\+idle\+\_\+this\+\_\+interval} () const 
+\item 
+bool \hyperlink{class_game_timer_a2fba57083e2609aa005a99042365b001_a2fba57083e2609aa005a99042365b001}{is\+\_\+paused} () const 
+\item 
+void \hyperlink{class_game_timer_a86cb497fa9b732ca55fda03062f34891_a86cb497fa9b732ca55fda03062f34891}{initialize} ()
+\item 
+void \hyperlink{class_game_timer_a1ce0ff591ad01b4aaeb4f28eb8a146ee_a1ce0ff591ad01b4aaeb4f28eb8a146ee}{unpause\+\_\+time} ()
+\item 
+void \hyperlink{class_game_timer_a8bcaac2f847f9a839eca50e72a37bc5d_a8bcaac2f847f9a839eca50e72a37bc5d}{pause\+\_\+time} ()
+\item 
+void \hyperlink{class_game_timer_a20aa18e5ab02ae786083c131107afe32_a20aa18e5ab02ae786083c131107afe32}{tick} ()
+\item 
+void \hyperlink{class_game_timer_af514830a6ca1b8c03a270fd687a372c1_af514830a6ca1b8c03a270fd687a372c1}{start\+\_\+update\+\_\+timer} ()
+\item 
+void \hyperlink{class_game_timer_a2cb06cea96bd5a0b5a9b422e129a8901_a2cb06cea96bd5a0b5a9b422e129a8901}{end\+\_\+update\+\_\+timer} ()
+\item 
+void \hyperlink{class_game_timer_a1de3e26ef16c57ad3f435afb4c82109a_a1de3e26ef16c57ad3f435afb4c82109a}{start\+\_\+render\+\_\+timer} ()
+\item 
+void \hyperlink{class_game_timer_af170c5bfe99ef9b566487cde8e7ce153_af170c5bfe99ef9b566487cde8e7ce153}{end\+\_\+render\+\_\+timer} ()
+\item 
+void \hyperlink{class_game_timer_ac5652aa7cc3c54c24b8a2e5429f7a102_ac5652aa7cc3c54c24b8a2e5429f7a102}{start\+\_\+new\+\_\+idle\+\_\+interval} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file Game\+Timer.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Game\+Timer@{Game\+Timer}!Game\+Timer@{Game\+Timer}}
+\index{Game\+Timer@{Game\+Timer}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{Game\+Timer()=default}{GameTimer()=default}}]{\setlength{\rightskip}{0pt plus 5cm}Game\+Timer\+::\+Game\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{class_game_timer_a8fadf802cd6f60fd3466fed3a890c64d_a8fadf802cd6f60fd3466fed3a890c64d}{}\label{class_game_timer_a8fadf802cd6f60fd3466fed3a890c64d_a8fadf802cd6f60fd3466fed3a890c64d}
+
+
+\subsection{Member Function Documentation}
+\index{Game\+Timer@{Game\+Timer}!avg\+\_\+ns\+\_\+between\+\_\+render@{avg\+\_\+ns\+\_\+between\+\_\+render}}
+\index{avg\+\_\+ns\+\_\+between\+\_\+render@{avg\+\_\+ns\+\_\+between\+\_\+render}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{avg\+\_\+ns\+\_\+between\+\_\+render() const }{avg_ns_between_render() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::avg\+\_\+ns\+\_\+between\+\_\+render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a60968291db34364580f524b553b85bd1_a60968291db34364580f524b553b85bd1}{}\label{class_game_timer_a60968291db34364580f524b553b85bd1_a60968291db34364580f524b553b85bd1}
+
+
+Definition at line 40 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\index{Game\+Timer@{Game\+Timer}!avg\+\_\+ns\+\_\+between\+\_\+update@{avg\+\_\+ns\+\_\+between\+\_\+update}}
+\index{avg\+\_\+ns\+\_\+between\+\_\+update@{avg\+\_\+ns\+\_\+between\+\_\+update}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{avg\+\_\+ns\+\_\+between\+\_\+update() const }{avg_ns_between_update() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::avg\+\_\+ns\+\_\+between\+\_\+update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a0bb71bebfcf4eecd9cff54e566d07bee_a0bb71bebfcf4eecd9cff54e566d07bee}{}\label{class_game_timer_a0bb71bebfcf4eecd9cff54e566d07bee_a0bb71bebfcf4eecd9cff54e566d07bee}
+
+
+Definition at line 38 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\index{Game\+Timer@{Game\+Timer}!avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval@{avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval}}
+\index{avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval@{avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval() const }{avg_ns_idle_per_interval() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::avg\+\_\+ns\+\_\+idle\+\_\+per\+\_\+interval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a46db6a1cc03e89eac25db2296767f067_a46db6a1cc03e89eac25db2296767f067}{}\label{class_game_timer_a46db6a1cc03e89eac25db2296767f067_a46db6a1cc03e89eac25db2296767f067}
+
+
+Definition at line 46 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\index{Game\+Timer@{Game\+Timer}!avg\+\_\+ns\+\_\+per\+\_\+render@{avg\+\_\+ns\+\_\+per\+\_\+render}}
+\index{avg\+\_\+ns\+\_\+per\+\_\+render@{avg\+\_\+ns\+\_\+per\+\_\+render}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{avg\+\_\+ns\+\_\+per\+\_\+render() const }{avg_ns_per_render() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::avg\+\_\+ns\+\_\+per\+\_\+render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a1ec9b2368e11e63c48fdfa2965b9e88c_a1ec9b2368e11e63c48fdfa2965b9e88c}{}\label{class_game_timer_a1ec9b2368e11e63c48fdfa2965b9e88c_a1ec9b2368e11e63c48fdfa2965b9e88c}
+
+
+Definition at line 44 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\index{Game\+Timer@{Game\+Timer}!avg\+\_\+ns\+\_\+per\+\_\+update@{avg\+\_\+ns\+\_\+per\+\_\+update}}
+\index{avg\+\_\+ns\+\_\+per\+\_\+update@{avg\+\_\+ns\+\_\+per\+\_\+update}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{avg\+\_\+ns\+\_\+per\+\_\+update() const }{avg_ns_per_update() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::avg\+\_\+ns\+\_\+per\+\_\+update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a488f57ea227be64ccc03b9c70b1d6a43_a488f57ea227be64ccc03b9c70b1d6a43}{}\label{class_game_timer_a488f57ea227be64ccc03b9c70b1d6a43_a488f57ea227be64ccc03b9c70b1d6a43}
+
+
+Definition at line 42 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\index{Game\+Timer@{Game\+Timer}!delta\+\_\+time@{delta\+\_\+time}}
+\index{delta\+\_\+time@{delta\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{delta\+\_\+time() const }{delta_time() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::delta\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a70ab8ec146f451278051054131ccbb00_a70ab8ec146f451278051054131ccbb00}{}\label{class_game_timer_a70ab8ec146f451278051054131ccbb00_a70ab8ec146f451278051054131ccbb00}
+
+
+Definition at line 30 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\index{Game\+Timer@{Game\+Timer}!end\+\_\+render\+\_\+timer@{end\+\_\+render\+\_\+timer}}
+\index{end\+\_\+render\+\_\+timer@{end\+\_\+render\+\_\+timer}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{end\+\_\+render\+\_\+timer()}{end_render_timer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::end\+\_\+render\+\_\+timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_af170c5bfe99ef9b566487cde8e7ce153_af170c5bfe99ef9b566487cde8e7ce153}{}\label{class_game_timer_af170c5bfe99ef9b566487cde8e7ce153_af170c5bfe99ef9b566487cde8e7ce153}
+
+
+Definition at line 74 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\index{Game\+Timer@{Game\+Timer}!end\+\_\+update\+\_\+timer@{end\+\_\+update\+\_\+timer}}
+\index{end\+\_\+update\+\_\+timer@{end\+\_\+update\+\_\+timer}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{end\+\_\+update\+\_\+timer()}{end_update_timer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::end\+\_\+update\+\_\+timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a2cb06cea96bd5a0b5a9b422e129a8901_a2cb06cea96bd5a0b5a9b422e129a8901}{}\label{class_game_timer_a2cb06cea96bd5a0b5a9b422e129a8901_a2cb06cea96bd5a0b5a9b422e129a8901}
+
+
+Definition at line 52 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\index{Game\+Timer@{Game\+Timer}!initialize@{initialize}}
+\index{initialize@{initialize}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{initialize()}{initialize()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::initialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a86cb497fa9b732ca55fda03062f34891_a86cb497fa9b732ca55fda03062f34891}{}\label{class_game_timer_a86cb497fa9b732ca55fda03062f34891_a86cb497fa9b732ca55fda03062f34891}
+
+
+Definition at line 12 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\index{Game\+Timer@{Game\+Timer}!is\+\_\+paused@{is\+\_\+paused}}
+\index{is\+\_\+paused@{is\+\_\+paused}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{is\+\_\+paused() const }{is_paused() const }}]{\setlength{\rightskip}{0pt plus 5cm}bool Game\+Timer\+::is\+\_\+paused (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a2fba57083e2609aa005a99042365b001_a2fba57083e2609aa005a99042365b001}{}\label{class_game_timer_a2fba57083e2609aa005a99042365b001_a2fba57083e2609aa005a99042365b001}
+
+
+Definition at line 50 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\index{Game\+Timer@{Game\+Timer}!ns\+\_\+idle\+\_\+this\+\_\+interval@{ns\+\_\+idle\+\_\+this\+\_\+interval}}
+\index{ns\+\_\+idle\+\_\+this\+\_\+interval@{ns\+\_\+idle\+\_\+this\+\_\+interval}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{ns\+\_\+idle\+\_\+this\+\_\+interval() const }{ns_idle_this_interval() const }}]{\setlength{\rightskip}{0pt plus 5cm}{\bf std\+::chrono\+::duration}$<$float, std\+::nano$>$ Game\+Timer\+::ns\+\_\+idle\+\_\+this\+\_\+interval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a46c0437f60c22411b55f31c8637e4827_a46c0437f60c22411b55f31c8637e4827}{}\label{class_game_timer_a46c0437f60c22411b55f31c8637e4827_a46c0437f60c22411b55f31c8637e4827}
+
+
+Definition at line 48 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\index{Game\+Timer@{Game\+Timer}!ns\+\_\+until\+\_\+next\+\_\+idle@{ns\+\_\+until\+\_\+next\+\_\+idle}}
+\index{ns\+\_\+until\+\_\+next\+\_\+idle@{ns\+\_\+until\+\_\+next\+\_\+idle}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{ns\+\_\+until\+\_\+next\+\_\+idle() const }{ns_until_next_idle() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::ns\+\_\+until\+\_\+next\+\_\+idle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a8bfc43723bdfd30d2c6bd780c8976a68_a8bfc43723bdfd30d2c6bd780c8976a68}{}\label{class_game_timer_a8bfc43723bdfd30d2c6bd780c8976a68_a8bfc43723bdfd30d2c6bd780c8976a68}
+
+
+Definition at line 36 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\index{Game\+Timer@{Game\+Timer}!ns\+\_\+until\+\_\+next\+\_\+render@{ns\+\_\+until\+\_\+next\+\_\+render}}
+\index{ns\+\_\+until\+\_\+next\+\_\+render@{ns\+\_\+until\+\_\+next\+\_\+render}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{ns\+\_\+until\+\_\+next\+\_\+render() const }{ns_until_next_render() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::ns\+\_\+until\+\_\+next\+\_\+render (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a7fd18be5e0dd4f5fa8da0b78755e4353_a7fd18be5e0dd4f5fa8da0b78755e4353}{}\label{class_game_timer_a7fd18be5e0dd4f5fa8da0b78755e4353_a7fd18be5e0dd4f5fa8da0b78755e4353}
+
+
+Definition at line 34 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\index{Game\+Timer@{Game\+Timer}!ns\+\_\+until\+\_\+next\+\_\+update@{ns\+\_\+until\+\_\+next\+\_\+update}}
+\index{ns\+\_\+until\+\_\+next\+\_\+update@{ns\+\_\+until\+\_\+next\+\_\+update}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{ns\+\_\+until\+\_\+next\+\_\+update() const }{ns_until_next_update() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::ns\+\_\+until\+\_\+next\+\_\+update (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a111d910c595648c28cf6fe6cb6151301_a111d910c595648c28cf6fe6cb6151301}{}\label{class_game_timer_a111d910c595648c28cf6fe6cb6151301_a111d910c595648c28cf6fe6cb6151301}
+
+
+Definition at line 32 of file Game\+Timer.\+hpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\index{Game\+Timer@{Game\+Timer}!pause\+\_\+time@{pause\+\_\+time}}
+\index{pause\+\_\+time@{pause\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{pause\+\_\+time()}{pause_time()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::pause\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a8bcaac2f847f9a839eca50e72a37bc5d_a8bcaac2f847f9a839eca50e72a37bc5d}{}\label{class_game_timer_a8bcaac2f847f9a839eca50e72a37bc5d_a8bcaac2f847f9a839eca50e72a37bc5d}
+
+
+Definition at line 160 of file Game\+Timer.\+cpp.
+
+\index{Game\+Timer@{Game\+Timer}!paused\+\_\+time@{paused\+\_\+time}}
+\index{paused\+\_\+time@{paused\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{paused\+\_\+time() const }{paused_time() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::paused\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a0f6e16d44a9fd01b5b63a36c4df3f04b_a0f6e16d44a9fd01b5b63a36c4df3f04b}{}\label{class_game_timer_a0f6e16d44a9fd01b5b63a36c4df3f04b_a0f6e16d44a9fd01b5b63a36c4df3f04b}
+
+
+Definition at line 28 of file Game\+Timer.\+hpp.
+
+\index{Game\+Timer@{Game\+Timer}!run\+\_\+time@{run\+\_\+time}}
+\index{run\+\_\+time@{run\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{run\+\_\+time() const }{run_time() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::run\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a92fc929a7aef200fe39ebc31edfaa24e_a92fc929a7aef200fe39ebc31edfaa24e}{}\label{class_game_timer_a92fc929a7aef200fe39ebc31edfaa24e_a92fc929a7aef200fe39ebc31edfaa24e}
+
+
+Definition at line 26 of file Game\+Timer.\+hpp.
+
+\index{Game\+Timer@{Game\+Timer}!start\+\_\+new\+\_\+idle\+\_\+interval@{start\+\_\+new\+\_\+idle\+\_\+interval}}
+\index{start\+\_\+new\+\_\+idle\+\_\+interval@{start\+\_\+new\+\_\+idle\+\_\+interval}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{start\+\_\+new\+\_\+idle\+\_\+interval()}{start_new_idle_interval()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::start\+\_\+new\+\_\+idle\+\_\+interval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_ac5652aa7cc3c54c24b8a2e5429f7a102_ac5652aa7cc3c54c24b8a2e5429f7a102}{}\label{class_game_timer_ac5652aa7cc3c54c24b8a2e5429f7a102_ac5652aa7cc3c54c24b8a2e5429f7a102}
+
+
+Definition at line 92 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\index{Game\+Timer@{Game\+Timer}!start\+\_\+render\+\_\+timer@{start\+\_\+render\+\_\+timer}}
+\index{start\+\_\+render\+\_\+timer@{start\+\_\+render\+\_\+timer}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{start\+\_\+render\+\_\+timer()}{start_render_timer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::start\+\_\+render\+\_\+timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a1de3e26ef16c57ad3f435afb4c82109a_a1de3e26ef16c57ad3f435afb4c82109a}{}\label{class_game_timer_a1de3e26ef16c57ad3f435afb4c82109a_a1de3e26ef16c57ad3f435afb4c82109a}
+
+
+Definition at line 67 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\index{Game\+Timer@{Game\+Timer}!start\+\_\+update\+\_\+timer@{start\+\_\+update\+\_\+timer}}
+\index{start\+\_\+update\+\_\+timer@{start\+\_\+update\+\_\+timer}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{start\+\_\+update\+\_\+timer()}{start_update_timer()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::start\+\_\+update\+\_\+timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_af514830a6ca1b8c03a270fd687a372c1_af514830a6ca1b8c03a270fd687a372c1}{}\label{class_game_timer_af514830a6ca1b8c03a270fd687a372c1_af514830a6ca1b8c03a270fd687a372c1}
+
+
+Definition at line 44 of file Game\+Timer.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\index{Game\+Timer@{Game\+Timer}!tick@{tick}}
+\index{tick@{tick}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{tick()}{tick()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::tick (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a20aa18e5ab02ae786083c131107afe32_a20aa18e5ab02ae786083c131107afe32}{}\label{class_game_timer_a20aa18e5ab02ae786083c131107afe32_a20aa18e5ab02ae786083c131107afe32}
+
+
+Definition at line 173 of file Game\+Timer.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\index{Game\+Timer@{Game\+Timer}!total\+\_\+time@{total\+\_\+time}}
+\index{total\+\_\+time@{total\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{total\+\_\+time() const }{total_time() const }}]{\setlength{\rightskip}{0pt plus 5cm}std\+::chrono\+::nanoseconds Game\+Timer\+::total\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_game_timer_a1fe9ed75535944c51ce2deeee90fa9e9_a1fe9ed75535944c51ce2deeee90fa9e9}{}\label{class_game_timer_a1fe9ed75535944c51ce2deeee90fa9e9_a1fe9ed75535944c51ce2deeee90fa9e9}
+
+
+Definition at line 24 of file Game\+Timer.\+hpp.
+
+\index{Game\+Timer@{Game\+Timer}!unpause\+\_\+time@{unpause\+\_\+time}}
+\index{unpause\+\_\+time@{unpause\+\_\+time}!Game\+Timer@{Game\+Timer}}
+\subsubsection[{\texorpdfstring{unpause\+\_\+time()}{unpause_time()}}]{\setlength{\rightskip}{0pt plus 5cm}void Game\+Timer\+::unpause\+\_\+time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_game_timer_a1ce0ff591ad01b4aaeb4f28eb8a146ee_a1ce0ff591ad01b4aaeb4f28eb8a146ee}{}\label{class_game_timer_a1ce0ff591ad01b4aaeb4f28eb8a146ee_a1ce0ff591ad01b4aaeb4f28eb8a146ee}
+
+
+Definition at line 147 of file Game\+Timer.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_game_timer_8hpp}{Game\+Timer.\+hpp}\item 
+C\+:/\+Users/micho/\+Desktop/mt\+\_\+engine/mt/\hyperlink{_game_timer_8cpp}{Game\+Timer.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="_mt">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_mt\Camera">
+      <UniqueIdentifier>{a3284123-9758-4c02-9fbd-fde17a8e64db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\d3dUtil">
+      <UniqueIdentifier>{d6bd809a-0904-40c2-ba03-0096e808de21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\d3d">
+      <UniqueIdentifier>{2bd862c5-1b8b-4e41-9695-6be9d5395a91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\dds">
+      <UniqueIdentifier>{a6131750-ef3a-44ac-bd89-471c1231919d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\Time">
+      <UniqueIdentifier>{a15fee38-fabe-442b-8254-ede60816e47e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\Geometry Generator">
+      <UniqueIdentifier>{fd23482f-df92-411a-91ed-c26022469d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\math">
+      <UniqueIdentifier>{53c3fc50-1cc1-4954-863e-f58908ecd2ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_mt\Upload Buffer">
+      <UniqueIdentifier>{80cb5be0-df31-40e2-a579-10012086163d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\mt\mt_engine.cpp">
+      <Filter>_mt</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineDemo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\Camera.cpp">
+      <Filter>_mt\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\d3dUtil.cpp">
+      <Filter>_mt\d3dUtil</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\DDSTextureLoader.cpp">
+      <Filter>_mt\dds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\GameTimer.cpp">
+      <Filter>_mt\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\GeometryGenerator.cpp">
+      <Filter>_mt\Geometry Generator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\mt\MathHelper.cpp">
+      <Filter>_mt\math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mt\mt_engine.hpp">
+      <Filter>_mt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\Camera.h">
+      <Filter>_mt\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\d3dUtil.h">
+      <Filter>_mt\d3dUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\d3dx12.h">
+      <Filter>_mt\d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\DDSTextureLoader.h">
+      <Filter>_mt\dds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\GameTimer.h">
+      <Filter>_mt\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\GeometryGenerator.h">
+      <Filter>_mt\Geometry Generator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\MathHelper.h">
+      <Filter>_mt\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\mt\UploadBuffer.h">
+      <Filter>_mt\Upload Buffer</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

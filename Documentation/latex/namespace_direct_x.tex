@@ -1,0 +1,252 @@
+\hypertarget{namespace_direct_x}{}\section{DirectX Namespace Reference}
+\label{namespace_direct_x}\index{DirectX@{DirectX}}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} \{ \\*
+\hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa9cfa0bbf0542b2d5da9da93e629f50ce}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN} = 0, 
+\hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa3c462f8d7aff2a2590d933fb1dfd6136}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT} = 1, 
+\hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1facdd00e8572344a8e6d3c4254607d7be8}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED} = 2, 
+\hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa8de87a525290e381f32102aa6a5be7c3}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE} = 3, 
+\\*
+\hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fab78d94eee31a6d8a3b97427e0dddb55e}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM} = 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a62a12ff7a57a36483e157b1fb1fe8dff_a62a12ff7a57a36483e157b1fb1fe8dff}{Create\+D\+D\+S\+Texture\+From\+Memory} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb}{Create\+D\+D\+S\+Texture\+From\+Memory12} (\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a72103949d0a30b4d1cf2c68fb4d0ec19_a72103949d0a30b4d1cf2c68fb4d0ec19}{Create\+D\+D\+S\+Texture\+From\+File} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a256abd853d439601f0990802d1465da7_a256abd853d439601f0990802d1465da7}{Create\+D\+D\+S\+Texture\+From\+File12} (\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a597be68a8cd5caf647a21e3d54230a91_a597be68a8cd5caf647a21e3d54230a91}{Create\+D\+D\+S\+Texture\+From\+Memory} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_af625c91d9244b4829f140665e00acc57_af625c91d9244b4829f140665e00acc57}{Create\+D\+D\+S\+Texture\+From\+File} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a5839b6f2cb71965e2aeddef378e1fe6e_a5839b6f2cb71965e2aeddef378e1fe6e}{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a81c1bbdec904a0d0f5fcad4c5ea88525_a81c1bbdec904a0d0f5fcad4c5ea88525}{Create\+D\+D\+S\+Texture\+From\+File\+Ex} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a13b4faa7bfb3a14bd408730a0ea05628_a13b4faa7bfb3a14bd408730a0ea05628}{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\item 
+H\+R\+E\+S\+U\+LT \hyperlink{namespace_direct_x_a3fe71d8982208e409bf9ea67dcb11e99_a3fe71d8982208e409bf9ea67dcb11e99}{Create\+D\+D\+S\+Texture\+From\+File\+Ex} (\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+GB, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ \hyperlink{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$alpha\+Mode=nullptr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE}}
+\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE}{DDS_ALPHA_MODE}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Direct\+X\+::\+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE}}\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1f}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN}!DirectX@{DirectX}}\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN}}\item[{\em 
+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+U\+N\+K\+N\+O\+WN\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa9cfa0bbf0542b2d5da9da93e629f50ce}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa9cfa0bbf0542b2d5da9da93e629f50ce}
+}]\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT}!DirectX@{DirectX}}\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT}}\item[{\em 
+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+S\+T\+R\+A\+I\+G\+HT\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa3c462f8d7aff2a2590d933fb1dfd6136}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa3c462f8d7aff2a2590d933fb1dfd6136}
+}]\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED}!DirectX@{DirectX}}\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED}}\item[{\em 
+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+P\+R\+E\+M\+U\+L\+T\+I\+P\+L\+I\+ED\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1facdd00e8572344a8e6d3c4254607d7be8}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1facdd00e8572344a8e6d3c4254607d7be8}
+}]\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE}!DirectX@{DirectX}}\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE}}\item[{\em 
+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+O\+P\+A\+Q\+UE\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa8de87a525290e381f32102aa6a5be7c3}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fa8de87a525290e381f32102aa6a5be7c3}
+}]\index{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM}!DirectX@{DirectX}}\index{DirectX@{DirectX}!D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM@{D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM}}\item[{\em 
+D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E\+\_\+\+C\+U\+S\+T\+OM\hypertarget{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fab78d94eee31a6d8a3b97427e0dddb55e}{}\label{namespace_direct_x_a7cb48689d75471680c0bf7f79caaaf1f_a7cb48689d75471680c0bf7f79caaaf1fab78d94eee31a6d8a3b97427e0dddb55e}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 49 of file D\+D\+S\+Texture\+Loader.\+h.
+
+
+
+\subsection{Function Documentation}
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+File@{Create\+D\+D\+S\+Texture\+From\+File}}
+\index{Create\+D\+D\+S\+Texture\+From\+File@{Create\+D\+D\+S\+Texture\+From\+File}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+File(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromFile(_In_ ID3D11Device *d3dDevice, _In_z_ const wchar_t *szFileName, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+File (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{sz\+File\+Name, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a72103949d0a30b4d1cf2c68fb4d0ec19_a72103949d0a30b4d1cf2c68fb4d0ec19}{}\label{namespace_direct_x_a72103949d0a30b4d1cf2c68fb4d0ec19_a72103949d0a30b4d1cf2c68fb4d0ec19}
+
+
+Here is the caller graph for this function\+:
+% FIG 0
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+File@{Create\+D\+D\+S\+Texture\+From\+File}}
+\index{Create\+D\+D\+S\+Texture\+From\+File@{Create\+D\+D\+S\+Texture\+From\+File}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+File(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromFile(_In_ ID3D11Device *d3dDevice, _In_opt_ ID3D11DeviceContext *d3dContext, _In_z_ const wchar_t *szFileName, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+File (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$}]{d3d\+Context, }
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{sz\+File\+Name, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_af625c91d9244b4829f140665e00acc57_af625c91d9244b4829f140665e00acc57}{}\label{namespace_direct_x_af625c91d9244b4829f140665e00acc57_af625c91d9244b4829f140665e00acc57}
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+File12@{Create\+D\+D\+S\+Texture\+From\+File12}}
+\index{Create\+D\+D\+S\+Texture\+From\+File12@{Create\+D\+D\+S\+Texture\+From\+File12}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+File12(\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromFile12(_In_ ID3D12Device *device, _In_ ID3D12GraphicsCommandList *cmdList, _In_z_ const wchar_t *szFileName, _Out_ Microsoft::WRL::ComPtr< ID3D12Resource > &texture, _Out_ Microsoft::WRL::ComPtr< ID3D12Resource > &textureUploadHeap, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+File12 (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$}]{device, }
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$}]{cmd\+List, }
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{sz\+File\+Name, }
+\item[{\+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture, }
+\item[{\+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture\+Upload\+Heap, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a256abd853d439601f0990802d1465da7_a256abd853d439601f0990802d1465da7}{}\label{namespace_direct_x_a256abd853d439601f0990802d1465da7_a256abd853d439601f0990802d1465da7}
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+File\+Ex@{Create\+D\+D\+S\+Texture\+From\+File\+Ex}}
+\index{Create\+D\+D\+S\+Texture\+From\+File\+Ex@{Create\+D\+D\+S\+Texture\+From\+File\+Ex}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+File\+Ex(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromFileEx(_In_ ID3D11Device *d3dDevice, _In_z_ const wchar_t *szFileName, _In_ size_t maxsize, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+File\+Ex (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{sz\+File\+Name, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a81c1bbdec904a0d0f5fcad4c5ea88525_a81c1bbdec904a0d0f5fcad4c5ea88525}{}\label{namespace_direct_x_a81c1bbdec904a0d0f5fcad4c5ea88525_a81c1bbdec904a0d0f5fcad4c5ea88525}
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+File\+Ex@{Create\+D\+D\+S\+Texture\+From\+File\+Ex}}
+\index{Create\+D\+D\+S\+Texture\+From\+File\+Ex@{Create\+D\+D\+S\+Texture\+From\+File\+Ex}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+File\+Ex(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$sz\+File\+Name, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromFileEx(_In_ ID3D11Device *d3dDevice, _In_opt_ ID3D11DeviceContext *d3dContext, _In_z_ const wchar_t *szFileName, _In_ size_t maxsize, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+File\+Ex (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$}]{d3d\+Context, }
+\item[{\+\_\+\+In\+\_\+z\+\_\+ const wchar\+\_\+t $\ast$}]{sz\+File\+Name, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a3fe71d8982208e409bf9ea67dcb11e99_a3fe71d8982208e409bf9ea67dcb11e99}{}\label{namespace_direct_x_a3fe71d8982208e409bf9ea67dcb11e99_a3fe71d8982208e409bf9ea67dcb11e99}
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+Memory@{Create\+D\+D\+S\+Texture\+From\+Memory}}
+\index{Create\+D\+D\+S\+Texture\+From\+Memory@{Create\+D\+D\+S\+Texture\+From\+Memory}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+Memory(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromMemory(_In_ ID3D11Device *d3dDevice, _In_reads_bytes_(ddsDataSize) const uint8_t *ddsData, _In_ size_t ddsDataSize, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+Memory (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$}]{dds\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{dds\+Data\+Size, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a62a12ff7a57a36483e157b1fb1fe8dff_a62a12ff7a57a36483e157b1fb1fe8dff}{}\label{namespace_direct_x_a62a12ff7a57a36483e157b1fb1fe8dff_a62a12ff7a57a36483e157b1fb1fe8dff}
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+Memory@{Create\+D\+D\+S\+Texture\+From\+Memory}}
+\index{Create\+D\+D\+S\+Texture\+From\+Memory@{Create\+D\+D\+S\+Texture\+From\+Memory}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+Memory(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromMemory(_In_ ID3D11Device *d3dDevice, _In_opt_ ID3D11DeviceContext *d3dContext, _In_reads_bytes_(ddsDataSize) const uint8_t *ddsData, _In_ size_t ddsDataSize, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+Memory (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$}]{d3d\+Context, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$}]{dds\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{dds\+Data\+Size, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a597be68a8cd5caf647a21e3d54230a91_a597be68a8cd5caf647a21e3d54230a91}{}\label{namespace_direct_x_a597be68a8cd5caf647a21e3d54230a91_a597be68a8cd5caf647a21e3d54230a91}
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+Memory12@{Create\+D\+D\+S\+Texture\+From\+Memory12}}
+\index{Create\+D\+D\+S\+Texture\+From\+Memory12@{Create\+D\+D\+S\+Texture\+From\+Memory12}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+Memory12(\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$device, \+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$cmd\+List, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture, \+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&texture\+Upload\+Heap, \+\_\+\+In\+\_\+ size\+\_\+t maxsize=0, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromMemory12(_In_ ID3D12Device *device, _In_ ID3D12GraphicsCommandList *cmdList, _In_reads_bytes_(ddsDataSize) const uint8_t *ddsData, _In_ size_t ddsDataSize, _Out_ Microsoft::WRL::ComPtr< ID3D12Resource > &texture, _Out_ Microsoft::WRL::ComPtr< ID3D12Resource > &textureUploadHeap, _In_ size_t maxsize=0, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+Memory12 (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D12\+Device $\ast$}]{device, }
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D12\+Graphics\+Command\+List $\ast$}]{cmd\+List, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$}]{dds\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{dds\+Data\+Size, }
+\item[{\+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture, }
+\item[{\+\_\+\+Out\+\_\+ Microsoft\+::\+W\+R\+L\+::\+Com\+Ptr$<$ I\+D3\+D12\+Resource $>$ \&}]{texture\+Upload\+Heap, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize = {\ttfamily 0}, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb}{}\label{namespace_direct_x_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb_a4fc6a2671e5a4fd5e6abb20ab0f8d3eb}
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+Memory\+Ex@{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex}}
+\index{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex@{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromMemoryEx(_In_ ID3D11Device *d3dDevice, _In_reads_bytes_(ddsDataSize) const uint8_t *ddsData, _In_ size_t ddsDataSize, _In_ size_t maxsize, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+Memory\+Ex (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$}]{dds\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{dds\+Data\+Size, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a5839b6f2cb71965e2aeddef378e1fe6e_a5839b6f2cb71965e2aeddef378e1fe6e}{}\label{namespace_direct_x_a5839b6f2cb71965e2aeddef378e1fe6e_a5839b6f2cb71965e2aeddef378e1fe6e}
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\index{DirectX@{DirectX}!Create\+D\+D\+S\+Texture\+From\+Memory\+Ex@{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex}}
+\index{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex@{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex}!DirectX@{DirectX}}
+\subsubsection[{\texorpdfstring{Create\+D\+D\+S\+Texture\+From\+Memory\+Ex(\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$d3d\+Device, \+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$d3d\+Context, \+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$dds\+Data, \+\_\+\+In\+\_\+ size\+\_\+t dds\+Data\+Size, \+\_\+\+In\+\_\+ size\+\_\+t maxsize, \+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+G\+E usage, \+\_\+\+In\+\_\+ unsigned int bind\+Flags, \+\_\+\+In\+\_\+ unsigned int cpu\+Access\+Flags, \+\_\+\+In\+\_\+ unsigned int misc\+Flags, \+\_\+\+In\+\_\+ bool force\+S\+R\+G\+B, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$texture, \+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$texture\+View, \+\_\+\+Out\+\_\+opt\+\_\+ D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+D\+E $\ast$alpha\+Mode=nullptr)}{CreateDDSTextureFromMemoryEx(_In_ ID3D11Device *d3dDevice, _In_opt_ ID3D11DeviceContext *d3dContext, _In_reads_bytes_(ddsDataSize) const uint8_t *ddsData, _In_ size_t ddsDataSize, _In_ size_t maxsize, _In_ D3D11_USAGE usage, _In_ unsigned int bindFlags, _In_ unsigned int cpuAccessFlags, _In_ unsigned int miscFlags, _In_ bool forceSRGB, _Outptr_opt_ ID3D11Resource **texture, _Outptr_opt_ ID3D11ShaderResourceView **textureView, _Out_opt_ DDS_ALPHA_MODE *alphaMode=nullptr)}}]{\setlength{\rightskip}{0pt plus 5cm}H\+R\+E\+S\+U\+LT Direct\+X\+::\+Create\+D\+D\+S\+Texture\+From\+Memory\+Ex (
+\begin{DoxyParamCaption}
+\item[{\+\_\+\+In\+\_\+ I\+D3\+D11\+Device $\ast$}]{d3d\+Device, }
+\item[{\+\_\+\+In\+\_\+opt\+\_\+ I\+D3\+D11\+Device\+Context $\ast$}]{d3d\+Context, }
+\item[{\+\_\+\+In\+\_\+reads\+\_\+bytes\+\_\+(dds\+Data\+Size) const uint8\+\_\+t $\ast$}]{dds\+Data, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{dds\+Data\+Size, }
+\item[{\+\_\+\+In\+\_\+ size\+\_\+t}]{maxsize, }
+\item[{\+\_\+\+In\+\_\+ D3\+D11\+\_\+\+U\+S\+A\+GE}]{usage, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{bind\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{cpu\+Access\+Flags, }
+\item[{\+\_\+\+In\+\_\+ unsigned int}]{misc\+Flags, }
+\item[{\+\_\+\+In\+\_\+ bool}]{force\+S\+R\+GB, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Resource $\ast$$\ast$}]{texture, }
+\item[{\+\_\+\+Outptr\+\_\+opt\+\_\+ I\+D3\+D11\+Shader\+Resource\+View $\ast$$\ast$}]{texture\+View, }
+\item[{\+\_\+\+Out\+\_\+opt\+\_\+ {\bf D\+D\+S\+\_\+\+A\+L\+P\+H\+A\+\_\+\+M\+O\+DE} $\ast$}]{alpha\+Mode = {\ttfamily nullptr}}
+\end{DoxyParamCaption}
+)}\hypertarget{namespace_direct_x_a13b4faa7bfb3a14bd408730a0ea05628_a13b4faa7bfb3a14bd408730a0ea05628}{}\label{namespace_direct_x_a13b4faa7bfb3a14bd408730a0ea05628_a13b4faa7bfb3a14bd408730a0ea05628}
