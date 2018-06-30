@@ -105,6 +105,16 @@ void GameTimer::end_render_timer()
 
 }
 
+void mt::GameTimer::start_command_list_timer()
+{
+	_command_list_start_time = steady_clock::now();
+}
+
+void mt::GameTimer::end_command_list_timer()
+{
+	_command_list_interval = steady_clock::now() - _curr_render_start_time;
+}
+
 void GameTimer::start_new_idle_interval()
 {
 	// Push the current idle start time to previous
@@ -168,12 +178,10 @@ void GameTimer::pause_time()
 
 void GameTimer::tick()
 {
-	auto _is_resizing = engine::get_engine().get_is_resizing();
-
 	_process_time();
 
 	// IS PAUSED
-	if (_is_resizing)
+	if (engine::get_engine().get_is_resizing())
 	{
 		_paused_time += _delta_time_ns;
 	}

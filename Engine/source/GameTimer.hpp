@@ -45,6 +45,8 @@ namespace mt
 	
 		std::chrono::duration<float, std::nano> avg_ns_per_render() const { return _avg_render_length_ns; };
 	
+		std::chrono::duration<float, std::nano> command_list_interval() const { return _command_list_interval; };
+
 		std::chrono::duration<float, std::nano> avg_ns_idle_per_interval() const { return _avg_idle_length_ns; }
 	
 		std::chrono::duration<float, std::nano> ns_idle_this_interval() const { return _idle_time_ns; }
@@ -64,6 +66,9 @@ namespace mt
 	
 		void start_render_timer();
 		void end_render_timer();
+
+		void start_command_list_timer();
+		void end_command_list_timer();
 	
 		void start_new_idle_interval();
 	
@@ -77,6 +82,7 @@ namespace mt
 		duration	_tgt_update_interval_ns =  8333333ns;
 		duration	_tgt_render_interval_ns = 16666666ns;
 		duration	_idle_time_interval_ns  = 16666666ns; // What is a frame? 16.66ms
+		duration	_command_list_interval = 0ns;
 	
 		time_point _curr_tick_time = time_point(0ns);
 		time_point _prev_tick_time = time_point(0ns);
@@ -84,6 +90,8 @@ namespace mt
 		time_point _curr_render_start_time	= time_point(0ns);
 		time_point _prev_render_start_time	= time_point(0ns);
 	
+		time_point _command_list_start_time = time_point(0ns);
+
 		time_point _curr_update_start_time	= time_point(0ns);
 		time_point _prev_update_start_time	= time_point(0ns);
 	
