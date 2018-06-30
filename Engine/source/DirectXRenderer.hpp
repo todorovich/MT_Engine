@@ -80,6 +80,8 @@ protected:
 
 // Mutators
 
+	void create_command_list();
+
 	void create_dx_command_objects();
 
 	void create_swap_chain();

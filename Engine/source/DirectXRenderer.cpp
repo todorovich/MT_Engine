@@ -17,45 +17,7 @@ void DirectXRenderer::render()
 {
 	_is_rendering = true;
 
-	// A command list can be reset after it has been added to the command queue via ExecuteCommandList.
-	// Reusing the command list reuses memory.
-	ThrowIfFailed(dx_command_list->Reset(dx_command_list_allocator.Get(), mPSO.Get()));
-
-	dx_command_list->RSSetViewports(1, &mScreenViewport);
-	dx_command_list->RSSetScissorRects(1, &mScissorRect);
-
-	// Indicate a state transition on the resource usage.
-	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
-		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET));
-
-	// Clear the back buffer and depth buffer.
-	dx_command_list->ClearRenderTargetView(get_current_back_buffer_view(), Colors::LightSteelBlue, 0, nullptr);
-	dx_command_list->ClearDepthStencilView(get_depth_stencil_view(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
-
-	// Specify the buffers we are going to render to.
-	dx_command_list->OMSetRenderTargets(1, &get_current_back_buffer_view(), true, &get_depth_stencil_view());
-
-	ID3D12DescriptorHeap* descriptorHeaps[] = { dx_cbv_heap.Get() };
-	dx_command_list->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
-
-	dx_command_list->SetGraphicsRootSignature(dx_root_signature.Get());
-
-	dx_command_list->IASetVertexBuffers(0, 1, &box_mesh_geometry->VertexBufferView());
-	dx_command_list->IASetIndexBuffer(&box_mesh_geometry->IndexBufferView());
-	dx_command_list->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-	dx_command_list->SetGraphicsRootDescriptorTable(0, dx_cbv_heap->GetGPUDescriptorHandleForHeapStart());
-
-	dx_command_list->DrawIndexedInstanced(
-		box_mesh_geometry->DrawArgs["box"].IndexCount,
-		1, 0, 0, 0);
-
-	// Indicate a state transition on the resource usage.
-	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
-		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
-
-	// Done recording commands.
-	ThrowIfFailed(dx_command_list->Close());
+	create_command_list();
 
 	// Add the command list to the queue for execution.
 	ID3D12CommandList* cmdsLists[] = { dx_command_list.Get() };
@@ -171,6 +133,57 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 	_is_initialized = true;
 
 	return true;
+}
+
+void DirectXRenderer::create_command_list()
+{
+
+	engine::get_game_timer().start_command_list_timer();
+
+	ThrowIfFailed(dx_command_list_allocator->Reset());
+
+	// A command list can be reset after it has been added to the command queue via ExecuteCommandList.
+	// Reusing the command list reuses memory.
+	ThrowIfFailed(dx_command_list->Reset(dx_command_list_allocator.Get(), mPSO.Get()));
+
+	dx_command_list->RSSetViewports(1, &mScreenViewport);
+	dx_command_list->RSSetScissorRects(1, &mScissorRect);
+
+	// Indicate a state transition on the resource usage.
+	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
+		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET));
+
+	// Clear the back buffer and depth buffer.
+	dx_command_list->ClearRenderTargetView(get_current_back_buffer_view(), Colors::LightSteelBlue, 0, nullptr);
+	dx_command_list->ClearDepthStencilView(get_depth_stencil_view(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
+
+	// Specify the buffers we are going to render to.
+	dx_command_list->OMSetRenderTargets(1, &get_current_back_buffer_view(), true, &get_depth_stencil_view());
+
+	ID3D12DescriptorHeap* descriptorHeaps[] = { dx_cbv_heap.Get() };
+	dx_command_list->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
+
+	dx_command_list->SetGraphicsRootSignature(dx_root_signature.Get());
+
+	dx_command_list->IASetVertexBuffers(0, 1, &box_mesh_geometry->VertexBufferView());
+	dx_command_list->IASetIndexBuffer(&box_mesh_geometry->IndexBufferView());
+	dx_command_list->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	dx_command_list->SetGraphicsRootDescriptorTable(0, dx_cbv_heap->GetGPUDescriptorHandleForHeapStart());
+
+	dx_command_list->DrawIndexedInstanced(
+		box_mesh_geometry->DrawArgs["box"].IndexCount,
+		1, 0, 0, 0);
+
+	// Indicate a state transition on the resource usage.
+	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
+		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
+
+	// Done recording commands.
+	ThrowIfFailed(dx_command_list->Close());
+
+	engine::get_game_timer().end_command_list_timer();
+
 }
 
 void DirectXRenderer::create_dx_command_objects()
@@ -676,13 +689,9 @@ void DirectXRenderer::Set4xMsaaState(bool value)
 
 void DirectXRenderer::Update()
 {
-	camera.Lock();
-
 	camera.UpdateViewMatrix();
 
 	XMMATRIX worldViewProj = camera.GetView() * camera.GetProj();
-
-	camera.Unlock();
 
 	// Update the constant buffer with the latest worldViewProj matrix.
 	ObjectConstants objConstants;
