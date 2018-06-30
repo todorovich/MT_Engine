@@ -1,78 +1,214 @@
 #include "InputHandler.hpp"
 
-#include "MathHelper.h"
-#include "UploadBuffer.h"
 #include "engine.hpp"
 
-#ifdef _DEBUG
-#define  _CRTDBG_MAP_ALLOC
-#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#endif
+#include "MouseMoveMessage.hpp"
+#include "MouseDownMessage.hpp"
+#include "MouseUpMessage.hpp"
+#include "KeyDownMessage.hpp"
+#include "KeyUpMessage.hpp"
+
+//#ifdef _DEBUG
+//#define  _CRTDBG_MAP_ALLOC
+//#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+//#endif
+
+
 
 using namespace mt;
 
-void InputHandler::MouseDown(WPARAM btnState, int x, int y)
+void InputHandler::ProcessInput() 
 {
-	_mouse_position.x = x;
-	_mouse_position.y = y;
+	auto size = _input_queue.size();
 
-	SetCapture(engine::get_main_window_handle());
-}
+	if (size != 0)
+	{
+		while (_input_queue_lock.try_lock() == false);
 
-void InputHandler::MouseUp(WPARAM btnState, int x, int y)
-{
-	ReleaseCapture();
+		for (auto x = 0; x < size; x++)
+		{
+			auto empty = _input_queue.empty();
+			auto front = _input_queue.front();
+			
+			_input_queue.back();
+
+			_input_queue.pop();
+			
+			//if (front < _pool_start || front > _pool_end)
+			//{
+			//	return;
+			//}
+
+			front->Execute();
+
+			//Deallocate(front);
+			//delete front;
+		}
+	
+		_input_queue_lock.unlock();
+	}
 }
 
 void InputHandler::MouseMove(WPARAM btnState, int x, int y)
 {
-	if ((btnState & MK_LBUTTON) != 0)
+	if (x != _mouse_position.x && y != _mouse_position.y)
 	{
-		auto& camera = engine::get_current_camera();
+		//while (_input_queue_lock.try_lock() == false);
 
-		// Make each pixel correspond to a quarter of a degree.
-		float dx = XMConvertToRadians(0.25f*static_cast<float>(x - _mouse_position.x));
-		float dy = XMConvertToRadians(0.25f*static_cast<float>(y - _mouse_position.y));
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseMoveMessage(x, y)));
 
-		camera.Pitch(dx);
-		camera.RotateY(dy);
+		//_pool_index = (_pool_index + 1) % 512;
 
-		//// Update angles based on input to orbit camera around box.
-		//mTheta += dx;
-		//mPhi += dy;
+		//_input_queue_lock.unlock();
 
-		//// Restrict the angle mPhi.
-		//mPhi = MathHelper::Clamp(mPhi, 0.1f, MathHelper::Pi - 0.1f);
+		_MouseMove(x, y);
 	}
-	else if ((btnState & MK_RBUTTON) != 0)
-	{
-		//// Make each pixel correspond to 0.005 unit in the scene.
-		//float dx = 0.005f*static_cast<float>(x - _mouse_position.x);
-		//float dy = 0.005f*static_cast<float>(y - _mouse_position.y);
+}
 
-		//// Update the camera radius based on input.
-		//mRadius += dx - dy;
+void InputHandler::MouseDown(WPARAM btnState, int x, int y)
+{	
+	SetCapture(engine::get_main_window_handle());
 
-		//// Restrict the radius.
-		//mRadius = MathHelper::Clamp(mRadius, 3.0f, 15.0f);
+	//while (_input_queue_lock.try_lock() == false);
+	
+	if (x != _mouse_position.x && y != _mouse_position.y)
+	{	
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseMoveMessage(x, y)));
+
+		//_pool_index = (_pool_index + 1) % 512;
+
+		_MouseMove(x, y);
 	}
 
-	_mouse_position.x = x;
-	_mouse_position.y = y;
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseDownMessage(btnState)));
+	
+	//_pool_index = (_pool_index + 1) % 512;
+
+	_MouseDown(btnState);
+
+	//_input_queue_lock.unlock();	
+}
+
+void InputHandler::MouseUp(WPARAM btnState, int x, int y)
+{
+	//while (_input_queue_lock.try_lock() == false);
+	
+	if (x != _mouse_position.x && y != _mouse_position.y)
+	{
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new MouseMoveMessage(x, y)));
+		_MouseMove(x, y);
+	}
+
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new MouseUpMessage(btnState)));
+
+	_MouseUp(btnState);
+
+	//_input_queue_lock.unlock();
+
+	ReleaseCapture();
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646280(v=vs.85).aspx
 void InputHandler::KeyDown(WPARAM vk_key, LPARAM flags)
 {
+	//while (_input_queue_lock.try_lock() == false);
 
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new KeyDownMessage(vk_key)));
+
+	_KeyDown(vk_key);
+
+	//_input_queue_lock.unlock();
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646281(v=vs.85).aspx
 void InputHandler::KeyUp(WPARAM vk_key, LPARAM flags)
 {
+	//while (_input_queue_lock.try_lock() == false);
+
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new KeyUpMessage(vk_key)));
+
+	_KeyUp(vk_key);
+
+	//_input_queue_lock.unlock();
+}
+
+void InputHandler::_MouseMove(__int32 x, __int32 y)
+{
+	// Left mouse button is being held
+	if (_held_keys_and_buttons.find(MK_LBUTTON) != _held_keys_and_buttons.end())
+	{
+		auto& camera = engine::get_current_camera();
+
+		// Make each pixel correspond to 1/10th of a degree.
+		float dx = XMConvertToRadians(0.1f*static_cast<float>(x - _mouse_position.x));
+		float dy = XMConvertToRadians(0.1f*static_cast<float>(y - _mouse_position.y));
+
+		camera.Pitch(dy);
+		camera.RotateY(dx);
+	}
+
+	_mouse_position.x = x;
+	_mouse_position.y = y;
+}
+
+void InputHandler::_MouseDown(WPARAM btnState)
+{
+	_held_keys_and_buttons.insert(btnState);
+}
+
+void InputHandler::_MouseUp(WPARAM btnState)
+{
+	_held_keys_and_buttons.erase(btnState);
+}
+
+void InputHandler::_KeyDown(WPARAM vk_key)
+{
+}
+
+void InputHandler::_KeyUp(WPARAM vk_key)
+{
 	if (vk_key == VK_ESCAPE)
 	{
 		PostMessage(engine::get_main_window_handle(), WM_CLOSE, 0, 0);
 	}
+}
 
+InputMessage* mt::InputHandler::Allocate()
+{
+	if (_free_pool_slots.empty() == false)
+	{
+		auto& next_available_itr = _free_pool_slots.begin();
+
+		short next_available = *next_available_itr;
+
+		_free_pool_slots.erase(next_available_itr);
+
+		_used_pool_slots.insert(next_available);
+
+		return &_pool_start[next_available];
+	}
+	else
+	{
+		return new InputMessage();
+	}
+
+	return nullptr;
+}
+
+void mt::InputHandler::Deallocate(InputMessage* ptr)
+{
+	if (ptr >= _pool_start && ptr <= _pool_end)
+	{
+		short _pool_slot = static_cast<short>(static_cast<__int64>(_pool_end - ptr) % sizeof(InputMessage));
+
+		ptr->~InputMessage();
+
+		_used_pool_slots.erase(_pool_slot);
+
+		_free_pool_slots.insert(_pool_slot);
+	}
+	else
+	{
+		delete ptr;
+	}
 }
