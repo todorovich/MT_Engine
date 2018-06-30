@@ -11,7 +11,7 @@ using namespace mt;
 
 LRESULT WM_ACTIVATE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto time = engine::get_engine().get_game_timer();
+	auto& time = engine::get_engine().get_game_timer();
 
 	if (LOWORD(wParam) == WA_INACTIVE)
 	{
