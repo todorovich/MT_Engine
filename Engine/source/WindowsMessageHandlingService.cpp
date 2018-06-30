@@ -79,7 +79,7 @@ WindowsMessageHandlingService::WindowsMessageHandlingService()
 WindowsMessageHandlingService::~WindowsMessageHandlingService()
 {
 	// clean up all those message handlers
-	for (auto pair : _message_handler_map)
+	for (auto& pair : _message_handler_map)
 	{
 		delete pair.second;
 	}
@@ -87,11 +87,15 @@ WindowsMessageHandlingService::~WindowsMessageHandlingService()
 
 LRESULT WindowsMessageHandlingService::handle_message(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto it = _message_handler_map.find(msg);
+	auto& it = _message_handler_map.find(msg);
 
 	if (it != _message_handler_map.end())
 	{
-		return (*it).second->execute(hwnd, msg, wParam, lParam);
+		auto result = (*it).second->execute(hwnd, msg, wParam, lParam);
+
+
+		return result;
+
 	}
 	else
 	{
