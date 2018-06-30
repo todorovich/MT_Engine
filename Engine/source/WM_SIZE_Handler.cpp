@@ -11,13 +11,11 @@ using namespace mt;
 
 LRESULT WM_SIZE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto& engine = engine::get_engine();
-
 	// Save the new client area dimensions.
 	auto _client_width = LOWORD(lParam);
 	auto _client_height = HIWORD(lParam);
 
-	engine.set_window_dimensions(_client_width, _client_height);
+	engine::get_engine().set_window_dimensions(_client_width, _client_height);
 
 	if (engine::get_renderer().get_is_initialized())
 	{
