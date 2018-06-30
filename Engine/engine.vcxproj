@@ -37,6 +37,7 @@
     <ClCompile Include="source\GameTimer.cpp" />
     <ClCompile Include="source\GeometryGenerator.cpp" />
     <ClCompile Include="source\InputHandler.cpp" />
+    <ClCompile Include="source\InputMessage.cpp" />
     <ClCompile Include="source\MathHelper.cpp" />
     <ClCompile Include="source\WindowsMessageHandler.cpp" />
     <ClCompile Include="source\WindowsMessageHandlingService.cpp" />
@@ -62,7 +63,13 @@
     <ClInclude Include="source\GameTimer.hpp" />
     <ClInclude Include="source\GeometryGenerator.h" />
     <ClInclude Include="source\InputHandler.hpp" />
+    <ClInclude Include="source\InputMessage.hpp" />
+    <ClInclude Include="source\KeyDownMessage.hpp" />
+    <ClInclude Include="source\KeyUpMessage.hpp" />
     <ClInclude Include="source\MathHelper.h" />
+    <ClInclude Include="source\MouseDownMessage.hpp" />
+    <ClInclude Include="source\MouseMoveMessage.hpp" />
+    <ClInclude Include="source\MouseUpMessage.hpp" />
     <ClInclude Include="source\Pool.hpp" />
     <ClInclude Include="source\precompiled.hpp" />
     <ClInclude Include="source\UploadBuffer.h" />
