@@ -82,16 +82,6 @@ public:
 		mViewDirty = true;
 	}
 
-	void Lock()
-	{
-		_is_locked = true;
-	}
-
-	void Unlock()
-	{
-		_is_locked = false;
-	}
-
 private:
 
 // 64 bytes
@@ -116,5 +106,4 @@ private:
 
 // 1 byte
 	bool mViewDirty;
-	std::atomic_bool _is_locked;
 };
