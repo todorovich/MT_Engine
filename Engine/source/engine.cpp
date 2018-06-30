@@ -53,7 +53,7 @@ Status engine::_run()
 { 
 	time.initialize();
 
-	_engine_tick_thread = std::thread(std::ref(engine::get_engine().tick));
+	//_engine_tick_thread = std::thread(std::ref(engine::get_engine().tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
@@ -65,13 +65,14 @@ Status engine::_run()
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
-
-			engine::get_current_camera().SetDirty();
 		}
+
+		get_engine()._tick();
+
 	}
 
 	// Join the tick thread (ensuring it has actually shut down)
-	if (_engine_tick_thread.joinable()) _engine_tick_thread.join();
+	//if (_engine_tick_thread.joinable()) _engine_tick_thread.join();
 
 	return Status::success;
 }
@@ -83,6 +84,8 @@ void engine::_tick()
 	// Check to see if we are running, and its time to Update, if so then Update.
 	if (time.is_paused() != true && time.ns_until_next_update() <= 0ns)
 	{
+		this->get_input_handler().ProcessInput();
+
 		time.start_update_timer();
 		Update();
 		dxr.Update();
@@ -102,20 +105,18 @@ void engine::_tick()
 	{
 		dxr.flush_command_queue();
 		time.start_new_idle_interval();
+		_update_frame_stats();
 	}
 
-	_update_frame_stats();
 }
 
 void engine::tick()
 {
-	auto& engine = get_engine();
-
 	SetThreadName(GetCurrentThreadId(), "Tick Thread");
 
-	while (!engine._is_shutdown)
+	while (!get_engine()._is_shutdown)
 	{
-		engine._tick();
+		get_engine()._tick();
 	}
 
 	OutputDebugStringW(L"Engine Shutdown\n");
@@ -195,6 +196,7 @@ void engine::_update_frame_stats()
 		static const float ten_e_neg_six = 1.0f / 1000000.0f;
 
 		wstring mspr = to_wstring(time.avg_ns_per_render().count() * ten_e_neg_six);
+		wstring mscl = to_wstring(time.command_list_interval().count() * ten_e_neg_six);
 		wstring mspf = to_wstring(time.avg_ns_per_update().count() * ten_e_neg_six);
 
 		wstring  avg_ms_idle_per_interval = to_wstring(time.avg_ns_idle_per_interval().count() * ten_e_neg_six);
@@ -204,6 +206,7 @@ void engine::_update_frame_stats()
 		wstring ufps = to_wstring(1.0s / time.avg_ns_between_update());
 
 		wstring windowText = main_window_caption +
+			L"   ms/command: " + mscl +
 			L"   ms/render: " + mspr + L" Render FPS: " + rfps +
 			L"   ms/update: " + mspf + L" Update FPS: " + ufps + 
 			L"   ms idle: "   + ms_idle_per_interval + L" avg ms idle: " + avg_ms_idle_per_interval + L'\n';

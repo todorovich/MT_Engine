@@ -7,11 +7,7 @@
 #include "CommandQueue.hpp"
 #include "InputHandler.hpp"
 
-#ifdef _DEBUG
-#include <crtdbg.h>
-#define  _CRTDBG_MAP_ALLOC
-#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#endif
+
 
 namespace mt
 {
@@ -37,10 +33,10 @@ namespace mt
 		static	engine& 					    get_engine()					{ return *engine::_instance.get(); };
 		static	GameTimer&						get_game_timer()				{ return get_engine().time; };
 		static	DirectXRenderer&				get_renderer()					{ return get_engine().dxr; };
-		static  mt::InputHandler&				get_input_handler()				{ return get_engine().input_handler; }
+		static  InputHandler&					get_input_handler()				{ return get_engine().input_handler; }
 		static  Camera&							get_current_camera()			{ return get_engine().dxr.get_current_camera(); }
 		static	WindowsMessageHandlingService&	get_windows_message_handler()	{ return get_engine().message_handling_service; };
-		static	mt::CommandQueue&				get_command_manager()			{ return get_engine().command_manager; }
+		static	CommandQueue&					get_command_manager()			{ return get_engine().command_manager; }
 		static	HINSTANCE						get_app_inst()					{ return get_engine()._get_app_inst(); };
 		static	HWND							get_main_window_handle()		{ return get_engine()._get_main_window_handle(); };
 		static	bool							get_is_maximized()				{ return get_engine()._get_is_maximized(); };
@@ -85,11 +81,9 @@ namespace mt
 	
 		static void set_window_dimensions(const int& width, const int& height)
 		{
-			auto& _engine = get_engine();
-	
-			_engine._client_width = width;
-			_engine._client_height = height;
-			_engine._client_aspect_ratio = (float)width / (float)height;
+			get_engine()._client_width = width;
+			get_engine()._client_height = height;
+			get_engine()._client_aspect_ratio = (float)width / (float)height;
 		}
 	
 		static void shutdown()
@@ -230,8 +224,8 @@ namespace mt
 	private:
 		DirectXRenderer					dxr;
 		WindowsMessageHandlingService	message_handling_service;
-		mt::CommandQueue				command_manager;
-		mt::InputHandler				input_handler;
+		CommandQueue					command_manager;
+		InputHandler					input_handler;
 		std::wstring					main_window_caption = L"mt_engine";
 	
 		int		_client_width			= 0;
