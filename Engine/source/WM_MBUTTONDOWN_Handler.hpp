@@ -9,7 +9,7 @@ namespace mt
 	{
 		LRESULT execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 		{
-			engine::get_input_handler().MouseDown(wParam, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+			engine::get_input_handler().MouseDown(MK_MBUTTON, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 	
 			return 0;
 		}
