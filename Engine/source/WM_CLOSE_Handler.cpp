@@ -17,13 +17,13 @@ LRESULT WM_CLOSE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARA
 	if (user_wants_to_close)
 	{
 		// Pause the game loop
-		engine::GetTimerManager().paused_time();
+		Engine::GetTimerManager().paused_time();
 
 		// Stop the game loop
-		engine::Shutdown();
+		Engine::Shutdown();
 
 		// Save any state that needs to be saved
-		// engine::save(); ?
+		// Engine::save(); ?
 
 		// Destroy the window
 		DestroyWindow(hwnd);

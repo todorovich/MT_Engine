@@ -39,21 +39,21 @@ void SetThreadName(DWORD dwThreadID, const char* threadName) {
 
 using namespace mt;
 
-std::unique_ptr<engine> mt::engine::_instance = std::make_unique<engine>();
+std::unique_ptr<Engine> mt::Engine::_instance = std::make_unique<Engine>();
 
 LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Forward hwnd on because we can get messages (e.g., WM_CREATE)
 	// before CreateWindow returns, and thus before mhMainWnd is valid.
-	return engine::GetWindowsManager().handle_message(hwnd, msg, wParam, lParam);
+	return Engine::GetWindowsManager().handle_message(hwnd, msg, wParam, lParam);
 	
 }
 
-Status engine::_run()
+Status Engine::_run()
 { 
 	_time_manager.Initialize();
 
-	//_engine_tick_thread = std::thread(std::ref(engine::GetEngine().tick));
+	//_engine_tick_thread = std::thread(std::ref(Engine::GetEngine().tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
@@ -77,7 +77,7 @@ Status engine::_run()
 	return Status::success;
 }
 
-void engine::_tick()
+void Engine::_tick()
 {
 	_time_manager.tick();
 
@@ -110,7 +110,7 @@ void engine::_tick()
 
 }
 
-void engine::tick()
+void Engine::tick()
 {
 	SetThreadName(GetCurrentThreadId(), "Tick Thread");
 
@@ -122,7 +122,7 @@ void engine::tick()
 	OutputDebugStringW(L"Engine Shutdown\n");
 }
 
-bool engine::_initialize(HINSTANCE hInstance)
+bool Engine::_initialize(HINSTANCE hInstance)
 {
 	_instance_handle = hInstance;
 		
@@ -138,7 +138,7 @@ bool engine::_initialize(HINSTANCE hInstance)
 	return true;
 }
 
-bool engine::_init_main_window()
+bool Engine::_init_main_window()
 {
 	WNDCLASS wc;
 	wc.style         = CS_HREDRAW | CS_VREDRAW;
@@ -183,7 +183,7 @@ bool engine::_init_main_window()
 	return true;
 }
 
-void engine::_update_frame_stats()
+void Engine::_update_frame_stats()
 {
 	// Code computes the average frames per second, and also the 
 	// average _time_manager it takes to render one frame.  These stats 

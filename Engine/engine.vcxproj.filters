@@ -189,9 +189,6 @@
     <ClCompile Include="source\GeometryGenerator.cpp">
       <Filter>Geometry Generator</Filter>
     </ClCompile>
-    <ClCompile Include="source\engine.cpp">
-      <Filter>Engine</Filter>
-    </ClCompile>
     <ClCompile Include="source\WM_DESTROY_Handler.cpp">
       <Filter>Windows Message Manager\Windows Messages\WM_DESTROY</Filter>
     </ClCompile>
@@ -215,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="source\CommandManager.cpp">
       <Filter>Command Queue</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Eengine.cpp">
+      <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -341,9 +341,6 @@
     <ClInclude Include="source\UploadBuffer.h">
       <Filter>Upload Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="source\engine.hpp">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="source\precompiled.hpp" />
     <ClInclude Include="source\InputMessage.hpp">
       <Filter>Input Manager\Input Messages</Filter>
@@ -377,6 +374,9 @@
     </ClInclude>
     <ClInclude Include="source\CommandManager.hpp">
       <Filter>Command Queue</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Eengine.hpp">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

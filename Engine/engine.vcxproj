@@ -33,7 +33,7 @@
     <ClCompile Include="source\d3dUtil.cpp" />
     <ClCompile Include="source\DDSTextureLoader.cpp" />
     <ClCompile Include="source\DirectXRenderer.cpp" />
-    <ClCompile Include="source\engine.cpp" />
+    <ClCompile Include="source\Eengine.cpp" />
     <ClCompile Include="source\TimerManager.cpp" />
     <ClCompile Include="source\GeometryGenerator.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
@@ -59,7 +59,7 @@
     <ClInclude Include="source\d3dx12.h" />
     <ClInclude Include="source\DDSTextureLoader.h" />
     <ClInclude Include="source\DirectXRenderer.hpp" />
-    <ClInclude Include="source\engine.hpp" />
+    <ClInclude Include="source\Eengine.hpp" />
     <ClInclude Include="source\TimerManager.hpp" />
     <ClInclude Include="source\GeometryGenerator.h" />
     <ClInclude Include="source\InputManager.hpp" />

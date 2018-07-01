@@ -11,7 +11,7 @@ using namespace mt;
 
 LRESULT WM_ACTIVATE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto& _time_manager = engine::GetEngine().GetTimerManager();
+	auto& _time_manager = Engine::GetEngine().GetTimerManager();
 
 	if (LOWORD(wParam) == WA_INACTIVE)
 	{

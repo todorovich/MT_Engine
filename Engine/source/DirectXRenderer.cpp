@@ -138,7 +138,7 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 void DirectXRenderer::create_command_list()
 {
 
-	engine::GetTimerManager().start_command_list_timer();
+	Engine::GetTimerManager().start_command_list_timer();
 
 	ThrowIfFailed(dx_command_list_allocator->Reset());
 
@@ -182,7 +182,7 @@ void DirectXRenderer::create_command_list()
 	// Done recording commands.
 	ThrowIfFailed(dx_command_list->Close());
 
-	engine::GetTimerManager().end_command_list_timer();
+	Engine::GetTimerManager().end_command_list_timer();
 
 }
 
@@ -670,7 +670,7 @@ void DirectXRenderer::Resize(int client_width, int client_height)
 		_window_aspect_ratio = static_cast<float>(_window_width) / _window_height;
 
 		// The window resized, so update the aspect ratio and recompute the projection matrix.
-		engine::GetCurrentCamera().SetLens(0.25f * MathHelper::Pi, engine::GetWindowAspectRatio(), 1.0f, 1000.0f);
+		Engine::GetCurrentCamera().SetLens(0.25f * MathHelper::Pi, Engine::GetWindowAspectRatio(), 1.0f, 1000.0f);
 		//XMStoreFloat4x4(&mProj, P);
 	}
 }

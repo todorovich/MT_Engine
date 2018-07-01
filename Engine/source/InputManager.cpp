@@ -67,7 +67,7 @@ void InputManager::MouseMove(WPARAM btnState, int x, int y)
 
 void InputManager::MouseDown(WPARAM btnState, int x, int y)
 {	
-	SetCapture(engine::GetMainWindowHandle());
+	SetCapture(Engine::GetMainWindowHandle());
 
 	//while (_input_queue_lock.try_lock() == false);
 	
@@ -137,7 +137,7 @@ void InputManager::_MouseMove(__int32 x, __int32 y)
 	// Left mouse button is being held
 	if (_held_keys_and_buttons.find(MK_LBUTTON) != _held_keys_and_buttons.end())
 	{
-		auto& camera = engine::GetCurrentCamera();
+		auto& camera = Engine::GetCurrentCamera();
 
 		// Make each pixel correspond to 1/10th of a degree.
 		float dx = XMConvertToRadians(0.1f*static_cast<float>(x - _mouse_position.x));
@@ -169,7 +169,7 @@ void InputManager::_KeyUp(WPARAM vk_key)
 {
 	if (vk_key == VK_ESCAPE)
 	{
-		PostMessage(engine::GetMainWindowHandle(), WM_CLOSE, 0, 0);
+		PostMessage(Engine::GetMainWindowHandle(), WM_CLOSE, 0, 0);
 	}
 }
 

@@ -14,38 +14,41 @@ namespace mt
 	//class Scene;
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	A mt engine. </summary>
-	/// <detail>	The engine will handle processing of low level input (pass to input handler)
-	/// 			the engine will handle all messages from windows
+	/// <summary>	A mt Engine. </summary>
+	/// <detail>	The Engine will handle processing of low level input (pass to input handler)
+	/// 			the Engine will handle all messages from windows
 	/// 			that includes managing resizes
 	/// <remarks>	Micho, 6/13/2016. </remarks>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
-	class engine
+	class Engine
 	{
 	protected:
-		static std::unique_ptr<engine> _instance;
+		static std::unique_ptr<Engine> _instance;
 	
 		std::thread _engine_tick_thread;
 	
 	public:	
 		// ACCESSOR
 	
-		static	engine& 				GetEngine()				{ return *engine::_instance.get(); };
+		static	Engine& 				GetEngine()				{ return *Engine::_instance.get(); };
 		static	TimerManager&			GetTimerManager()		{ return GetEngine()._time_manager; };
 		static	DirectXRenderer&		GetRenderer()			{ return GetEngine()._direct_x_renderer; };
 		static  InputManager&			GetInputHandler()		{ return GetEngine()._input_manager; }
 		static  Camera&					GetCurrentCamera()		{ return GetEngine()._direct_x_renderer.GetCurrentCamera(); }
 		static	WindowsMessageManager&	GetWindowsManager()		{ return GetEngine()._windows_message_manager; };
 		static	CommandManager&			GetCommandManager()		{ return GetEngine()._command_manager; }
-		static	HINSTANCE				GetInstanceHandle()		{ return GetEngine()._get_app_inst(); };
-		static	HWND					GetMainWindowHandle()	{ return GetEngine()._get_main_window_handle(); };
-		static	float					GetWindowAspectRatio()	{ return GetEngine()._get_aspect_ratio(); };
-		static	int						GetWindowWidth()		{ return GetEngine()._get_width(); };
-		static	int						GetWindowHeight()		{ return GetEngine()._get_height(); };
-		static	bool					IsWindowMaximized()		{ return GetEngine()._get_is_maximized(); };
-		static	bool					IsWindowMinimized()		{ return GetEngine()._get_is_minimized(); };
-		static	bool					IsWindowResizing()		{ return GetEngine()._get_is_resizing(); };
-		static	bool					IsWindowFullscreen()	{ return GetEngine()._get_is_fullscreen(); };
+
+		static	HINSTANCE				GetInstanceHandle()		{ return GetEngine()._GetInstanceHandle(); };
+		static	HWND					GetMainWindowHandle()	{ return GetEngine()._GetMainWindowHandle(); };
+
+		static	float					GetWindowAspectRatio()	{ return GetEngine()._GetWindowAspectRatio(); };
+		static	int						GetWindowWidth()		{ return GetEngine()._GetWindowWidth(); };
+		static	int						GetWindowHeight()		{ return GetEngine()._GetWindowHeight(); };
+
+		static	bool					IsWindowMaximized()		{ return GetEngine()._GetIsWindowMaximized(); };
+		static	bool					IsWindowMinimized()		{ return GetEngine()._GetIsWindowMinimized(); };
+		static	bool					IsWindowResizing()		{ return GetEngine()._GetIsWindowResizing(); };
+		static	bool					IsWindowFullscreen()	{ return GetEngine()._GetIsWindowFullscreen(); };
 
 		// MUTATOR
 	
@@ -97,17 +100,17 @@ namespace mt
 			OutputDebugStringW(L"Engine Destroyed\n");
 		}
 
-		engine() = default;
+		Engine() = default;
 	
-		virtual ~engine() = default;
+		virtual ~Engine() = default;
 
-		engine(const engine&  other) = delete;
+		Engine(const Engine&  other) = delete;
 	
-		engine(engine&& other) = delete;
+		Engine(Engine&& other) = delete;
 	
-		engine& operator=(const engine&  other) = delete;
+		Engine& operator=(const Engine&  other) = delete;
 	
-		engine& operator=(engine&& other) = delete;
+		Engine& operator=(Engine&& other) = delete;
 	
 	protected:	
 
@@ -118,17 +121,17 @@ namespace mt
 
 		// ACCESSORS
 	
-		HINSTANCE _get_app_inst()			const	{ return _instance_handle; };
-		HWND      _get_main_window_handle() const	{ return _main_window_handle; };
+		HINSTANCE _GetInstanceHandle()		const	{ return _instance_handle; };
+		HWND      _GetMainWindowHandle()	const	{ return _main_window_handle; };
 
-		float	  _get_aspect_ratio()		const	{ return _window_aspect_ratio; };
-		int		  _get_width()				const	{ return _window_width; };
-		int		  _get_height()				const	{ return _window_height; };
+		float	  _GetWindowAspectRatio()	const	{ return _window_aspect_ratio; };
+		int		  _GetWindowWidth()			const	{ return _window_width; };
+		int		  _GetWindowHeight()		const	{ return _window_height; };
 
-		bool	  _get_is_maximized()		const	{ return _is_window_maximized; };
-		bool	  _get_is_minimized()		const	{ return _is_window_minimized; };
-		bool	  _get_is_resizing()		const	{ return _is_window_resizing; };
-		bool	  _get_is_fullscreen()		const	{ return _is_window_fullscreen; };
+		bool	  _GetIsWindowMaximized()	const	{ return _is_window_maximized; };
+		bool	  _GetIsWindowMinimized()	const	{ return _is_window_minimized; };
+		bool	  _GetIsWindowResizing()	const	{ return _is_window_resizing; };
+		bool	  _GetIsWindowFullscreen()	const	{ return _is_window_fullscreen; };
 	
 	
 		virtual bool _initialize(HINSTANCE hInstance);

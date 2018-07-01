@@ -207,7 +207,7 @@ struct MaterialConstants
 	DirectX::XMFLOAT4X4 MatTransform = MathHelper::Identity4x4();
 };
 
-// Simple struct to represent a material for our demos.  A production 3D engine
+// Simple struct to represent a material for our demos.  A production 3D Engine
 // would likely create a class hierarchy of Materials.
 struct Material
 {

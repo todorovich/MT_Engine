@@ -181,7 +181,7 @@ void TimerManager::tick()
 	_process_time();
 
 	// IS PAUSED
-	if (engine::GetEngine().IsWindowResizing())
+	if (Engine::GetEngine().IsWindowResizing())
 	{
 		_paused_time += _delta_time_ns;
 	}

@@ -15,42 +15,42 @@ LRESULT WM_SIZE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM
 	auto _window_width = LOWORD(lParam);
 	auto _window_height = HIWORD(lParam);
 
-	engine::GetEngine().SetWindowDimensions(_window_width, _window_height);
+	Engine::GetEngine().SetWindowDimensions(_window_width, _window_height);
 
-	if (engine::GetRenderer().get_is_initialized())
+	if (Engine::GetRenderer().get_is_initialized())
 	{
 		if (wParam == SIZE_MINIMIZED)
 		{
-			engine::GetTimerManager().pause_time();
-			engine::SetIsWindowMinimized(true);
-			engine::SetIsWindowMaximized(false);
+			Engine::GetTimerManager().pause_time();
+			Engine::SetIsWindowMinimized(true);
+			Engine::SetIsWindowMaximized(false);
 		}
 		else if (wParam == SIZE_MAXIMIZED)
 		{
-			engine::GetTimerManager().unpause_time();
-			engine::SetIsWindowMinimized(false);
-			engine::SetIsWindowMaximized(true);
-			engine::Resize(_window_width, _window_height);
+			Engine::GetTimerManager().unpause_time();
+			Engine::SetIsWindowMinimized(false);
+			Engine::SetIsWindowMaximized(true);
+			Engine::Resize(_window_width, _window_height);
 		}
 		else if (wParam == SIZE_RESTORED)
 		{
 			// Restoring from minimized state?
-			if (engine::GetEngine().IsWindowMinimized())
+			if (Engine::GetEngine().IsWindowMinimized())
 			{
-				engine::GetTimerManager().unpause_time();
-				engine::SetIsWindowMinimized(false);
-				engine::Resize(_window_width, _window_height);
+				Engine::GetTimerManager().unpause_time();
+				Engine::SetIsWindowMinimized(false);
+				Engine::Resize(_window_width, _window_height);
 			}
 
 			// Restoring from maximized state?
-			else if (engine::GetEngine().IsWindowMaximized())
+			else if (Engine::GetEngine().IsWindowMaximized())
 			{
-				engine::GetTimerManager().unpause_time();
-				engine::SetIsWindowMinimized(false);
-				engine::Resize(_window_width, _window_height);
+				Engine::GetTimerManager().unpause_time();
+				Engine::SetIsWindowMinimized(false);
+				Engine::Resize(_window_width, _window_height);
 			}
 
-			else if (engine::GetEngine().IsWindowResizing())
+			else if (Engine::GetEngine().IsWindowResizing())
 			{
 				// If user is dragging the Resize bars, we do not Resize 
 				// the buffers here because as the user continuously 
@@ -65,7 +65,7 @@ LRESULT WM_SIZE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM
 			}
 			else // API call such as SetWindowPos or mSwapChain->SetFullscreenState.
 			{
-				engine::Resize(_window_width, _window_height);
+				Engine::Resize(_window_width, _window_height);
 			}
 		}
 	}
