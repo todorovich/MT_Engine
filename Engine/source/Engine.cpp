@@ -49,7 +49,7 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	
 }
 
-Status Engine::_run()
+Status Engine::_Run()
 { 
 	_time_manager.Initialize();
 
@@ -67,7 +67,7 @@ Status Engine::_run()
 			DispatchMessage(&msg);
 		}
 
-		GetEngine()._tick();
+		GetEngine()._Tick();
 
 	}
 
@@ -77,7 +77,7 @@ Status Engine::_run()
 	return Status::success;
 }
 
-void Engine::_tick()
+void Engine::_Tick()
 {
 	_time_manager.tick();
 
@@ -105,7 +105,7 @@ void Engine::_tick()
 	{
 		_direct_x_renderer.flush_command_queue();
 		_time_manager.start_new_idle_interval();
-		_update_frame_stats();
+		_UpdateFrameStatistics();
 	}
 
 }
@@ -116,17 +116,17 @@ void Engine::tick()
 
 	while (!GetEngine()._should_shutdown)
 	{
-		GetEngine()._tick();
+		GetEngine()._Tick();
 	}
 
 	OutputDebugStringW(L"Engine Shutdown\n");
 }
 
-bool Engine::_initialize(HINSTANCE hInstance)
+bool Engine::_Initialize(HINSTANCE hInstance)
 {
 	_instance_handle = hInstance;
 		
-	if(!_init_main_window())
+	if(!_InitializeMainWindow())
 		return false;
 
 	if(!_direct_x_renderer.initialize_direct3d(_main_window_handle))
@@ -138,7 +138,7 @@ bool Engine::_initialize(HINSTANCE hInstance)
 	return true;
 }
 
-bool Engine::_init_main_window()
+bool Engine::_InitializeMainWindow()
 {
 	WNDCLASS wc;
 	wc.style         = CS_HREDRAW | CS_VREDRAW;
@@ -183,7 +183,7 @@ bool Engine::_init_main_window()
 	return true;
 }
 
-void Engine::_update_frame_stats()
+void Engine::_UpdateFrameStatistics()
 {
 	// Code computes the average frames per second, and also the 
 	// average _time_manager it takes to render one frame.  These stats 

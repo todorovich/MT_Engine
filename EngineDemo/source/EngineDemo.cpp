@@ -10,9 +10,9 @@
 #include <DirectXColors.h>
 #include <utility>
 
-#include "engine.hpp"
+#include "Engine.hpp"
 
-using mt::engine;
+using mt::Engine;
 using namespace DirectX;
 
 #ifdef _DEBUG
@@ -31,9 +31,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, in
 
 	try
 	{
-		engine::initialize(hInstance);
+		Engine::Initialize(hInstance);
 		
-		engine::run();
+		Engine::Run();
 
  		return 0;
 	}
@@ -44,13 +44,13 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, in
 	}
 }
 
-class EngineDemo : public engine
+class EngineDemo : public Engine
 {
 public:
 	EngineDemo(HINSTANCE hInstance);
 	~EngineDemo() = default;
 
-	virtual bool _initialize(HINSTANCE hInstance) override;
+	virtual bool _Initialize(HINSTANCE hInstance) override;
 
 private:
 	virtual void OnResize() override;
@@ -60,9 +60,9 @@ private:
 };
 
 
-bool EngineDemo::_initialize(HINSTANCE hInstance)
+bool EngineDemo::_Initialize(HINSTANCE hInstance)
 {
-	if(!engine::_initialize(hInstance))
+	if(!Engine::_Initialize(hInstance))
 		return false;
 		
 	return true;

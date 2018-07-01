@@ -54,12 +54,12 @@ namespace mt
 	
 		static Status Run() 
 		{ 
-			return (_instance.get() == nullptr) ? Status::failure : GetEngine()._run(); 
+			return (_instance.get() == nullptr) ? Status::failure : GetEngine()._Run(); 
 		};
 		
 		static bool Initialize(HINSTANCE hInstance)
 		{	
-			return GetEngine()._initialize(hInstance);;
+			return GetEngine()._Initialize(hInstance);;
 		};
 		
 		static void Resize(int width, int height)
@@ -134,12 +134,12 @@ namespace mt
 		bool	  _GetIsWindowFullscreen()	const	{ return _is_window_fullscreen; };
 	
 	
-		virtual bool _initialize(HINSTANCE hInstance);
-		Status	 _run();
-		void	_tick();
+		virtual bool	_Initialize(HINSTANCE hInstance);
+		Status			_Run();
+		void			_Tick();
 		
-		bool _init_main_window();
-		void _update_frame_stats();
+		bool			_InitializeMainWindow();
+		void			_UpdateFrameStatistics();
 	
 	protected:
 	

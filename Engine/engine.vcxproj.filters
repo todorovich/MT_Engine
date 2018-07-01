@@ -213,7 +213,7 @@
     <ClCompile Include="source\CommandManager.cpp">
       <Filter>Command Queue</Filter>
     </ClCompile>
-    <ClCompile Include="source\Eengine.cpp">
+    <ClCompile Include="source\Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -375,7 +375,7 @@
     <ClInclude Include="source\CommandManager.hpp">
       <Filter>Command Queue</Filter>
     </ClInclude>
-    <ClInclude Include="source\Eengine.hpp">
+    <ClInclude Include="source\Engine.hpp">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
