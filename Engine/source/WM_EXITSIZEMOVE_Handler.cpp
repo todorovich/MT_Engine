@@ -11,13 +11,13 @@ using namespace mt;
 
 LRESULT WM_EXITSIZEMOVE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto& engine = engine::get_engine();
+	auto& engine = engine::GetEngine();
 
-	engine::resize(engine.get_width(), engine.get_height());
+	engine::Resize(engine.GetWindowWidth(), engine.GetWindowHeight());
 	
-	engine::get_game_timer().unpause_time();
+	engine::GetTimerManager().unpause_time();
 	
-	engine::set_is_resizing(false);
+	engine::SetIsWindowResizing(false);
 	
 	return 0;
 }

@@ -222,8 +222,8 @@ void GeometryGenerator::Subdivide(MeshData& meshData)
 	MeshData inputCopy = meshData;
 
 
-	meshData.Vertices.resize(0);
-	meshData.Indices32.resize(0);
+	meshData.Vertices.Resize(0);
+	meshData.Indices32.Resize(0);
 
 	//       v1
 	//       *
@@ -339,7 +339,7 @@ GeometryGenerator::MeshData GeometryGenerator::CreateGeosphere(float radius, uin
 		10,1,6, 11,0,9, 2,11,9, 5,2,9,  11,2,7 
 	};
 
-    meshData.Vertices.resize(12);
+    meshData.Vertices.Resize(12);
     meshData.Indices32.assign(&k[0], &k[60]);
 
 	for(uint32 i = 0; i < 12; ++i)
@@ -573,7 +573,7 @@ GeometryGenerator::MeshData GeometryGenerator::CreateGrid(float width, float dep
 	float du = 1.0f / (n-1);
 	float dv = 1.0f / (m-1);
 
-	meshData.Vertices.resize(vertexCount);
+	meshData.Vertices.Resize(vertexCount);
 	for(uint32 i = 0; i < m; ++i)
 	{
 		float z = halfDepth - i*dz;
@@ -595,7 +595,7 @@ GeometryGenerator::MeshData GeometryGenerator::CreateGrid(float width, float dep
 	// Create the indices.
 	//
 
-	meshData.Indices32.resize(faceCount*3); // 3 indices per face
+	meshData.Indices32.Resize(faceCount*3); // 3 indices per face
 
 	// Iterate over each quad and compute indices.
 	uint32 k = 0;
@@ -622,8 +622,8 @@ GeometryGenerator::MeshData GeometryGenerator::CreateQuad(float x, float y, floa
 {
     MeshData meshData;
 
-	meshData.Vertices.resize(4);
-	meshData.Indices32.resize(6);
+	meshData.Vertices.Resize(4);
+	meshData.Indices32.Resize(6);
 
 	// Position coordinates specified in NDC space.
 	meshData.Vertices[0] = Vertex(

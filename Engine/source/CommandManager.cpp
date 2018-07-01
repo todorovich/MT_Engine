@@ -1,6 +1,6 @@
 #include "precompiled.hpp"
 
-#include "CommandQueue.hpp"
+#include "CommandManager.hpp"
 
 #include "Command.hpp"
 
@@ -10,14 +10,14 @@
 
 using namespace mt;
 
-Status CommandQueue::execute_commands()
+Status CommandManager::execute_commands()
 {
 	for (auto i = 0; i < command_queue.size(); i++)
 	{
 		auto command = command_queue.front();
 
 		command->execute();
-		command->destroy();
+		command->Destroy();
 
 		command_queue.pop();
 	}

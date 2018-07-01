@@ -1,4 +1,4 @@
-#include "WindowsMessageHandlingService.hpp"
+#include "WindowsMessageManager.hpp"
 
 // Various Messages from windows
 #include "WM_ACTIVATE_Handler.hpp"
@@ -40,7 +40,7 @@
 
 using namespace mt;
 
-WindowsMessageHandlingService::WindowsMessageHandlingService()
+WindowsMessageManager::WindowsMessageManager()
 {
 	// Add all the message handlers to the message handler map
 	_message_handler_map.insert(std::make_pair(WM_ACTIVATE, new WM_ACTIVATE_Handler()));
@@ -76,7 +76,7 @@ WindowsMessageHandlingService::WindowsMessageHandlingService()
 	_message_handler_map.insert(std::make_pair(WM_WINDOWPOSCHANGING, new WM_WINDOWPOSCHANGING_Handler()));
 }
 
-WindowsMessageHandlingService::~WindowsMessageHandlingService()
+WindowsMessageManager::~WindowsMessageManager()
 {
 	// clean up all those message handlers
 	for (auto& pair : _message_handler_map)
@@ -85,7 +85,7 @@ WindowsMessageHandlingService::~WindowsMessageHandlingService()
 	}
 }
 
-LRESULT WindowsMessageHandlingService::handle_message(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
+LRESULT WindowsMessageManager::handle_message(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
 	auto& it = _message_handler_map.find(msg);
 

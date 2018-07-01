@@ -1,5 +1,5 @@
 //***************************************************************************************
-// GameTimer.h by Frank Luna (C) 2011 All Rights Reserved.
+// TimerManager.h by Frank Luna (C) 2011 All Rights Reserved.
 //***************************************************************************************
 
 #ifndef GAMETIMER_H
@@ -17,11 +17,11 @@ using namespace std::literals::chrono_literals;
 
 namespace mt
 {
-	class GameTimer
+	class TimerManager
 	{
 	
 	public:
-		GameTimer() = default;
+		TimerManager() = default;
 	
 		std::chrono::nanoseconds total_time() const { return _total_time; };
 	
@@ -54,7 +54,7 @@ namespace mt
 		bool is_paused() const { return _is_paused;	}
 	
 		
-		void initialize(); // Call before message loop.
+		void Initialize(); // Call before message loop.
 		void unpause_time();	 // Call when unpaused.
 		void pause_time();		 // Call when paused.
 		void tick();			 // Call every frame.

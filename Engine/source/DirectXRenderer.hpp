@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "../mt/GameTimer.hpp"
+//#include "../mt/TimerManager.hpp"
 #include "d3dUtil.h"
 #include "UploadBuffer.h"
 #include "Camera.hpp"
@@ -46,7 +46,7 @@ public:
 	}
 
 // Accessors
-	Camera& get_current_camera() { return camera; } // NOT CONST!!!!
+	Camera& GetCurrentCamera() { return camera; } // NOT CONST!!!!
 	
 	bool get_4x_msaa_state() const { return _4x_msaa_state; };
 
@@ -63,7 +63,7 @@ public:
 
 	void render();
 
-	void resize(int client_width, int client_height);
+	void Resize(int client_width, int client_height);
 
 	void Update();
 
@@ -168,10 +168,10 @@ protected:
 	DXGI_FORMAT									mDepthStencilFormat = DXGI_FORMAT_D24_UNORM_S8_UINT;
 
 	int		current_back_buffer		= 0; 
-	int		_client_width			= 0;
-	int		_client_height			= 0;
+	int		_window_width			= 0;
+	int		_window_height			= 0;
 
-	float	_client_aspect_ratio	= 0.0f;
+	float	_window_aspect_ratio	= 0.0f;
 
 // Single byte each
 	bool	_4x_msaa_state			= false;

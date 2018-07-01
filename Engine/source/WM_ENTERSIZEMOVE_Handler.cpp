@@ -11,11 +11,11 @@ using namespace mt;
 
 LRESULT WM_ENTERSIZEMOVE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto& engine = engine::get_engine();
+	auto& engine = engine::GetEngine();
 
-	engine::set_is_resizing(true);
+	engine::SetIsWindowResizing(true);
 
-	engine.get_game_timer().pause_time();
+	engine.GetTimerManager().pause_time();
 
 	return 0;
 }

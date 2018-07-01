@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../mt/WindowsMessageHandler.hpp"
+#include "WindowsMessage.hpp"
 
-class WM_CAPTURECHANGED_Handler : public WindowsMessageHandler
+class WM_CAPTURECHANGED_Handler : public WindowsMessage
 {
 	LRESULT execute(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{

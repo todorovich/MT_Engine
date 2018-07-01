@@ -1,6 +1,6 @@
 #pragma once
 
-#include "WindowsMessageHandler.hpp"
+#include "WindowsMessage.hpp"
 
 #include "engine.hpp"
 
@@ -11,7 +11,7 @@
 
 namespace mt
 {
-	class WM_SIZING_Handler : public WindowsMessageHandler
+	class WM_SIZING_Handler : public WindowsMessage
 	{
 		LRESULT execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 		{

@@ -11,15 +11,15 @@ using namespace mt;
 
 LRESULT WM_ACTIVATE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
-	auto& time = engine::get_engine().get_game_timer();
+	auto& _time_manager = engine::GetEngine().GetTimerManager();
 
 	if (LOWORD(wParam) == WA_INACTIVE)
 	{
-		time.pause_time();
+		_time_manager.pause_time();
 	}
 	else
 	{
-		time.unpause_time();
+		_time_manager.unpause_time();
 	}
 
 	return 0;

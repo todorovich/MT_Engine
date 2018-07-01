@@ -14,5 +14,5 @@ using namespace mt;
 
 void Command::add_to_command_queue()
 {
-	engine::get_command_manager().add_command(this);
+	engine::GetCommandManager().add_command(this);
 }

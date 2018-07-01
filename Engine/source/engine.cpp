@@ -45,15 +45,15 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Forward hwnd on because we can get messages (e.g., WM_CREATE)
 	// before CreateWindow returns, and thus before mhMainWnd is valid.
-	return engine::get_windows_message_handler().handle_message(hwnd, msg, wParam, lParam);
+	return engine::GetWindowsManager().handle_message(hwnd, msg, wParam, lParam);
 	
 }
 
 Status engine::_run()
 { 
-	time.initialize();
+	_time_manager.Initialize();
 
-	//_engine_tick_thread = std::thread(std::ref(engine::get_engine().tick));
+	//_engine_tick_thread = std::thread(std::ref(engine::GetEngine().tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
@@ -67,7 +67,7 @@ Status engine::_run()
 			DispatchMessage(&msg);
 		}
 
-		get_engine()._tick();
+		GetEngine()._tick();
 
 	}
 
@@ -79,32 +79,32 @@ Status engine::_run()
 
 void engine::_tick()
 {
-	time.tick();
+	_time_manager.tick();
 
-	// Check to see if we are running, and its time to Update, if so then Update.
-	if (time.is_paused() != true && time.ns_until_next_update() <= 0ns)
+	// Check to see if we are running, and its _time_manager to Update, if so then Update.
+	if (_time_manager.is_paused() != true && _time_manager.ns_until_next_update() <= 0ns)
 	{
-		this->get_input_handler().ProcessInput();
+		this->GetInputHandler().ProcessInput();
 
-		time.start_update_timer();
+		_time_manager.start_update_timer();
 		Update();
-		dxr.Update();
-		time.end_update_timer();
+		_direct_x_renderer.Update();
+		_time_manager.end_update_timer();
 	}
 
-	// Check to see if we are not resizing, and that it is time to Render, if so then Render
-	if (!_is_resizing && time.ns_until_next_render() <= 0ns)
+	// Check to see if we are not resizing, and that it is _time_manager to Render, if so then Render
+	if (!_is_window_resizing && _time_manager.ns_until_next_render() <= 0ns)
 	{
-		time.start_render_timer();
+		_time_manager.start_render_timer();
 		Draw();
-		dxr.render();
-		time.end_render_timer();
+		_direct_x_renderer.render();
+		_time_manager.end_render_timer();
 	}
 
-	if (time.ns_until_next_idle() <= 0ns)
+	if (_time_manager.ns_until_next_idle() <= 0ns)
 	{
-		dxr.flush_command_queue();
-		time.start_new_idle_interval();
+		_direct_x_renderer.flush_command_queue();
+		_time_manager.start_new_idle_interval();
 		_update_frame_stats();
 	}
 
@@ -114,9 +114,9 @@ void engine::tick()
 {
 	SetThreadName(GetCurrentThreadId(), "Tick Thread");
 
-	while (!get_engine()._is_shutdown)
+	while (!GetEngine()._should_shutdown)
 	{
-		get_engine()._tick();
+		GetEngine()._tick();
 	}
 
 	OutputDebugStringW(L"Engine Shutdown\n");
@@ -124,16 +124,16 @@ void engine::tick()
 
 bool engine::_initialize(HINSTANCE hInstance)
 {
-	_application_instance = hInstance;
+	_instance_handle = hInstance;
 		
 	if(!_init_main_window())
 		return false;
 
-	if(!dxr.initialize_direct3d(_main_window_handle))
+	if(!_direct_x_renderer.initialize_direct3d(_main_window_handle))
 		return false;
 
-	// Do the initial resize code.
-	resize(_client_width, _client_height);
+	// Do the initial Resize code.
+	Resize(_window_width, _window_height);
 
 	return true;
 }
@@ -145,7 +145,7 @@ bool engine::_init_main_window()
 	wc.lpfnWndProc   = MainWndProc; 
 	wc.cbClsExtra    = 0;
 	wc.cbWndExtra    = 0;
-	wc.hInstance     = _application_instance;
+	wc.hInstance     = _instance_handle;
 	wc.hIcon         = LoadIcon(0, IDI_APPLICATION);
 	wc.hCursor       = LoadCursor(0, IDC_ARROW);
 	wc.hbrBackground = (HBRUSH)GetStockObject(NULL_BRUSH);
@@ -159,13 +159,13 @@ bool engine::_init_main_window()
 	}
 
 	// Compute window rectangle dimensions based on requested client area dimensions.
-	RECT R = { 0, 0, _client_width, _client_height };
+	RECT R = { 0, 0, _window_width, _window_height };
 	AdjustWindowRect(&R, WS_OVERLAPPEDWINDOW, false);
 	int width  = R.right - R.left;
 	int height = R.bottom - R.top;
 
-	_main_window_handle = CreateWindow(L"MainWnd", main_window_caption.c_str(), 
-		WS_MAXIMIZE, 0, 0, width, height, nullptr, nullptr, _application_instance, 0);
+	_main_window_handle = CreateWindow(L"MainWnd", _main_window_caption.c_str(), 
+		WS_MAXIMIZE, 0, 0, width, height, nullptr, nullptr, _instance_handle, 0);
 
 	if( !_main_window_handle )
 	{
@@ -186,26 +186,26 @@ bool engine::_init_main_window()
 void engine::_update_frame_stats()
 {
 	// Code computes the average frames per second, and also the 
-	// average time it takes to render one frame.  These stats 
+	// average _time_manager it takes to render one frame.  These stats 
 	// are appended to the window caption bar.
 	
-	time_since_stat_update += time.delta_time();
+	_time_since_stat_update += _time_manager.delta_time();
 
-	if (time_since_stat_update >= 250ms)
+	if (_time_since_stat_update >= 250ms)
 	{
 		static const float ten_e_neg_six = 1.0f / 1000000.0f;
 
-		wstring mspr = to_wstring(time.avg_ns_per_render().count() * ten_e_neg_six);
-		wstring mscl = to_wstring(time.command_list_interval().count() * ten_e_neg_six);
-		wstring mspf = to_wstring(time.avg_ns_per_update().count() * ten_e_neg_six);
+		wstring mspr = to_wstring(_time_manager.avg_ns_per_render().count() * ten_e_neg_six);
+		wstring mscl = to_wstring(_time_manager.command_list_interval().count() * ten_e_neg_six);
+		wstring mspf = to_wstring(_time_manager.avg_ns_per_update().count() * ten_e_neg_six);
 
-		wstring  avg_ms_idle_per_interval = to_wstring(time.avg_ns_idle_per_interval().count() * ten_e_neg_six);
-		wstring  ms_idle_per_interval	  = to_wstring(time.ns_idle_this_interval().count() * ten_e_neg_six);
+		wstring  avg_ms_idle_per_interval = to_wstring(_time_manager.avg_ns_idle_per_interval().count() * ten_e_neg_six);
+		wstring  ms_idle_per_interval	  = to_wstring(_time_manager.ns_idle_this_interval().count() * ten_e_neg_six);
 
-		wstring rfps = to_wstring(1.0s / time.avg_ns_between_render());
-		wstring ufps = to_wstring(1.0s / time.avg_ns_between_update());
+		wstring rfps = to_wstring(1.0s / _time_manager.avg_ns_between_render());
+		wstring ufps = to_wstring(1.0s / _time_manager.avg_ns_between_update());
 
-		wstring windowText = main_window_caption +
+		wstring windowText = _main_window_caption +
 			L"   ms/command: " + mscl +
 			L"   ms/render: " + mspr + L" Render FPS: " + rfps +
 			L"   ms/update: " + mspf + L" Update FPS: " + ufps + 
@@ -215,6 +215,6 @@ void engine::_update_frame_stats()
 		
 		OutputDebugStringW((LPWSTR)windowText.c_str());
 
-		time_since_stat_update = 0ns;
+		_time_since_stat_update = 0ns;
 	}		
 }

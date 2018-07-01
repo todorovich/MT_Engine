@@ -1,11 +1,11 @@
 #pragma once
 
-#include "WindowsMessageHandler.hpp"
+#include "WindowsMessage.hpp"
 #include "engine.hpp"
 
 namespace mt
 {
-	class WM_INPUT_Handler : public WindowsMessageHandler
+	class WM_INPUT_Handler : public WindowsMessage
 	{
 		unsigned buffer_size = 40;
 	

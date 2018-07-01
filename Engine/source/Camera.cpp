@@ -15,7 +15,6 @@ using namespace mt;
 
 Camera::Camera()
 	: mViewDirty(false)
-	, _is_locked(false)
 {
 	SetLens(0.25f*MathHelper::Pi, 1.0f, 1.0f, 1000.0f);
 	LookAt(mPosition, XMFLOAT3(0.0f, 0.0f, 0.0f), mUp);

@@ -9,7 +9,7 @@ LRESULT WM_DESTROY_Handler::execute(const HWND& hwnd, const UINT& msg, const WPA
 	//OutputDebugStringW(L"WM_DESTROY_Handler\n");
 
 	// this should cause the engine to quit immediately
-	engine::destroy();
+	engine::Destroy();
 
 	// Causes message handling thread to end
 	PostQuitMessage(0);

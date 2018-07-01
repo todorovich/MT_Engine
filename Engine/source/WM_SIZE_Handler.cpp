@@ -12,60 +12,60 @@ using namespace mt;
 LRESULT WM_SIZE_Handler::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam)
 {
 	// Save the new client area dimensions.
-	auto _client_width = LOWORD(lParam);
-	auto _client_height = HIWORD(lParam);
+	auto _window_width = LOWORD(lParam);
+	auto _window_height = HIWORD(lParam);
 
-	engine::get_engine().set_window_dimensions(_client_width, _client_height);
+	engine::GetEngine().SetWindowDimensions(_window_width, _window_height);
 
-	if (engine::get_renderer().get_is_initialized())
+	if (engine::GetRenderer().get_is_initialized())
 	{
 		if (wParam == SIZE_MINIMIZED)
 		{
-			engine::get_game_timer().pause_time();
-			engine::set_is_minimized(true);
-			engine::set_is_maximized(false);
+			engine::GetTimerManager().pause_time();
+			engine::SetIsWindowMinimized(true);
+			engine::SetIsWindowMaximized(false);
 		}
 		else if (wParam == SIZE_MAXIMIZED)
 		{
-			engine::get_game_timer().unpause_time();
-			engine::set_is_minimized(false);
-			engine::set_is_maximized(true);
-			engine::resize(_client_width, _client_height);
+			engine::GetTimerManager().unpause_time();
+			engine::SetIsWindowMinimized(false);
+			engine::SetIsWindowMaximized(true);
+			engine::Resize(_window_width, _window_height);
 		}
 		else if (wParam == SIZE_RESTORED)
 		{
 			// Restoring from minimized state?
-			if (engine::get_engine().get_is_minimized())
+			if (engine::GetEngine().IsWindowMinimized())
 			{
-				engine::get_game_timer().unpause_time();
-				engine::set_is_minimized(false);
-				engine::resize(_client_width, _client_height);
+				engine::GetTimerManager().unpause_time();
+				engine::SetIsWindowMinimized(false);
+				engine::Resize(_window_width, _window_height);
 			}
 
 			// Restoring from maximized state?
-			else if (engine::get_engine().get_is_maximized())
+			else if (engine::GetEngine().IsWindowMaximized())
 			{
-				engine::get_game_timer().unpause_time();
-				engine::set_is_minimized(false);
-				engine::resize(_client_width, _client_height);
+				engine::GetTimerManager().unpause_time();
+				engine::SetIsWindowMinimized(false);
+				engine::Resize(_window_width, _window_height);
 			}
 
-			else if (engine::get_engine().get_is_resizing())
+			else if (engine::GetEngine().IsWindowResizing())
 			{
-				// If user is dragging the resize bars, we do not resize 
+				// If user is dragging the Resize bars, we do not Resize 
 				// the buffers here because as the user continuously 
-				// drags the resize bars, a stream of WM_SIZE messages are
+				// drags the Resize bars, a stream of WM_SIZE messages are
 				// sent to the window, and it would be pointless (and slow)
-				// to resize for each WM_SIZE message received from dragging
-				// the resize bars.  So instead, we reset after the user is 
-				// done resizing the window and releases the resize bars, which 
+				// to Resize for each WM_SIZE message received from dragging
+				// the Resize bars.  So instead, we reset after the user is 
+				// done resizing the window and releases the Resize bars, which 
 				// sends a WM_EXITSIZEMOVE message.
 
 
 			}
 			else // API call such as SetWindowPos or mSwapChain->SetFullscreenState.
 			{
-				engine::resize(_client_width, _client_height);
+				engine::Resize(_window_width, _window_height);
 			}
 		}
 	}

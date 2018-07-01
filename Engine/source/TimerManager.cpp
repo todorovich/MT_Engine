@@ -1,10 +1,10 @@
 //***************************************************************************************
-// GameTimer.cpp by Frank Luna (C) 2011 All Rights Reserved.
+// TimerManager.cpp by Frank Luna (C) 2011 All Rights Reserved.
 //***************************************************************************************
 
 //#include <windows.h>
 #include <chrono>
-#include "GameTimer.hpp"
+#include "TimerManager.hpp"
 #include "engine.hpp"
 
 #ifdef _DEBUG
@@ -14,9 +14,9 @@
 
 using namespace mt;
 
-const float GameTimer::_number_of_samples_to_use = 100.0f;
+const float TimerManager::_number_of_samples_to_use = 100.0f;
 
-void GameTimer::initialize()
+void TimerManager::Initialize()
 {
 	_curr_tick_time	 = steady_clock::now();
 	_prev_tick_time	 = _curr_tick_time;
@@ -56,7 +56,7 @@ void GameTimer::initialize()
 	_is_paused	 = false;
 }
 
-void GameTimer::start_update_timer()
+void TimerManager::start_update_timer()
 {
 	_prev_update_start_time = _curr_update_start_time;
 	_curr_update_start_time = steady_clock::now();
@@ -64,7 +64,7 @@ void GameTimer::start_update_timer()
 	_time_until_next_update_ns += _tgt_update_interval_ns;
 }
 
-void GameTimer::end_update_timer()
+void TimerManager::end_update_timer()
 {
 	_update_time_ns = steady_clock::now() - _curr_update_start_time;
 
@@ -79,7 +79,7 @@ void GameTimer::end_update_timer()
 	_update_this_idle += _update_time_ns;
 }
 
-void GameTimer::start_render_timer()
+void TimerManager::start_render_timer()
 {
 	_prev_render_start_time = _curr_render_start_time;
 	_curr_render_start_time = steady_clock::now();
@@ -87,7 +87,7 @@ void GameTimer::start_render_timer()
 	_time_until_next_render_ns += _tgt_render_interval_ns;
 }
 
-void GameTimer::end_render_timer()
+void TimerManager::end_render_timer()
 {
 	_render_time_ns = steady_clock::now() - _curr_render_start_time;
 
@@ -105,24 +105,24 @@ void GameTimer::end_render_timer()
 
 }
 
-void mt::GameTimer::start_command_list_timer()
+void mt::TimerManager::start_command_list_timer()
 {
 	_command_list_start_time = steady_clock::now();
 }
 
-void mt::GameTimer::end_command_list_timer()
+void mt::TimerManager::end_command_list_timer()
 {
 	_command_list_interval = steady_clock::now() - _curr_render_start_time;
 }
 
-void GameTimer::start_new_idle_interval()
+void TimerManager::start_new_idle_interval()
 {
-	// Push the current idle start time to previous
+	// Push the current idle start _time_manager to previous
 	// and Record the start of this idle frame
 	_prev_idle_start_time = _curr_idle_start_time;
 	_curr_idle_start_time = steady_clock::now();
 
-	// Calculate the actual amount of time spent idle this frame.
+	// Calculate the actual amount of _time_manager spent idle this frame.
 	_idle_time_ns = (_curr_idle_start_time - _prev_idle_start_time) - _update_time_ns - _render_time_ns;
 
 	// Update the rolling sample by removing an average sample 
@@ -130,18 +130,18 @@ void GameTimer::start_new_idle_interval()
 	_avg_idle_length_ns -= _avg_idle_length_ns / _number_of_samples_to_use;
 	_avg_idle_length_ns += _idle_time_ns / _number_of_samples_to_use;
 
-	// Add the idle time interval to time until next, effectively reseting idle time this frame
-	// while still accounting for any time we went over frame
+	// Add the idle _time_manager interval to _time_manager until next, effectively reseting idle _time_manager this frame
+	// while still accounting for any _time_manager we went over frame
 	// This is used to keep timing inaccuracies from stacking into the math
 	_time_until_next_idle_ns += _idle_time_interval_ns;
 
-	// reset update and render time
+	// reset update and render _time_manager
 	_update_this_idle = 0ns;
 	_render_this_idle = 0ns;
 
 }
 
-void GameTimer::_process_time()
+void TimerManager::_process_time()
 {
 	_prev_tick_time = _curr_tick_time;
 	_curr_tick_time = steady_clock::now();
@@ -154,7 +154,7 @@ void GameTimer::_process_time()
 
 }
 
-void GameTimer::unpause_time()
+void TimerManager::unpause_time()
 {
 	// If the game is paused, unpause it.
 	if (_is_paused == true)
@@ -165,7 +165,7 @@ void GameTimer::unpause_time()
 	// else do nothing
 }
 
-void GameTimer::pause_time()
+void TimerManager::pause_time()
 {
 	// If the game is not paused, pause it.
 	if(_is_paused == false)
@@ -176,12 +176,12 @@ void GameTimer::pause_time()
 	// else do nothing
 }
 
-void GameTimer::tick()
+void TimerManager::tick()
 {
 	_process_time();
 
 	// IS PAUSED
-	if (engine::get_engine().get_is_resizing())
+	if (engine::GetEngine().IsWindowResizing())
 	{
 		_paused_time += _delta_time_ns;
 	}

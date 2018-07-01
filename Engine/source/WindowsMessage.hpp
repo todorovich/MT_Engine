@@ -5,10 +5,10 @@
 
 class DirectXRenderer;
 
-class WindowsMessageHandler
+class WindowsMessage
 {
 public:
-	virtual ~WindowsMessageHandler() = default;
+	virtual ~WindowsMessage() = default;
 	
 	virtual LRESULT execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam, const LPARAM& lParam) = 0;
 };

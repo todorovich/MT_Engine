@@ -32,7 +32,7 @@ void DirectXRenderer::render()
 	// so we do not have to wait per frame.
 	//flush_command_queue();
 	
-	// NOTE: Moved this to happen outside of the render as it ends up syncing the render time
+	// NOTE: Moved this to happen outside of the render as it ends up syncing the render _time_manager
 	// to the framerate. Instead I moved it to flush just before the idle is reset, this should
 	// force the game to actually stay synced with the gpu without screwing up the stats. Given
 	// the note above I imagine a real fix is incoming.
@@ -138,7 +138,7 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 void DirectXRenderer::create_command_list()
 {
 
-	engine::get_game_timer().start_command_list_timer();
+	engine::GetTimerManager().start_command_list_timer();
 
 	ThrowIfFailed(dx_command_list_allocator->Reset());
 
@@ -182,7 +182,7 @@ void DirectXRenderer::create_command_list()
 	// Done recording commands.
 	ThrowIfFailed(dx_command_list->Close());
 
-	engine::get_game_timer().end_command_list_timer();
+	engine::GetTimerManager().end_command_list_timer();
 
 }
 
@@ -208,7 +208,7 @@ void DirectXRenderer::create_dx_command_objects()
 		nullptr,										// Initial PipelineStateObject
 		IID_PPV_ARGS(dx_command_list.GetAddressOf())));
 
-	// Start off in a closed state.  This is because the first time we refer 
+	// Start off in a closed state.  This is because the first _time_manager we refer 
 	// to the command list we will Reset it, and it needs to be closed before
 	// calling Reset.
 	dx_command_list->Close();
@@ -221,8 +221,8 @@ void DirectXRenderer::create_swap_chain()
 	dx_swap_chain.Reset();
 
 	DXGI_SWAP_CHAIN_DESC swap_chain_description;
-	swap_chain_description.BufferDesc.Width						= _client_width;
-	swap_chain_description.BufferDesc.Height					= _client_height;
+	swap_chain_description.BufferDesc.Width						= _window_width;
+	swap_chain_description.BufferDesc.Height					= _window_height;
 	swap_chain_description.BufferDesc.RefreshRate.Numerator		= 60;
 	swap_chain_description.BufferDesc.RefreshRate.Denominator	= 1;
 	swap_chain_description.BufferDesc.Format					= mBackBufferFormat;
@@ -578,12 +578,12 @@ void DirectXRenderer::log_output_display_modes(IDXGIOutput* output, DXGI_FORMAT 
 	}
 }
 
-void DirectXRenderer::resize(int client_width, int client_height)
+void DirectXRenderer::Resize(int client_width, int client_height)
 {
-	if (client_width != _client_width || client_height != _client_height)
+	if (client_width != _window_width || client_height != _window_height)
 	{
-		_client_width = client_width;
-		_client_height = client_height;
+		_window_width = client_width;
+		_window_height = client_height;
 
 		assert(dx_device);
 		assert(dx_swap_chain);
@@ -602,7 +602,7 @@ void DirectXRenderer::resize(int client_width, int client_height)
 		// Resize the swap chain.
 		ThrowIfFailed(dx_swap_chain->ResizeBuffers(
 			_swap_chain_buffer_count,
-			_client_width, _client_height,
+			_window_width, _window_height,
 			mBackBufferFormat,
 			DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH));
 
@@ -620,8 +620,8 @@ void DirectXRenderer::resize(int client_width, int client_height)
 		D3D12_RESOURCE_DESC depthStencilDesc;
 		depthStencilDesc.Dimension = D3D12_RESOURCE_DIMENSION_TEXTURE2D;
 		depthStencilDesc.Alignment = 0;
-		depthStencilDesc.Width = _client_width;
-		depthStencilDesc.Height = _client_height;
+		depthStencilDesc.Width = _window_width;
+		depthStencilDesc.Height = _window_height;
 		depthStencilDesc.DepthOrArraySize = 1;
 		depthStencilDesc.MipLevels = 1;
 		depthStencilDesc.Format = mDepthStencilFormat;
@@ -649,28 +649,28 @@ void DirectXRenderer::resize(int client_width, int client_height)
 		dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(depth_stencil_buffer.Get(),
 			D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_DEPTH_WRITE));
 
-		// Execute the resize commands.
+		// Execute the Resize commands.
 		ThrowIfFailed(dx_command_list->Close());
 		ID3D12CommandList* cmdsLists[] = { dx_command_list.Get() };
 		dx_command_queue->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 
-		// Wait until resize is complete.
+		// Wait until Resize is complete.
 		flush_command_queue();
 
 		// Update the viewport transform to cover the client area.
 		mScreenViewport.TopLeftX = 0;
 		mScreenViewport.TopLeftY = 0;
-		mScreenViewport.Width = static_cast<float>(_client_width);
-		mScreenViewport.Height = static_cast<float>(_client_height);
+		mScreenViewport.Width = static_cast<float>(_window_width);
+		mScreenViewport.Height = static_cast<float>(_window_height);
 		mScreenViewport.MinDepth = 0.0f;
 		mScreenViewport.MaxDepth = 1.0f;
 
-		mScissorRect = { 0, 0, _client_width, _client_height };
+		mScissorRect = { 0, 0, _window_width, _window_height };
 
-		_client_aspect_ratio = static_cast<float>(_client_width) / _client_height;
+		_window_aspect_ratio = static_cast<float>(_window_width) / _window_height;
 
 		// The window resized, so update the aspect ratio and recompute the projection matrix.
-		engine::get_current_camera().SetLens(0.25f * MathHelper::Pi, engine::get_aspect_ratio(), 1.0f, 1000.0f);
+		engine::GetCurrentCamera().SetLens(0.25f * MathHelper::Pi, engine::GetWindowAspectRatio(), 1.0f, 1000.0f);
 		//XMStoreFloat4x4(&mProj, P);
 	}
 }
@@ -683,7 +683,7 @@ void DirectXRenderer::Set4xMsaaState(bool value)
 
 		// Recreate the swapchain and buffers with new multisample settings.
 		create_swap_chain();
-		resize(_client_width, _client_height);
+		Resize(_window_width, _window_height);
 	}
 }
 

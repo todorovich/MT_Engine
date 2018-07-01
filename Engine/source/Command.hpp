@@ -22,7 +22,7 @@ namespace mt
 			{
 				case EXECUTION_TYPE::IMMEDIATE:
 					execute();
-					destroy();
+					Destroy();
 					break;
 				case EXECUTION_TYPE::ASYNCHRONOURS:
 					add_to_command_queue();
@@ -34,7 +34,7 @@ namespace mt
 
 		virtual void execute() = 0;
 
-		void destroy()
+		void Destroy()
 		{
 			delete this;
 		};

@@ -8,10 +8,10 @@
 
 namespace mt
 {
-class InputHandler
+class InputManager
 {
 public:
-	InputHandler()
+	InputManager()
 	{
 		_pool_start = new InputMessage[512];
 		_pool_end = &_pool_start[512];
@@ -22,9 +22,9 @@ public:
 		}
 	}
 
-	InputHandler(const InputHandler& other) = delete;
-	InputHandler& operator=(const InputHandler& other) = delete;
-	~InputHandler()
+	InputManager(const InputManager& other) = delete;
+	InputManager& operator=(const InputManager& other) = delete;
+	~InputManager()
 	{
 		delete[] _pool_start;
 		_pool_start = nullptr;

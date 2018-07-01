@@ -1,4 +1,4 @@
-#include "InputHandler.hpp"
+#include "InputManager.hpp"
 
 #include "engine.hpp"
 
@@ -17,7 +17,7 @@
 
 using namespace mt;
 
-void InputHandler::ProcessInput() 
+void InputManager::ProcessInput() 
 {
 	auto size = _input_queue.size();
 
@@ -49,7 +49,7 @@ void InputHandler::ProcessInput()
 	}
 }
 
-void InputHandler::MouseMove(WPARAM btnState, int x, int y)
+void InputManager::MouseMove(WPARAM btnState, int x, int y)
 {
 	if (x != _mouse_position.x && y != _mouse_position.y)
 	{
@@ -65,9 +65,9 @@ void InputHandler::MouseMove(WPARAM btnState, int x, int y)
 	}
 }
 
-void InputHandler::MouseDown(WPARAM btnState, int x, int y)
+void InputManager::MouseDown(WPARAM btnState, int x, int y)
 {	
-	SetCapture(engine::get_main_window_handle());
+	SetCapture(engine::GetMainWindowHandle());
 
 	//while (_input_queue_lock.try_lock() == false);
 	
@@ -89,7 +89,7 @@ void InputHandler::MouseDown(WPARAM btnState, int x, int y)
 	//_input_queue_lock.unlock();	
 }
 
-void InputHandler::MouseUp(WPARAM btnState, int x, int y)
+void InputManager::MouseUp(WPARAM btnState, int x, int y)
 {
 	//while (_input_queue_lock.try_lock() == false);
 	
@@ -109,7 +109,7 @@ void InputHandler::MouseUp(WPARAM btnState, int x, int y)
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646280(v=vs.85).aspx
-void InputHandler::KeyDown(WPARAM vk_key, LPARAM flags)
+void InputManager::KeyDown(WPARAM vk_key, LPARAM flags)
 {
 	//while (_input_queue_lock.try_lock() == false);
 
@@ -121,7 +121,7 @@ void InputHandler::KeyDown(WPARAM vk_key, LPARAM flags)
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646281(v=vs.85).aspx
-void InputHandler::KeyUp(WPARAM vk_key, LPARAM flags)
+void InputManager::KeyUp(WPARAM vk_key, LPARAM flags)
 {
 	//while (_input_queue_lock.try_lock() == false);
 
@@ -132,12 +132,12 @@ void InputHandler::KeyUp(WPARAM vk_key, LPARAM flags)
 	//_input_queue_lock.unlock();
 }
 
-void InputHandler::_MouseMove(__int32 x, __int32 y)
+void InputManager::_MouseMove(__int32 x, __int32 y)
 {
 	// Left mouse button is being held
 	if (_held_keys_and_buttons.find(MK_LBUTTON) != _held_keys_and_buttons.end())
 	{
-		auto& camera = engine::get_current_camera();
+		auto& camera = engine::GetCurrentCamera();
 
 		// Make each pixel correspond to 1/10th of a degree.
 		float dx = XMConvertToRadians(0.1f*static_cast<float>(x - _mouse_position.x));
@@ -151,29 +151,29 @@ void InputHandler::_MouseMove(__int32 x, __int32 y)
 	_mouse_position.y = y;
 }
 
-void InputHandler::_MouseDown(WPARAM btnState)
+void InputManager::_MouseDown(WPARAM btnState)
 {
 	_held_keys_and_buttons.insert(btnState);
 }
 
-void InputHandler::_MouseUp(WPARAM btnState)
+void InputManager::_MouseUp(WPARAM btnState)
 {
 	_held_keys_and_buttons.erase(btnState);
 }
 
-void InputHandler::_KeyDown(WPARAM vk_key)
+void InputManager::_KeyDown(WPARAM vk_key)
 {
 }
 
-void InputHandler::_KeyUp(WPARAM vk_key)
+void InputManager::_KeyUp(WPARAM vk_key)
 {
 	if (vk_key == VK_ESCAPE)
 	{
-		PostMessage(engine::get_main_window_handle(), WM_CLOSE, 0, 0);
+		PostMessage(engine::GetMainWindowHandle(), WM_CLOSE, 0, 0);
 	}
 }
 
-InputMessage* mt::InputHandler::Allocate()
+InputMessage* mt::InputManager::Allocate()
 {
 	if (_free_pool_slots.empty() == false)
 	{
@@ -195,7 +195,7 @@ InputMessage* mt::InputHandler::Allocate()
 	return nullptr;
 }
 
-void mt::InputHandler::Deallocate(InputMessage* ptr)
+void mt::InputManager::Deallocate(InputMessage* ptr)
 {
 	if (ptr >= _pool_start && ptr <= _pool_end)
 	{
