@@ -2,11 +2,9 @@
 // TimerManager.h by Frank Luna (C) 2011 All Rights Reserved.
 //***************************************************************************************
 
-#ifndef GAMETIMER_H
-#define GAMETIMER_H
+#pragma once
 
-#include <chrono>
-#include <queue>
+#include "precompiled.hpp"
 
 using steady_clock	= std::chrono::steady_clock;
 using period		= std::chrono::steady_clock::period;
@@ -126,5 +124,3 @@ namespace mt
 	
 	};
 }
-
-#endif // GAMETIMER_H

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "precompiled.hpp"
+
 #include "d3dUtil.h"
 
 template<typename T>

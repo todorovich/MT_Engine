@@ -1,40 +1,67 @@
 #pragma once
 
+// Monolithic Precompiled Header.
+// This is, in general, only for std libraries that don't change much.
 
 #include <algorithm>
+#include <array>					// Standard Array Container
+#include <assert.h>
 #include <atomic>
+#include <cassert>
 #include <chrono>
+#include <comdef.h>
 #include <cmath>
 #include <cstdarg>
-#include <deque>
+#include <cstdint>					// Standard Fixed Integer types
+#include <deque>					// Standard Double Ended Queue
+#include <d3d12.h>					// DirectX 12 library
+#include <d3dcompiler.h>
+#include <DirectXMath.h>			// DirectX Math Library
+#include <DirectXColors.h>
+#include <DirectXCollision.h>
+#include <DirectXPackedVector.h>
+#include <dxgi1_4.h>
 #include <iostream>
 #include <filesystem>
-#include <list>
-#include <map>
+#include <float.h>
+#include <fstream>					// Filestream
+#include <list>						// Standard List Conatainer
+#include <map>						// Standard Map Conatainer
 #include <memory>
 #include <mutex>
-#include <queue>
+#include <queue>					// Standard Queue Conatiner
 #include <ratio>
 #include <set>
-#include <string>
+#include <sstream>					// String Stream
+#include <string>					// String
 #include <thread>
 #include <type_traits>
-#include <tuple>
+#include <tuple>					// Standard Tuple
+#include <thread>
+#include <unordered_map>			// Standard Unordered Map (hash map) Container
 #include <utility>
+#include <vector>					// Standard Vector Container
 #include <windows.h>
+#include <WindowsX.h>
+#include <wrl.h>
 
 #ifdef _DEBUG
-	#include <stdlib.h>
-	#include <crtdbg.h>
-	#define DEBUG_NEW new(_NORMAL_BLOCK ,__FILE__, __LINE__)
-#else
-	#define DEBUG_NEW new
-#endif
 
-#include "MathHelper.h"
+#define	 _CRTDBG_MAP_ALLOC
+#include <stdlib.h>
+#include <crtdbg.h>
+#define	debug_new new(_NORMAL_BLOCK, __FILE__, __LINE__)
+
+#elif
+
+#define	debug_new new
+
+#endif
 
 namespace mt
 {
+	void SetThreadName(DWORD dwThreadID, const char* threadName);
+
 	enum class Status
 	{
 		incomplete = -2,

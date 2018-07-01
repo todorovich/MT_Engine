@@ -18,11 +18,10 @@
 // http://go.microsoft.com/fwlink/?LinkId=248929
 //--------------------------------------------------------------------------------------
 
-#ifdef _MSC_VER
 #pragma once
-#endif
 
-#include <wrl.h>
+#include "precompiled.hpp"
+
 #include <d3d11_1.h>
 #include "d3dx12.h"
 

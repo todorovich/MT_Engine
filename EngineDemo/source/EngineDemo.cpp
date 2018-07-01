@@ -6,21 +6,12 @@
 //
 //***************************************************************************************
 
-
-#include <DirectXColors.h>
-#include <utility>
+#include "precompiled.hpp"
 
 #include "Engine.hpp"
 
 using mt::Engine;
 using namespace DirectX;
-
-#ifdef _DEBUG
-	#include <iostream>
-	#include <crtdbg.h>
-	#define  _CRTDBG_MAP_ALLOC
-	#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#endif
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd)
 {

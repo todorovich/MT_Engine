@@ -13,8 +13,6 @@
 
 #include "precompiled.hpp"
 
-#include <atomic>
-
 #include "d3dUtil.h"
 
 class Camera

@@ -1,25 +1,20 @@
  
 #include "engine.hpp"
-#include <WindowsX.h>
-#include <thread>
-
-#ifdef _DEBUG
-#define  _CRTDBG_MAP_ALLOC
-#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-#endif
 
 
-#include <windows.h>  
+
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
+
 #pragma pack(push,8)  
-typedef struct tagTHREADNAME_INFO
+struct THREADNAME_INFO
 {
 	DWORD dwType; // Must be 0x1000.  
 	LPCSTR szName; // Pointer to name (in user addr space).  
 	DWORD dwThreadID; // Thread ID (-1=caller thread).  
 	DWORD dwFlags; // Reserved for future use, must be zero.  
-} THREADNAME_INFO;
+};
 #pragma pack(pop)  
+
 void SetThreadName(DWORD dwThreadID, const char* threadName) {
 	THREADNAME_INFO info;
 	info.dwType = 0x1000;
@@ -35,6 +30,7 @@ void SetThreadName(DWORD dwThreadID, const char* threadName) {
 	}
 #pragma warning(pop)  
 }
+
 
 
 using namespace mt;

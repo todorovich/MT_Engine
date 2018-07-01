@@ -7,10 +7,9 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef __D3DX12_H__
-#define __D3DX12_H__
+#pragma once
 
-#include <d3d12.h>
+#include "precompiled.hpp"
 
 #if defined( __cplusplus )
 
@@ -1501,8 +1500,4 @@ inline ID3D12CommandList * const * CommandListCast(ID3D12GraphicsCommandList * c
 
 
 #endif // defined( __cplusplus )
-
-#endif //__D3DX12_H__
-
-
 

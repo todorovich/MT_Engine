@@ -1,0 +1,8 @@
+#include "WM_Sizing.hpp"
+
+#include "engine.hpp"
+
+LRESULT mt::WM_Sizing::execute(const HWND & hwnd, const UINT & msg, const WPARAM & wParam, const LPARAM & lParam)
+{
+	return DefWindowProc(hwnd, msg, wParam, lParam);
+}

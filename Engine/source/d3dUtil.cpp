@@ -1,9 +1,4 @@
 
-#include <comdef.h>
-#include <fstream>
-#include <windows.h>
-#include <d3dcompiler.h>
-
 #include "d3dUtil.h"
 
 using Microsoft::WRL::ComPtr;

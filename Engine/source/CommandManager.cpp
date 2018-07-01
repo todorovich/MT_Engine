@@ -1,5 +1,3 @@
-#include "precompiled.hpp"
-
 #include "CommandManager.hpp"
 
 #include "Command.hpp"

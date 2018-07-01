@@ -49,125 +49,104 @@
     <Filter Include="Windows Message Manager\Windows Messages">
       <UniqueIdentifier>{c45045dc-13ec-4e22-ae3b-db0770db2959}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_ACTIVATE">
-      <UniqueIdentifier>{3a3a5d03-23ea-4785-b837-7a5ad4a1f3de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_ACTIVE">
-      <UniqueIdentifier>{cc236ef3-d5fb-416a-9f22-e53c6a483d08}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_CAPTURECHANGED">
-      <UniqueIdentifier>{6b37ecef-dcda-45c7-bbfb-38dc73064641}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_CLOSE">
-      <UniqueIdentifier>{cac7839a-8511-4ada-b95b-2c8455d4a2b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_DESTROY">
-      <UniqueIdentifier>{259209d1-d039-4012-939e-a34d508f3129}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_ERASEBKGND">
-      <UniqueIdentifier>{e0e8357d-af0f-4b34-a04c-e11a09e17e26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_ENTERSIZEMOVE">
-      <UniqueIdentifier>{0097bb93-c3fe-4f47-952b-6809ba0740d7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_EXITSIZEMOVE">
-      <UniqueIdentifier>{2d716774-4f2d-4a5d-b55c-e6cf8ab3a8cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_GETICON">
-      <UniqueIdentifier>{0ffd38b8-5b0c-4ab8-9ce9-db4caf344626}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_GETMINMAXINFO">
-      <UniqueIdentifier>{818bcc10-8c2d-4ff9-92c4-7c874ab5c470}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_KEYUP">
-      <UniqueIdentifier>{6490c74b-5624-4003-bda9-2c828aaddcad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_INPUT">
-      <UniqueIdentifier>{e978f16c-0d97-44fc-87b8-5a566107836e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_MOVE">
-      <UniqueIdentifier>{244614ef-fa72-49e1-a03a-652f6f265708}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_MOUSEMOVE">
-      <UniqueIdentifier>{4ffb2002-1e75-4af5-b157-59ffc18412db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_MENUCHAR">
-      <UniqueIdentifier>{b8ebb7bc-f7b4-4bee-b3de-bcb2baba5cc5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_MOVING">
-      <UniqueIdentifier>{8871b3fb-a974-4d8d-95e2-b54db4987828}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_NCCALCSIZE">
-      <UniqueIdentifier>{6e0ee4c5-f537-4d51-949a-096372745cdc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_NCMOUSELEAVE">
-      <UniqueIdentifier>{d86e5922-949e-4743-ad3c-8703c09c6852}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_NCPAINT">
-      <UniqueIdentifier>{0e6fd698-ad13-407a-a87c-a021fd58a85e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_PAINT">
-      <UniqueIdentifier>{84e7b343-ddae-46f0-94af-b795395a6f4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_SETTEXT">
-      <UniqueIdentifier>{5845c036-7e94-4a23-b849-6a3ed87ac7a8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Windows Message Manager\Windows Messages\_Mouse">
       <UniqueIdentifier>{02b1fe5e-cfe9-4d7d-9eb9-02137cf3bffb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_RBUTTONDOWN">
-      <UniqueIdentifier>{6ec7d797-422f-4fba-8702-38531a8d5bbf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_RBUTTONUP">
-      <UniqueIdentifier>{d6276d73-b737-4260-a197-91ad56a27320}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_MBUTTONDOWN">
-      <UniqueIdentifier>{92cac76c-918e-4bbf-bb7d-fa1a9fa599bb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_MBUTTONUP">
-      <UniqueIdentifier>{ed7e68df-0c0e-46f6-8a24-9a215a4876c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_LBUTTONDOWN">
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonDown">
       <UniqueIdentifier>{39b864b3-476d-46fc-b8bd-9443d9c17643}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_LBUTTONUP">
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonUp">
       <UniqueIdentifier>{a364cb47-8fea-4bb0-9ca3-742fe1dd0cde}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_SIZE">
+    <Filter Include="Windows Message Manager\Windows Messages\WM_EnterSizeMove">
+      <UniqueIdentifier>{0097bb93-c3fe-4f47-952b-6809ba0740d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Close">
+      <UniqueIdentifier>{cac7839a-8511-4ada-b95b-2c8455d4a2b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Destroy">
+      <UniqueIdentifier>{259209d1-d039-4012-939e-a34d508f3129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_CaptureChanged">
+      <UniqueIdentifier>{6b37ecef-dcda-45c7-bbfb-38dc73064641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Activate">
+      <UniqueIdentifier>{3a3a5d03-23ea-4785-b837-7a5ad4a1f3de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonUp">
+      <UniqueIdentifier>{d6276d73-b737-4260-a197-91ad56a27320}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonDown">
+      <UniqueIdentifier>{6ec7d797-422f-4fba-8702-38531a8d5bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonUp">
+      <UniqueIdentifier>{ed7e68df-0c0e-46f6-8a24-9a215a4876c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonDown">
+      <UniqueIdentifier>{92cac76c-918e-4bbf-bb7d-fa1a9fa599bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_EraseBackground">
+      <UniqueIdentifier>{e0e8357d-af0f-4b34-a04c-e11a09e17e26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_ExitSizeMove">
+      <UniqueIdentifier>{2d716774-4f2d-4a5d-b55c-e6cf8ab3a8cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_GetIcon">
+      <UniqueIdentifier>{0ffd38b8-5b0c-4ab8-9ce9-db4caf344626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_GetMinMaxInfo">
+      <UniqueIdentifier>{818bcc10-8c2d-4ff9-92c4-7c874ab5c470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Input">
+      <UniqueIdentifier>{e978f16c-0d97-44fc-87b8-5a566107836e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_MenuChar">
+      <UniqueIdentifier>{b8ebb7bc-f7b4-4bee-b3de-bcb2baba5cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_MouseMove">
+      <UniqueIdentifier>{4ffb2002-1e75-4af5-b157-59ffc18412db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Move">
+      <UniqueIdentifier>{244614ef-fa72-49e1-a03a-652f6f265708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Moving">
+      <UniqueIdentifier>{8871b3fb-a974-4d8d-95e2-b54db4987828}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_NonClientCalcSize">
+      <UniqueIdentifier>{6e0ee4c5-f537-4d51-949a-096372745cdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_NonClientMouseLeave">
+      <UniqueIdentifier>{d86e5922-949e-4743-ad3c-8703c09c6852}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_NonClientPaint">
+      <UniqueIdentifier>{0e6fd698-ad13-407a-a87c-a021fd58a85e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Paint">
+      <UniqueIdentifier>{84e7b343-ddae-46f0-94af-b795395a6f4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_KeyUp">
+      <UniqueIdentifier>{6490c74b-5624-4003-bda9-2c828aaddcad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Quit">
+      <UniqueIdentifier>{b628efda-9243-486f-836e-da0e1399e967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_SetText">
+      <UniqueIdentifier>{5845c036-7e94-4a23-b849-6a3ed87ac7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Size">
       <UniqueIdentifier>{5cd536ab-9ab5-4e10-a453-cd1a756c0d15}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_SIZING">
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Sizing">
       <UniqueIdentifier>{1255ea0f-0e14-45f6-a230-28c01c025c3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_TIMER">
+    <Filter Include="Windows Message Manager\Windows Messages\WM_Timer">
       <UniqueIdentifier>{b253edc2-2922-420e-8906-f9cb32da763c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Windows Message Manager\Windows Messages\WM_WINDOWPOSCHANGING">
+    <Filter Include="Windows Message Manager\Windows Messages\WM_WindowPositionChanging">
       <UniqueIdentifier>{2102c08e-9463-459b-86b4-4f9397170526}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="source\WM_ACTIVATE_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ACTIVATE</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_ENTERSIZEMOVE_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ENTERSIZEMOVE</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_EXITSIZEMOVE_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_EXITSIZEMOVE</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_INPUT_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_INPUT</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_KEYUP_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_KEYUP</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_SIZE_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_SIZE</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_TIMER_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_TIMER</Filter>
-    </ClCompile>
     <ClCompile Include="source\Camera.cpp">
       <Filter>Camera</Filter>
     </ClCompile>
@@ -188,12 +167,6 @@
     </ClCompile>
     <ClCompile Include="source\GeometryGenerator.cpp">
       <Filter>Geometry Generator</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_DESTROY_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_DESTROY</Filter>
-    </ClCompile>
-    <ClCompile Include="source\WM_CLOSE_Handler.cpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_CLOSE</Filter>
     </ClCompile>
     <ClCompile Include="source\InputMessage.cpp">
       <Filter>Input Manager\Input Messages</Filter>
@@ -216,101 +189,102 @@
     <ClCompile Include="source\Engine.cpp">
       <Filter>Engine</Filter>
     </ClCompile>
+    <ClCompile Include="source\WM_LeftMouseButtonDown.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonDown</Filter>
+    </ClCompile>
+    <ClCompile Include="source\precompiled.cpp" />
+    <ClCompile Include="source\WM_LeftMouseButtonUp.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonUp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_MiddleMouseButtonDown.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonDown</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_MiddleMouseButtonUp.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonUp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_RightMouseButtonDown.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonDown</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_RightMouseButtonUp.cpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonUp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Activate.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Activate</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_CaptureChanged.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_CaptureChanged</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Close.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Close</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Destroy.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Destroy</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_EnterSizeMove.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_EnterSizeMove</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_EraseBackground.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_EraseBackground</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_ExitSizeMove.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_ExitSizeMove</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_GetIcon.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_GetIcon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_GetMinMaxInfo.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_GetMinMaxInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Input.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_KeyUp.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_KeyUp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_MenuChar.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_MenuChar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_MouseMove.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_MouseMove</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Move.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Move</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Moving.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Moving</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_NonClientCalcSize.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientCalcSize</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_NonClientMouseLeave.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientMouseLeave</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_NonClientPaint.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientPaint</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Paint.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Paint</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Quit.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Quit</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_SetText.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_SetText</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Size.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Size</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Sizing.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Sizing</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_Timer.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WM_WindowPositionChanging.cpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="source\WM_ACTIVATE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ACTIVATE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_ACTIVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ACTIVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_CAPTURECHANGED_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_CAPTURECHANGED</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_CLOSE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_CLOSE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_DESTROY_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_DESTROY</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_ENTERSIZEMOVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ENTERSIZEMOVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_ERASEBKGND_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_ERASEBKGND</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_EXITSIZEMOVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_EXITSIZEMOVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_GETICON_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_GETICON</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_GETMINMAXINFO_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_GETMINMAXINFO</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_INPUT_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_INPUT</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_KEYUP_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_KEYUP</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_LBUTTONDOWN_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LBUTTONDOWN</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_LBUTTONUP_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LBUTTONUP</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MBUTTONDOWN_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MBUTTONDOWN</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MBUTTONUP_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MBUTTONUP</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MOVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_MOVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MOUSEMOVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_MOUSEMOVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MENUCHAR_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_MENUCHAR</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_MOVING_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_MOVING</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_NCCALCSIZE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_NCCALCSIZE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_NCMOUSELEAVE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_NCMOUSELEAVE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_NCPAINT_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_NCPAINT</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_PAINT_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_PAINT</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_RBUTTONDOWN_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RBUTTONDOWN</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_RBUTTONUP_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RBUTTONUP</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_SETTEXT_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_SETTEXT</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_SIZE_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_SIZE</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_SIZING_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_SIZING</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_TIMER_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_TIMER</Filter>
-    </ClInclude>
-    <ClInclude Include="source\WM_WINDOWPOSCHANGING_Handler.hpp">
-      <Filter>Windows Message Manager\Windows Messages\WM_WINDOWPOSCHANGING</Filter>
-    </ClInclude>
     <ClInclude Include="source\Camera.hpp">
       <Filter>Camera</Filter>
     </ClInclude>
@@ -377,6 +351,99 @@
     </ClInclude>
     <ClInclude Include="source\Engine.hpp">
       <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_LeftMouseButtonDown.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonDown</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_LeftMouseButtonUp.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_LeftMouseButtonUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_MiddleMouseButtonDown.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonDown</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_MiddleMouseButtonUp.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_MiddleMouseButtonUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_RightMouseButtonDown.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonDown</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_RightMouseButtonUp.hpp">
+      <Filter>Windows Message Manager\Windows Messages\_Mouse\WM_RightMouseButtonUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Activate.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Activate</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_CaptureChanged.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_CaptureChanged</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Close.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Close</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Destroy.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Destroy</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_EnterSizeMove.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_EnterSizeMove</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_EraseBackground.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_EraseBackground</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_ExitSizeMove.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_ExitSizeMove</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_GetIcon.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_GetIcon</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_GetMinMaxInfo.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_GetMinMaxInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Input.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_KeyUp.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_KeyUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_MenuChar.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_MenuChar</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_MouseMove.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_MouseMove</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Move.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Move</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Moving.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Moving</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_NonClientCalcSize.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientCalcSize</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_NonClientMouseLeave.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientMouseLeave</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_NonClientPaint.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_NonClientPaint</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Paint.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Paint</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Quit.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Quit</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_SetText.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_SetText</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Size.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Size</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Sizing.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Sizing</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_Timer.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\WM_WindowPositionChanging.hpp">
+      <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

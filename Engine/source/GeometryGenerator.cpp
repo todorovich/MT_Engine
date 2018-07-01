@@ -3,7 +3,7 @@
 //***************************************************************************************
 
 #include "GeometryGenerator.h"
-#include <algorithm>
+
 
 #ifdef _DEBUG
 #define  _CRTDBG_MAP_ALLOC

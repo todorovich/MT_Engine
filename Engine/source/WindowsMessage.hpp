@@ -1,9 +1,6 @@
 #pragma once
 
-#include <windows.h>
-#include <WindowsX.h>
-
-class DirectXRenderer;
+#include "precompiled.hpp"
 
 class WindowsMessage
 {

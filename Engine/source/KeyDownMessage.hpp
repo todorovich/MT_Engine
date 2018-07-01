@@ -1,5 +1,7 @@
 #pragma once
 
+#include "precompiled.hpp"
+
 #include "InputMessage.hpp"
 
 namespace mt

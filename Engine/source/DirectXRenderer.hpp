@@ -1,11 +1,11 @@
 #pragma once
 
+#include "precompiled.hpp"
+
 //#include "../mt/TimerManager.hpp"
 #include "d3dUtil.h"
 #include "UploadBuffer.h"
 #include "Camera.hpp"
-
-#include <string>
 
 // Link necessary d3d12 libraries.
 #pragma comment(lib, "d3dcompiler.lib")

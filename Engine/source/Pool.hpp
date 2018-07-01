@@ -1,7 +1,6 @@
 #pragma once
 
-#include <queue>
-#include <memory>
+#include "precompiled.hpp"
 
 namespace mt
 {

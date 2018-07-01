@@ -1,7 +1,3 @@
-#pragma once
-
-#include "precompiled.hpp"
-
 #include "DirectXRenderer.hpp"
 
 #include "engine.hpp"

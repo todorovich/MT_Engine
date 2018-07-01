@@ -1,12 +1,12 @@
 #pragma once
 
 #include "precompiled.hpp"
+
 #include "TimerManager.hpp"
 #include "DirectXRenderer.hpp"
 #include "WindowsMessageManager.hpp"
 #include "CommandManager.hpp"
 #include "InputManager.hpp"
-
 
 
 namespace mt
