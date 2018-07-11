@@ -87,12 +87,12 @@
     <ClInclude Include="source\GeometryGenerator.h" />
     <ClInclude Include="source\InputManager.hpp" />
     <ClInclude Include="source\InputMessage.hpp" />
-    <ClInclude Include="source\KeyDownMessage.hpp" />
-    <ClInclude Include="source\KeyUpMessage.hpp" />
+    <ClInclude Include="source\IM_KeyDown.hpp" />
+    <ClInclude Include="source\IM_KeyUp.hpp" />
     <ClInclude Include="source\MathHelper.h" />
-    <ClInclude Include="source\MouseDownMessage.hpp" />
-    <ClInclude Include="source\MouseMoveMessage.hpp" />
-    <ClInclude Include="source\MouseUpMessage.hpp" />
+    <ClInclude Include="source\IM_MouseDown.hpp" />
+    <ClInclude Include="source\IM_MouseMove.hpp" />
+    <ClInclude Include="source\IM_MouseUp.hpp" />
     <ClInclude Include="source\Pool.hpp" />
     <ClInclude Include="source\precompiled.hpp" />
     <ClInclude Include="source\UploadBuffer.h" />

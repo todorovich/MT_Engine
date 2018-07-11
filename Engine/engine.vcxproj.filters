@@ -145,6 +145,21 @@
     <Filter Include="Windows Message Manager\Windows Messages\WM_WindowPositionChanging">
       <UniqueIdentifier>{2102c08e-9463-459b-86b4-4f9397170526}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Input Manager\Input Messages\IM_KeyDown">
+      <UniqueIdentifier>{000def03-4ac6-4935-931e-523abc51f5f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Manager\Input Messages\IM_KeyUp">
+      <UniqueIdentifier>{cd1a7fca-9ab7-4fd7-92fc-feb8907278da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Manager\Input Messages\IM_MouseDown">
+      <UniqueIdentifier>{5ebf13df-2b2c-4e03-ba53-8d8c3ef9ee29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Manager\Input Messages\IM_MouseMove">
+      <UniqueIdentifier>{a415c49d-8537-42b9-b0cb-745381600ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input Manager\Input Messages\IM_MouseUp">
+      <UniqueIdentifier>{b371ca58-db20-4490-bc20-818b500fe73d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Camera.cpp">
@@ -319,21 +334,6 @@
     <ClInclude Include="source\InputMessage.hpp">
       <Filter>Input Manager\Input Messages</Filter>
     </ClInclude>
-    <ClInclude Include="source\MouseMoveMessage.hpp">
-      <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
-    <ClInclude Include="source\MouseDownMessage.hpp">
-      <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
-    <ClInclude Include="source\MouseUpMessage.hpp">
-      <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
-    <ClInclude Include="source\KeyUpMessage.hpp">
-      <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
-    <ClInclude Include="source\KeyDownMessage.hpp">
-      <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
     <ClInclude Include="source\TimerManager.hpp">
       <Filter>Timer Manager</Filter>
     </ClInclude>
@@ -444,6 +444,21 @@
     </ClInclude>
     <ClInclude Include="source\WM_WindowPositionChanging.hpp">
       <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IM_KeyDown.hpp">
+      <Filter>Input Manager\Input Messages\IM_KeyDown</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IM_KeyUp.hpp">
+      <Filter>Input Manager\Input Messages\IM_KeyUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IM_MouseDown.hpp">
+      <Filter>Input Manager\Input Messages\IM_MouseDown</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IM_MouseMove.hpp">
+      <Filter>Input Manager\Input Messages\IM_MouseMove</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IM_MouseUp.hpp">
+      <Filter>Input Manager\Input Messages\IM_MouseUp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

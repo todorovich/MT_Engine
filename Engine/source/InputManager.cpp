@@ -55,7 +55,7 @@ void InputManager::MouseMove(WPARAM btnState, int x, int y)
 	{
 		//while (_input_queue_lock.try_lock() == false);
 
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseMoveMessage(x, y)));
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseMove(x, y)));
 
 		//_pool_index = (_pool_index + 1) % 512;
 
@@ -73,14 +73,14 @@ void InputManager::MouseDown(WPARAM btnState, int x, int y)
 	
 	if (x != _mouse_position.x && y != _mouse_position.y)
 	{	
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseMoveMessage(x, y)));
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseMove(x, y)));
 
 		//_pool_index = (_pool_index + 1) % 512;
 
 		_MouseMove(x, y);
 	}
 
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) MouseDownMessage(btnState)));
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseDown(btnState)));
 	
 	//_pool_index = (_pool_index + 1) % 512;
 
@@ -95,11 +95,11 @@ void InputManager::MouseUp(WPARAM btnState, int x, int y)
 	
 	if (x != _mouse_position.x && y != _mouse_position.y)
 	{
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new MouseMoveMessage(x, y)));
+		//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_MouseMove(x, y)));
 		_MouseMove(x, y);
 	}
 
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new MouseUpMessage(btnState)));
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_MouseUp(btnState)));
 
 	_MouseUp(btnState);
 
@@ -113,7 +113,7 @@ void InputManager::KeyDown(WPARAM vk_key, LPARAM flags)
 {
 	//while (_input_queue_lock.try_lock() == false);
 
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new KeyDownMessage(vk_key)));
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_KeyDown(vk_key)));
 
 	_KeyDown(vk_key);
 
@@ -125,7 +125,7 @@ void InputManager::KeyUp(WPARAM vk_key, LPARAM flags)
 {
 	//while (_input_queue_lock.try_lock() == false);
 
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new KeyUpMessage(vk_key)));
+	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_KeyUp(vk_key)));
 
 	_KeyUp(vk_key);
 

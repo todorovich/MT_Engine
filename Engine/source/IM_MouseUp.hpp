@@ -6,32 +6,32 @@
 
 namespace mt
 {
-	class KeyUpMessage : public InputMessage
+	class IM_MouseUp : public InputMessage
 	{
 	public:
 
-		KeyUpMessage(WPARAM button_up)
-			: InputMessage(static_cast<__int64>(button_up))
+		IM_MouseUp(WPARAM button_down)
+			: InputMessage(static_cast<__int64>(button_down))
 		{}
 
-		KeyUpMessage(const KeyUpMessage& other)
+		IM_MouseUp(const IM_MouseUp& other)
 			: InputMessage(other)
 		{}
 
-		KeyUpMessage(KeyUpMessage&& other)
+		IM_MouseUp(IM_MouseUp&& other)
 			: InputMessage(std::move(other))
 		{}
 
-		~KeyUpMessage() = default;
+		~IM_MouseUp() = default;
 
-		KeyUpMessage& operator=(const KeyUpMessage& other)
+		IM_MouseUp& operator=(const IM_MouseUp& other)
 		{
 			i64 = other.i64;
 
 			return *this;
 		}
 
-		KeyUpMessage& operator=(KeyUpMessage&& other)
+		IM_MouseUp& operator=(IM_MouseUp&& other)
 		{
 			i64 = std::move(other.i64);
 
@@ -40,7 +40,7 @@ namespace mt
 
 		virtual void Execute()
 		{
-			_KeyUp(_button_up);
+			_MouseUp(_button_up);
 		};
 
 	private:

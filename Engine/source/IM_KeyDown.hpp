@@ -6,32 +6,32 @@
 
 namespace mt
 {
-	class KeyDownMessage : public InputMessage
+	class IM_KeyDown : public InputMessage
 	{
 	public:
 
-		KeyDownMessage(WPARAM button_down)
+		IM_KeyDown(WPARAM button_down)
 			: InputMessage(static_cast<__int64>(button_down))
 		{}
 
-		KeyDownMessage(const KeyDownMessage& other)
+		IM_KeyDown(const IM_KeyDown& other)
 			: InputMessage(other)
 		{}
 
-		KeyDownMessage(KeyDownMessage&& other)
+		IM_KeyDown(IM_KeyDown&& other)
 			: InputMessage(std::move(other))
 		{}
 
-		~KeyDownMessage() = default;
+		~IM_KeyDown() = default;
 
-		KeyDownMessage& operator=(const KeyDownMessage& other)
+		IM_KeyDown& operator=(const IM_KeyDown& other)
 		{
 			i64 = other.i64;
 
 			return *this;
 		}
 
-		KeyDownMessage& operator=(KeyDownMessage&& other)
+		IM_KeyDown& operator=(IM_KeyDown&& other)
 		{
 			i64 = std::move(other.i64);
 

@@ -6,33 +6,33 @@
 
 namespace mt
 {
-	class MouseDownMessage : public InputMessage
+	class IM_MouseDown : public InputMessage
 	{
 	public:
 
-		MouseDownMessage(WPARAM button_down)
+		IM_MouseDown(WPARAM button_down)
 			: InputMessage(static_cast<__int64>(button_down))
 		{}
 
-		MouseDownMessage(const MouseDownMessage& other)
+		IM_MouseDown(const IM_MouseDown& other)
 			: InputMessage(other)
 		{}
 
 
-		MouseDownMessage(MouseDownMessage&& other)
+		IM_MouseDown(IM_MouseDown&& other)
 			: InputMessage(std::move(other))
 		{}
 
-		~MouseDownMessage() = default;
+		~IM_MouseDown() = default;
 
-		MouseDownMessage& operator=(const MouseDownMessage& other)
+		IM_MouseDown& operator=(const IM_MouseDown& other)
 		{
 			i64 = other.i64;
 
 			return *this;
 		}
 
-		MouseDownMessage& operator=(MouseDownMessage&& other)
+		IM_MouseDown& operator=(IM_MouseDown&& other)
 		{
 			i64 = std::move(other.i64);
 

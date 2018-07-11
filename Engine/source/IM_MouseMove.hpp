@@ -6,32 +6,32 @@
 
 namespace mt
 {
-	class MouseMoveMessage : public InputMessage
+	class IM_MouseMove : public InputMessage
 	{
 	public:
 
-		MouseMoveMessage(__int32 x = 0, __int32 y = 0)
+		IM_MouseMove(__int32 x = 0, __int32 y = 0)
 			: InputMessage(x , y)
 		{}
 
-		MouseMoveMessage(const MouseMoveMessage& other)
+		IM_MouseMove(const IM_MouseMove& other)
 			: InputMessage(other)
 		{}
 
-		MouseMoveMessage(MouseMoveMessage&& other)
+		IM_MouseMove(IM_MouseMove&& other)
 			: InputMessage(std::move(other))
 		{}
 
-		~MouseMoveMessage() = default;
+		~IM_MouseMove() = default;
 
-		MouseMoveMessage& operator=(const MouseMoveMessage& other)
+		IM_MouseMove& operator=(const IM_MouseMove& other)
 		{
 			i64 = other.i64;
 			
 			return *this;
 		}
 
-		MouseMoveMessage& operator=(MouseMoveMessage&& other)
+		IM_MouseMove& operator=(IM_MouseMove&& other)
 		{
 			i64 = std::move(other.i64);
 
