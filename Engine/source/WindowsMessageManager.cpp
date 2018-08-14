@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WindowsMessageManager.hpp"
 
 // Various Messages from windows
@@ -88,9 +90,7 @@ LRESULT WindowsMessageManager::handle_message(const HWND& hwnd, const UINT& msg,
 	{
 		auto result = (*it).second->execute(hwnd, msg, wParam, lParam);
 
-
 		return result;
-
 	}
 	else
 	{

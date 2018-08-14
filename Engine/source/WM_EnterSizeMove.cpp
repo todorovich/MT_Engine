@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WM_EnterSizeMove.hpp"
 
 #include "engine.hpp"
@@ -8,7 +10,7 @@ LRESULT mt::WM_EnterSizeMove::execute(const HWND& hwnd, const UINT& msg, const W
 
 	Engine::SetIsWindowResizing(true);
 
-	Engine.GetTimerManager().pause_time();
+	Engine.GetTimerManager().Pause();
 
 	return 0;
 }

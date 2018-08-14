@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WM_ExitSizeMove.hpp"
 
 #include "engine.hpp"
@@ -8,7 +10,7 @@ LRESULT mt::WM_ExitSizeMove::execute(const HWND& hwnd, const UINT& msg, const WP
 
 	Engine::Resize(Engine.GetWindowWidth(), Engine.GetWindowHeight());
 	
-	Engine::GetTimerManager().unpause_time();
+	Engine::GetTimerManager().Continue();
 	
 	Engine::SetIsWindowResizing(false);
 	

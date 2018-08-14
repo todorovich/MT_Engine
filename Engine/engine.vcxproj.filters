@@ -10,9 +10,6 @@
     <Filter Include="Command">
       <UniqueIdentifier>{433cfa37-76c0-4356-af4f-5d2c242831a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Command Queue">
-      <UniqueIdentifier>{ef25e0c3-a356-482c-90cd-daf8c18a92ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DirectX Helpers">
       <UniqueIdentifier>{de058a6a-baf5-4113-95dd-0238466dbdc3}</UniqueIdentifier>
     </Filter>
@@ -160,6 +157,18 @@
     <Filter Include="Input Manager\Input Messages\IM_MouseUp">
       <UniqueIdentifier>{b371ca58-db20-4490-bc20-818b500fe73d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Command Manager">
+      <UniqueIdentifier>{ef25e0c3-a356-482c-90cd-daf8c18a92ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log Manager">
+      <UniqueIdentifier>{d0e62b5c-9ecd-467d-8b03-09e3f81e1826}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Log Manager\Log">
+      <UniqueIdentifier>{63575590-c46c-4e19-93da-7a790bcbf0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer Manager\_Alarms">
+      <UniqueIdentifier>{43652e52-cd0f-4104-ba67-2749004ecec3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Camera.cpp">
@@ -199,7 +208,7 @@
       <Filter>Windows Message Manager\Windows Messages</Filter>
     </ClCompile>
     <ClCompile Include="source\CommandManager.cpp">
-      <Filter>Command Queue</Filter>
+      <Filter>Command Manager</Filter>
     </ClCompile>
     <ClCompile Include="source\Engine.cpp">
       <Filter>Engine</Filter>
@@ -298,6 +307,9 @@
     <ClCompile Include="source\WM_WindowPositionChanging.cpp">
       <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
     </ClCompile>
+    <ClCompile Include="source\Timer.cpp">
+      <Filter>Timer Manager\Timer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Camera.hpp">
@@ -347,7 +359,7 @@
       <Filter>Windows Message Manager\Windows Messages</Filter>
     </ClInclude>
     <ClInclude Include="source\CommandManager.hpp">
-      <Filter>Command Queue</Filter>
+      <Filter>Command Manager</Filter>
     </ClInclude>
     <ClInclude Include="source\Engine.hpp">
       <Filter>Engine</Filter>
@@ -459,6 +471,15 @@
     </ClInclude>
     <ClInclude Include="source\IM_MouseUp.hpp">
       <Filter>Input Manager\Input Messages\IM_MouseUp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Timer.hpp">
+      <Filter>Timer Manager\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LogManager.hpp">
+      <Filter>Log Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Log.hpp">
+      <Filter>Log Manager\Log</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

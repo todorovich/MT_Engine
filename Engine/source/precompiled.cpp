@@ -1,6 +1,6 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
 
 #include "precompiled.hpp"
-
 
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
 
@@ -8,7 +8,7 @@ const DWORD MS_VC_EXCEPTION = 0x406D1388;
 struct THREADNAME_INFO
 {
 	DWORD dwType; // Must be 0x1000.  
-	LPCSTR szName; // Pointer to name (in user addr space).  
+	LPCSTR szName; // Pointer to _name (in user addr space).  
 	DWORD dwThreadID; // Thread ID (-1=caller thread).  
 	DWORD dwFlags; // Reserved for future use, must be zero.  
 };

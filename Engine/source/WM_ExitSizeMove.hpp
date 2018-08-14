@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #pragma once
 
 #include "WindowsMessage.hpp"

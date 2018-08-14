@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #pragma once
 
 #include "precompiled.hpp"
@@ -11,15 +13,6 @@
 
 namespace mt
 {
-	//class Scene;
-	
-	////////////////////////////////////////////////////////////////////////////////////////////////////
-	/// <summary>	A mt Engine. </summary>
-	/// <detail>	The Engine will handle processing of low level input (pass to input handler)
-	/// 			the Engine will handle all messages from windows
-	/// 			that includes managing resizes
-	/// <remarks>	Micho, 6/13/2016. </remarks>
-	////////////////////////////////////////////////////////////////////////////////////////////////////
 	class Engine
 	{
 	protected:
@@ -30,25 +23,27 @@ namespace mt
 	public:	
 		// ACCESSOR
 	
-		static	Engine& 				GetEngine()				{ return *Engine::_instance.get(); };
-		static	TimerManager&			GetTimerManager()		{ return GetEngine()._time_manager; };
-		static	DirectXRenderer&		GetRenderer()			{ return GetEngine()._direct_x_renderer; };
-		static  InputManager&			GetInputHandler()		{ return GetEngine()._input_manager; }
-		static  Camera&					GetCurrentCamera()		{ return GetEngine()._direct_x_renderer.GetCurrentCamera(); }
-		static	WindowsMessageManager&	GetWindowsManager()		{ return GetEngine()._windows_message_manager; };
-		static	CommandManager&			GetCommandManager()		{ return GetEngine()._command_manager; }
+		static	Engine& 				GetEngine()					{ return *Engine::_instance.get(); };
+		static	TimerManager&			GetTimerManager()			{ return GetEngine()._time_manager; };
+		static	DirectXRenderer&		GetRenderer()				{ return GetEngine()._direct_x_renderer; };
+		static  InputManager&			GetInputHandler()			{ return GetEngine()._input_manager; }
+		static  Camera&					GetCurrentCamera()			{ return GetEngine()._direct_x_renderer.GetCurrentCamera(); }
+		static	WindowsMessageManager&	GetWindowsMessageManager()	{ return GetEngine()._windows_message_manager; };
+		static	CommandManager&			GetCommandManager()			{ return GetEngine()._command_manager; }
 
-		static	HINSTANCE				GetInstanceHandle()		{ return GetEngine()._GetInstanceHandle(); };
-		static	HWND					GetMainWindowHandle()	{ return GetEngine()._GetMainWindowHandle(); };
+		static	HINSTANCE				GetInstanceHandle()			{ return GetEngine()._GetInstanceHandle(); };
+		static	HWND					GetMainWindowHandle()		{ return GetEngine()._GetMainWindowHandle(); };
 
-		static	float					GetWindowAspectRatio()	{ return GetEngine()._GetWindowAspectRatio(); };
-		static	int						GetWindowWidth()		{ return GetEngine()._GetWindowWidth(); };
-		static	int						GetWindowHeight()		{ return GetEngine()._GetWindowHeight(); };
+		static	float					GetWindowAspectRatio()		{ return GetEngine()._GetWindowAspectRatio(); };
+		static	int						GetWindowWidth()			{ return GetEngine()._GetWindowWidth(); };
+		static	int						GetWindowHeight()			{ return GetEngine()._GetWindowHeight(); };
 
-		static	bool					IsWindowMaximized()		{ return GetEngine()._GetIsWindowMaximized(); };
-		static	bool					IsWindowMinimized()		{ return GetEngine()._GetIsWindowMinimized(); };
-		static	bool					IsWindowResizing()		{ return GetEngine()._GetIsWindowResizing(); };
-		static	bool					IsWindowFullscreen()	{ return GetEngine()._GetIsWindowFullscreen(); };
+		static	bool					IsWindowMaximized()			{ return GetEngine()._GetIsWindowMaximized(); };
+		static	bool					IsWindowMinimized()			{ return GetEngine()._GetIsWindowMinimized(); };
+		static	bool					IsWindowResizing()			{ return GetEngine()._GetIsWindowResizing(); };
+		static	bool					IsWindowFullscreen()		{ return GetEngine()._GetIsWindowFullscreen(); };
+
+		static	bool					IsDestroyed()				{ return _instance.get() == nullptr; };
 
 		// MUTATOR
 	
@@ -89,6 +84,7 @@ namespace mt
 			GetEngine()._window_aspect_ratio = (float)width / (float)height;
 		}
 	
+		// Called to begin orderly shutdown.
 		static void Shutdown()
 		{
 			GetEngine()._shutdown();
@@ -97,12 +93,31 @@ namespace mt
 	
 		static void Destroy()
 		{
+			if (_instance.get() != nullptr)
+			{
+				GetEngine()._destroy();
+			}
+
 			OutputDebugStringW(L"Engine Destroyed\n");
 		}
 
-		Engine() = default;
+		Engine()
+			: _direct_x_renderer()
+			, _windows_message_manager()
+			, _command_manager()
+			, _input_manager()
+			, _time_manager()
+		{
+
+		}
 	
-		virtual ~Engine() = default;
+		virtual ~Engine() 
+		{
+			if (!IsDestroyed())
+			{
+				Destroy();
+			}
+		};
 
 		Engine(const Engine&  other) = delete;
 	
@@ -140,15 +155,16 @@ namespace mt
 		
 		bool			_InitializeMainWindow();
 		void			_UpdateFrameStatistics();
+		void			_UpdateFrameStatisticsNoTimeCheck();
 	
 	protected:
 	
-		static void tick();
+		static void Tick();
 	
 		void _resize(int width, int height)
 		{
 			// This flag should prevent futher rendering after the current frame finishes
-			_is_window_resizing = true;
+			_set_is_resizing(true);
 	
 			// wait until rendering is finished.
 			while (_direct_x_renderer.get_is_rendering()) {};
@@ -162,7 +178,7 @@ namespace mt
 			// Trigger callback
 			OnResize();
 			// Continue rendering.
-			_is_window_resizing = false;
+			_set_is_resizing(false);
 		}
 	
 		void _set_is_resizing(bool is_resizing)
@@ -182,19 +198,29 @@ namespace mt
 	
 		void _shutdown()
 		{
-			_should_shutdown = true;
+			_time_manager.Pause();
+
+			_is_shutting_down = true;
+
+			// Destroy the window
+			DestroyWindow(GetEngine()._GetMainWindowHandle());
 		}
 	
-	private:
-		DirectXRenderer			_direct_x_renderer;
-		WindowsMessageManager	_windows_message_manager;
-		CommandManager			_command_manager;
-		InputManager			_input_manager;
-		TimerManager			_time_manager;
+		void _destroy()
+		{
+			delete _instance.release();
+		}
 
-		std::wstring			_main_window_caption = L"mt_engine";
+	private:
+		DirectXRenderer				_direct_x_renderer;
+		WindowsMessageManager		_windows_message_manager;
+		CommandManager				_command_manager;
+		InputManager				_input_manager;
+		TimerManager				_time_manager;
+
+		std::wstring				_main_window_caption = L"mt_engine";
 	
-		std::chrono::nanoseconds _time_since_stat_update = 0ns;
+		std::chrono::nanoseconds	_time_since_stat_update = 0ns;
 
 		HINSTANCE					_instance_handle	= nullptr;	// application instance handle
 		HWND						_main_window_handle	= nullptr;	// main window handle
@@ -203,13 +229,12 @@ namespace mt
 		int		_window_height			= 0;
 		float	_window_aspect_ratio	= _window_height ? static_cast<float>(_window_width) / _window_height : 0;
 		
-		volatile bool				_is_window_minimized	= false;	// is the application minimized?
-		volatile bool				_is_window_maximized	= false;	// is the application maximized?
-		volatile bool				_is_window_resizing		= false;	// are the Resize bars being dragged?
-		volatile bool				_is_window_fullscreen	= false;	// fullscreen enabled
-		volatile bool				_should_shutdown		= false;	// Shutdown is checked to see if tick should keep ticking, on true ticking stops and Tick() returns
-			
-		//Scene*	_default_scene;
+		volatile bool	_is_window_minimized	= false;	// is the application minimized?
+		volatile bool	_is_window_maximized	= false;	// is the application maximized?
+		volatile bool	_is_window_resizing		= false;	// are the Resize bars being dragged?
+		volatile bool	_is_window_fullscreen	= false;	// fullscreen enabled
+		volatile bool	_is_shutting_down		= false;	// Shutdown is checked to see if Tick should keep ticking, on true ticking stops and Tick() returns
+		
 	};
 }
 

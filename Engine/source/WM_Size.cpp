@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WM_Size.hpp"
 
 #include "engine.hpp"
@@ -16,13 +18,13 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 	{
 		if (wParam == SIZE_MINIMIZED)
 		{
-			Engine::GetTimerManager().pause_time();
+			Engine::GetTimerManager().Pause();
 			Engine::SetIsWindowMinimized(true);
 			Engine::SetIsWindowMaximized(false);
 		}
 		else if (wParam == SIZE_MAXIMIZED)
 		{
-			Engine::GetTimerManager().unpause_time();
+			Engine::GetTimerManager().Continue();
 			Engine::SetIsWindowMinimized(false);
 			Engine::SetIsWindowMaximized(true);
 			Engine::Resize(_window_width, _window_height);
@@ -32,7 +34,7 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 			// Restoring from minimized state?
 			if (Engine::GetEngine().IsWindowMinimized())
 			{
-				Engine::GetTimerManager().unpause_time();
+				Engine::GetTimerManager().Continue();
 				Engine::SetIsWindowMinimized(false);
 				Engine::Resize(_window_width, _window_height);
 			}
@@ -40,7 +42,7 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 			// Restoring from maximized state?
 			else if (Engine::GetEngine().IsWindowMaximized())
 			{
-				Engine::GetTimerManager().unpause_time();
+				Engine::GetTimerManager().Continue();
 				Engine::SetIsWindowMinimized(false);
 				Engine::Resize(_window_width, _window_height);
 			}

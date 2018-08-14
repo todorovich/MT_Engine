@@ -1,6 +1,6 @@
-#pragma once
+// Copyright 2018 Micho Todorovich, all rights reserved.
 
-//#include "precompiled.hpp"
+#pragma once
 
 #include "WindowsMessage.hpp"
 

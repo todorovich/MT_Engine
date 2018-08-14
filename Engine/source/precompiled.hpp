@@ -1,3 +1,5 @@
+// Copywrite
+
 #pragma once
 
 // Monolithic Precompiled Header.
@@ -44,19 +46,6 @@
 #include <windows.h>
 #include <WindowsX.h>
 #include <wrl.h>
-
-#ifdef _DEBUG
-
-#define	 _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-#define	debug_new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-
-#elif
-
-#define	debug_new new
-
-#endif
 
 namespace mt
 {

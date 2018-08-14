@@ -77,7 +77,7 @@ public:
 
 	void SetDirty()
 	{
-		mViewDirty = true;
+		_is_view_dirty = true;
 	}
 
 private:
@@ -95,13 +95,15 @@ private:
 
 // 4 bytes
 	// Cache frustum properties.
-	float mNearZ			= 0.0f;
-	float mFarZ				= 0.0f;
-	float mAspect			= 0.0f;
-	float mFovY				= 0.0f;
-	float mNearWindowHeight = 0.0f;
-	float mFarWindowHeight	= 0.0f;
+	float _frustum_near_z				= 0.0f;
+	float _frustum_far_z				= 0.0f;
+	float _frustum_aspect_ratio			= 0.0f;
+	float _frustum_fov_y				= 0.0f;
+	float frustum_near_window_height	= 0.0f;
+	float _frustum_far_window_height	= 0.0f;
 
 // 1 byte
-	bool mViewDirty;
+	bool _is_view_dirty;
+
+	std::mutex _camera_mutex;
 };

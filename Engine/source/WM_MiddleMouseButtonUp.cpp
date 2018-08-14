@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WM_MiddleMouseButtonUp.hpp"
 
 #include "Engine.hpp"

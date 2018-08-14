@@ -1,19 +1,18 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
 #include "InputManager.hpp"
 
 #include "engine.hpp"
 
-#include "MouseMoveMessage.hpp"
-#include "MouseDownMessage.hpp"
-#include "MouseUpMessage.hpp"
-#include "KeyDownMessage.hpp"
-#include "KeyUpMessage.hpp"
+#include "IM_MouseMove.hpp"
+#include "IM_MouseDown.hpp"
+#include "IM_MouseUp.hpp"
+#include "IM_KeyDown.hpp"
+#include "IM_KeyUp.hpp"
 
 //#ifdef _DEBUG
 //#define  _CRTDBG_MAP_ALLOC
 //#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
 //#endif
-
-
 
 using namespace mt;
 
@@ -27,22 +26,13 @@ void InputManager::ProcessInput()
 
 		for (auto x = 0; x < size; x++)
 		{
-			auto empty = _input_queue.empty();
-			auto front = _input_queue.front();
-			
-			_input_queue.back();
-
-			_input_queue.pop();
-			
-			//if (front < _pool_start || front > _pool_end)
-			//{
-			//	return;
-			//}
-
-			front->Execute();
-
-			//Deallocate(front);
-			//delete front;
+			if (!_input_queue.empty())
+			{
+				mt::InputMessage* input_message = _input_queue.front();
+				_input_queue.pop();
+				input_message->Execute();
+				delete input_message;
+			}
 		}
 	
 		_input_queue_lock.unlock();
@@ -163,6 +153,7 @@ void InputManager::_MouseUp(WPARAM btnState)
 
 void InputManager::_KeyDown(WPARAM vk_key)
 {
+
 }
 
 void InputManager::_KeyUp(WPARAM vk_key)
@@ -170,6 +161,19 @@ void InputManager::_KeyUp(WPARAM vk_key)
 	if (vk_key == VK_ESCAPE)
 	{
 		PostMessage(Engine::GetMainWindowHandle(), WM_CLOSE, 0, 0);
+	}
+
+	// P Key
+	else if (vk_key == 0x50)
+	{
+		if (Engine::GetTimerManager().IsUpdatePaused())
+		{
+			Engine::GetTimerManager().Continue();
+		}
+		else
+		{
+			Engine::GetTimerManager().Pause();
+		}
 	}
 }
 

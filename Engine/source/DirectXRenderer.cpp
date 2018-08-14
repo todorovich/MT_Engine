@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "DirectXRenderer.hpp"
 
 #include "engine.hpp"
@@ -133,7 +135,6 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 
 void DirectXRenderer::create_command_list()
 {
-
 	Engine::GetTimerManager().start_command_list_timer();
 
 	ThrowIfFailed(dx_command_list_allocator->Reset());

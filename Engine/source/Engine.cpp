@@ -1,7 +1,6 @@
- 
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "engine.hpp"
-
-
 
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
 
@@ -9,7 +8,7 @@ const DWORD MS_VC_EXCEPTION = 0x406D1388;
 struct THREADNAME_INFO
 {
 	DWORD dwType; // Must be 0x1000.  
-	LPCSTR szName; // Pointer to name (in user addr space).  
+	LPCSTR szName; // Pointer to _name (in user addr space).  
 	DWORD dwThreadID; // Thread ID (-1=caller thread).  
 	DWORD dwFlags; // Reserved for future use, must be zero.  
 };
@@ -31,8 +30,6 @@ void SetThreadName(DWORD dwThreadID, const char* threadName) {
 #pragma warning(pop)  
 }
 
-
-
 using namespace mt;
 
 std::unique_ptr<Engine> mt::Engine::_instance = std::make_unique<Engine>();
@@ -41,19 +38,27 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Forward hwnd on because we can get messages (e.g., WM_CREATE)
 	// before CreateWindow returns, and thus before mhMainWnd is valid.
-	return Engine::GetWindowsManager().handle_message(hwnd, msg, wParam, lParam);
+	return Engine::GetWindowsMessageManager().handle_message(hwnd, msg, wParam, lParam);
 	
 }
 
 Status Engine::_Run()
 { 
-	_time_manager.Initialize();
+	namespace fs = std::filesystem;
+	fs::path p = fs::current_path();
 
-	//_engine_tick_thread = std::thread(std::ref(Engine::GetEngine().tick));
+	OutputDebugStringW(wstring(
+		L"The current path " + p.wstring() + L" decomposes into:\n"
+		+ L"root name " + p.root_name().wstring() + L'\n'
+		+ L"root directory " + p.root_directory().wstring() + L'\n'
+		+ L"relative path " + p.relative_path().wstring() + L'\n'
+		).c_str());
+
+	//_engine_tick_thread = std::thread(std::ref(Engine::Tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
-	
+
 	while (msg.message != WM_QUIT)
 	{
 		// If there are Window messages then process them.
@@ -64,58 +69,69 @@ Status Engine::_Run()
 		}
 
 		GetEngine()._Tick();
+	};
 
-	}
-
-	// Join the tick thread (ensuring it has actually shut down)
+	// Join the Tick thread (ensuring it has actually shut down)
 	//if (_engine_tick_thread.joinable()) _engine_tick_thread.join();
+	
+	OutputDebugStringW(L"Engine Has Stopped.\n");
 
 	return Status::success;
 }
 
 void Engine::_Tick()
 {
-	_time_manager.tick();
+	GetTimerManager().GetTickTimer().Start();
 
-	// Check to see if we are running, and its _time_manager to Update, if so then Update.
-	if (_time_manager.is_paused() != true && _time_manager.ns_until_next_update() <= 0ns)
+	GetTimerManager().Tick();
+
+	// Time for another Update
+	if (GetTimerManager().ns_until_next_update() <= 0ns)
 	{
-		this->GetInputHandler().ProcessInput();
-
+		_input_manager.ProcessInput();
 		_time_manager.start_update_timer();
 		Update();
 		_direct_x_renderer.Update();
 		_time_manager.end_update_timer();
 	}
 
-	// Check to see if we are not resizing, and that it is _time_manager to Render, if so then Render
-	if (!_is_window_resizing && _time_manager.ns_until_next_render() <= 0ns)
+	// End of Frame
+	if (_time_manager.ns_until_next_frame() <= 0ns)
 	{
-		_time_manager.start_render_timer();
-		Draw();
-		_direct_x_renderer.render();
-		_time_manager.end_render_timer();
-	}
+		// Render at the end of the frame
+		if (!GetTimerManager().IsRenderPaused())
+		{
+			GetTimerManager().start_render_timer();
+			Draw();
+			_direct_x_renderer.render();
+			GetTimerManager().end_render_timer();
+		}
 
-	if (_time_manager.ns_until_next_idle() <= 0ns)
-	{
 		_direct_x_renderer.flush_command_queue();
-		_time_manager.start_new_idle_interval();
-		_UpdateFrameStatistics();
+		GetTimerManager().start_new_idle_interval();
 	}
 
+	//_UpdateFrameStatistics();
+
+	auto time = GetTimerManager().GetTickTimer().Stop();
+	if (time  > 16ms)
+	{
+		_UpdateFrameStatisticsNoTimeCheck();
+		//OutputDebugStringW(L"\nBAM!"); 
+		//OutputDebugStringW(to_wstring(time.count()).c_str());
+	}
 }
 
-void Engine::tick()
+void Engine::Tick()
 {
 	SetThreadName(GetCurrentThreadId(), "Tick Thread");
 
-	while (!GetEngine()._should_shutdown)
+	while (!GetEngine()._is_shutting_down)
 	{
 		GetEngine()._Tick();
 	}
 
-	OutputDebugStringW(L"Engine Shutdown\n");
+	OutputDebugStringW(L"Tick Thread Shutdown\n");
 }
 
 bool Engine::_Initialize(HINSTANCE hInstance)
@@ -130,6 +146,8 @@ bool Engine::_Initialize(HINSTANCE hInstance)
 
 	// Do the initial Resize code.
 	Resize(_window_width, _window_height);
+
+	_time_manager.Initialize();
 
 	return true;
 }
@@ -185,32 +203,73 @@ void Engine::_UpdateFrameStatistics()
 	// average _time_manager it takes to render one frame.  These stats 
 	// are appended to the window caption bar.
 	
-	_time_since_stat_update += _time_manager.delta_time();
+	_time_since_stat_update += _time_manager.DeltaTime();
 
 	if (_time_since_stat_update >= 250ms)
 	{
-		static const float ten_e_neg_six = 1.0f / 1000000.0f;
-
-		wstring mspr = to_wstring(_time_manager.avg_ns_per_render().count() * ten_e_neg_six);
-		wstring mscl = to_wstring(_time_manager.command_list_interval().count() * ten_e_neg_six);
-		wstring mspf = to_wstring(_time_manager.avg_ns_per_update().count() * ten_e_neg_six);
-
-		wstring  avg_ms_idle_per_interval = to_wstring(_time_manager.avg_ns_idle_per_interval().count() * ten_e_neg_six);
-		wstring  ms_idle_per_interval	  = to_wstring(_time_manager.ns_idle_this_interval().count() * ten_e_neg_six);
-
-		wstring rfps = to_wstring(1.0s / _time_manager.avg_ns_between_render());
-		wstring ufps = to_wstring(1.0s / _time_manager.avg_ns_between_update());
-
-		wstring windowText = _main_window_caption +
-			L"   ms/command: " + mscl +
-			L"   ms/render: " + mspr + L" Render FPS: " + rfps +
-			L"   ms/update: " + mspf + L" Update FPS: " + ufps + 
-			L"   ms idle: "   + ms_idle_per_interval + L" avg ms idle: " + avg_ms_idle_per_interval + L'\n';
-
-		//SetWindowText(_main_window_handle, windowText.c_str());
-		
-		OutputDebugStringW((LPWSTR)windowText.c_str());
-
-		_time_since_stat_update = 0ns;
+		_UpdateFrameStatisticsNoTimeCheck();
 	}		
+}
+
+void Engine::_UpdateFrameStatisticsNoTimeCheck()
+{
+	GetTimerManager().GetStatisticsTimer().Start();
+
+	static const float ten_e_neg_six = 1.0f / 1000000.0f;
+
+	wstring mspr = to_wstring(_time_manager.avg_ns_per_render().count() * ten_e_neg_six);
+	wstring mscl = to_wstring(_time_manager.command_list_interval().count() * ten_e_neg_six);
+	wstring mspf = to_wstring(_time_manager.avg_ns_per_update().count() * ten_e_neg_six);
+
+	wstring  avg_ms_idle_per_interval = to_wstring(_time_manager.avg_ns_idle_per_interval().count() * ten_e_neg_six);
+	wstring  ms_idle_per_interval = to_wstring(_time_manager.ns_idle_this_interval().count() * ten_e_neg_six);
+
+	wstring rfps = to_wstring(1.0s / _time_manager.avg_ns_between_render());
+	wstring ufps = to_wstring(1.0s / _time_manager.avg_ns_between_update());
+
+	auto& game_timer = Engine::GetTimerManager().GetGameTimer();
+	auto& update_timer = Engine::GetTimerManager().GetUpdateTimer();
+	auto& render_timer = Engine::GetTimerManager().GetRenderTimer();
+	auto& stats_timer = Engine::GetTimerManager().GetStatisticsTimer();
+	auto& tick_Timer = Engine::GetTimerManager().GetTickTimer();
+
+	wstring windowText = _main_window_caption + L'\n' +
+		L"   " + game_timer.GetName() +
+		L"   Average Sample Duration: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetAverageSampleDuration()).count()) +
+		L"   Duration Active: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>((game_timer.GetDurationActive())).count()) +
+		L"   Duration Paused: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetDurationPaused()).count()) +
+		L"   Total Duration: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetTotalDurationRunning()).count()) + L'\n' +
+
+		L"   " + update_timer.GetName() +
+		L"   Average Sample Duration: " + to_wstring(static_cast<double>(update_timer.GetAverageSampleDuration().count()) / 1'000'000.0) +
+		L"   Duration Active: " + to_wstring(static_cast<double>(update_timer.GetDurationActive().count()) / 1'000'000.0) +
+		L"   Duration Paused: " + to_wstring(static_cast<double>(update_timer.GetDurationPaused().count()) / 1'000'000.0) +
+		L"   Total Duration: " + to_wstring(static_cast<double>(update_timer.GetTotalDurationRunning().count()) / 1'000'000.0) + L'\n' +
+
+		L"   " + render_timer.GetName() +
+		L"   Average Sample Duration: " + to_wstring(static_cast<double>(render_timer.GetAverageSampleDuration().count()) / 1'000'000.0) +
+		L"   Duration Active: " + to_wstring(static_cast<double>(render_timer.GetDurationActive().count()) / 1'000'000.0) +
+		L"   Duration Paused: " + to_wstring(static_cast<double>(render_timer.GetDurationPaused().count()) / 1'000'000.0) +
+		L"   Total Duration: " + to_wstring(static_cast<double>(render_timer.GetTotalDurationRunning().count()) / 1'000'000.0) + L'\n' +
+
+		L"   " + stats_timer.GetName() +
+		L"   Average Sample Duration: " + to_wstring(static_cast<double>(stats_timer.GetAverageSampleDuration().count()) / 1'000'000.0) + L'\n' +
+
+		L"   " + tick_Timer.GetName() +
+		L"   Average Sample Duration: " + to_wstring(static_cast<double>(tick_Timer.GetAverageSampleDuration().count()) / 1'000'000.0) + L'\n' +
+		L"   Average Sample Duration: " + to_wstring(static_cast<double>(tick_Timer.GetDurationActive().count()) / 1'000'000.0) + L'\n' +
+		L"   Last Tick Duration: " + to_wstring(static_cast<double>(tick_Timer.GetLastSample().count()) / 1'000'000.0) + L'\n' +
+
+		L"   ms/command: " + mscl +
+		L"   ms/render: " + mspr + L" Render FPS: " + rfps +
+		L"   ms/update: " + mspf + L" Update FPS: " + ufps +
+		L"   ms idle: " + ms_idle_per_interval + L" avg ms idle: " + avg_ms_idle_per_interval + L'\n';
+
+	//SetWindowText(_main_window_handle, windowText.c_str());
+
+	OutputDebugStringW((LPWSTR)windowText.c_str());
+
+	_time_since_stat_update = 0ns;
+
+	GetTimerManager().GetStatisticsTimer().Stop();
 }

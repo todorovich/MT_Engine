@@ -13,32 +13,10 @@
 using mt::Engine;
 using namespace DirectX;
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd)
-{
-	// Enable run-time memory check for debug builds.
-	#if defined(DEBUG) | defined(_DEBUG)
-		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	#endif
-
-	try
-	{
-		Engine::Initialize(hInstance);
-		
-		Engine::Run();
-
- 		return 0;
-	}
-	catch (DxException& e)
-	{
-		MessageBox(nullptr, e.ToString().c_str(), L"HR Failed", MB_OK);
-		return 0;
-	}
-}
-
 class EngineDemo : public Engine
 {
 public:
-	EngineDemo(HINSTANCE hInstance);
+	EngineDemo() = default;
 	~EngineDemo() = default;
 
 	virtual bool _Initialize(HINSTANCE hInstance) override;
@@ -50,23 +28,44 @@ private:
 
 };
 
-
 bool EngineDemo::_Initialize(HINSTANCE hInstance)
 {
-	if(!Engine::_Initialize(hInstance))
+	if (!Engine::_Initialize(hInstance))
 		return false;
-		
+
 	return true;
 }
 
 void EngineDemo::OnResize()
-{
-}
+{}
 
 void EngineDemo::Update()
-{
-}
+{}
 
 void EngineDemo::Draw()
+{}
+
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd)
 {
+	// Enable run-time memory check for debug builds.
+	#if defined(DEBUG) | defined(_DEBUG)
+		_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	#endif
+
+	try
+	{
+		EngineDemo::Initialize(hInstance);
+		
+		EngineDemo::Run();
+		
+		EngineDemo::Destroy();
+
+ 		return 0;
+	}
+	catch (DxException& e)
+	{
+		MessageBox(nullptr, e.ToString().c_str(), L"HR Failed", MB_OK);
+		return 0;
+	}
 }
+

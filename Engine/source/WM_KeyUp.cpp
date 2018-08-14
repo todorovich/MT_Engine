@@ -1,3 +1,5 @@
+// Copyright 2018 Micho Todorovich, all rights reserved.
+
 #include "WM_KeyUp.hpp"
 
 #include "engine.hpp"

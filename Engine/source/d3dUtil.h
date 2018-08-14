@@ -14,25 +14,25 @@
 
 extern const int gNumFrameResources;
 
-inline void d3dSetDebugName(IDXGIObject* obj, const char* name)
+inline void d3dSetDebugName(IDXGIObject* obj, const char* _name)
 {
     if(obj)
     {
-        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(name), name);
+        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(_name), _name);
     }
 }
-inline void d3dSetDebugName(ID3D12Device* obj, const char* name)
+inline void d3dSetDebugName(ID3D12Device* obj, const char* _name)
 {
     if(obj)
     {
-        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(name), name);
+        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(_name), _name);
     }
 }
-inline void d3dSetDebugName(ID3D12DeviceChild* obj, const char* name)
+inline void d3dSetDebugName(ID3D12DeviceChild* obj, const char* _name)
 {
     if(obj)
     {
-        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(name), name);
+        obj->SetPrivateData(WKPDID_D3DDebugObjectName, lstrlenA(_name), _name);
     }
 }
 
@@ -114,7 +114,7 @@ struct SubmeshGeometry
 
 struct MeshGeometry
 {
-	// Give it a name so we can look it up by name.
+	// Give it a _name so we can look it up by _name.
 	std::string Name;
 
 	// System memory copies.  Use Blobs because the vertex/index format can be generic.
@@ -193,7 +193,7 @@ struct MaterialConstants
 // would likely create a class hierarchy of Materials.
 struct Material
 {
-	// Unique material name for lookup.
+	// Unique material _name for lookup.
 	std::string Name;
 
 	// Index into constant buffer corresponding to this material.
@@ -220,7 +220,7 @@ struct Material
 
 struct Texture
 {
-	// Unique material name for lookup.
+	// Unique material _name for lookup.
 	std::string Name;
 
 	std::wstring Filename;
