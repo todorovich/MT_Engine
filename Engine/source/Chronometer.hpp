@@ -13,18 +13,18 @@ using namespace std::literals::chrono_literals;
 
 namespace mt
 {
-class Timer
+class Chronometer
 {
 
 	static __int64 _next_timer_id;
 
 public:
 
-	friend class TimerManager;
+	friend class TimeManager;
 
 	// Big 6
 
-	Timer(wchar_t* timer_name, bool can_pause = true)
+	Chronometer(char* timer_name, bool can_pause = true)
 		: _start_time(0ns)
 		, _stop_time(0ns)
 		, _time_paused(0ns)
@@ -52,7 +52,7 @@ public:
 		}
 	}
 
-	~Timer()
+	~Chronometer()
 	{
 		if (_samples != nullptr)
 		{
@@ -61,9 +61,9 @@ public:
 		}
 	};
 
-	Timer(const Timer& other) = delete;
+	Chronometer(const Chronometer& other) = delete;
 		
-	Timer(Timer&& other)
+	Chronometer(Chronometer&& other)
 		: _start_time				(std::move(other._start_time))
 		, _stop_time				(std::move(other._stop_time))
 		, _time_paused				(std::move(other._time_paused))
@@ -83,9 +83,9 @@ public:
 
 	}
 
-	Timer&& operator=(const Timer& other) = delete;
+	Chronometer&& operator=(const Chronometer& other) = delete;
 
-	Timer&& operator=(Timer&& other)
+	Chronometer&& operator=(Chronometer&& other)
 	{
 		_start_time				= std::move(other._start_time);
 		_stop_time				= std::move(other._stop_time);
@@ -106,7 +106,7 @@ public:
 
 	// Comparison
 
-	friend bool operator<(const Timer& lhs, const Timer& rhs)
+	friend bool operator<(const Chronometer& lhs, const Chronometer& rhs)
 	{
 		return lhs._timer_ID < rhs._timer_ID;
 	}
@@ -135,7 +135,7 @@ public:
 
 	duration GetTotalDurationRunning() const;
 
-	std::wstring& GetName() { return _name; };
+	std::string& GetName() { return _name; };
 
 private:
 
@@ -158,7 +158,7 @@ private:
 
 	duration _average_sample_duration;
 
-	std::wstring	_name;
+	std::string	_name;
 	duration*	_samples;
 
 	__int64 _timer_ID;

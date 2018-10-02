@@ -1,13 +1,13 @@
-#include "Timer.hpp"
+#include "Chronometer.hpp"
 
 #include "Engine.hpp"
-#include "TimerManager.hpp"
+#include "TimeManager.hpp"
 
 using namespace mt;
 
-__int64 Timer::_next_timer_id = 1;
+__int64 Chronometer::_next_timer_id = 1;
 
-void Timer::ResetTimer()
+void Chronometer::ResetTimer()
 {
 	_current_index = 0;
 
@@ -25,7 +25,7 @@ void Timer::ResetTimer()
 	_time_continued = time_point();
 }
 
-void Timer::Start()
+void Chronometer::Start()
 {
 	if (!_is_running)
 	{
@@ -39,7 +39,7 @@ void Timer::Start()
 	}
 }
 
-duration Timer::Stop()
+duration Chronometer::Stop()
 {
 	if (_is_running)
 	{
@@ -61,19 +61,19 @@ duration Timer::Stop()
 	}
 }
 
-time_point Timer::Pause()
+time_point Chronometer::Pause()
 {
 	return _Pause(steady_clock::now());
 }
 
-void Timer::Continue()
+void Chronometer::Continue()
 {
 	_Continue(steady_clock::now());
 }
 
 // PRIVATE FUNCTIONS
 
-time_point Timer::_Pause(time_point time_paused)
+time_point Chronometer::_Pause(time_point time_paused)
 {
 	if (_can_pause && _is_running &&!_is_paused)
 	{
@@ -85,7 +85,7 @@ time_point Timer::_Pause(time_point time_paused)
 	return time_paused;
 }
 
-void Timer::_Continue(time_point time_continued)
+void Chronometer::_Continue(time_point time_continued)
 {
 	if (_can_pause && _is_running && _is_paused)
 	{
@@ -95,7 +95,7 @@ void Timer::_Continue(time_point time_continued)
 	}
 }
 
-void Timer::_Tick(const time_point& current_tick_time, const time_point& previous_tick_time, const duration& delta_time)
+void Chronometer::_Tick(const time_point& current_tick_time, const time_point& previous_tick_time, const duration& delta_time)
 {
 	if (_is_running)
 	{
@@ -161,7 +161,7 @@ void Timer::_Tick(const time_point& current_tick_time, const time_point& previou
 	}
 }
 
-void Timer::_CollectSample()
+void Chronometer::_CollectSample()
 {
 	_average_sample_duration -= _samples[_current_index] / _sample_size;
 
@@ -175,7 +175,7 @@ void Timer::_CollectSample()
 
 // ACCESSORS
 
-void Timer::SetNumberOfSamples(int new_sample_size)
+void Chronometer::SetNumberOfSamples(int new_sample_size)
 {	
 	duration* _temp_sample = new duration[_sample_size];
 
@@ -190,27 +190,27 @@ void Timer::SetNumberOfSamples(int new_sample_size)
 	delete[] _temp_sample;
 }
 
-duration Timer::GetLastSample() const
+duration Chronometer::GetLastSample() const
 {
-	return _samples[(_current_index - 1) % _sample_size];
+	return (_current_index > 0) ? _samples[(_current_index - 1) % _sample_size] : 0ns;
 }
 
-duration Timer::GetDurationPaused() const
+duration Chronometer::GetDurationPaused() const
 {
 	return _duration_paused;
 }
 
-duration Timer::GetAverageSampleDuration() const
+duration Chronometer::GetAverageSampleDuration() const
 {
 	return _average_sample_duration;
 }
 
-duration Timer::GetDurationActive() const
+duration Chronometer::GetDurationActive() const
 {
 	return _duration_active;
 }
 
-duration Timer::GetTotalDurationRunning() const
+duration Chronometer::GetTotalDurationRunning() const
 {
 	return _duration_since_started;
 }
