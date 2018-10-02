@@ -22,7 +22,7 @@ void InputManager::ProcessInput()
 
 	if (size != 0)
 	{
-		while (_input_queue_lock.try_lock() == false);
+		//while (_input_queue_lock.try_lock() == false);
 
 		for (auto x = 0; x < size; x++)
 		{
@@ -35,7 +35,7 @@ void InputManager::ProcessInput()
 			}
 		}
 	
-		_input_queue_lock.unlock();
+		//_input_queue_lock.unlock();
 	}
 }
 
