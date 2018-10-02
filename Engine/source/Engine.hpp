@@ -4,12 +4,12 @@
 
 #include "precompiled.hpp"
 
-#include "TimerManager.hpp"
-#include "DirectXRenderer.hpp"
-#include "WindowsMessageManager.hpp"
 #include "CommandManager.hpp"
+#include "DirectXRenderer.hpp"
 #include "InputManager.hpp"
-
+#include "LogManager.hpp"
+#include "TimeManager.hpp"
+#include "WindowsMessageManager.hpp"
 
 namespace mt
 {
@@ -24,12 +24,13 @@ namespace mt
 		// ACCESSOR
 	
 		static	Engine& 				GetEngine()					{ return *Engine::_instance.get(); };
-		static	TimerManager&			GetTimerManager()			{ return GetEngine()._time_manager; };
+		static	TimeManager&			GetTimerManager()			{ return GetEngine()._time_manager; };
 		static	DirectXRenderer&		GetRenderer()				{ return GetEngine()._direct_x_renderer; };
 		static  InputManager&			GetInputHandler()			{ return GetEngine()._input_manager; }
 		static  Camera&					GetCurrentCamera()			{ return GetEngine()._direct_x_renderer.GetCurrentCamera(); }
 		static	WindowsMessageManager&	GetWindowsMessageManager()	{ return GetEngine()._windows_message_manager; };
 		static	CommandManager&			GetCommandManager()			{ return GetEngine()._command_manager; }
+		static	LogManager&				GetLogManager()				{ return GetEngine()._log_manager; }
 
 		static	HINSTANCE				GetInstanceHandle()			{ return GetEngine()._GetInstanceHandle(); };
 		static	HWND					GetMainWindowHandle()		{ return GetEngine()._GetMainWindowHandle(); };
@@ -155,7 +156,7 @@ namespace mt
 		
 		bool			_InitializeMainWindow();
 		void			_UpdateFrameStatistics();
-		void			_UpdateFrameStatisticsNoTimeCheck();
+		void			_UpdateFrameStatisticsNoTimeCheck(bool was_rendered);
 	
 	protected:
 	
@@ -167,7 +168,7 @@ namespace mt
 			_set_is_resizing(true);
 	
 			// wait until rendering is finished.
-			while (_direct_x_renderer.get_is_rendering()) {};
+			while (_direct_x_renderer.GetIsRendering()) {};
 	
 			_window_width = width;
 			_window_height = height;
@@ -212,14 +213,16 @@ namespace mt
 		}
 
 	private:
-		DirectXRenderer				_direct_x_renderer;
-		WindowsMessageManager		_windows_message_manager;
-		CommandManager				_command_manager;
-		InputManager				_input_manager;
-		TimerManager				_time_manager;
+		DirectXRenderer			_direct_x_renderer;
+		WindowsMessageManager	_windows_message_manager;
+		CommandManager			_command_manager;
+		InputManager			_input_manager;
+		TimeManager				_time_manager;
+		LogManager				_log_manager;
 
-		std::wstring				_main_window_caption = L"mt_engine";
-	
+		std::wstring			_main_window_caption = L"mt_engine";
+		std::string				_main_window_caption_string = "mt_engine";
+
 		std::chrono::nanoseconds	_time_since_stat_update = 0ns;
 
 		HINSTANCE					_instance_handle	= nullptr;	// application instance handle

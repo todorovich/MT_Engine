@@ -14,6 +14,37 @@ struct THREADNAME_INFO
 };
 #pragma pack(pop)  
 
+struct Indenter
+{
+	int tab_count = 0;
+
+	Indenter& operator++(int)
+	{
+		tab_count++;
+
+		return *this;
+	}
+
+	Indenter& operator--(int)
+	{
+		tab_count--;
+
+		return *this;
+	}
+
+	friend ostream& operator<<(ostream& out, const Indenter& tab);
+};
+
+ostream& operator<<(ostream& out, const Indenter& tab)
+{
+	for (auto i = 0; i < tab.tab_count; i++)
+	{
+		out << '\t';
+	}
+
+	return out;
+}
+
 void SetThreadName(DWORD dwThreadID, const char* threadName) {
 	THREADNAME_INFO info;
 	info.dwType = 0x1000;
@@ -44,82 +75,100 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 Status Engine::_Run()
 { 
-	namespace fs = std::filesystem;
-	fs::path p = fs::current_path();
-
-	OutputDebugStringW(wstring(
-		L"The current path " + p.wstring() + L" decomposes into:\n"
-		+ L"root name " + p.root_name().wstring() + L'\n'
-		+ L"root directory " + p.root_directory().wstring() + L'\n'
-		+ L"relative path " + p.relative_path().wstring() + L'\n'
-		).c_str());
-
 	//_engine_tick_thread = std::thread(std::ref(Engine::Tick));
 		
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
 
-	while (msg.message != WM_QUIT)
+	auto& in_between_ticks_chrono = GetTimerManager().FindTimer(std::string("In Between Ticks Chonometer"));
+	in_between_ticks_chrono.Start();
 	{
-		// If there are Window messages then process them.
-		if (GetMessage(&msg, 0, 0, 0))
+		bool quit = false;
+		while (!quit)
 		{
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
+			auto& windows_message_chrono = GetTimerManager().FindTimer(std::string("Windows Message Chronometer"));
+			windows_message_chrono.Start();
+			{
+				// If there are Window messages then process them.
+				while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+				{
+					TranslateMessage(&msg);
+					DispatchMessage(&msg);
+					if (msg.message == WM_QUIT)
+					{
+						quit = true;
+					}
+				}
+			}
+			windows_message_chrono.Stop();
 
-		GetEngine()._Tick();
-	};
+			in_between_ticks_chrono.Stop();
 
+			GetEngine()._Tick();
+
+			in_between_ticks_chrono.Start();
+		};
+	}
+	in_between_ticks_chrono.Stop();
 	// Join the Tick thread (ensuring it has actually shut down)
 	//if (_engine_tick_thread.joinable()) _engine_tick_thread.join();
 	
-	OutputDebugStringW(L"Engine Has Stopped.\n");
+	//OutputDebugStringW(L"Engine Has Stopped.\n");
 
 	return Status::success;
 }
 
 void Engine::_Tick()
 {
+	bool was_rendered = false;
+
 	GetTimerManager().GetTickTimer().Start();
-
-	GetTimerManager().Tick();
-
-	// Time for another Update
-	if (GetTimerManager().ns_until_next_update() <= 0ns)
 	{
-		_input_manager.ProcessInput();
-		_time_manager.start_update_timer();
-		Update();
-		_direct_x_renderer.Update();
-		_time_manager.end_update_timer();
-	}
+		GetTimerManager().Tick();
 
-	// End of Frame
-	if (_time_manager.ns_until_next_frame() <= 0ns)
-	{
-		// Render at the end of the frame
-		if (!GetTimerManager().IsRenderPaused())
+		// Time for another Update
+		//if (GetTimerManager().ns_until_next_update() <= 0ns)
 		{
-			GetTimerManager().start_render_timer();
-			Draw();
-			_direct_x_renderer.render();
-			GetTimerManager().end_render_timer();
+
+			auto& input_timer = GetTimerManager().FindTimer(std::string("Input Chronometer"));
+
+			input_timer.Start();
+			{
+				_input_manager.ProcessInput();
+			}
+			input_timer.Stop();
+
+			GetTimerManager().GetUpdateTimer().Start();
+			{
+				Update();
+				_direct_x_renderer.Update();
+			}
+			GetTimerManager().GetUpdateTimer().Stop();
 		}
 
-		_direct_x_renderer.flush_command_queue();
-		GetTimerManager().start_new_idle_interval();
-	}
+		// End of Frame
+		// New Frame
+		// Time to Render
+		//if (GetTimerManager().ns_until_next_frame() <= 0ns)
+		{
+			// Render whenever you can, but don't wait.
+			if (!GetTimerManager().IsRenderPaused() && GetRenderer().IsCurrentFenceComplete())
+			{
+				GetTimerManager().GetRenderTimer().Start();
+				{
+					Draw();
+					_direct_x_renderer.Render();
+					_direct_x_renderer.IncrementFence();
+					was_rendered = true;
+				}
+				GetTimerManager().GetRenderTimer().Stop();
+			}
+		}
 
-	//_UpdateFrameStatistics();
-
-	auto time = GetTimerManager().GetTickTimer().Stop();
-	if (time  > 16ms)
-	{
-		_UpdateFrameStatisticsNoTimeCheck();
-		//OutputDebugStringW(L"\nBAM!"); 
-		//OutputDebugStringW(to_wstring(time.count()).c_str());
 	}
+	GetTimerManager().GetTickTimer().Stop();
+
+	_UpdateFrameStatisticsNoTimeCheck(was_rendered);
 }
 
 void Engine::Tick()
@@ -141,7 +190,7 @@ bool Engine::_Initialize(HINSTANCE hInstance)
 	if(!_InitializeMainWindow())
 		return false;
 
-	if(!_direct_x_renderer.initialize_direct3d(_main_window_handle))
+	if(!_direct_x_renderer.InitializeDirect3d(_main_window_handle))
 		return false;
 
 	// Do the initial Resize code.
@@ -197,77 +246,197 @@ bool Engine::_InitializeMainWindow()
 	return true;
 }
 
-void Engine::_UpdateFrameStatistics()
-{
-	// Code computes the average frames per second, and also the 
-	// average _time_manager it takes to render one frame.  These stats 
-	// are appended to the window caption bar.
-	
-	_time_since_stat_update += _time_manager.DeltaTime();
+//void Engine::_UpdateFrameStatistics()
+//{
+//	// Code computes the average frames per second, and also the 
+//	// average _time_manager it takes to render one frame.  These stats 
+//	// are appended to the window caption bar.
+//	
+//	_time_since_stat_update += GetTimerManager().DeltaTime()
+//
+//	if (_time_since_stat_update >= 250ms)
+//	{
+//		_UpdateFrameStatisticsNoTimeCheck();
+//	}		
+//}
 
-	if (_time_since_stat_update >= 250ms)
-	{
-		_UpdateFrameStatisticsNoTimeCheck();
-	}		
-}
-
-void Engine::_UpdateFrameStatisticsNoTimeCheck()
+void Engine::_UpdateFrameStatisticsNoTimeCheck(bool was_rendered)
 {
 	GetTimerManager().GetStatisticsTimer().Start();
 
-	static const float ten_e_neg_six = 1.0f / 1000000.0f;
+	static const float ns_to_ms = 1e-6f;
 
-	wstring mspr = to_wstring(_time_manager.avg_ns_per_render().count() * ten_e_neg_six);
-	wstring mscl = to_wstring(_time_manager.command_list_interval().count() * ten_e_neg_six);
-	wstring mspf = to_wstring(_time_manager.avg_ns_per_update().count() * ten_e_neg_six);
+	auto& game_chrono		= Engine::GetTimerManager().GetGameTimer();
+	auto& update_chrono		= Engine::GetTimerManager().GetUpdateTimer();
+	auto& render_chrono		= Engine::GetTimerManager().GetRenderTimer();
+	auto& wm_chrono			= Engine::GetTimerManager().FindTimer(std::string("Windows Message Chronometer"));
+	auto& in_between_chrono = Engine::GetTimerManager().FindTimer(std::string("In Between Ticks Chonometer"));
+	auto& stats_chrono		= Engine::GetTimerManager().GetStatisticsTimer();
+	auto& tick_chrono		= Engine::GetTimerManager().GetTickTimer();
+	//auto& frame_timer = Engine::GetTimerManager().GetFrameTimer();
 
-	wstring  avg_ms_idle_per_interval = to_wstring(_time_manager.avg_ns_idle_per_interval().count() * ten_e_neg_six);
-	wstring  ms_idle_per_interval = to_wstring(_time_manager.ns_idle_this_interval().count() * ten_e_neg_six);
+	float ns_to_s = 1e-9f;
 
-	wstring rfps = to_wstring(1.0s / _time_manager.avg_ns_between_render());
-	wstring ufps = to_wstring(1.0s / _time_manager.avg_ns_between_update());
+	const auto emsp = "&emsp;";
+	const auto red_span = "<span style=\"color:Red\">";
+	const auto span_end = "</span>";
 
-	auto& game_timer = Engine::GetTimerManager().GetGameTimer();
-	auto& update_timer = Engine::GetTimerManager().GetUpdateTimer();
-	auto& render_timer = Engine::GetTimerManager().GetRenderTimer();
-	auto& stats_timer = Engine::GetTimerManager().GetStatisticsTimer();
-	auto& tick_Timer = Engine::GetTimerManager().GetTickTimer();
+	auto& log_ostream = GetLogManager().GetMainLog().GetOStream();
+	Indenter indenter;
 
-	wstring windowText = _main_window_caption + L'\n' +
-		L"   " + game_timer.GetName() +
-		L"   Average Sample Duration: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetAverageSampleDuration()).count()) +
-		L"   Duration Active: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>((game_timer.GetDurationActive())).count()) +
-		L"   Duration Paused: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetDurationPaused()).count()) +
-		L"   Total Duration: " + to_wstring(std::chrono::duration_cast<std::chrono::seconds>(game_timer.GetTotalDurationRunning()).count()) + L'\n' +
+	log_ostream	<< '\n' << "<table>" << '\n';
 
-		L"   " + update_timer.GetName() +
-		L"   Average Sample Duration: " + to_wstring(static_cast<double>(update_timer.GetAverageSampleDuration().count()) / 1'000'000.0) +
-		L"   Duration Active: " + to_wstring(static_cast<double>(update_timer.GetDurationActive().count()) / 1'000'000.0) +
-		L"   Duration Paused: " + to_wstring(static_cast<double>(update_timer.GetDurationPaused().count()) / 1'000'000.0) +
-		L"   Total Duration: " + to_wstring(static_cast<double>(update_timer.GetTotalDurationRunning().count()) / 1'000'000.0) + L'\n' +
+	indenter++;
+	log_ostream	<< indenter << "<tr>" << '\n';
 
-		L"   " + render_timer.GetName() +
-		L"   Average Sample Duration: " + to_wstring(static_cast<double>(render_timer.GetAverageSampleDuration().count()) / 1'000'000.0) +
-		L"   Duration Active: " + to_wstring(static_cast<double>(render_timer.GetDurationActive().count()) / 1'000'000.0) +
-		L"   Duration Paused: " + to_wstring(static_cast<double>(render_timer.GetDurationPaused().count()) / 1'000'000.0) +
-		L"   Total Duration: " + to_wstring(static_cast<double>(render_timer.GetTotalDurationRunning().count()) / 1'000'000.0) + L'\n' +
+	indenter++;
+	log_ostream << indenter << "<td style=\"vertical-align:top\">" << '\n';
 
-		L"   " + stats_timer.GetName() +
-		L"   Average Sample Duration: " + to_wstring(static_cast<double>(stats_timer.GetAverageSampleDuration().count()) / 1'000'000.0) + L'\n' +
+	indenter++;
+	log_ostream	<< indenter << "<table>" << '\n';
+	
+	indenter++;
+	log_ostream << indenter << "<tr>" << '\n';
 
-		L"   " + tick_Timer.GetName() +
-		L"   Average Sample Duration: " + to_wstring(static_cast<double>(tick_Timer.GetAverageSampleDuration().count()) / 1'000'000.0) + L'\n' +
-		L"   Average Sample Duration: " + to_wstring(static_cast<double>(tick_Timer.GetDurationActive().count()) / 1'000'000.0) + L'\n' +
-		L"   Last Tick Duration: " + to_wstring(static_cast<double>(tick_Timer.GetLastSample().count()) / 1'000'000.0) + L'\n' +
+	indenter++;
+	log_ostream
+		<< indenter << "<th></th>" << '\n'
+		<< indenter << "<th>Duration Active</th>" << '\n'
+		<< indenter << "<th>Duration Paused</th>" << '\n'
+		<< indenter << "<th>Total Duration</th>" << '\n';
 
-		L"   ms/command: " + mscl +
-		L"   ms/render: " + mspr + L" Render FPS: " + rfps +
-		L"   ms/update: " + mspf + L" Update FPS: " + ufps +
-		L"   ms idle: " + ms_idle_per_interval + L" avg ms idle: " + avg_ms_idle_per_interval + L'\n';
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
 
-	//SetWindowText(_main_window_handle, windowText.c_str());
+	indenter++;
+	log_ostream
+		<< indenter << "<td>" << game_chrono.GetName() << "</td>" << '\n'
+		<< indenter << "<td>" << game_chrono.GetDurationActive().count()		* ns_to_s << "s" << "</td>" << '\n'
+		<< indenter << "<td>" << game_chrono.GetDurationPaused().count()		* ns_to_s << "s" << "</td>" << '\n'
+		<< indenter << "<td>" << game_chrono.GetTotalDurationRunning().count()	* ns_to_s << "s" << "</td>" << '\n';
+	
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
 
-	OutputDebugStringW((LPWSTR)windowText.c_str());
+	indenter++;
+	log_ostream
+		<< indenter << "<td>" << update_chrono.GetName() << "</td>" << '\n'
+		<< indenter << "<td>" << update_chrono.GetDurationActive().count()			* ns_to_ms << "ns" << "</td>" << '\n'
+		<< indenter << "<td>" << update_chrono.GetDurationPaused().count()			* ns_to_ms << "ns" << "</td>" << '\n'
+		<< indenter << "<td>" << update_chrono.GetTotalDurationRunning().count()	* ns_to_ms << "ns" << "</td>" << '\n';
+		
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<td>" << render_chrono.GetName() << "</td>" << '\n'
+		<< indenter << "<td>" << render_chrono.GetDurationActive().count()			* ns_to_ms << "ns" << "</td>" << '\n'
+		<< indenter << "<td>" << render_chrono.GetDurationPaused().count()			* ns_to_ms << "ns" << "</td>" << '\n'
+		<< indenter << "<td>" << render_chrono.GetTotalDurationRunning().count()	* ns_to_ms << "ns" << "</td>" << '\n';
+
+
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<td>" << tick_chrono.GetName() << "</td>" << '\n'
+		<< indenter << "<td>" << tick_chrono.GetDurationActive().count()	 * ns_to_ms << "ns" << "</td>" << '\n'
+		<< indenter << "<td>" << tick_chrono.GetDurationPaused().count()	 * ns_to_ms << "ns" << "</td>" << '\n';
+
+	auto temp = tick_chrono.GetTotalDurationRunning().count() * ns_to_ms;
+
+	if (temp >= 16)
+	{
+		log_ostream	<< indenter << "<td>" << red_span << temp << span_end << "ns" << "</td>" << '\n';
+	}
+	else
+	{
+		log_ostream	<< indenter << "<td>" << temp << "ns" << "</td>" << '\n';
+	}
+
+	indenter--;
+	log_ostream << indenter << "</tr>" << '\n';
+	
+	indenter--;
+	log_ostream << indenter << "</table>" << '\n';
+
+	indenter--;
+	log_ostream
+		<< indenter << "</td>" << '\n'
+		<< indenter << "<td style=\"vertical-align:top\">" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<table>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<tr>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<th></th>" << '\n'
+		<< indenter << "<th>Update</th>" << '\n'
+		<< indenter << "<th>Render</th>" << '\n'
+		<< indenter << "<th>Windows Messages</th>" << '\n'
+		<< indenter << "<th>Statistics</th>" << '\n'
+		<< indenter << "<th>Tick</th>" << '\n'
+		<< indenter << "<th>In-Between Ticks</th>" << '\n';
+
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<td>Average</td>" << '\n'
+		<< indenter << "<td>" << (update_chrono.GetAverageSampleDuration().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (was_rendered ? (render_chrono.GetAverageSampleDuration().count() * ns_to_ms) : 0) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (wm_chrono.GetAverageSampleDuration().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (stats_chrono.GetAverageSampleDuration().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (tick_chrono.GetAverageSampleDuration().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (in_between_chrono.GetAverageSampleDuration().count() * ns_to_ms) << "ms" << "</td>" << '\n';
+
+	indenter--;
+	log_ostream
+		<< indenter << "</tr>" << '\n'
+		<< indenter << "<tr>" << '\n';
+
+	indenter++;
+	log_ostream
+		<< indenter << "<td>Last Sample</td>" << '\n'
+		<< indenter << "<td>" << (update_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (render_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (wm_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (stats_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (tick_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n'
+		<< indenter << "<td>" << (in_between_chrono.GetLastSample().count() * ns_to_ms) << "ms" << "</td>" << '\n';
+
+	indenter--;
+	log_ostream	<< indenter << "</tr>" << '\n';
+
+	indenter--;
+	log_ostream	<< indenter << "</table>" << '\n';
+
+	indenter--;
+	log_ostream	<< indenter << "</td>" << '\n';
+
+	indenter--;
+	log_ostream	<< indenter << "</tr>" << '\n';
+
+	indenter--;
+	log_ostream	<< indenter << "</table>" << '\n';
 
 	_time_since_stat_update = 0ns;
 
