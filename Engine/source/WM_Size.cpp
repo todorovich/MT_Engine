@@ -14,7 +14,7 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 
 	Engine::GetEngine().SetWindowDimensions(_window_width, _window_height);
 
-	if (Engine::GetRenderer().get_is_initialized())
+	if (Engine::GetRenderer().GetIsInitialized())
 	{
 		if (wParam == SIZE_MINIMIZED)
 		{
