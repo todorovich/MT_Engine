@@ -8,11 +8,15 @@
 
 class LogManager
 {
+	Log _main_log;
+
+public:
+
 	// Default Constructor
 	LogManager() = default;
-
+	
 	// Copy Constructor
-	LogManager(const LogManager& other) = delete;
+	LogManager(const LogManager& other) = default;
 
 	// Move Constructor
 	LogManager(LogManager&& other) = default;
@@ -25,4 +29,6 @@ class LogManager
 
 	// Destructor
 	~LogManager() = default;
+
+	Log& GetMainLog() { return _main_log; }
 };
