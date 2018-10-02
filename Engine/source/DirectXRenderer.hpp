@@ -4,7 +4,7 @@
 
 #include "precompiled.hpp"
 
-//#include "../mt/TimerManager.hpp"
+//#include "../mt/TimeManager.hpp"
 #include "d3dUtil.h"
 #include "UploadBuffer.h"
 #include "Camera.hpp"
@@ -50,20 +50,20 @@ public:
 // Accessors
 	Camera& GetCurrentCamera() { return camera; } // NOT CONST!!!!
 	
-	bool get_4x_msaa_state() const { return _4x_msaa_state; };
+	bool Get4xMsaaState() const { return _4x_msaa_state; };
 
-	bool get_is_initialized() const { return _is_initialized; };
+	bool GetIsInitialized() const { return _is_initialized; };
 
-	int  get_swap_chain_buffer_count() const { return _swap_chain_buffer_count; };
+	int  GetSwapChainBufferCount() const { return _swap_chain_buffer_count; };
 
 	void Set4xMsaaState(bool value);
 
-	bool get_is_rendering() const { return _is_rendering; }
+	bool GetIsRendering() const { return _is_rendering; }
 
 // Mutators
-	bool initialize_direct3d(HWND main_window_handle);
+	bool InitializeDirect3d(HWND main_window_handle);
 
-	void render();
+	void Render();
 
 	void Resize(int client_width, int client_height);
 
@@ -71,40 +71,48 @@ public:
 
 	void flush_command_queue();
 
+// Fence Stuff
+
+	void IncrementFence();
+
+	void WaitForFence();
+
+	bool IsCurrentFenceComplete() { return fence->GetCompletedValue() >= current_fence_index; }
+
 protected:
 
 // Accessors
-	ID3D12Resource* get_current_back_buffer()const;
+	ID3D12Resource* GetCurrentBackBuffer() const;
 
-	D3D12_CPU_DESCRIPTOR_HANDLE get_current_back_buffer_view()const;
+	D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentBackBufferView() const;
 
-	D3D12_CPU_DESCRIPTOR_HANDLE get_depth_stencil_view()const;
+	D3D12_CPU_DESCRIPTOR_HANDLE GetDepthStencilView() const;
 
 // Mutators
 
-	void create_command_list();
+	void CreateCommandList();
 
-	void create_dx_command_objects();
+	void CreateDxCommandObjects();
 
-	void create_swap_chain();
+	void CreateSwapChain();
 
-	virtual void create_descriptor_heaps();
+	virtual void CreateDescriptorHeaps();
 	
-	void create_constant_buffers();
+	void CreateConstantBuffers();
 
-	void create_root_signature();
+	void CreateRootSignature();
 
-	void create_shaders_and_input_layout();
+	void CreateShadersAndInputLayout();
 
-	void create_box_geometry();
+	void CreateBoxGeometry();
 
-	void create_pipeline_state_object();
+	void CreatePipelineStateObject();
 
-	void log_adapters();
+	void LogAdapters();
 
-	void log_adapter_outputs(IDXGIAdapter* adapter);
+	void LogAdapterOutputs(IDXGIAdapter* adapter);
 	
-	void log_output_display_modes(IDXGIOutput* output, DXGI_FORMAT format);
+	void LogOutputDisplayModes(IDXGIOutput* output, DXGI_FORMAT format);
 
 // Data
 	static const int							_swap_chain_buffer_count = 2;

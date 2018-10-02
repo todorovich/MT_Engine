@@ -11,11 +11,11 @@
 
 using namespace mt;
 
-void DirectXRenderer::render()
+void DirectXRenderer::Render()
 {
 	_is_rendering = true;
 
-	create_command_list();
+	CreateCommandList();
 
 	// Add the command list to the queue for execution.
 	ID3D12CommandList* cmdsLists[] = { dx_command_list.Get() };
@@ -38,7 +38,7 @@ void DirectXRenderer::render()
 	_is_rendering = false;
 }
 
-bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
+bool DirectXRenderer::InitializeDirect3d(HWND main_window_handle)
 {
 	_main_window_handle = main_window_handle;
 
@@ -100,24 +100,24 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 	//log_adapters();
 #endif
 
-	create_dx_command_objects();
+	CreateDxCommandObjects();
 	
-	create_swap_chain();
+	CreateSwapChain();
 	
-	create_descriptor_heaps();
+	CreateDescriptorHeaps();
 
 	// Reset the command list to prep for initialization commands.
 	ThrowIfFailed(dx_command_list->Reset(dx_command_list_allocator.Get(), nullptr));
 
-	create_constant_buffers();
+	CreateConstantBuffers();
 	
-	create_root_signature();
+	CreateRootSignature();
 	
-	create_shaders_and_input_layout();
+	CreateShadersAndInputLayout();
 	
-	create_box_geometry();
+	CreateBoxGeometry();
 	
-	create_pipeline_state_object();
+	CreatePipelineStateObject();
 
 	// Execute the initialization commands.
 	ThrowIfFailed(dx_command_list->Close());
@@ -133,10 +133,8 @@ bool DirectXRenderer::initialize_direct3d(HWND main_window_handle)
 	return true;
 }
 
-void DirectXRenderer::create_command_list()
+void DirectXRenderer::CreateCommandList()
 {
-	Engine::GetTimerManager().start_command_list_timer();
-
 	ThrowIfFailed(dx_command_list_allocator->Reset());
 
 	// A command list can be reset after it has been added to the command queue via ExecuteCommandList.
@@ -147,15 +145,15 @@ void DirectXRenderer::create_command_list()
 	dx_command_list->RSSetScissorRects(1, &mScissorRect);
 
 	// Indicate a state transition on the resource usage.
-	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
+	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(GetCurrentBackBuffer(),
 		D3D12_RESOURCE_STATE_PRESENT, D3D12_RESOURCE_STATE_RENDER_TARGET));
 
 	// Clear the back buffer and depth buffer.
-	dx_command_list->ClearRenderTargetView(get_current_back_buffer_view(), Colors::LightSteelBlue, 0, nullptr);
-	dx_command_list->ClearDepthStencilView(get_depth_stencil_view(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
+	dx_command_list->ClearRenderTargetView(GetCurrentBackBufferView(), Colors::LightSteelBlue, 0, nullptr);
+	dx_command_list->ClearDepthStencilView(GetDepthStencilView(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
 
 	// Specify the buffers we are going to render to.
-	dx_command_list->OMSetRenderTargets(1, &get_current_back_buffer_view(), true, &get_depth_stencil_view());
+	dx_command_list->OMSetRenderTargets(1, &GetCurrentBackBufferView(), true, &GetDepthStencilView());
 
 	ID3D12DescriptorHeap* descriptorHeaps[] = { dx_cbv_heap.Get() };
 	dx_command_list->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
@@ -173,17 +171,14 @@ void DirectXRenderer::create_command_list()
 		1, 0, 0, 0);
 
 	// Indicate a state transition on the resource usage.
-	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(get_current_back_buffer(),
+	dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(GetCurrentBackBuffer(),
 		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PRESENT));
 
 	// Done recording commands.
 	ThrowIfFailed(dx_command_list->Close());
-
-	Engine::GetTimerManager().end_command_list_timer();
-
 }
 
-void DirectXRenderer::create_dx_command_objects()
+void DirectXRenderer::CreateDxCommandObjects()
 {
 	D3D12_COMMAND_QUEUE_DESC command_queue_description = {};
 	command_queue_description.Type = D3D12_COMMAND_LIST_TYPE_DIRECT;
@@ -211,7 +206,7 @@ void DirectXRenderer::create_dx_command_objects()
 	dx_command_list->Close();
 }
 
-void DirectXRenderer::create_swap_chain()
+void DirectXRenderer::CreateSwapChain()
 {
 	// Releases all references for the pointer to the interface that is associated with this ComPtr.
 	// Release the previous swapchain we will be recreating.
@@ -241,11 +236,11 @@ void DirectXRenderer::create_swap_chain()
 		dx_swap_chain.GetAddressOf()));
 }
 
-void DirectXRenderer::create_descriptor_heaps()
+void DirectXRenderer::CreateDescriptorHeaps()
 {
 	// Create the Render-Target-View (RTV) Descriptor-Heap Description
 	D3D12_DESCRIPTOR_HEAP_DESC rtv_heap_description;
-	rtv_heap_description.NumDescriptors = get_swap_chain_buffer_count();
+	rtv_heap_description.NumDescriptors = GetSwapChainBufferCount();
 	rtv_heap_description.Type			= D3D12_DESCRIPTOR_HEAP_TYPE_RTV;
 	rtv_heap_description.Flags			= D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
 	rtv_heap_description.NodeMask		= 0;
@@ -278,7 +273,7 @@ void DirectXRenderer::create_descriptor_heaps()
 
 }
 
-void DirectXRenderer::create_constant_buffers()
+void DirectXRenderer::CreateConstantBuffers()
 {
 	object_constants_upload_buffer = std::make_unique<UploadBuffer<ObjectConstants>>(dx_device.Get(), 1, true);
 
@@ -298,7 +293,7 @@ void DirectXRenderer::create_constant_buffers()
 		dx_cbv_heap->GetCPUDescriptorHandleForHeapStart());
 }
 
-void DirectXRenderer::create_root_signature()
+void DirectXRenderer::CreateRootSignature()
 {
 	// Shader programs typically require resources as input (constant buffers,
 	// textures, samplers).  The root signature defines the resources the shader
@@ -338,7 +333,7 @@ void DirectXRenderer::create_root_signature()
 		IID_PPV_ARGS(&dx_root_signature)));
 }
 
-void DirectXRenderer::create_shaders_and_input_layout()
+void DirectXRenderer::CreateShadersAndInputLayout()
 {
 	HRESULT hr = S_OK;
 
@@ -356,7 +351,7 @@ void DirectXRenderer::create_shaders_and_input_layout()
 	};
 }
 
-void DirectXRenderer::create_box_geometry()
+void DirectXRenderer::CreateBoxGeometry()
 {
 	std::array<Vertex, 8> vertices =
 	{
@@ -428,7 +423,7 @@ void DirectXRenderer::create_box_geometry()
 	box_mesh_geometry->DrawArgs["box"] = submesh;
 }
 
-void DirectXRenderer::create_pipeline_state_object()
+void DirectXRenderer::CreatePipelineStateObject()
 {
 	D3D12_GRAPHICS_PIPELINE_STATE_DESC psoDesc;
 	ZeroMemory(&psoDesc, sizeof(D3D12_GRAPHICS_PIPELINE_STATE_DESC));
@@ -451,13 +446,20 @@ void DirectXRenderer::create_pipeline_state_object()
 	psoDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
 	psoDesc.NumRenderTargets = 1;
 	psoDesc.RTVFormats[0] = mBackBufferFormat;
-	psoDesc.SampleDesc.Count = get_4x_msaa_state() ? 4 : 1;
-	psoDesc.SampleDesc.Quality = get_4x_msaa_state() ? (_4x_msaa_quality - 1) : 0;
+	psoDesc.SampleDesc.Count = Get4xMsaaState() ? 4 : 1;
+	psoDesc.SampleDesc.Quality = Get4xMsaaState() ? (_4x_msaa_quality - 1) : 0;
 	psoDesc.DSVFormat = mDepthStencilFormat;
 	ThrowIfFailed(dx_device->CreateGraphicsPipelineState(&psoDesc, IID_PPV_ARGS(&mPSO)));
 }
 
 void DirectXRenderer::flush_command_queue()
+{
+	IncrementFence();
+
+	WaitForFence();
+}
+
+void DirectXRenderer::IncrementFence()
 {
 	// Advance the fence value to mark commands up to this fence point.
 	current_fence_index++;
@@ -466,7 +468,10 @@ void DirectXRenderer::flush_command_queue()
 	// are on the GPU timeline, the new fence point won't be set until the GPU finishes
 	// processing all the commands prior to this Signal().
 	ThrowIfFailed(dx_command_queue->Signal(fence.Get(), current_fence_index));
+}
 
+void DirectXRenderer::WaitForFence()
+{
 	// Wait until the GPU has completed commands up to this fence point.
 	if (fence->GetCompletedValue() < current_fence_index)
 	{
@@ -482,12 +487,12 @@ void DirectXRenderer::flush_command_queue()
 	}
 }
 
-ID3D12Resource* DirectXRenderer::get_current_back_buffer() const
+ID3D12Resource* DirectXRenderer::GetCurrentBackBuffer() const
 {
 	return swap_chain_buffer[current_back_buffer].Get();
 }
 
-D3D12_CPU_DESCRIPTOR_HANDLE DirectXRenderer::get_current_back_buffer_view() const
+D3D12_CPU_DESCRIPTOR_HANDLE DirectXRenderer::GetCurrentBackBufferView() const
 {
 	return CD3DX12_CPU_DESCRIPTOR_HANDLE(
 		dx_rtv_heap->GetCPUDescriptorHandleForHeapStart(),
@@ -495,12 +500,12 @@ D3D12_CPU_DESCRIPTOR_HANDLE DirectXRenderer::get_current_back_buffer_view() cons
 		rtv_descriptor_size);
 }
 
-D3D12_CPU_DESCRIPTOR_HANDLE DirectXRenderer::get_depth_stencil_view() const
+D3D12_CPU_DESCRIPTOR_HANDLE DirectXRenderer::GetDepthStencilView() const
 {
 	return dx_dsv_heap->GetCPUDescriptorHandleForHeapStart();
 }
 
-void DirectXRenderer::log_adapters()
+void DirectXRenderer::LogAdapters()
 {
 	UINT i = 0;
 	IDXGIAdapter* adapter = nullptr;
@@ -523,12 +528,12 @@ void DirectXRenderer::log_adapters()
 
 	for (size_t i = 0; i < adapterList.size(); ++i)
 	{
-		log_adapter_outputs(adapterList[i]);
+		LogAdapterOutputs(adapterList[i]);
 		ReleaseCom(adapterList[i]);
 	}
 }
 
-void DirectXRenderer::log_adapter_outputs(IDXGIAdapter* adapter)
+void DirectXRenderer::LogAdapterOutputs(IDXGIAdapter* adapter)
 {
 	UINT i = 0;
 	IDXGIOutput* output = nullptr;
@@ -542,7 +547,7 @@ void DirectXRenderer::log_adapter_outputs(IDXGIAdapter* adapter)
 		text += L"\n";
 		OutputDebugString(text.c_str());
 
-		log_output_display_modes(output, mBackBufferFormat);
+		LogOutputDisplayModes(output, mBackBufferFormat);
 
 		ReleaseCom(output);
 
@@ -550,7 +555,7 @@ void DirectXRenderer::log_adapter_outputs(IDXGIAdapter* adapter)
 	}
 }
 
-void DirectXRenderer::log_output_display_modes(IDXGIOutput* output, DXGI_FORMAT format)
+void DirectXRenderer::LogOutputDisplayModes(IDXGIOutput* output, DXGI_FORMAT format)
 {
 	UINT count = 0;
 	UINT flags = 0;
@@ -640,7 +645,7 @@ void DirectXRenderer::Resize(int client_width, int client_height)
 			IID_PPV_ARGS(depth_stencil_buffer.GetAddressOf())));
 
 		// Create descriptor to mip level 0 of entire resource using the format of the resource.
-		dx_device->CreateDepthStencilView(depth_stencil_buffer.Get(), nullptr, get_depth_stencil_view());
+		dx_device->CreateDepthStencilView(depth_stencil_buffer.Get(), nullptr, GetDepthStencilView());
 
 		// Transition the resource from its initial state to be used as a depth buffer.
 		dx_command_list->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(depth_stencil_buffer.Get(),
@@ -679,7 +684,7 @@ void DirectXRenderer::Set4xMsaaState(bool value)
 		_4x_msaa_state = value;
 
 		// Recreate the swapchain and buffers with new multisample settings.
-		create_swap_chain();
+		CreateSwapChain();
 		Resize(_window_width, _window_height);
 	}
 }
