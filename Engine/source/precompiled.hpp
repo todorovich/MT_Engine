@@ -35,6 +35,7 @@
 #include <ratio>
 #include <set>
 #include <sstream>					// String Stream
+#include <streambuf>
 #include <string>					// String
 #include <thread>
 #include <type_traits>
@@ -46,7 +47,6 @@
 #include <windows.h>
 #include <WindowsX.h>
 #include <wrl.h>
-
 namespace mt
 {
 	void SetThreadName(DWORD dwThreadID, const char* threadName);
