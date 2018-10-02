@@ -35,8 +35,8 @@
     <ClCompile Include="source\DirectXRenderer.cpp" />
     <ClCompile Include="source\Engine.cpp" />
     <ClCompile Include="source\precompiled.cpp" />
-    <ClCompile Include="source\Timer.cpp" />
-    <ClCompile Include="source\TimerManager.cpp" />
+    <ClCompile Include="source\Chronometer.cpp" />
+    <ClCompile Include="source\TimeManager.cpp" />
     <ClCompile Include="source\GeometryGenerator.cpp" />
     <ClCompile Include="source\InputManager.cpp" />
     <ClCompile Include="source\InputMessage.cpp" />
@@ -86,8 +86,8 @@
     <ClInclude Include="source\Engine.hpp" />
     <ClInclude Include="source\Log.hpp" />
     <ClInclude Include="source\LogManager.hpp" />
-    <ClInclude Include="source\Timer.hpp" />
-    <ClInclude Include="source\TimerManager.hpp" />
+    <ClInclude Include="source\Chronometer.hpp" />
+    <ClInclude Include="source\TimeManager.hpp" />
     <ClInclude Include="source\GeometryGenerator.h" />
     <ClInclude Include="source\InputManager.hpp" />
     <ClInclude Include="source\InputMessage.hpp" />
@@ -304,6 +304,7 @@
       <DebugInformationFormat>None</DebugInformationFormat>
       <CallingConvention>VectorCall</CallingConvention>
       <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

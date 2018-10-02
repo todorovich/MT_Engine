@@ -37,9 +37,6 @@
     <Filter Include="Input Manager\Input Messages">
       <UniqueIdentifier>{53e81af9-d37d-487d-88ee-e700de048e26}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Timer Manager\Timer">
-      <UniqueIdentifier>{a6a382f3-bc52-491e-8b76-5825df9b66ab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Windows Message Manager">
       <UniqueIdentifier>{9f216d11-dc3a-4b55-9790-ade58a99f01b}</UniqueIdentifier>
     </Filter>
@@ -166,8 +163,14 @@
     <Filter Include="Log Manager\Log">
       <UniqueIdentifier>{63575590-c46c-4e19-93da-7a790bcbf0a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Timer Manager\_Alarms">
+    <Filter Include="Timer Manager\Chronometer">
+      <UniqueIdentifier>{a6a382f3-bc52-491e-8b76-5825df9b66ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer Manager\Alarm">
       <UniqueIdentifier>{43652e52-cd0f-4104-ba67-2749004ecec3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer Manager\Timer">
+      <UniqueIdentifier>{f39d849a-d338-41cb-8898-7a68649484c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -194,9 +197,6 @@
     </ClCompile>
     <ClCompile Include="source\InputMessage.cpp">
       <Filter>Input Manager\Input Messages</Filter>
-    </ClCompile>
-    <ClCompile Include="source\TimerManager.cpp">
-      <Filter>Timer Manager</Filter>
     </ClCompile>
     <ClCompile Include="source\InputManager.cpp">
       <Filter>Input Manager</Filter>
@@ -307,8 +307,11 @@
     <ClCompile Include="source\WM_WindowPositionChanging.cpp">
       <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
     </ClCompile>
-    <ClCompile Include="source\Timer.cpp">
-      <Filter>Timer Manager\Timer</Filter>
+    <ClCompile Include="source\Chronometer.cpp">
+      <Filter>Timer Manager\Chronometer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TimeManager.cpp">
+      <Filter>Timer Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -345,9 +348,6 @@
     <ClInclude Include="source\precompiled.hpp" />
     <ClInclude Include="source\InputMessage.hpp">
       <Filter>Input Manager\Input Messages</Filter>
-    </ClInclude>
-    <ClInclude Include="source\TimerManager.hpp">
-      <Filter>Timer Manager</Filter>
     </ClInclude>
     <ClInclude Include="source\InputManager.hpp">
       <Filter>Input Manager</Filter>
@@ -472,14 +472,17 @@
     <ClInclude Include="source\IM_MouseUp.hpp">
       <Filter>Input Manager\Input Messages\IM_MouseUp</Filter>
     </ClInclude>
-    <ClInclude Include="source\Timer.hpp">
-      <Filter>Timer Manager\Timer</Filter>
-    </ClInclude>
     <ClInclude Include="source\LogManager.hpp">
       <Filter>Log Manager</Filter>
     </ClInclude>
     <ClInclude Include="source\Log.hpp">
       <Filter>Log Manager\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Chronometer.hpp">
+      <Filter>Timer Manager\Chronometer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\TimeManager.hpp">
+      <Filter>Timer Manager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
