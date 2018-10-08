@@ -15,43 +15,41 @@ void TimeManager::Initialize()
 
 	_StartAllChronometers();
 
-	_curr_tick_time	 = steady_clock::now();
-	_prev_tick_time	 = time_point(0ns);
+	_AddEngineAlarms();
 
-	_time_until_next_update_ns = _tgt_update_interval_ns;
-	_time_until_next_render_ns = _tgt_render_interval_ns;
-	_time_until_next_frame_ns = _idle_time_interval_ns;
+	curr_tick_time	 = Clock::now();
+	prev_tick_time	 = TimePoint(0ns);
 
-	_tick_delta_time_ns = 0ns;
+	tick_delta_time_ns = 0ns;
 
 	_is_paused = false;
 }
 
 void TimeManager::Tick()
 {
-	_prev_tick_time = _curr_tick_time;
+	prev_tick_time = curr_tick_time;
 
-	_curr_tick_time = steady_clock::now();
+	curr_tick_time = Clock::now();
 
-	_tick_delta_time_ns = _curr_tick_time - _prev_tick_time;
+	tick_delta_time_ns = curr_tick_time - prev_tick_time;
 
-	// Tick all the timers
+	_alarm_manager.Tick(curr_tick_time, prev_tick_time, tick_delta_time_ns);
+
+	// Tick all the chronometers
 	for (auto& chronometer : _chronometers)
 	{
-		chronometer.second->_Tick(_curr_tick_time, _prev_tick_time, _tick_delta_time_ns);
+		chronometer.second->Tick(curr_tick_time, prev_tick_time, tick_delta_time_ns);
 	}
+}
 
-	_time_until_next_frame_ns -= _tick_delta_time_ns;
+void TimeManager::UpdateComplete() 
+{ 
+	_should_update = false; 
+}
 
-	if (!_is_paused)
-	{
-		_time_until_next_update_ns -= _tick_delta_time_ns;
-	}
-
-	if (!_is_render_paused)
-	{
-		_time_until_next_render_ns -= _tick_delta_time_ns;		
-	}
+void TimeManager::RenderComplete()
+{
+	_should_render = false;
 }
 
 void TimeManager::Continue()
@@ -61,12 +59,14 @@ void TimeManager::Continue()
 	{
 		_is_paused = false;
 
-		auto continue_time = steady_clock::now();
+		auto continue_time = Clock::now();
 
+		_alarm_manager.Continue(continue_time);
+		
 		for (auto& pair : _chronometers)
 		{
 			Chronometer*& timer = pair.second;
-			timer->_Continue(continue_time);
+			timer->Continue(continue_time);
 		}
 	}
 
@@ -80,12 +80,14 @@ void TimeManager::Pause()
 	{
 		_is_paused = true;
 
-		auto time_paused = steady_clock::now();
+		auto time_paused = Clock::now();
+
+		_alarm_manager.Pause(time_paused);
 
 		for (auto& pair : _chronometers)
 		{
-			Chronometer*& timer = pair.second;
-			timer->_Pause(time_paused);
+			Chronometer*& chrono = pair.second;
+			chrono->Pause(time_paused);
 		}
 	}
 
@@ -150,4 +152,20 @@ void TimeManager::_StartAllChronometers()
 		Chronometer*& timer = pair.second;
 		timer->Start();
 	}
+}
+
+void TimeManager::_AddEngineAlarms()
+{
+	_alarm_manager.AddAlarm(Clock::now() + _tgt_update_interval_ns, [&]() -> void { _SetShouldUpdate(); }, true , _tgt_update_interval_ns);
+	_alarm_manager.AddAlarm(Clock::now() + _tgt_render_interval_ns, [&]() -> void { _SetShouldRender(); }, true, _tgt_render_interval_ns);
+}
+
+void TimeManager::_SetShouldUpdate() 
+{ 
+	_should_update = true;
+}
+
+void TimeManager::_SetShouldRender()
+{
+	_should_render = true;
 }
