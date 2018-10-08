@@ -22,14 +22,8 @@
     <Filter Include="Math">
       <UniqueIdentifier>{02b12af0-d6a0-4bef-9b09-a868e5f80f5f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Pool">
-      <UniqueIdentifier>{eda82d9b-cf48-4ff3-99ce-b149c0b08b74}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Upload Buffer">
       <UniqueIdentifier>{bfb91a35-2f57-43d2-9ab6-211ba9292d2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Timer Manager">
-      <UniqueIdentifier>{12a5fa6f-d241-4248-959b-20e55fff8bbe}</UniqueIdentifier>
     </Filter>
     <Filter Include="Input Manager">
       <UniqueIdentifier>{99fd4cdc-79ad-4015-95c2-8182dc43d771}</UniqueIdentifier>
@@ -163,14 +157,23 @@
     <Filter Include="Log Manager\Log">
       <UniqueIdentifier>{63575590-c46c-4e19-93da-7a790bcbf0a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Timer Manager\Chronometer">
+    <Filter Include="Time Manager">
+      <UniqueIdentifier>{12a5fa6f-d241-4248-959b-20e55fff8bbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time Manager\Chronometer">
       <UniqueIdentifier>{a6a382f3-bc52-491e-8b76-5825df9b66ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Timer Manager\Alarm">
+    <Filter Include="Time Manager\AlarmManager">
+      <UniqueIdentifier>{054a60c0-0464-4ffa-8463-25832fc2decc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time Manager\AlarmManager\Alarm">
       <UniqueIdentifier>{43652e52-cd0f-4104-ba67-2749004ecec3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Timer Manager\Timer">
+    <Filter Include="Time Manager\AlarmManager\Alarm\Timer">
       <UniqueIdentifier>{f39d849a-d338-41cb-8898-7a68649484c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ObjectPool">
+      <UniqueIdentifier>{eda82d9b-cf48-4ff3-99ce-b149c0b08b74}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -308,10 +311,16 @@
       <Filter>Windows Message Manager\Windows Messages\WM_WindowPositionChanging</Filter>
     </ClCompile>
     <ClCompile Include="source\Chronometer.cpp">
-      <Filter>Timer Manager\Chronometer</Filter>
+      <Filter>Time Manager\Chronometer</Filter>
     </ClCompile>
     <ClCompile Include="source\TimeManager.cpp">
-      <Filter>Timer Manager</Filter>
+      <Filter>Time Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Alarm.cpp">
+      <Filter>Time Manager\AlarmManager\Alarm</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AlarmManager.cpp">
+      <Filter>Time Manager\AlarmManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -337,7 +346,7 @@
       <Filter>DirectX Renderer</Filter>
     </ClInclude>
     <ClInclude Include="source\Pool.hpp">
-      <Filter>Pool</Filter>
+      <Filter>ObjectPool</Filter>
     </ClInclude>
     <ClInclude Include="source\GeometryGenerator.h">
       <Filter>Geometry Generator</Filter>
@@ -479,10 +488,22 @@
       <Filter>Log Manager\Log</Filter>
     </ClInclude>
     <ClInclude Include="source\Chronometer.hpp">
-      <Filter>Timer Manager\Chronometer</Filter>
+      <Filter>Time Manager\Chronometer</Filter>
     </ClInclude>
     <ClInclude Include="source\TimeManager.hpp">
-      <Filter>Timer Manager</Filter>
+      <Filter>Time Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Alarm.hpp">
+      <Filter>Time Manager\AlarmManager\Alarm</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Timer.hpp">
+      <Filter>Time Manager\AlarmManager\Alarm\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\AlarmManager.hpp">
+      <Filter>Time Manager\AlarmManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ObjectPool.hpp">
+      <Filter>ObjectPool</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

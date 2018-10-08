@@ -27,6 +27,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="source\Alarm.cpp" />
+    <ClCompile Include="source\AlarmManager.cpp" />
     <ClCompile Include="source\Camera.cpp" />
     <ClCompile Include="source\Command.cpp" />
     <ClCompile Include="source\CommandManager.cpp" />
@@ -76,6 +78,8 @@
     <ClCompile Include="source\WM_WindowPositionChanging.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="source\Alarm.hpp" />
+    <ClInclude Include="source\AlarmManager.hpp" />
     <ClInclude Include="source\Camera.hpp" />
     <ClInclude Include="source\Command.hpp" />
     <ClInclude Include="source\CommandManager.hpp" />
@@ -87,6 +91,7 @@
     <ClInclude Include="source\Log.hpp" />
     <ClInclude Include="source\LogManager.hpp" />
     <ClInclude Include="source\Chronometer.hpp" />
+    <ClInclude Include="source\ObjectPool.hpp" />
     <ClInclude Include="source\TimeManager.hpp" />
     <ClInclude Include="source\GeometryGenerator.h" />
     <ClInclude Include="source\InputManager.hpp" />
@@ -99,6 +104,7 @@
     <ClInclude Include="source\IM_MouseUp.hpp" />
     <ClInclude Include="source\Pool.hpp" />
     <ClInclude Include="source\precompiled.hpp" />
+    <ClInclude Include="source\Timer.hpp" />
     <ClInclude Include="source\UploadBuffer.h" />
     <ClInclude Include="source\WindowsMessage.hpp" />
     <ClInclude Include="source\WindowsMessageManager.hpp" />
