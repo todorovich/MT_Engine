@@ -63,8 +63,6 @@ void SetThreadName(DWORD dwThreadID, const char* threadName) {
 
 using namespace mt;
 
-std::unique_ptr<Engine> mt::Engine::_instance = std::make_unique<Engine>();
-
 LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	// Forward hwnd on because we can get messages (e.g., WM_CREATE)
@@ -73,6 +71,8 @@ LRESULT CALLBACK MainWndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	
 }
 
+std::unique_ptr<Engine> mt::Engine::_instance = std::make_unique<Engine>();
+
 Status Engine::_Run()
 { 
 	//_engine_tick_thread = std::thread(std::ref(Engine::Tick));
@@ -80,13 +80,13 @@ Status Engine::_Run()
 	// Message handler must be on same thread as the window (this thread)
 	MSG msg = { 0 };
 
-	auto& in_between_ticks_chrono = GetTimerManager().FindTimer(std::string("In Between Ticks Chonometer"));
+	auto& in_between_ticks_chrono = GetTimeManager().FindTimer(std::string("In Between Ticks Chonometer"));
 	in_between_ticks_chrono.Start();
 	{
 		bool quit = false;
 		while (!quit)
 		{
-			auto& windows_message_chrono = GetTimerManager().FindTimer(std::string("Windows Message Chronometer"));
+			auto& windows_message_chrono = GetTimeManager().FindTimer(std::string("Windows Message Chronometer"));
 			windows_message_chrono.Start();
 			{
 				// If there are Window messages then process them.
@@ -122,65 +122,60 @@ void Engine::_Tick()
 {
 	bool was_rendered = false;
 
-	GetTimerManager().GetTickTimer().Start();
+	GetTimeManager().GetTickTimer().Start();
 	{
-		GetTimerManager().Tick();
+		GetTimeManager().Tick();
 
-		// Time for another Update
-		//if (GetTimerManager().ns_until_next_update() <= 0ns)
+		auto should_update = GetTimeManager().GetShouldUpdate();
+		if (should_update)
 		{
 
-			auto& input_timer = GetTimerManager().FindTimer(std::string("Input Chronometer"));
+			auto& input_timer = GetTimeManager().FindTimer(std::string("Input Chronometer"));
 
+			// Input
 			input_timer.Start();
 			{
 				_input_manager.ProcessInput();
 			}
 			input_timer.Stop();
 
-			GetTimerManager().GetUpdateTimer().Start();
+			// Update
+			GetTimeManager().GetUpdateTimer().Start();
 			{
-				Update();
+				_Update();
 				_direct_x_renderer.Update();
 			}
-			GetTimerManager().GetUpdateTimer().Stop();
+			GetTimeManager().GetUpdateTimer().Stop();
+
+			
+			GetTimeManager().UpdateComplete();
 		}
 
-		// End of Frame
-		// New Frame
-		// Time to Render
-		//if (GetTimerManager().ns_until_next_frame() <= 0ns)
+		auto should_render = GetTimeManager().GetShouldRender();
+		if (should_render)
 		{
 			// Render whenever you can, but don't wait.
-			if (!GetTimerManager().IsRenderPaused() && GetRenderer().IsCurrentFenceComplete())
+			if (GetRenderer().IsCurrentFenceComplete())
 			{
-				GetTimerManager().GetRenderTimer().Start();
+				// Render
+				GetTimeManager().GetRenderTimer().Start();
 				{
-					Draw();
+					_Draw();
 					_direct_x_renderer.Render();
 					_direct_x_renderer.IncrementFence();
 					was_rendered = true;
 				}
-				GetTimerManager().GetRenderTimer().Stop();
+				GetTimeManager().GetRenderTimer().Stop();
+
+				GetTimeManager().RenderComplete();
 			}
+
 		}
 
 	}
-	GetTimerManager().GetTickTimer().Stop();
+	GetTimeManager().GetTickTimer().Stop();
 
 	_UpdateFrameStatisticsNoTimeCheck(was_rendered);
-}
-
-void Engine::Tick()
-{
-	SetThreadName(GetCurrentThreadId(), "Tick Thread");
-
-	while (!GetEngine()._is_shutting_down)
-	{
-		GetEngine()._Tick();
-	}
-
-	OutputDebugStringW(L"Tick Thread Shutdown\n");
 }
 
 bool Engine::_Initialize(HINSTANCE hInstance)
@@ -246,33 +241,19 @@ bool Engine::_InitializeMainWindow()
 	return true;
 }
 
-//void Engine::_UpdateFrameStatistics()
-//{
-//	// Code computes the average frames per second, and also the 
-//	// average _time_manager it takes to render one frame.  These stats 
-//	// are appended to the window caption bar.
-//	
-//	_time_since_stat_update += GetTimerManager().DeltaTime()
-//
-//	if (_time_since_stat_update >= 250ms)
-//	{
-//		_UpdateFrameStatisticsNoTimeCheck();
-//	}		
-//}
-
 void Engine::_UpdateFrameStatisticsNoTimeCheck(bool was_rendered)
 {
-	GetTimerManager().GetStatisticsTimer().Start();
+	GetTimeManager().GetStatisticsTimer().Start();
 
 	static const float ns_to_ms = 1e-6f;
 
-	auto& game_chrono		= Engine::GetTimerManager().GetGameTimer();
-	auto& update_chrono		= Engine::GetTimerManager().GetUpdateTimer();
-	auto& render_chrono		= Engine::GetTimerManager().GetRenderTimer();
-	auto& wm_chrono			= Engine::GetTimerManager().FindTimer(std::string("Windows Message Chronometer"));
-	auto& in_between_chrono = Engine::GetTimerManager().FindTimer(std::string("In Between Ticks Chonometer"));
-	auto& stats_chrono		= Engine::GetTimerManager().GetStatisticsTimer();
-	auto& tick_chrono		= Engine::GetTimerManager().GetTickTimer();
+	auto& game_chrono		= Engine::GetTimeManager().GetGameTimer();
+	auto& update_chrono		= Engine::GetTimeManager().GetUpdateTimer();
+	auto& render_chrono		= Engine::GetTimeManager().GetRenderTimer();
+	auto& wm_chrono			= Engine::GetTimeManager().FindTimer(std::string("Windows Message Chronometer"));
+	auto& in_between_chrono = Engine::GetTimeManager().FindTimer(std::string("In Between Ticks Chonometer"));
+	auto& stats_chrono		= Engine::GetTimeManager().GetStatisticsTimer();
+	auto& tick_chrono		= Engine::GetTimeManager().GetTickTimer();
 	//auto& frame_timer = Engine::GetTimerManager().GetFrameTimer();
 
 	float ns_to_s = 1e-9f;
@@ -440,5 +421,5 @@ void Engine::_UpdateFrameStatisticsNoTimeCheck(bool was_rendered)
 
 	_time_since_stat_update = 0ns;
 
-	GetTimerManager().GetStatisticsTimer().Stop();
+	GetTimeManager().GetStatisticsTimer().Stop();
 }
