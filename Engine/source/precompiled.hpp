@@ -47,6 +47,9 @@
 #include <windows.h>
 #include <WindowsX.h>
 #include <wrl.h>
+
+using namespace std::literals::chrono_literals;
+
 namespace mt
 {
 	void SetThreadName(DWORD dwThreadID, const char* threadName);
@@ -63,4 +66,8 @@ namespace mt
 	class Command;
 	class CommandQueue;
 
+	using Clock		 = std::chrono::steady_clock;
+	using Period	 = Clock::period;
+	using Duration	 = Clock::duration;
+	using TimePoint  = Clock::time_point;
 }
