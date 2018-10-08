@@ -10,7 +10,7 @@ LRESULT mt::WM_EnterSizeMove::execute(const HWND& hwnd, const UINT& msg, const W
 
 	Engine::SetIsWindowResizing(true);
 
-	Engine.GetTimerManager().Pause();
+	Engine.GetTimeManager().Pause();
 
 	return 0;
 }

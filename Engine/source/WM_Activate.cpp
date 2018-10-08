@@ -8,11 +8,11 @@ LRESULT mt::WM_Activate::execute(const HWND& hwnd, const UINT& msg, const WPARAM
 {
 	if (LOWORD(wParam) == WA_INACTIVE)
 	{
-		Engine::GetTimerManager().Pause();
+		Engine::GetTimeManager().Pause();
 	}
 	else
 	{
-		Engine::GetTimerManager().Continue();
+		Engine::GetTimeManager().Continue();
 	}
 
 	return 0;

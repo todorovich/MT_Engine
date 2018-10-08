@@ -10,7 +10,7 @@ LRESULT mt::WM_ExitSizeMove::execute(const HWND& hwnd, const UINT& msg, const WP
 
 	Engine::Resize(Engine.GetWindowWidth(), Engine.GetWindowHeight());
 	
-	Engine::GetTimerManager().Continue();
+	Engine::GetTimeManager().Continue();
 	
 	Engine::SetIsWindowResizing(false);
 	

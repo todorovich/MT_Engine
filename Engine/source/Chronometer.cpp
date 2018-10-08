@@ -19,37 +19,37 @@ void Chronometer::ResetTimer()
 	_is_running = false;
 	_is_paused = false;
 
-	_start_time		= time_point();
-	_stop_time		= time_point();
-	_time_paused	= time_point();
-	_time_continued = time_point();
+	_start_time		= TimePoint();
+	_stop_time		= TimePoint();
+	_time_paused	= TimePoint();
+	_time_continued = TimePoint();
 }
 
 void Chronometer::Start()
 {
 	if (!_is_running)
 	{
-		_start_time = steady_clock::now();
+		_start_time = Clock::now();
 
-		_duration_since_started = duration();
-		_duration_active = duration();
-		_duration_paused = duration();
+		_duration_since_started = Duration();
+		_duration_active = Duration();
+		_duration_paused = Duration();
 	
 		_is_running = true;
 	}
 }
 
-duration Chronometer::Stop()
+Duration Chronometer::Stop()
 {
 	if (_is_running)
 	{
-		_stop_time = steady_clock::now();
+		_stop_time = Clock::now();
 
 		_is_running = false;
 		
 		_duration_since_started = _stop_time - _start_time;
 		
-		_duration_active += _stop_time - Engine::GetTimerManager().GetCurrentTickTime();
+		_duration_active += _stop_time - Engine::GetTimeManager().GetCurrentTickTime();
 
 		_CollectSample();
 
@@ -61,21 +61,9 @@ duration Chronometer::Stop()
 	}
 }
 
-time_point Chronometer::Pause()
+TimePoint Chronometer::Pause(TimePoint time_paused)
 {
-	return _Pause(steady_clock::now());
-}
-
-void Chronometer::Continue()
-{
-	_Continue(steady_clock::now());
-}
-
-// PRIVATE FUNCTIONS
-
-time_point Chronometer::_Pause(time_point time_paused)
-{
-	if (_can_pause && _is_running &&!_is_paused)
+	if (_can_pause && _is_running && !_is_paused)
 	{
 		_is_paused = true;
 
@@ -85,7 +73,7 @@ time_point Chronometer::_Pause(time_point time_paused)
 	return time_paused;
 }
 
-void Chronometer::_Continue(time_point time_continued)
+void Chronometer::Continue(TimePoint time_continued)
 {
 	if (_can_pause && _is_running && _is_paused)
 	{
@@ -95,7 +83,9 @@ void Chronometer::_Continue(time_point time_continued)
 	}
 }
 
-void Chronometer::_Tick(const time_point& current_tick_time, const time_point& previous_tick_time, const duration& delta_time)
+// PRIVATE FUNCTIONS
+
+void Chronometer::Tick(const TimePoint& current_tick_time, const TimePoint& previous_tick_time, const Duration& delta_time)
 {
 	if (_is_running)
 	{
@@ -132,8 +122,8 @@ void Chronometer::_Tick(const time_point& current_tick_time, const time_point& p
 					_duration_paused += _time_continued - previous_tick_time;
 					_duration_active += current_tick_time - _time_continued;
 
-					_time_paused = time_point();
-					_time_continued = time_point();
+					_time_paused = TimePoint();
+					_time_continued = TimePoint();
 				}
 				// ACTIVE
 				else
@@ -177,40 +167,40 @@ void Chronometer::_CollectSample()
 
 void Chronometer::SetNumberOfSamples(int new_sample_size)
 {	
-	duration* _temp_sample = new duration[_sample_size];
+	Duration* _temp_sample = new Duration[_sample_size];
 
-	auto previous_size = sizeof(duration) * _sample_size;
+	auto previous_size = sizeof(Duration) * _sample_size;
 
-	auto new_size = sizeof(duration) * new_sample_size;
+	auto new_size = sizeof(Duration) * new_sample_size;
 
-	memcpy_s(_temp_sample, sizeof(duration) * _sample_size, _samples, sizeof(duration));
+	memcpy_s(_temp_sample, sizeof(Duration) * _sample_size, _samples, sizeof(Duration));
 
 	std::swap(_temp_sample, _samples);
 
 	delete[] _temp_sample;
 }
 
-duration Chronometer::GetLastSample() const
+Duration Chronometer::GetLastSample() const
 {
 	return (_current_index > 0) ? _samples[(_current_index - 1) % _sample_size] : 0ns;
 }
 
-duration Chronometer::GetDurationPaused() const
+Duration Chronometer::GetDurationPaused() const
 {
 	return _duration_paused;
 }
 
-duration Chronometer::GetAverageSampleDuration() const
+Duration Chronometer::GetAverageSampleDuration() const
 {
 	return _average_sample_duration;
 }
 
-duration Chronometer::GetDurationActive() const
+Duration Chronometer::GetDurationActive() const
 {
 	return _duration_active;
 }
 
-duration Chronometer::GetTotalDurationRunning() const
+Duration Chronometer::GetTotalDurationRunning() const
 {
 	return _duration_since_started;
 }

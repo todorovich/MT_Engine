@@ -18,13 +18,13 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 	{
 		if (wParam == SIZE_MINIMIZED)
 		{
-			Engine::GetTimerManager().Pause();
+			Engine::GetTimeManager().Pause();
 			Engine::SetIsWindowMinimized(true);
 			Engine::SetIsWindowMaximized(false);
 		}
 		else if (wParam == SIZE_MAXIMIZED)
 		{
-			Engine::GetTimerManager().Continue();
+			Engine::GetTimeManager().Continue();
 			Engine::SetIsWindowMinimized(false);
 			Engine::SetIsWindowMaximized(true);
 			Engine::Resize(_window_width, _window_height);
@@ -34,7 +34,7 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 			// Restoring from minimized state?
 			if (Engine::GetEngine().IsWindowMinimized())
 			{
-				Engine::GetTimerManager().Continue();
+				Engine::GetTimeManager().Continue();
 				Engine::SetIsWindowMinimized(false);
 				Engine::Resize(_window_width, _window_height);
 			}
@@ -42,7 +42,7 @@ LRESULT WM_Size::execute(const HWND& hwnd, const UINT& msg, const WPARAM& wParam
 			// Restoring from maximized state?
 			else if (Engine::GetEngine().IsWindowMaximized())
 			{
-				Engine::GetTimerManager().Continue();
+				Engine::GetTimeManager().Continue();
 				Engine::SetIsWindowMinimized(false);
 				Engine::Resize(_window_width, _window_height);
 			}

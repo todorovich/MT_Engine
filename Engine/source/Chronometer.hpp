@@ -4,13 +4,6 @@
 
 #include "precompiled.hpp"
 
-using steady_clock	= std::chrono::steady_clock;
-using period		= std::chrono::steady_clock::period;
-using duration		= std::chrono::steady_clock::duration;
-using time_point	= std::chrono::steady_clock::time_point;
-
-using namespace std::literals::chrono_literals;
-
 namespace mt
 {
 class Chronometer
@@ -44,7 +37,7 @@ public:
 		// Atomic Compare and Swap
 		_timer_ID = _next_timer_id;
 		_next_timer_id++;
-		_samples = new duration[_sample_size];
+		_samples = new Duration[_sample_size];
 
 		for (auto x = 0; x < _sample_size; x++)
 		{
@@ -71,37 +64,37 @@ public:
 		, _duration_paused			(std::move(other._duration_paused))
 		, _duration_active			(std::move(other._duration_active))
 		, _duration_since_started	(std::move(other._duration_since_started))
-		, _average_sample_duration			(std::move(other._average_sample_duration))
+		, _average_sample_duration	(std::move(other._average_sample_duration))
 		, _name						(std::move(other._name))
 		, _samples					(std::move(other._samples))
 		, _current_index			(std::move(other._current_index))
 		, _timer_ID					(std::move(other._timer_ID))
 		, _sample_size				(std::move(other._sample_size))
 		, _can_pause				(std::move(other._can_pause))
-		, _is_paused			(std::move(other._is_paused))
+		, _is_paused				(std::move(other._is_paused))
 	{
 
 	}
 
-	Chronometer&& operator=(const Chronometer& other) = delete;
+	Chronometer& operator=(const Chronometer& other) = delete;
 
-	Chronometer&& operator=(Chronometer&& other)
+	Chronometer& operator=(Chronometer&& other)
 	{
-		_start_time				= std::move(other._start_time);
-		_stop_time				= std::move(other._stop_time);
-		_time_paused			= std::move(other._time_paused);
-		_time_continued			= std::move(other._time_continued);
-		_duration_paused		= std::move(other._duration_paused);
-		_duration_active		= std::move(other._duration_active);
-		_duration_since_started	= std::move(other._duration_since_started);
-		_average_sample_duration		= std::move(other._average_sample_duration);
-		_name					= std::move(other._name);
-		_samples				= std::move(other._samples);
-		_current_index			= std::move(other._current_index);
-		_timer_ID				= std::move(other._timer_ID);
-		_sample_size			= std::move(other._sample_size);
-		_can_pause				= std::move(other._can_pause);
-		_is_paused		= std::move(other._is_paused);
+		_start_time				 = std::move(other._start_time);
+		_stop_time				 = std::move(other._stop_time);
+		_time_paused			 = std::move(other._time_paused);
+		_time_continued			 = std::move(other._time_continued);
+		_duration_paused		 = std::move(other._duration_paused);
+		_duration_active		 = std::move(other._duration_active);
+		_duration_since_started	 = std::move(other._duration_since_started);
+		_average_sample_duration = std::move(other._average_sample_duration);
+		_name					 = std::move(other._name);
+		_samples				 = std::move(other._samples);
+		_current_index			 = std::move(other._current_index);
+		_timer_ID				 = std::move(other._timer_ID);
+		_sample_size			 = std::move(other._sample_size);
+		_can_pause				 = std::move(other._can_pause);
+		_is_paused				 = std::move(other._is_paused);
 	}
 
 	// Comparison
@@ -115,51 +108,47 @@ public:
 
 	void Start();
 
-	duration Stop();
+	Duration Stop();
 
 	void ResetTimer();
 
-	time_point Pause();
+	TimePoint Pause(TimePoint time_paused = Clock::now());
 
-	void Continue();
+	void Continue(TimePoint time_continued = Clock::now());
 
 	void SetNumberOfSamples(int samples);
 
-	duration GetLastSample() const;
+	Duration GetLastSample() const;
 
-	duration GetAverageSampleDuration() const;
+	Duration GetAverageSampleDuration() const;
 
-	duration GetDurationActive() const;
+	Duration GetDurationActive() const;
 
-	duration GetDurationPaused() const;
+	Duration GetDurationPaused() const;
 
-	duration GetTotalDurationRunning() const;
+	Duration GetTotalDurationRunning() const;
 
 	std::string& GetName() { return _name; };
 
 private:
 
-	void _Tick(const time_point& current_tick_time, const time_point& previous_tick_time, const duration& delta_time);
+	void Tick(const TimePoint& current_tick_time, const TimePoint& previous_tick_time, const Duration& delta_time);
 	void _CollectSample();
 
+	TimePoint _start_time;
+	TimePoint _stop_time;
 
-	time_point _Pause(time_point time_paused);
-	void _Continue(time_point time_continued);
+	TimePoint _time_paused;
+	TimePoint _time_continued;
 
-	time_point _start_time;
-	time_point _stop_time;
+	Duration _duration_since_started;
+	Duration _duration_active;
+	Duration _duration_paused;
 
-	time_point _time_paused;
-	time_point _time_continued;
-
-	duration _duration_since_started;
-	duration _duration_active;
-	duration _duration_paused;
-
-	duration _average_sample_duration;
+	Duration _average_sample_duration;
 
 	std::string	_name;
-	duration*	_samples;
+	Duration*	_samples;
 
 	__int64 _timer_ID;
 	int _current_index;
