@@ -9,117 +9,49 @@
 #include "IM_KeyDown.hpp"
 #include "IM_KeyUp.hpp"
 
-//#ifdef _DEBUG
-//#define  _CRTDBG_MAP_ALLOC
-//#define  new new(_NORMAL_BLOCK, __FILE__, __LINE__)
-//#endif
-
 using namespace mt;
 
 void InputManager::ProcessInput() 
 {
 	auto size = _input_queue.size();
-
-	if (size != 0)
+	for (auto x = 0; x < size; x++)
 	{
-		//while (_input_queue_lock.try_lock() == false);
-
-		for (auto x = 0; x < size; x++)
-		{
-			if (!_input_queue.empty())
-			{
-				mt::InputMessage* input_message = _input_queue.front();
-				_input_queue.pop();
-				input_message->Execute();
-				delete input_message;
-			}
-		}
-	
-		//_input_queue_lock.unlock();
+		InputMessage* input_message = _input_queue.front();
+		_input_queue.pop();
+		input_message->Execute();
+		_message_pool.ReleaseMemory(input_message);
 	}
 }
 
-void InputManager::MouseMove(WPARAM btnState, int x, int y)
+void InputManager::MouseMove(WPARAM button_state, int x, int y)
 {
-	if (x != _mouse_position.x && y != _mouse_position.y)
-	{
-		//while (_input_queue_lock.try_lock() == false);
-
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseMove(x, y)));
-
-		//_pool_index = (_pool_index + 1) % 512;
-
-		//_input_queue_lock.unlock();
-
-		_MouseMove(x, y);
-	}
+	_input_queue.push(reinterpret_cast<InputMessage*>(new (_message_pool.GetMemory()) IM_MouseMove(x, y)));
 }
 
-void InputManager::MouseDown(WPARAM btnState, int x, int y)
+void InputManager::MouseDown(WPARAM button_state, int x, int y)
 {	
 	SetCapture(Engine::GetMainWindowHandle());
 
-	//while (_input_queue_lock.try_lock() == false);
-	
-	if (x != _mouse_position.x && y != _mouse_position.y)
-	{	
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseMove(x, y)));
-
-		//_pool_index = (_pool_index + 1) % 512;
-
-		_MouseMove(x, y);
-	}
-
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new (&_pool_start[_pool_index]) IM_MouseDown(btnState)));
-	
-	//_pool_index = (_pool_index + 1) % 512;
-
-	_MouseDown(btnState);
-
-	//_input_queue_lock.unlock();	
+	_input_queue.push(reinterpret_cast<InputMessage*>(new (_message_pool.GetMemory()) IM_MouseDown(button_state)));
 }
 
-void InputManager::MouseUp(WPARAM btnState, int x, int y)
+void InputManager::MouseUp(WPARAM button_state, int x, int y)
 {
-	//while (_input_queue_lock.try_lock() == false);
-	
-	if (x != _mouse_position.x && y != _mouse_position.y)
-	{
-		//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_MouseMove(x, y)));
-		_MouseMove(x, y);
-	}
-
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_MouseUp(btnState)));
-
-	_MouseUp(btnState);
-
-	//_input_queue_lock.unlock();
-
 	ReleaseCapture();
+
+	_input_queue.push(reinterpret_cast<InputMessage*>(new (_message_pool.GetMemory()) IM_MouseUp(button_state)));
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646280(v=vs.85).aspx
 void InputManager::KeyDown(WPARAM vk_key, LPARAM flags)
 {
-	//while (_input_queue_lock.try_lock() == false);
-
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_KeyDown(vk_key)));
-
-	_KeyDown(vk_key);
-
-	//_input_queue_lock.unlock();
+	_input_queue.push(reinterpret_cast<InputMessage*>(new (_message_pool.GetMemory()) IM_KeyDown(vk_key)));
 }
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/ms646281(v=vs.85).aspx
 void InputManager::KeyUp(WPARAM vk_key, LPARAM flags)
 {
-	//while (_input_queue_lock.try_lock() == false);
-
-	//_input_queue.push(reinterpret_cast<InputMessage*>(new IM_KeyUp(vk_key)));
-
-	_KeyUp(vk_key);
-
-	//_input_queue_lock.unlock();
+	_input_queue.push(reinterpret_cast<InputMessage*>(new (_message_pool.GetMemory()) IM_KeyUp(vk_key)));
 }
 
 void InputManager::_MouseMove(__int32 x, __int32 y)
@@ -166,53 +98,13 @@ void InputManager::_KeyUp(WPARAM vk_key)
 	// P Key
 	else if (vk_key == 0x50)
 	{
-		if (Engine::GetTimerManager().IsUpdatePaused())
+		if (Engine::GetTimeManager().IsUpdatePaused())
 		{
-			Engine::GetTimerManager().Continue();
+			Engine::GetTimeManager().Continue();
 		}
 		else
 		{
-			Engine::GetTimerManager().Pause();
+			Engine::GetTimeManager().Pause();
 		}
-	}
-}
-
-InputMessage* mt::InputManager::Allocate()
-{
-	if (_free_pool_slots.empty() == false)
-	{
-		auto& next_available_itr = _free_pool_slots.begin();
-
-		short next_available = *next_available_itr;
-
-		_free_pool_slots.erase(next_available_itr);
-
-		_used_pool_slots.insert(next_available);
-
-		return &_pool_start[next_available];
-	}
-	else
-	{
-		return new InputMessage();
-	}
-
-	return nullptr;
-}
-
-void mt::InputManager::Deallocate(InputMessage* ptr)
-{
-	if (ptr >= _pool_start && ptr <= _pool_end)
-	{
-		short _pool_slot = static_cast<short>(static_cast<__int64>(_pool_end - ptr) % sizeof(InputMessage));
-
-		ptr->~InputMessage();
-
-		_used_pool_slots.erase(_pool_slot);
-
-		_free_pool_slots.insert(_pool_slot);
-	}
-	else
-	{
-		delete ptr;
 	}
 }

@@ -6,31 +6,27 @@
 
 #include "InputMessage.hpp"
 
+#include "ObjectPool.hpp"
+
 namespace mt
 {
 class InputManager
 {
-public:
-	InputManager()
-	{
-		_pool_start = new InputMessage[512];
-		_pool_end = &_pool_start[512];
+	ObjectPool<InputMessage, 1024> _message_pool;
 
-		for (short i = 0; i < 512; i++)
-		{
-			_free_pool_slots.insert(i);
-		}
-	}
+	std::queue<InputMessage*> _input_queue;
+
+	POINT	_mouse_position;
+
+	std::set<WPARAM> _held_keys_and_buttons;
+
+public:
+	InputManager() = default;
+
+	~InputManager() = default;
 
 	InputManager(const InputManager& other) = delete;
 	InputManager& operator=(const InputManager& other) = delete;
-	~InputManager()
-	{
-		delete[] _pool_start;
-		_pool_start = nullptr;
-		_pool_end = nullptr;
-	}
-
 	void ProcessInput();
 
 	void MouseMove(WPARAM btnState, int x, int y);
@@ -38,14 +34,12 @@ public:
 	void MouseDown(WPARAM btnState, int x, int y);
 
 	void MouseUp(WPARAM btnState, int x, int y);
-		
+
 	void KeyDown(WPARAM vk_key, LPARAM flags);
 
 	void KeyUp(WPARAM vk_key, LPARAM flags);
 
 	friend ::mt::InputMessage;
-	//friend class MouseMove;
-
 
 protected:
 
@@ -59,27 +53,5 @@ protected:
 
 	void _KeyUp(WPARAM vk_key);
 
-private:
-
-	InputMessage* Allocate();
-
-	void Deallocate(InputMessage* ptr);
-
-	std::queue<InputMessage*> _input_queue;
-	
-	std::mutex _input_queue_lock;
-	
-	POINT	_mouse_position;
-	
-	std::set<WPARAM> _held_keys_and_buttons;
-
-	std::set<short> _free_pool_slots;
-
-	std::set<short> _used_pool_slots;
-	
-	InputMessage* _pool_start;
-	InputMessage* _pool_end;
-
-	int _pool_index = 0;
 };
-}
+};
