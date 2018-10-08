@@ -22,9 +22,9 @@ public:
 	virtual bool _Initialize(HINSTANCE hInstance) override;
 
 private:
-	virtual void OnResize() override;
-	virtual void Update() override;
-	virtual void Draw() override;
+	virtual void _OnResize() override;
+	virtual void _Update() override;
+	virtual void _Draw() override;
 
 };
 
@@ -36,13 +36,13 @@ bool EngineDemo::_Initialize(HINSTANCE hInstance)
 	return true;
 }
 
-void EngineDemo::OnResize()
+void EngineDemo::_OnResize()
 {}
 
-void EngineDemo::Update()
+void EngineDemo::_Update()
 {}
 
-void EngineDemo::Draw()
+void EngineDemo::_Draw()
 {}
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd)
