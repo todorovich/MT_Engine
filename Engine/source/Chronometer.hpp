@@ -22,7 +22,7 @@ public:
 		, _stop_time(0ns)
 		, _time_paused(0ns)
 		, _time_continued(0ns)
-		, _duration_paused(0ns)
+		, _total_duration_paused(0ns)
 		, _duration_active(0ns)
 		, _duration_since_started(0ns)
 		, _average_sample_duration(0ns)
@@ -61,7 +61,7 @@ public:
 		, _stop_time				(std::move(other._stop_time))
 		, _time_paused				(std::move(other._time_paused))
 		, _time_continued			(std::move(other._time_continued))
-		, _duration_paused			(std::move(other._duration_paused))
+		, _total_duration_paused			(std::move(other._total_duration_paused))
 		, _duration_active			(std::move(other._duration_active))
 		, _duration_since_started	(std::move(other._duration_since_started))
 		, _average_sample_duration	(std::move(other._average_sample_duration))
@@ -84,7 +84,7 @@ public:
 		_stop_time				 = std::move(other._stop_time);
 		_time_paused			 = std::move(other._time_paused);
 		_time_continued			 = std::move(other._time_continued);
-		_duration_paused		 = std::move(other._duration_paused);
+		_total_duration_paused	 = std::move(other._total_duration_paused);
 		_duration_active		 = std::move(other._duration_active);
 		_duration_since_started	 = std::move(other._duration_since_started);
 		_average_sample_duration = std::move(other._average_sample_duration);
@@ -106,10 +106,16 @@ public:
 
 	// Methods
 
-	void Start();
+	void Start(TimePoint start_time = Clock::now());
 
-	Duration Stop();
+	Duration Stop(TimePoint stop_time = Clock::now());
 
+	void Lap(TimePoint time = Clock::now())
+	{
+		Stop(time);
+		Start(time);
+	}
+	
 	void ResetTimer();
 
 	TimePoint Pause(TimePoint time_paused = Clock::now());
@@ -143,7 +149,9 @@ private:
 
 	Duration _duration_since_started;
 	Duration _duration_active;
+	Duration _total_duration_paused;
 	Duration _duration_paused;
+
 
 	Duration _average_sample_duration;
 

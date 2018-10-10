@@ -25,31 +25,38 @@ void Chronometer::ResetTimer()
 	_time_continued = TimePoint();
 }
 
-void Chronometer::Start()
+void Chronometer::Start(TimePoint start_time)
 {
 	if (!_is_running)
 	{
-		_start_time = Clock::now();
+		_start_time = start_time;
 
 		_duration_since_started = Duration();
 		_duration_active = Duration();
-		_duration_paused = Duration();
+		_total_duration_paused = Duration();
 	
 		_is_running = true;
 	}
 }
 
-Duration Chronometer::Stop()
+Duration Chronometer::Stop(TimePoint stop_time)
 {
 	if (_is_running)
 	{
-		_stop_time = Clock::now();
-
 		_is_running = false;
+
+		_stop_time = stop_time;
 		
 		_duration_since_started = _stop_time - _start_time;
 		
-		_duration_active += _stop_time - Engine::GetTimeManager().GetCurrentTickTime();
+		if (_is_paused)
+		{
+			_duration_paused += _stop_time - Engine::GetTimeManager().GetCurrentTickTime();
+		}
+		else
+		{
+			_duration_active += _stop_time - Engine::GetTimeManager().GetCurrentTickTime();
+		}
 
 		_CollectSample();
 
@@ -94,10 +101,10 @@ void Chronometer::Tick(const TimePoint& current_tick_time, const TimePoint& prev
 		if (_is_paused)
 		{
 			// PAUSED
-			if (previous_tick_time < _time_paused)
+			if (previous_tick_time <= _time_paused)
 			{
 				_duration_active += _time_paused - previous_tick_time;
-				_duration_paused += current_tick_time - _time_paused;
+				_duration_paused = current_tick_time - _time_paused;
 			}
 			// FULL PAUSE
 			else
@@ -119,7 +126,8 @@ void Chronometer::Tick(const TimePoint& current_tick_time, const TimePoint& prev
 				// CONTINUED
 				if (_time_continued.time_since_epoch() > 0ns && previous_tick_time < _time_continued)
 				{
-					_duration_paused += _time_continued - previous_tick_time;
+					_total_duration_paused += _time_continued - _time_paused;
+					_duration_paused = 0ns;
 					_duration_active += current_tick_time - _time_continued;
 
 					_time_paused = TimePoint();
@@ -187,7 +195,7 @@ Duration Chronometer::GetLastSample() const
 
 Duration Chronometer::GetDurationPaused() const
 {
-	return _duration_paused;
+	return _total_duration_paused + _duration_paused;
 }
 
 Duration Chronometer::GetAverageSampleDuration() const
