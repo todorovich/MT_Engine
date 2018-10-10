@@ -15,6 +15,7 @@
 #include <cmath>
 #include <cstdarg>
 #include <cstdint>					// Standard Fixed Integer types
+#include <cstdio>
 #include <deque>					// Standard Double Ended Queue
 #include <d3d12.h>					// DirectX 12 library
 #include <d3dcompiler.h>
