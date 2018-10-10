@@ -29,6 +29,7 @@
   <ItemGroup>
     <ClCompile Include="source\Alarm.cpp" />
     <ClCompile Include="source\AlarmManager.cpp" />
+    <ClCompile Include="source\Archiver.cpp" />
     <ClCompile Include="source\Camera.cpp" />
     <ClCompile Include="source\Command.cpp" />
     <ClCompile Include="source\CommandManager.cpp" />
@@ -80,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="source\Alarm.hpp" />
     <ClInclude Include="source\AlarmManager.hpp" />
+    <ClInclude Include="source\Archiver.hpp" />
     <ClInclude Include="source\Camera.hpp" />
     <ClInclude Include="source\Command.hpp" />
     <ClInclude Include="source\CommandManager.hpp" />

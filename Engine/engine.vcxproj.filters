@@ -175,6 +175,9 @@
     <Filter Include="ObjectPool">
       <UniqueIdentifier>{eda82d9b-cf48-4ff3-99ce-b149c0b08b74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archiver">
+      <UniqueIdentifier>{63df2232-bfe6-4434-9a83-659943d25648}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Camera.cpp">
@@ -321,6 +324,9 @@
     </ClCompile>
     <ClCompile Include="source\AlarmManager.cpp">
       <Filter>Time Manager\AlarmManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Archiver.cpp">
+      <Filter>Archiver</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -504,6 +510,9 @@
     </ClInclude>
     <ClInclude Include="source\ObjectPool.hpp">
       <Filter>ObjectPool</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Archiver.hpp">
+      <Filter>Archiver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
