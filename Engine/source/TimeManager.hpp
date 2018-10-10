@@ -17,7 +17,7 @@ namespace mt
 		TimeManager()
 			: _tgt_update_interval_ns(8333333ns)
 			, _tgt_render_interval_ns(16666666ns)
-			, _idle_time_interval_ns (16666666ns)
+			, _frame_interval (16666666ns)
 			, _command_list_interval (0ns)
 			, _is_paused(true)
 		{}
@@ -33,7 +33,7 @@ namespace mt
 
 		Duration GetTickDeltaTime() const { return tick_delta_time_ns; };
 
-		Duration DurationSinceLaunch() const { return _chronometers.find(std::string("Total Game Time"))->second->GetTotalDurationRunning(); };
+		Duration DurationSinceLaunch() const { return _chronometers.find(std::string("Total Up-Time"))->second->GetTotalDurationRunning(); };
 
 		Duration GetTargetUpdateInterval() const { return _tgt_update_interval_ns; }
 
@@ -41,6 +41,7 @@ namespace mt
 
 		bool GetShouldUpdate() const { return _should_update; }
 		bool GetShouldRender() const { return _should_render; }
+		bool GetEndOfFrame() const { return _end_of_frame; }
 
 		void Initialize();		// Call before message loop.
 		void Continue();		// Call to unpaused.
@@ -49,6 +50,7 @@ namespace mt
 	
 		void UpdateComplete();
 		void RenderComplete();
+		void FrameComplete();
 
 		Chronometer& FindTimer(std::string name) 
 		{ 
@@ -63,11 +65,16 @@ namespace mt
 			}
 		}
 
-		Chronometer&  GetGameTimer() const { return *(_chronometers.find(std::string("Total Up-Time"))->second); }
-		Chronometer&  GetUpdateTimer() const { return *(_chronometers.find(std::string("Update Chonometer"))->second); }
-		Chronometer&  GetRenderTimer() const { return *(_chronometers.find(std::string("Render Chonometer"))->second); }
-		Chronometer&  GetStatisticsTimer() const { return *(_chronometers.find(std::string("Statistics Chonometer"))->second); }
-		Chronometer&  GetTickTimer() const { return *(_chronometers.find(std::string("Tick Chonometer"))->second); }
+		Chronometer&  GetTotalUpTimeChronometer() const { return *(_chronometers.find(std::string("Total Up-Time"))->second); }
+		Chronometer&  GetUpdateChronometer() const { return *(_chronometers.find(std::string("Update"))->second); }
+		Chronometer&  GetRenderChronometer() const { return *(_chronometers.find(std::string("Render"))->second); }
+		Chronometer&  GetFrameChronometer() const { return *(_chronometers.find(std::string("Frame"))->second); }
+		Chronometer&  GetIdleChronometer() const { return *(_chronometers.find(std::string("Idle"))->second); }
+		Chronometer&  GetStatisticsChronometer() const { return *(_chronometers.find(std::string("Statistics"))->second); }
+		Chronometer&  GetWindowsMessageChronometer() const { return *(_chronometers.find(std::string("Windows Message"))->second); }
+		Chronometer&  GetInputChronometer() const { return *(_chronometers.find(std::string("Input"))->second); }
+		Chronometer&  GetTickChronometer() const { return *(_chronometers.find(std::string("Tick"))->second); }
+		Chronometer&  GetInBetweenTicksChronometer() const { return *(_chronometers.find(std::string("In Between Ticks"))->second); }
 		
 		bool IsUpdatePaused() const { return _is_paused; }
 		//bool IsRenderPaused() const { return _is_render_paused; }
@@ -80,13 +87,14 @@ namespace mt
 		
 		void _SetShouldUpdate();
 		void _SetShouldRender();
+		void _SetEndOfFrame();
 		
 		AlarmManager							_alarm_manager;
 		std::map<std::string, Chronometer*>		_chronometers;
 
 		Duration	_tgt_update_interval_ns;
 		Duration	_tgt_render_interval_ns;
-		Duration	_idle_time_interval_ns;
+		Duration	_frame_interval;
 		Duration	_command_list_interval;
 	
 		TimePoint curr_tick_time = TimePoint(0ns);
@@ -98,6 +106,7 @@ namespace mt
 
 		bool _should_update;
 		bool _should_render;
+		bool _end_of_frame;
 
 	};
 }

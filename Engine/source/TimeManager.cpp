@@ -13,7 +13,7 @@ void TimeManager::Initialize()
 
 	_AddEngineChronometers();
 
-	_StartAllChronometers();
+	//_StartAllChronometers();
 
 	_AddEngineAlarms();
 
@@ -27,6 +27,10 @@ void TimeManager::Initialize()
 
 void TimeManager::Tick()
 {
+	auto now = Clock::now();
+	GetIdleChronometer().Pause(now);
+	GetTickChronometer().Continue(now);
+
 	prev_tick_time = curr_tick_time;
 
 	curr_tick_time = Clock::now();
@@ -40,6 +44,10 @@ void TimeManager::Tick()
 	{
 		chronometer.second->Tick(curr_tick_time, prev_tick_time, tick_delta_time_ns);
 	}
+
+	now = Clock::now();
+	GetTickChronometer().Pause(now);
+	GetIdleChronometer().Continue(now);
 }
 
 void TimeManager::UpdateComplete() 
@@ -50,6 +58,11 @@ void TimeManager::UpdateComplete()
 void TimeManager::RenderComplete()
 {
 	_should_render = false;
+}
+
+void TimeManager::FrameComplete()
+{
+	_end_of_frame = false;
 }
 
 void TimeManager::Continue()
@@ -111,35 +124,39 @@ void TimeManager::_AddEngineChronometers()
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Update Chonometer");
+	chronometer = new Chronometer("Update");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Render Chonometer");
+	chronometer = new Chronometer("Render");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Statistics Chonometer");
+	chronometer = new Chronometer("Statistics");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Frame Chonometer");
+	chronometer = new Chronometer("Frame");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 	
-	chronometer = new Chronometer("Windows Message Chronometer");
+	chronometer = new Chronometer("Idle");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Input Chronometer");
+	chronometer = new Chronometer("Windows Message");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("Tick Chonometer");
+	chronometer = new Chronometer("Input");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
-	chronometer = new Chronometer("In Between Ticks Chonometer");
+	chronometer = new Chronometer("Tick");
+
+	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
+
+	chronometer = new Chronometer("In Between Ticks");
 
 	_chronometers.insert(std::make_pair(chronometer->GetName(), chronometer));
 
@@ -158,6 +175,7 @@ void TimeManager::_AddEngineAlarms()
 {
 	_alarm_manager.AddAlarm(Clock::now() + _tgt_update_interval_ns, [&]() -> void { _SetShouldUpdate(); }, true , _tgt_update_interval_ns);
 	_alarm_manager.AddAlarm(Clock::now() + _tgt_render_interval_ns, [&]() -> void { _SetShouldRender(); }, true, _tgt_render_interval_ns);
+	_alarm_manager.AddAlarm(Clock::now() + _frame_interval, [&]() -> void { _SetEndOfFrame(); }, true, _frame_interval);
 }
 
 void TimeManager::_SetShouldUpdate() 
@@ -168,4 +186,9 @@ void TimeManager::_SetShouldUpdate()
 void TimeManager::_SetShouldRender()
 {
 	_should_render = true;
+}
+
+void TimeManager::_SetEndOfFrame()
+{
+	_end_of_frame = true;
 }
