@@ -4,6 +4,7 @@
 
 #include "precompiled.hpp"
 
+#include "Archiver.hpp"
 #include "CommandManager.hpp"
 #include "DirectXRenderer.hpp"
 #include "InputManager.hpp"
@@ -16,6 +17,8 @@ namespace mt
 	class Engine
 	{
 	private:
+		Archiver archiver;
+
 		DirectXRenderer			_direct_x_renderer;
 		WindowsMessageManager	_windows_message_manager;
 		CommandManager			_command_manager;
@@ -40,6 +43,7 @@ namespace mt
 		volatile bool	_is_window_resizing = false;	// are the Resize bars being dragged?
 		volatile bool	_is_window_fullscreen = false;	// fullscreen enabled
 		volatile bool	_is_shutting_down = false;	// Shutdown is checked to see if Tick should keep ticking, on true ticking stops and Tick() returns
+		bool _was_rendered_this_frame = false;
 
 	protected:
 		static std::unique_ptr<Engine> _instance;
@@ -72,25 +76,7 @@ namespace mt
 		bool			_InitializeMainWindow();
 		void			_UpdateFrameStatisticsNoTimeCheck(bool was_rendered);
 
-		void _resize(int width, int height)
-		{
-			// This flag should prevent futher rendering after the current frame finishes
-			_set_is_resizing(true);
-
-			// wait until rendering is finished.
-			while (_direct_x_renderer.GetIsRendering()) {};
-
-			_window_width = width;
-			_window_height = height;
-			_window_aspect_ratio = static_cast<float>(_window_width) / _window_height;
-
-			_direct_x_renderer.Resize(width, height);
-
-			// Trigger callback
-			_OnResize();
-			// Continue rendering.
-			_set_is_resizing(false);
-		}
+		void _resize(int width, int height);
 
 		void _set_is_resizing(bool is_resizing)
 		{
@@ -121,10 +107,6 @@ namespace mt
 		{
 			delete _instance.release();
 		}
-
-
-
-
 	
 	public:	
 		// ACCESSOR
@@ -208,15 +190,7 @@ namespace mt
 			OutputDebugStringW(L"Engine Destroyed\n");
 		}
 
-		Engine()
-			: _direct_x_renderer()
-			, _windows_message_manager()
-			, _command_manager()
-			, _input_manager()
-			, _time_manager()
-		{
-
-		}
+		Engine() = default;
 	
 		virtual ~Engine() 
 		{
