@@ -43,7 +43,7 @@ namespace mt
 		volatile bool	_is_window_resizing = false;	// are the Resize bars being dragged?
 		volatile bool	_is_window_fullscreen = false;	// fullscreen enabled
 		volatile bool	_is_shutting_down = false;	// Shutdown is checked to see if Tick should keep ticking, on true ticking stops and Tick() returns
-		bool _was_rendered_this_frame = false;
+		bool			_was_rendered_this_frame = false;
 
 	protected:
 		static std::unique_ptr<Engine> _instance;

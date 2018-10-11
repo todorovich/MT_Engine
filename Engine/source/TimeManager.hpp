@@ -33,7 +33,7 @@ namespace mt
 
 		Duration GetTickDeltaTime() const { return tick_delta_time_ns; };
 
-		Duration DurationSinceLaunch() const { return _chronometers.find(std::string("Total Up-Time"))->second->GetTotalDurationRunning(); };
+		Duration DurationSinceLaunch() const { return _chronometers.find(std::string("Total Up-Time"))->second->GetDurationSinceStarted(); };
 
 		Duration GetTargetUpdateInterval() const { return _tgt_update_interval_ns; }
 
