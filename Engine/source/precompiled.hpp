@@ -28,6 +28,7 @@
 #include <filesystem>
 #include <float.h>
 #include <fstream>					// Filestream
+#include <functional>
 #include <list>						// Standard List Conatainer
 #include <map>						// Standard Map Conatainer
 #include <memory>

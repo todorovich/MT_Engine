@@ -335,10 +335,27 @@ void DirectXRenderer::CreateRootSignature()
 
 void DirectXRenderer::CreateShadersAndInputLayout()
 {
+	namespace fs = std::filesystem;
+
 	HRESULT hr = S_OK;
 
-	mvsByteCode = d3dUtil::CompileShader(L"Shaders\\color.hlsl", nullptr, "VS", "vs_5_0");
-	mpsByteCode = d3dUtil::CompileShader(L"Shaders\\color.hlsl", nullptr, "PS", "ps_5_0");
+	OutputDebugStringW(wstring(L"Current Path: " + fs::current_path().wstring() + L'\n' + fs::current_path().parent_path().root_path().wstring() + L'\n').c_str());
+
+	fs::path p;
+	for (auto& e : fs::current_path())
+	{
+		p /= e;
+
+		if (wcsncmp(e.c_str(), L"mt_engine", sizeof(L"mt_engine")) == 0)
+		{
+			break;
+		}
+	}
+
+	OutputDebugStringW((L"P = " + p.wstring()).c_str());
+
+	mvsByteCode = d3dUtil::CompileShader(p.wstring() + L"\\Shaders\\color.hlsl", nullptr, "VS", "vs_5_0");
+	mpsByteCode = d3dUtil::CompileShader(p.wstring() + L"\\Shaders\\color.hlsl", nullptr, "PS", "ps_5_0");
 
 	// D3D_INPUT_ELEMENT_DESC
 	mInputLayout =
