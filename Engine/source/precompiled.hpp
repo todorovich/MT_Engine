@@ -68,8 +68,11 @@ namespace mt
 	class Command;
 	class CommandQueue;
 
-	using Clock		 = std::chrono::steady_clock;
-	using Period	 = Clock::period;
-	using Duration	 = Clock::duration;
-	using TimePoint  = Clock::time_point;
-}
+	namespace time
+    {
+        using Clock		 = std::chrono::steady_clock;
+        using Period	 = Clock::period;
+        using Duration	 = Clock::duration;
+        using TimePoint  = Clock::time_point;
+    }
+  }

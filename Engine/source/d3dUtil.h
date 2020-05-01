@@ -9,7 +9,7 @@
 #include "precompiled.hpp"
 
 #include "d3dx12.h"
-#include "DDSTextureLoader.h"
+#include "DDSTextureLoader12.h"
 #include "MathHelper.h"
 
 extern const int gNumFrameResources;

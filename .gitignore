@@ -264,3 +264,10 @@ paket-files/
 __pycache__/
 /Logs
 /EngineDemo/Logs
+/x64/
+
+/cmake-build-debug-visual-studio-clang/
+/cmake-build-debug-visual-studio/
+/cmake-build-debug/
+/BuildProcessTemplates/
+/build/
