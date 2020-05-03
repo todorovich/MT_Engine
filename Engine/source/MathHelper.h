@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "precompiled.hpp"
+#include "mt/precompiled.hpp"
 
 class MathHelper
 {
@@ -92,7 +92,5 @@ public:
 
 	static const float Infinity;
 	static const float Pi;
-
-
-};
+	};
 

@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "precompiled.hpp"
+#include "mt/precompiled.hpp"
 
 #if defined( __cplusplus )
 

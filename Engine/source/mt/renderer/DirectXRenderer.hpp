@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include "precompiled.hpp"
+#include "mt/precompiled.hpp"
 
 //#include "../mt/TimeManager.hpp"
 #include "d3dUtil.h"
 #include "UploadBuffer.h"
-#include "mt/Camera.hpp"
+#include "mt/camera/Camera.hpp"
 
 // Link necessary d3d12 libraries.
 #pragma comment(lib, "d3dcompiler.lib")
@@ -44,8 +44,8 @@ namespace mt::renderer
                 flush_command_queue();
         }
 
-// Accessors
-        Camera &GetCurrentCamera() { return camera; } // NOT CONST!!!!
+        // Accessors
+        camera::Camera &GetCurrentCamera() { return camera; } // NOT CONST!!!!
 
         bool Get4xMsaaState() const { return _4x_msaa_state; };
 
@@ -57,7 +57,7 @@ namespace mt::renderer
 
         bool GetIsRendering() const { return _is_rendering; }
 
-// Mutators
+        // Mutators
         bool InitializeDirect3d(HWND main_window_handle);
 
         void Render();
@@ -68,7 +68,7 @@ namespace mt::renderer
 
         void flush_command_queue();
 
-// Fence Stuff
+        // Fence Stuff
 
         void IncrementFence();
 
@@ -78,14 +78,14 @@ namespace mt::renderer
 
     protected:
 
-// Accessors
+        // Accessors
         ID3D12Resource *GetCurrentBackBuffer() const;
 
         D3D12_CPU_DESCRIPTOR_HANDLE GetCurrentBackBufferView() const;
 
         D3D12_CPU_DESCRIPTOR_HANDLE GetDepthStencilView() const;
 
-// Mutators
+        // Mutators
 
         void CreateCommandList();
 
@@ -111,26 +111,26 @@ namespace mt::renderer
 
         void LogOutputDisplayModes(IDXGIOutput *output, DXGI_FORMAT format);
 
-// Data
+        // Data
         static const int _swap_chain_buffer_count = 2;
 
-        Camera camera; // 204 bytes (getting kind of bloated)
+        camera::Camera camera; // 204 bytes (getting kind of bloated)
 
-// 64 byte types
+        // 64 byte types
         XMFLOAT4X4 mWorld = MathHelper::Identity4x4(); // Transformation from Local Space to World Space
         XMFLOAT4X4 mView = MathHelper::Identity4x4();    // Transformation from World Space to the camera's View Space
         XMFLOAT4X4 mProj = MathHelper::Identity4x4();    // Transformation from View Space to Projection Space (Normalized Device Coordinates (GPU Space?))
 
-// 32 byte type
+        // 32 byte type
         vector<D3D12_INPUT_ELEMENT_DESC> mInputLayout; // 32 bytes according to sizeof
 
-// 24 byte type
+        // 24 byte type
         D3D12_VIEWPORT mScreenViewport;
 
-// 16 byte types
+        // 16 byte types
         D3D12_RECT mScissorRect;
 
-// Pointers - 8 byte each
+        // Pointers - 8 byte each
         HWND _main_window_handle;
 
         unique_ptr<UploadBuffer<ObjectConstants>> object_constants_upload_buffer = nullptr;
@@ -159,12 +159,12 @@ namespace mt::renderer
         ComPtr<ID3DBlob> mpsByteCode = nullptr;
         ComPtr<ID3D12PipelineState> mPSO = nullptr;
 
-// 8 byte types
+        // 8 byte types
         UINT64 current_fence_index = 0;
 
         POINT mLastMousePos;
 
-// 4 byte types
+        // 4 byte types
         UINT rtv_descriptor_size = 0;
         UINT dsv_descriptor_size = 0;
         UINT cbv_srv_uav_descriptor_size = 0;

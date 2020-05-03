@@ -30,7 +30,7 @@ void DirectXRenderer::Render()
 	// so we do not have to wait per frame.
 	//flush_command_queue();
 	
-	// NOTE: Moved this to happen outside of the render as it ends up syncing the render _time_manager
+	// NOTE: Moved this to happen outside of the render as it ends up syncing the render time_manager_
 	// to the framerate. Instead I moved it to flush just before the idle is reset, this should
 	// force the game to actually stay synced with the gpu without screwing up the stats. Given
 	// the note above I imagine a real fix is incoming.
@@ -211,7 +211,7 @@ void DirectXRenderer::CreateDxCommandObjects()
 		nullptr,										// Initial PipelineStateObject
 		IID_PPV_ARGS(dx_command_list.GetAddressOf())));
 
-	// Start off in a closed state.  This is because the first _time_manager we refer 
+	// Start off in a closed state.  This is because the first time_manager_ we refer
 	// to the command list we will Reset it, and it needs to be closed before
 	// calling Reset.
 	dx_command_list->Close();

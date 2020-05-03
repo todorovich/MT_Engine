@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "precompiled.hpp"
+#include "mt/precompiled.hpp"
 
 #include "d3dx12.h"
 #include "DDSTextureLoader12.h"

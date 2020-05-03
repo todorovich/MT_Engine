@@ -1,7 +1,7 @@
 // Copyright 2018 Micho Todorovich, all rights reserved.
 
 #include "Engine.hpp"
-#include "mt/Archiver.hpp"
+#include "mt/io/Archiver.hpp"
 
 const DWORD MS_VC_EXCEPTION = 0x406D1388;
 
@@ -152,7 +152,7 @@ void Engine::_Tick()
 		// Input
 		GetTimeManager().GetInputChronometer().Continue();
 		{
-			_input_manager.ProcessInput();
+			input_manager_.ProcessInput();
 			GetTimeManager().GetInputChronometer().Lap();
 		}
 		GetTimeManager().GetInputChronometer().Pause();
@@ -161,7 +161,7 @@ void Engine::_Tick()
 		GetTimeManager().GetUpdateChronometer().Continue();
 		{
 			_Update();
-			_direct_x_renderer.Update();
+			direct_x_renderer_.Update();
 		}
 		GetTimeManager().GetUpdateChronometer().Pause();
 
@@ -182,8 +182,8 @@ void Engine::_Tick()
 			GetTimeManager().GetRenderChronometer().Continue(now);
 			{
 				_Draw();
-				_direct_x_renderer.Render();
-				_direct_x_renderer.IncrementFence();
+				direct_x_renderer_.Render();
+				direct_x_renderer_.IncrementFence();
 				_was_rendered_this_frame = true;
 			}
 			GetTimeManager().GetRenderChronometer().Pause();
@@ -205,13 +205,13 @@ bool Engine::_Initialize(HINSTANCE hInstance)
 	if(!_InitializeMainWindow())
 		return false;
 
-	if(!_direct_x_renderer.InitializeDirect3d(_main_window_handle))
+	if(!direct_x_renderer_.InitializeDirect3d(_main_window_handle))
 		return false;
 
 	// Do the initial Resize code.
 	Resize(_window_width, _window_height);
 
-	_time_manager.Initialize();
+	time_manager_.Initialize();
 
 	return true;
 }
@@ -285,7 +285,7 @@ void Engine::_UpdateFrameStatisticsNoTimeCheck(bool was_rendered)
 	const auto red_span = "<span style=\"color:Red\">";
 	const auto span_end = "</span>";
 
-	Indenter indenter;
+    io::Indenter indenter;
 
 	archiver	<< '\n' << "<table id=\"outer\">" << '\n';
 
@@ -565,13 +565,13 @@ void Engine::_resize(int width, int height)
 	_set_is_resizing(true);
 
 	// wait until rendering is finished.
-	while (_direct_x_renderer.GetIsRendering()) {};
+	while (direct_x_renderer_.GetIsRendering()) {};
 
 	_window_width = width;
 	_window_height = height;
 	_window_aspect_ratio = static_cast<float>(_window_width) / _window_height;
 
-	_direct_x_renderer.Resize(width, height);
+	direct_x_renderer_.Resize(width, height);
 
 	// Trigger callback
 	_OnResize();
