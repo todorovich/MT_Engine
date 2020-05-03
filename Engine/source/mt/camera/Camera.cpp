@@ -2,6 +2,7 @@
 #include "Camera.hpp"
 
 using namespace DirectX;
+using namespace mt::camera;
 using namespace mt;
 
 Camera::Camera()
@@ -17,14 +18,12 @@ Camera::~Camera()
 
 XMVECTOR Camera::GetPosition()const
 {
-
 	return XMLoadFloat3(&mPosition);
 }
 
 
 XMFLOAT3 Camera::GetPosition3f()const
 {
-	
 	return mPosition;
 }
 
