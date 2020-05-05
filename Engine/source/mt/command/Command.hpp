@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
 namespace mt::command
 {
@@ -18,23 +18,9 @@ namespace mt::command
 		friend CommandQueue;
 
 	public:
-		Command(EXECUTION_TYPE method_of_execution = EXECUTION_TYPE::ASYNCHRONOURS)
-		{
-			switch (method_of_execution)
-			{
-				case EXECUTION_TYPE::IMMEDIATE:
-					execute();
-					Destroy();
-					break;
-				case EXECUTION_TYPE::ASYNCHRONOURS:
-					add_to_command_queue();
-					break;
-				case EXECUTION_TYPE::UNMANAGED:
-					break;
-			}
-		};
+		explicit Command(EXECUTION_TYPE method_of_execution = EXECUTION_TYPE::ASYNCHRONOURS) ;
 
-		virtual void execute() = 0;
+		virtual void execute() {};
 
 		void Destroy()
 		{

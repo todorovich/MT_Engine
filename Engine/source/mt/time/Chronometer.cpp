@@ -1,7 +1,7 @@
 #include "Chronometer.hpp"
 
-#include "mt/Engine.hpp"
-#include "mt/time/TimeManager.hpp"
+#include "Engine.hpp"
+#include "time/TimeManager.hpp"
 
 using namespace mt::time;
 

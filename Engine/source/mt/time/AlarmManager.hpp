@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 #include "Alarm.hpp"
-#include "mt/ObjectPool.hpp"
+#include "ObjectPool.hpp"
 
 namespace mt::time
 {

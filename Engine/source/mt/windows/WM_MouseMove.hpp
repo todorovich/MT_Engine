@@ -3,7 +3,7 @@
 #pragma once
 
 #include "WindowsMessage.hpp"
-#include "mt/Engine.hpp"
+#include "Engine.hpp"
 
 namespace mt::windows
 {

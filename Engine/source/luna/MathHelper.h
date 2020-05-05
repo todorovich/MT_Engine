@@ -6,7 +6,10 @@
 
 #pragma once
 
-#include "mt/precompiled.hpp"
+//#include "precompiled.hpp"
+
+#include <cstdlib>
+#include <DirectXMath.h>
 
 class MathHelper
 {

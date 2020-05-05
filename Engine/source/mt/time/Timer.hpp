@@ -1,8 +1,8 @@
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
-#include "mt/time/Alarm.hpp"
+#include "time/Alarm.hpp"
 
 namespace mt::time
 {
@@ -27,6 +27,8 @@ namespace mt::time
 		Timer& operator=(Timer&& other)
 		{
 			Alarm::operator=(std::move(other));
+
+			return *this;
 		};
 	};
 }

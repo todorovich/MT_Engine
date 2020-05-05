@@ -1,6 +1,6 @@
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
 namespace mt::io
 {

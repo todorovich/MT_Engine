@@ -2,7 +2,7 @@
 
 using namespace mt::time;
 
-void Alarm::Tick(TimePoint current_tick_time, __attribute__((unused))TimePoint previous_tick_time, __attribute__((unused))Duration delta_time)
+void Alarm::Tick(TimePoint current_tick_time, [[maybe_unused]] TimePoint previous_tick_time, [[maybe_unused]] Duration delta_time)
 {
 	// Not triggered or paused
 	if (_has_triggered == false && _is_paused == false)

@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
 //#include "../mt/TimeManager.hpp"
-#include "d3dUtil.h"
 #include "UploadBuffer.h"
-#include "mt/camera/Camera.hpp"
+#include "d3dUtil.h"
+#include "camera/Camera.hpp"
 
 // Link necessary d3d12 libraries.
 #pragma comment(lib, "d3dcompiler.lib")
@@ -37,7 +37,7 @@ namespace mt::renderer
             //OutputDebugStringW(string.c_str());
         }
 
-        DirectXRenderer(const DirectXRenderer &) = default;
+        DirectXRenderer(const DirectXRenderer &) = delete;
 
         ~DirectXRenderer() {
             if (dx_device != nullptr)

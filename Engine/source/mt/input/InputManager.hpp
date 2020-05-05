@@ -2,11 +2,11 @@
 
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
 #include "InputMessage.hpp"
 
-#include "mt/ObjectPool.hpp"
+#include "ObjectPool.hpp"
 
 namespace mt::input
 {

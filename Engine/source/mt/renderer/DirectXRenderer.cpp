@@ -2,7 +2,7 @@
 
 #include "DirectXRenderer.hpp"
 
-#include "mt/Engine.hpp"
+#include "Engine.hpp"
 
 #ifdef _DEBUG
 #define  _CRTDBG_MAP_ALLOC
@@ -503,7 +503,8 @@ void DirectXRenderer::WaitForFence()
 	// Wait until the GPU has completed commands up to this fence point.
 	if (fence->GetCompletedValue() < current_fence_index)
 	{
-		HANDLE eventHandle = CreateEventEx(nullptr, false, false, EVENT_ALL_ACCESS);
+		// second parameter was false, compiler claims its being converted to nullptr so i made it explicit.
+		HANDLE eventHandle = CreateEventEx(nullptr, nullptr, false, EVENT_ALL_ACCESS);
 
 		// Fire event when GPU hits current fence.  
 		ThrowIfFailed(fence->SetEventOnCompletion(current_fence_index, eventHandle));

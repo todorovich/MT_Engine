@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
 #include "WindowsMessage.hpp"
 

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS ON)
 
 if (MSVC)
-	add_compile_options(/Zi)
+	add_compile_options(/Zi /EHcs)
 else()
 	add_compile_options(-fexceptions)
 endif()
@@ -22,15 +22,27 @@ add_definitions(-DUNICODE -D_UNICODE)
 
 set(ignoreMe "${CMAKE_C_COMPILER}${CMAKE_C_FLAGS}")
 
-include_directories(Engine/source)
-include_directories("/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.25.28610/include")
-include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um")
-include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/ucrt")
-include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/shared")
 
-link_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Lib/10.0.18362.0/um/x64")
+#include_directories("/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.25.28610/include")
+#include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/um")
+#include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/ucrt")
+#include_directories("/mnt/c/Program Files (x86)/Windows Kits/10/Include/10.0.18362.0/shared")
 
-#add_library(name STATIC|SAHRED|MODULE one.cpp two.cpp)
+link_directories("c:/Program Files (x86)/Windows Kits/10/Lib/10.0.18362.0/um/x64")
+
+
+add_library(luna STATIC
+	Engine/source/luna/DDSTextureLoader12.cpp
+	Engine/source/luna/DDSTextureLoader12.h
+	Engine/source/luna/d3dUtil.cpp
+	Engine/source/luna/d3dUtil.h
+	Engine/source/luna/d3dx12.h
+	Engine/source/luna/GeometryGenerator.cpp
+	Engine/source/luna/GeometryGenerator.h
+	Engine/source/luna/MathHelper.cpp
+	Engine/source/luna/MathHelper.h
+	Engine/source/luna/UploadBuffer.h
+)
 
 add_executable(mt_engine WIN32
 		Engine/source/mt/time/Alarm.cpp
@@ -62,8 +74,6 @@ add_executable(mt_engine WIN32
 		Engine/source/mt/input/InputMessage.hpp
 		Engine/source/mt/logging/Log.hpp
 		Engine/source/mt/logging/LogManager.hpp
-		Engine/source/MathHelper.cpp
-		Engine/source/MathHelper.h
 		Engine/source/mt/ObjectPool.hpp
 		Engine/source/mt/Pool.hpp
 		Engine/source/mt/precompiled.cpp
@@ -137,13 +147,9 @@ add_executable(mt_engine WIN32
 		Engine/source/mt/windows/WM_Timer.hpp
 		Engine/source/mt/windows/WM_WindowPositionChanging.cpp
 		Engine/source/mt/windows/WM_WindowPositionChanging.hpp
-		Engine/source/DDSTextureLoader12.cpp
-		Engine/source/DDSTextureLoader12.h
-		Engine/source/d3dUtil.cpp
-		Engine/source/d3dUtil.h
-		Engine/source/d3dx12.h
-		Engine/source/GeometryGenerator.cpp
-		Engine/source/GeometryGenerator.h
-		Engine/source/UploadBuffer.h
 		EngineDemo/source/EngineDemo.cpp)
 
+target_include_directories(mt_engine SYSTEM PRIVATE Engine/source/luna)
+target_include_directories(mt_engine PUBLIC Engine/source/mt)
+
+target_link_libraries(mt_engine luna)

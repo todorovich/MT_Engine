@@ -6,9 +6,9 @@
 //
 //***************************************************************************************
 
-#include "mt/precompiled.hpp"
+#include "precompiled.hpp"
 
-#include "mt/Engine.hpp"
+#include "Engine.hpp"
 
 using mt::Engine;
 using namespace DirectX;

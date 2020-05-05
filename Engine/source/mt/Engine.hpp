@@ -4,13 +4,13 @@
 
 #include "precompiled.hpp"
 
-#include "mt/io/Archiver.hpp"
-#include "mt/command/CommandManager.hpp"
-#include "mt/renderer/DirectXRenderer.hpp"
-#include "mt/input/InputManager.hpp"
-#include "mt/logging/LogManager.hpp"
-#include "mt/time/TimeManager.hpp"
-#include "mt/windows/WindowsMessageManager.hpp"
+#include "io/Archiver.hpp"
+#include "command/CommandManager.hpp"
+#include "renderer/DirectXRenderer.hpp"
+#include "input/InputManager.hpp"
+#include "logging/LogManager.hpp"
+#include "time/TimeManager.hpp"
+#include "windows/WindowsMessageManager.hpp"
 
 namespace mt
 {
